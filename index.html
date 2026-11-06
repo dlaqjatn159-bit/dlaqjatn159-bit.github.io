@@ -15,7 +15,8 @@
 <link rel="alternate" media="only screen and (max-width: 767px)" href="m/index.html">
 <script>if(!window.__RD_PRERENDER){var w=window.innerWidth||screen.width;if(w<768)location.replace('m/index.html'+location.hash);}
 if('IntersectionObserver' in window&&!(window.matchMedia&&matchMedia('(prefers-reduced-motion: reduce)').matches))document.documentElement.setAttribute('data-js','');
-setTimeout(function(){document.documentElement.removeAttribute('data-js')},4000);</script>
+setTimeout(function(){document.documentElement.removeAttribute('data-js')},4000);
+try{if(sessionStorage.getItem('rd-intro')==='1')document.documentElement.setAttribute('data-seen','')}catch(e){}</script>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500&amp;family=Noto+Serif+KR:wght@400;500&amp;family=Playfair+Display:wght@600&amp;display=swap">
 <style>
 body{margin:0;background:#F7F5F1}
@@ -64,7 +65,7 @@ a{color:#2A2723}a:hover{color:#000000}
 /* 태블릿 (1106t): 폭 1100 이하에서는 상담부터 시공까지 다섯 칸을 세로로 */
 @media (max-width: 1100px){ol[style*="repeat(5, minmax(0, 1fr))"]{border-top:0!important;border-left:1px solid #CFCAC1!important;grid-template-columns:minmax(0,1fr)!important;row-gap:36px!important;margin-left:4px!important}ol[style*="repeat(5, minmax(0, 1fr))"]>li{padding:0 0 0 32px!important}ol[style*="repeat(5, minmax(0, 1fr))"]>li>span[aria-hidden]{left:-5px!important;top:6px!important}}
 </style>
-<style>/* 움직임이 붙기 전 깜빡임 막기 */[data-js] [data-rm]:not([data-on]) .rm,[data-js] [data-rm]:not([data-on]) .rm-strip{opacity:0}</style>
+<style>/* 움직임이 붙기 전 깜빡임 막기 */[data-js] [data-rm]:not([data-on]) .rm,[data-js] [data-rm]:not([data-on]) .rm-strip{opacity:0}/* 로고는 한 창에서 한 번만 (1107) */[data-seen] .ri{display:none}</style>
 </head>
 <body>
 <div id="dc-root">
@@ -637,7 +638,7 @@ class Component extends DCLogic {
     let reduce = false;
     try { reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches; } catch (e) {}
     if (reduce) return;
-    if (window.innerHeight < 1500 && (this.props.intro ?? true)) root.setAttribute('data-intro', '');
+    if (window.innerHeight < 1500 && (this.props.intro ?? true) && !this.introSeen) root.setAttribute('data-intro', '');
     root.setAttribute('data-on', '');
     this.io = new IntersectionObserver((list) => {
       list.forEach((e) => {
@@ -653,6 +654,11 @@ class Component extends DCLogic {
     if (this.io) this.io.disconnect();
   }
   renderVals() {
+    // 로고 시작 모션은 한 창에서 처음 한 번만 (1107): 체험하기 갔다 돌아오면 다시 안 나옴
+    if (this.introSeen === undefined) {
+      this.introSeen = false;
+      if (!window.__RD_PRERENDER) { try { this.introSeen = sessionStorage.getItem('rd-intro') === '1'; sessionStorage.setItem('rd-intro', '1'); } catch (e) {} }
+    }
     const hf = this.props.hf ?? '고딕';   // 제목 글꼴 (8단계)
     const s = this.state || {};
     const picked = s.wish || 'wide';
@@ -686,8 +692,14 @@ class Component extends DCLogic {
     if (!this.setRoot) this.setRoot = (el) => { if (el) this.rootEl = el; };
     return { hf,
       setRoot: this.setRoot,
-      introOn: (this.props.intro ?? true) && !s.introDone,
-      skipIntro: () => this.setState({ wish: picked, slide: at, introDone: true }),
+      introOn: (this.props.intro ?? true) && !this.introSeen,
+      // 건너뛰기는 로고만 숨김 (1107): 화면을 다시 그리면 글·사진이 안 나타나던 것
+      skipIntro: () => {
+        const root = this.rootEl || this.findRoot('[data-rm="home-pc"]');
+        const b = root && root.querySelector('.ri');
+        if (b) b.style.display = 'none';
+        if (root) root.removeAttribute('data-intro');
+      },
       wishes,
       shown,
       prevSlide: () => go(at - 1),

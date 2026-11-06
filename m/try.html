@@ -15,7 +15,8 @@
 <link rel="canonical" href="../try.html">
 <script>if(!window.__RD_PRERENDER){var w=window.innerWidth||screen.width;if(w>=768)location.replace('../try.html'+location.hash);}
 if('IntersectionObserver' in window&&!(window.matchMedia&&matchMedia('(prefers-reduced-motion: reduce)').matches))document.documentElement.setAttribute('data-js','');
-setTimeout(function(){document.documentElement.removeAttribute('data-js')},4000);</script>
+setTimeout(function(){document.documentElement.removeAttribute('data-js')},4000);
+try{if(sessionStorage.getItem('rd-intro')==='1')document.documentElement.setAttribute('data-seen','')}catch(e){}</script>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500&amp;family=Noto+Serif+KR:wght@400&amp;display=swap">
 <style>
 body{margin:0;background:#F7F5F1}
@@ -31,7 +32,7 @@ a{color:#2A2723}a:hover{color:#000000}
 [data-hf]{word-break:keep-all}
 [data-hf="고딕"] .rt-h{font-family:'Noto Sans KR',sans-serif!important;font-weight:500!important;letter-spacing:-0.03em!important}
 </style>
-<style>/* 움직임이 붙기 전 깜빡임 막기 */[data-js] [data-rm]:not([data-on]) .rm,[data-js] [data-rm]:not([data-on]) .rm-strip{opacity:0}</style>
+<style>/* 움직임이 붙기 전 깜빡임 막기 */[data-js] [data-rm]:not([data-on]) .rm,[data-js] [data-rm]:not([data-on]) .rm-strip{opacity:0}/* 로고는 한 창에서 한 번만 (1107) */[data-seen] .ri{display:none}</style>
 </head>
 <body>
 <div id="dc-root">
@@ -87,7 +88,7 @@ a{color:#2A2723}a:hover{color:#000000}
 
 <header style="display: flex; align-items: center; height: 60px; padding: 0 12px; box-sizing: border-box; flex: none;">
 <sc-if value="{{ atStart }}" hint-placeholder-val="{{ true }}">
-<a href="index.html" aria-label="홈으로" style="width: 44px; height: 44px; display: flex; align-items: center; justify-content: center;">
+<a href="index.html" aria-label="홈으로" onClick="{{ goHome }}" style="width: 44px; height: 44px; display: flex; align-items: center; justify-content: center;">
 <svg aria-hidden="true" width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M16 10H4M9 5l-5 5 5 5"></path></svg>
 </a>
 </sc-if>
@@ -322,6 +323,13 @@ class Component extends DCLogic {
         const KAKAO = '';   // 카톡 채널 대화창 주소 (판 44) — [채널 주소] 정해지면 넣기
         if (KAKAO) { try { window.open(KAKAO, '_blank', 'noopener'); } catch (e) {} }
         set({ sent: true });
+      },
+      // 홈에서 들어왔으면 뒤로 가기로 — 보던 자리로 돌아감 (1107)
+      goHome: (ev) => {
+        try {
+          const r = document.referrer ? new URL(document.referrer) : null;
+          if (r && r.origin === location.origin && /\/(index\.html)?$/.test(r.pathname) && history.length > 1) { if (ev) ev.preventDefault(); history.back(); }
+        } catch (e) {}
       },
       restart: () => { (this.timers || []).forEach(clearTimeout); this.setState({ step: 0, sent: false, seek: null, dir: null }); },
       atStart: step === 0,

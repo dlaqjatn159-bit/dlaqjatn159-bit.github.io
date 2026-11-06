@@ -15,7 +15,8 @@
 <link rel="alternate" media="only screen and (max-width: 767px)" href="m/case-b.html">
 <script>if(!window.__RD_PRERENDER){var w=window.innerWidth||screen.width;if(w<768)location.replace('m/case-b.html'+location.hash);}
 if('IntersectionObserver' in window&&!(window.matchMedia&&matchMedia('(prefers-reduced-motion: reduce)').matches))document.documentElement.setAttribute('data-js','');
-setTimeout(function(){document.documentElement.removeAttribute('data-js')},4000);</script>
+setTimeout(function(){document.documentElement.removeAttribute('data-js')},4000);
+try{if(sessionStorage.getItem('rd-intro')==='1')document.documentElement.setAttribute('data-seen','')}catch(e){}</script>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500&amp;family=Noto+Serif+KR:wght@400&amp;family=Playfair+Display:wght@600&amp;display=swap">
 <style>
 body{margin:0;background:#F7F5F1}
@@ -58,7 +59,7 @@ a{color:#2A2723}a:hover{color:#000000}
 .rm-ft svg path{fill:#EFE6DA}.rm-ft svg path+path{fill:#D19A72}
 .rm-ft a[href^="tel"]{color:#EFE6DA;border-color:#5A4D41!important}
 </style>
-<style>/* 움직임이 붙기 전 깜빡임 막기 */[data-js] [data-rm]:not([data-on]) .rm,[data-js] [data-rm]:not([data-on]) .rm-strip{opacity:0}</style>
+<style>/* 움직임이 붙기 전 깜빡임 막기 */[data-js] [data-rm]:not([data-on]) .rm,[data-js] [data-rm]:not([data-on]) .rm-strip{opacity:0}/* 로고는 한 창에서 한 번만 (1107) */[data-seen] .ri{display:none}</style>
 </head>
 <body>
 <div id="dc-root">
