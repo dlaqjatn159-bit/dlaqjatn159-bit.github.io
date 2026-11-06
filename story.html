@@ -1,0 +1,376 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>리담 이야기 — 리담 Re.dam</title>
+<meta name="description" content="창가의 패브릭과 빛, 공간의 색이 정확히 맞물리면 집의 인상은 달라집니다. 리담은 선택 과정을 측정 가능한 기준으로 바꾸고, 모든 제안 위에 명확한 이유를 붙입니다.">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="리담 Re.dam">
+<meta property="og:title" content="리담 이야기 — 리담 Re.dam">
+<meta property="og:description" content="창가의 패브릭과 빛, 공간의 색이 정확히 맞물리면 집의 인상은 달라집니다. 리담은 선택 과정을 측정 가능한 기준으로 바꾸고, 모든 제안 위에 명확한 이유를 붙입니다.">
+<link rel="icon" href="assets/favicon.ico" sizes="any">
+<link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
+<link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
+<link rel="alternate" media="only screen and (max-width: 767px)" href="m/story.html">
+<script>if(!window.__RD_PRERENDER){var w=window.innerWidth||screen.width;if(w<768)location.replace('m/story.html'+location.hash);}
+if('IntersectionObserver' in window&&!(window.matchMedia&&matchMedia('(prefers-reduced-motion: reduce)').matches))document.documentElement.setAttribute('data-js','');
+setTimeout(function(){document.documentElement.removeAttribute('data-js')},4000);</script>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500&amp;family=Noto+Serif+KR:wght@400&amp;family=Playfair+Display:wght@600&amp;display=swap">
+<style>
+body{margin:0;background:#F7F5F1}
+a{color:#2A2723}a:hover{color:#000000}
+[data-on] .rm{opacity:0;transform:translateY(12px);transition:opacity .8s cubic-bezier(.22,.61,.36,1),transform .8s cubic-bezier(.22,.61,.36,1)}
+[data-on] .rm.rm-ph{transform:none;transition:opacity 1s ease}
+[data-on] .rm[data-in]{opacity:1;transform:none}
+[data-on] .rm.rm-d1{transition-delay:.12s}
+[data-on] .rm.rm-d2{transition-delay:.24s}
+[data-on] .rm.rm-d3{transition-delay:.36s}
+@media (prefers-reduced-motion:reduce){[data-on] .rm{opacity:1!important;transform:none!important;transition:none!important}}
+
+/* 글꼴·자간 (8단계): 제목 글꼴은 Tweaks의 '제목 글꼴'로 바꿔 봄. 한 줄 정의는 늘 명조 */
+[data-hf]{word-break:keep-all}
+[data-hf="고딕"] .rt-h{font-family:'Noto Sans KR',sans-serif!important;font-weight:500!important;letter-spacing:-0.03em!important}
+
+/* 인상 구획 (판 48): 같은 방, 글 칸이 붙을 때마다 그 인상의 사진으로 */
+.imp-ph{opacity:0;transition:opacity .7s ease}
+[data-imp="0"] .imp-ph[data-n="0"],[data-imp="1"] .imp-ph[data-n="1"],[data-imp="2"] .imp-ph[data-n="2"],[data-imp="3"] .imp-ph[data-n="3"],[data-imp="4"] .imp-ph[data-n="4"],[data-imp="5"] .imp-ph[data-n="5"]{opacity:1}
+/* 판 49: 글도 제자리에서 바뀜 (아래서 올라오던 칸 대신) */
+.imp-c{opacity:0;transform:translateY(8px);transition:opacity .5s ease,transform .5s ease}
+[data-imp="0"] .imp-c:nth-child(1),[data-imp="1"] .imp-c:nth-child(2),[data-imp="2"] .imp-c:nth-child(3),[data-imp="3"] .imp-c:nth-child(4),[data-imp="4"] .imp-c:nth-child(5),[data-imp="5"] .imp-c:nth-child(6){opacity:1;transform:none}
+.imp-k{display:block;width:24px;height:2px;background:#D9D4CC;transition:background-color .3s ease}
+[data-imp="0"] .imp-k:nth-child(1),[data-imp="1"] .imp-k:nth-child(2),[data-imp="2"] .imp-k:nth-child(3),[data-imp="3"] .imp-k:nth-child(4),[data-imp="4"] .imp-k:nth-child(5),[data-imp="5"] .imp-k:nth-child(6){background:#2A2723}
+@media (prefers-reduced-motion:reduce){.imp-ph,.imp-c,.imp-k{transition:none}}
+/* 판 52: 캔버스(화면 한 장이 아주 긴 미리보기)에서는 스크롤이 없어 첫 인상 뒤가 통째로 비었음 → 여섯 인상을 차례로 펼침. 실제 화면은 그대로 */
+[data-flat]{height:auto!important}
+[data-flat] .imp-stage{position:static!important;row-gap:80px}
+[data-flat] .imp-box,[data-flat] .imp-txt,[data-flat] .imp-txt ol{display:contents}
+[data-flat] .imp-k-row{display:none}
+[data-flat] .imp-ph{position:static!important;display:block;grid-column:1 / span 6;height:auto!important;aspect-ratio:4 / 5;opacity:1;transition:none}
+[data-flat] .imp-c{position:static!important;grid-column:8 / span 5;opacity:1;transform:none;transition:none}
+[data-flat] .imp-ph[data-n="0"],[data-flat] .imp-c:nth-child(1){grid-row:1}
+[data-flat] .imp-ph[data-n="1"],[data-flat] .imp-c:nth-child(2){grid-row:2}
+[data-flat] .imp-ph[data-n="2"],[data-flat] .imp-c:nth-child(3){grid-row:3}
+[data-flat] .imp-ph[data-n="3"],[data-flat] .imp-c:nth-child(4){grid-row:4}
+[data-flat] .imp-ph[data-n="4"],[data-flat] .imp-c:nth-child(5){grid-row:5}
+[data-flat] .imp-ph[data-n="5"],[data-flat] .imp-c:nth-child(6){grid-row:6}
+/* 마무리 (판 49): 홈처럼 어둡게 끝냄 */
+.rm-ft svg path{fill:#EFE6DA}.rm-ft svg path+path{fill:#D19A72}
+.rm-ft a[href^="tel"]{color:#EFE6DA;border-color:#5A4D41!important}
+
+/* 태블릿 (1106t): 폭 1100 이하에서는 나란한 칸을 위아래로 쌓음 — 글 칸이 좁아지지 않게. 더 넓으면 제목은 정해 둔 줄바꿈(br) 그대로. 캔버스(1440)엔 영향 없음 */
+@media (max-width: 1100px){[style*="repeat(12, minmax(0, 1fr))"]{grid-template-columns:minmax(0,1fr)!important;row-gap:48px!important}[style*="repeat(12, minmax(0, 1fr))"]>*{grid-column:1 / -1!important}}
+@media (min-width: 1101px){[style*="repeat(12, minmax(0, 1fr))"] h2{white-space:nowrap}}
+</style>
+<style>/* 움직임이 붙기 전 깜빡임 막기 */[data-js] [data-rm]:not([data-on]) .rm,[data-js] [data-rm]:not([data-on]) .rm-strip{opacity:0}</style>
+</head>
+<body>
+<div id="dc-root">
+<div data-hf="고딕" data-rm="story-pc" style="width: 100%; background: #F7F5F1; font-family: 'Noto Sans KR', sans-serif; font-weight: 400; color: #2A2723;">
+
+<header style="position: sticky; top: 0; z-index: 2; background: #F7F5F1;">
+<div style="max-width: 1296px; margin: 0 auto; padding: 0 48px; box-sizing: border-box; height: 72px; display: flex; align-items: center; justify-content: space-between;">
+<a href="index.html" style="display: block; padding: 10px 0;"><svg role="img" aria-label="Re.dam" viewBox="39 -784 3283 805" style="display: block; width: 96px; height: auto;"><path fill="#2B221A" d="M39 -708Q62 -707 98.5 -706Q135 -705 171 -705Q219 -705 262.5 -706Q306 -707 324 -707Q409 -707 465.5 -685Q522 -663 549.5 -623.5Q577 -584 577 -533Q577 -502 564.5 -467.5Q552 -433 521 -403.5Q490 -374 437 -355Q409 -345 373 -340Q377 -340 381 -339Q456 -329 490.5 -299Q525 -269 538 -207L563 -105Q572 -62 582.5 -44Q593 -26 614 -26Q630 -27 640.5 -35.5Q651 -44 663 -59L677 -48Q654 -17 629 -1.5Q604 14 562 14Q519 14 488.5 -8.5Q458 -31 445 -94L425 -194Q416 -237 405 -268.5Q394 -300 374.5 -318Q355 -336 318 -336H233V-106Q233 -70 239 -52Q245 -34 262 -28Q279 -22 312 -20V0Q288 -2 251.5 -2.5Q215 -3 177 -3Q135 -3 98.5 -2.5Q62 -2 39 0V-20Q73 -22 90 -28Q107 -34 112.5 -52Q118 -70 118 -106V-602Q118 -639 112.5 -656.5Q107 -674 89.5 -680.5Q72 -687 39 -688ZM233 -356H292Q359 -356 394.5 -378.5Q430 -401 442.5 -438.5Q455 -476 455 -522Q455 -601 421 -644.5Q387 -688 303 -688Q260 -688 246.5 -671Q233 -654 233 -602ZM923 -530Q1011 -530 1061 -477Q1111 -424 1111 -309H809Q808 -297 807 -284Q806 -267 806 -251Q806 -182 827 -135Q848 -88 882 -64.5Q916 -41 951 -41Q978 -41 1003.5 -49.5Q1029 -58 1052 -78.5Q1075 -99 1093 -135L1113 -127Q1101 -93 1076 -60Q1051 -27 1012 -6.5Q973 14 921 14Q851 14 799 -17.5Q747 -49 719 -108Q691 -167 691 -248Q691 -337 720 -400Q749 -463 801.5 -496.5Q854 -530 923 -530ZM807 -328H1005Q1006 -377 997 -418.5Q988 -460 969 -485Q950 -510 919 -510Q876 -510 845 -465Q814 -421 807 -328ZM1876 -784V-109Q1876 -64 1891.5 -42.5Q1907 -21 1948 -21V0Q1917 -3 1886 -3Q1852 -3 1822.5 0Q1793 3 1768 11V-79Q1755 -45 1732 -23Q1694 14 1630 14Q1569 14 1522.5 -15.5Q1476 -45 1451 -105.5Q1426 -166 1426 -258Q1426 -349 1456.5 -409.5Q1487 -470 1538 -500Q1589 -530 1651 -530Q1695 -530 1732 -511Q1754 -499 1768 -478V-664Q1768 -709 1752.5 -730.5Q1737 -752 1696 -752V-773Q1728 -770 1758 -770Q1791 -770 1821 -773.5Q1851 -777 1876 -784ZM1768 -443Q1754 -474 1730 -489Q1703 -505 1669 -505Q1612 -505 1576 -444.5Q1540 -384 1541 -258Q1541 -175 1555 -122.5Q1569 -70 1596.5 -45Q1624 -20 1663 -20Q1702 -20 1734 -53Q1759 -80 1768 -127ZM2121 7Q2079 7 2049 -9Q2019 -25 2004 -53Q1989 -81 1989 -117Q1989 -161 2009 -188.5Q2029 -216 2060.5 -233Q2092 -250 2127.5 -261.5Q2163 -273 2194.5 -283.5Q2226 -294 2246.5 -308Q2267 -322 2267 -345V-413Q2267 -449 2255.5 -470.5Q2244 -492 2224.5 -501Q2205 -510 2178 -510Q2155 -510 2129 -503.5Q2103 -497 2088 -478Q2110 -472 2124.5 -454.5Q2139 -437 2139 -411Q2139 -383 2120.5 -367Q2102 -351 2074 -351Q2043 -351 2028 -370.5Q2013 -390 2013 -416Q2013 -443 2026.5 -460Q2040 -477 2062 -492Q2086 -508 2123.5 -519Q2161 -530 2207 -530Q2250 -530 2281.5 -520.5Q2313 -511 2334 -490Q2359 -467 2367 -432.5Q2375 -398 2375 -349V-73Q2375 -48 2381.5 -37.5Q2388 -27 2403 -27Q2413 -27 2422.5 -32Q2432 -37 2445 -47L2455 -30Q2434 -13 2412.5 -3Q2391 7 2358 7Q2326 7 2306 -3Q2286 -13 2276.5 -32Q2267 -51 2267 -79Q2241 -37 2205 -15Q2169 7 2121 7ZM2169 -41Q2197 -41 2221.5 -57Q2246 -73 2267 -105V-304Q2256 -288 2235 -276.5Q2214 -265 2190 -253Q2166 -241 2144.5 -225.5Q2123 -210 2109 -186Q2095 -162 2095 -125Q2095 -86 2115 -63.5Q2135 -41 2169 -41ZM2811 -530Q2849 -530 2875 -519.5Q2901 -509 2917 -491Q2935 -472 2942 -441Q2944 -430 2946 -418Q2973 -482 3018 -506Q3063 -530 3112 -530Q3150 -530 3176 -519.5Q3202 -509 3218 -491Q3236 -472 3243 -440.5Q3250 -409 3250 -361V-93Q3250 -51 3266.5 -36Q3283 -21 3322 -21V0Q3305 -1 3269 -2.5Q3233 -4 3198 -4Q3164 -4 3131.5 -2.5Q3099 -1 3082 0V-21Q3115 -21 3128.5 -36Q3142 -51 3142 -93V-389Q3142 -418 3138 -441.5Q3134 -465 3119 -479.5Q3104 -494 3072 -494Q3037 -494 3009.5 -472.5Q2982 -451 2965.5 -414.5Q2949 -378 2949 -333V-93Q2949 -51 2965 -36Q2981 -21 3019 -21V0Q3002 -1 2966.5 -2.5Q2931 -4 2897 -4Q2863 -4 2830.5 -2.5Q2798 -1 2781 0V-21Q2814 -21 2827.5 -36Q2841 -51 2841 -93V-389Q2841 -418 2837 -441.5Q2833 -465 2818.5 -479.5Q2804 -494 2773 -494Q2738 -494 2710.5 -473Q2683 -452 2666.5 -415.5Q2650 -379 2650 -334V-93Q2650 -51 2664 -36Q2678 -21 2710 -21V0Q2694 -1 2662 -2.5Q2630 -4 2596 -4Q2562 -4 2525 -2.5Q2488 -1 2470 0V-21Q2509 -21 2525.5 -36Q2542 -51 2542 -93V-407Q2542 -452 2527 -473.5Q2512 -495 2470 -495V-516Q2502 -513 2532 -513Q2566 -513 2595.5 -516.5Q2625 -520 2650 -527V-418Q2676 -478 2719.5 -504Q2763 -530 2811 -530Z"></path><path fill="#8A4A22" d="M1341.55 -54.50C1341.55 -13.33 1308.17 20.05 1267.00 20.05C1225.83 20.05 1192.45 -13.33 1192.45 -54.50C1192.45 -95.67 1225.83 -129.05 1267.00 -129.05C1308.17 -129.05 1341.55 -95.67 1341.55 -54.50Z"></path></svg></a>
+<a href="#" style="display: inline-flex; align-items: center; height: 36px; padding: 0 16px; background: #8A4A22; color: #FFFFFF; border-radius: 4px; text-decoration: none; font-size: 14px;">상담 신청</a>
+</div>
+</header>
+
+<div style="position: relative;">
+<img class="rm rm-ph" src="images/b7b4628bf5c04c977ec706220aa9710d.jpg" alt="창턱 위로 늘어진 리넨 속지와 오전 빛" style="display: block; width: 100%; height: 720px; height: min(720px, max(480px, calc(100svh - 72px))); object-fit: cover; background: #CFCAC1;">
+<div style="position: absolute; left: 0; right: 0; bottom: 96px;">
+<div style="max-width: 1296px; margin: 0 auto; padding: 0 48px; box-sizing: border-box;">
+<h1 class="rm rt-h" style="margin: 0; font-family: 'Noto Serif KR', serif; font-size: 48px; line-height: 1.32; font-weight: 400; letter-spacing: -0.025em; color: #2A2723;">공간을 바꾸는 감각에<br>명확한 이유를 붙입니다.</h1>
+</div>
+</div>
+</div>
+
+<section style="padding-top: 140px;">
+
+<div style="max-width: 1296px; margin: 0 auto; padding: 0 48px; box-sizing: border-box; display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); column-gap: 24px; align-items: center;">
+<div style="grid-column: 1 / span 5;">
+<div style="display: flex; flex-direction: column; gap: 20px;">
+<p style="margin: 0; max-width: 420px; font-size: 17px; line-height: 1.72; font-weight: 400; letter-spacing: -0.01em; color: #4A453F;" class="rm rm-d1">벽을 허물고 바닥을 새로 깔지 않아도, 창가의 패브릭과 빛, 공간의 색이 정확히 맞물리면 집의 인상은 완전히 달라집니다. 다만 수많은 원단 중 내 공간에 무엇이 가장 부합하는지 막연한 눈대중만으로 알아채기는 쉽지 않습니다.</p>
+<p style="margin: 0; max-width: 420px; font-size: 17px; line-height: 1.72; font-weight: 400; letter-spacing: -0.01em; color: #4A453F;" class="rm rm-d2">그래서 리담은 감각의 영역에 머물던 선택 과정을 측정 가능한 기준으로 바꾸고, 모든 제안 위에 명확한 이유를 붙입니다. 커튼은 리담이 공간을 새롭게 정의하는 첫걸음입니다.</p>
+</div>
+</div>
+<img loading="lazy" decoding="async" class="rm rm-ph" src="images/c697b78e8790e6a30b75fa4d63dd3599.jpg" alt="흰 속지로 둘러싸인 방 구석의 나무 의자" style="grid-column: 7 / span 6; display: block; width: 100%; aspect-ratio: 4 / 5; object-fit: cover; object-position: 50% 85%; background: #DCD8D1;">
+</div>
+</section>
+
+<section style="padding-top: 200px;">
+<div style="max-width: 1296px; margin: 0 auto; padding: 0 48px; box-sizing: border-box;">
+<h2 style="margin: 0; font-family: 'Noto Serif KR', serif; font-size: 36px; line-height: 1.42; font-weight: 400; letter-spacing: -0.02em;" class="rm rt-h">지향하는 공간의 인상마다<br>설계하는 기준이 다릅니다.</h2>
+<div data-imp="0" style="margin-top: 80px; height: 4340px;">
+<div class="imp-stage" style="position: sticky; top: 112px; display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); column-gap: 24px; align-items: center;">
+<div class="imp-box" style="grid-column: 1 / span 6; position: relative; aspect-ratio: 4 / 5; overflow: hidden; background: #DCD8D1;">
+<img loading="lazy" decoding="async" class="imp-ph" data-n="0" src="images/4a833606e450dbd9ca4c2d89d6270760.jpg" alt="벽과 같은 미색 겉지와 흰 속지, 맑은 오전의 방" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover;">
+<img loading="lazy" decoding="async" class="imp-ph" data-n="1" src="images/f905b03581c567b2c0591aacaca1c597.jpg" alt="양쪽에 짙은 와인색 겉지를 건 같은 방" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover;">
+<img loading="lazy" decoding="async" class="imp-ph" data-n="2" src="images/b6167921a0a0d9f3b63bd4930e7239b6.jpg" alt="오트밀 리넨 겉지에 따뜻한 빛이 번지는 같은 방" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover;">
+<img loading="lazy" decoding="async" class="imp-ph" data-n="3" src="images/aa9422e75285184a8859288cdb74fe71.jpg" alt="흰 속지만 건 한낮의 같은 방" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover;">
+<img loading="lazy" decoding="async" class="imp-ph" data-n="4" src="images/5f44ed5752338baa7e818042a9608b93.jpg" alt="짙은 회갈색 겉지를 건 같은 방" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover;">
+<img loading="lazy" decoding="async" class="imp-ph" data-n="5" src="images/c3c44246ba563a474df8e56e227c88a5.jpg" alt="밤, 낮은 스탠드 하나가 닫힌 커튼을 비추는 같은 방" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover;">
+</div>
+<div class="imp-txt" style="grid-column: 8 / span 5; position: relative; height: 340px;">
+<div class="imp-k-row" aria-hidden="true" style="display: flex; gap: 8px;"><span class="imp-k"></span><span class="imp-k"></span><span class="imp-k"></span><span class="imp-k"></span><span class="imp-k"></span><span class="imp-k"></span></div>
+<ol style="position: relative; list-style: none; margin: 0; padding: 0;">
+<li class="imp-c" style="position: absolute; top: 36px; left: 0; right: 0; display: flex; flex-direction: column;"><span style="font-size: 26px; font-weight: 500; letter-spacing: -0.02em;">확장감</span><span style="margin-top: 6px; font-size: 15px; color: #6B655D;">넓어 보이는 공간</span><span style="margin-top: 28px; max-width: 420px; font-size: 17px; line-height: 1.72; letter-spacing: -0.01em; color: #4A453F;">벽면의 명도와 채도에 커튼 톤을 정밀하게 일치시켜, 시선이 끊기지 않고 창가가 하나의 넓은 벽처럼 이어지게 설계합니다.</span></li>
+<li class="imp-c" style="position: absolute; top: 36px; left: 0; right: 0; display: flex; flex-direction: column;"><span style="font-size: 26px; font-weight: 500; letter-spacing: -0.02em;">포인트</span><span style="margin-top: 6px; font-size: 15px; color: #6B655D;">시선이 머무는 공간</span><span style="margin-top: 28px; max-width: 420px; font-size: 17px; line-height: 1.72; letter-spacing: -0.01em; color: #4A453F;">벽이나 바닥재와 계산된 대비를 이루는 채도와 명도를 부여하여, 공간에 들어섰을 때 시선이 자연스럽게 창가로 집중되도록 유도합니다.</span></li>
+<li class="imp-c" style="position: absolute; top: 36px; left: 0; right: 0; display: flex; flex-direction: column;"><span style="font-size: 26px; font-weight: 500; letter-spacing: -0.02em;">온기</span><span style="margin-top: 6px; font-size: 15px; color: #6B655D;">포근함이 머무는 공간</span><span style="margin-top: 28px; max-width: 420px; font-size: 17px; line-height: 1.72; letter-spacing: -0.01em; color: #4A453F;">색상보다 표면의 직조감을 우선합니다. 빛이 닿았을 때 가장자리가 부드럽게 산란되는 매트하고 보송한 결의 패브릭을 제안합니다.</span></li>
+<li class="imp-c" style="position: absolute; top: 36px; left: 0; right: 0; display: flex; flex-direction: column;"><span style="font-size: 26px; font-weight: 500; letter-spacing: -0.02em;">채광</span><span style="margin-top: 6px; font-size: 15px; color: #6B655D;">밝고 환한 공간</span><span style="margin-top: 28px; max-width: 420px; font-size: 17px; line-height: 1.72; letter-spacing: -0.01em; color: #4A453F;">창이 향한 방위와 낮 시간대의 빛을 살펴, 외부 시선은 정돈하면서도 자연광을 실내 깊숙이 확산시키는 속지를 매칭합니다.</span></li>
+<li class="imp-c" style="position: absolute; top: 36px; left: 0; right: 0; display: flex; flex-direction: column;"><span style="font-size: 26px; font-weight: 500; letter-spacing: -0.02em;">밀도</span><span style="margin-top: 6px; font-size: 15px; color: #6B655D;">무게감 있고 고급스러운 공간</span><span style="margin-top: 28px; max-width: 420px; font-size: 17px; line-height: 1.72; letter-spacing: -0.01em; color: #4A453F;">바닥재와 가구의 물성을 고려해, 주름의 형태가 탄탄하게 잡히고 빛의 각도에 따라 은은한 윤기가 감도는 원단을 배치합니다.</span></li>
+<li class="imp-c" style="position: absolute; top: 36px; left: 0; right: 0; display: flex; flex-direction: column;"><span style="font-size: 26px; font-weight: 500; letter-spacing: -0.02em;">밤</span><span style="margin-top: 6px; font-size: 15px; color: #6B655D;">아늑한 공간</span><span style="margin-top: 28px; max-width: 420px; font-size: 17px; line-height: 1.72; letter-spacing: -0.01em; color: #4A453F;">해가 진 뒤 실내 간접 조명의 색온도와 어우러질 때, 차갑게 들뜨지 않고 공간을 차분하게 감싸 안는 톤다운 패브릭을 선정합니다.</span></li>
+</ol>
+</div>
+</div>
+</div>
+</div>
+</section>
+
+<section style="padding-top: 220px;">
+<div style="max-width: 1296px; margin: 0 auto; padding: 0 48px; box-sizing: border-box; display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); column-gap: 24px; align-items: end;">
+<img loading="lazy" decoding="async" class="rm rm-ph" src="images/b6e8c1237cf7d41e9718e3f0957fbcd2.jpg" alt="결이 다른 원단 네 가지" style="grid-column: 1 / span 7; display: block; width: 100%; height: 520px; object-fit: cover; background: #DCD8D1;">
+<div style="grid-column: 9 / span 4; display: flex; flex-direction: column;">
+<h2 style="margin: 0; font-family: 'Noto Serif KR', serif; font-size: 36px; line-height: 1.42; font-weight: 400; letter-spacing: -0.02em;" class="rm rm-d1 rt-h">기준,<br>한 사람의 감에<br>기대지 않는 데이터.</h2>
+<p style="margin: 28px 0 0; max-width: 340px; font-size: 17px; line-height: 1.72; font-weight: 400; letter-spacing: -0.01em; color: #4A453F;" class="rm rm-d2">벽과 바닥, 가구, 그리고 다루는 모든 원단의 색상 값을 측정해 데이터로 구축해 두었습니다. 어떤 공간 조건에서 어떤 배색 방식을 택해야 고객이 원하는 분위기에 정확히 도달하는지 명확한 설계 기준을 따릅니다. 그날의 기분이나 상담가의 주관적인 감에 결과를 맡기지 않기 위해서입니다.</p>
+</div>
+</div>
+</section>
+
+<div class="rm-end" style="margin-top: 240px; background: #2B221A;">
+<section style="position: relative; overflow: hidden;">
+<img loading="lazy" decoding="async" src="images/0229bb70a82602a14b55bec3b55b9edd.jpg" alt="해 질 녘, 노을빛이 바닥에 길게 든 같은 방" style="position: absolute; top: -24px; left: -24px; width: calc(100% + 48px); height: calc(100% + 48px); object-fit: cover; object-position: 50% 50%; filter: blur(6px);">
+<div aria-hidden="true" style="position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: linear-gradient(to bottom, rgba(43,34,26,0) 62%, #2B221A 100%);"></div>
+<div style="position: relative; max-width: 1296px; margin: 0 auto; padding: 240px 48px; box-sizing: border-box; display: flex; flex-direction: column; align-items: flex-start;">
+<h2 style="margin: 0; font-family: 'Noto Serif KR', serif; font-size: 36px; line-height: 1.42; font-weight: 400; letter-spacing: -0.02em; color: #F7F2EA;" class="rm rt-h">현장,<br>매장의 조명이 아닌 그 집의 빛 아래에서.</h2>
+<p style="margin: 32px 0 0; max-width: 460px; font-size: 17px; line-height: 1.72; font-weight: 400; letter-spacing: -0.01em; color: rgba(247, 242, 234, 0.88);" class="rm rm-d1">화려한 매장 조명 아래에서 고른 원단은 정작 우리 집 창가에 걸었을 때 전혀 다른 색으로 보이곤 합니다. 미세한 색온도 차이에 민감한 그레이와 베이지 계열일수록 더욱 그렇습니다. 그래서 리담은 고객을 매장으로 부르는 대신, 엄선한 원단 북을 들고 직접 방문하여 그 집의 실제 채광과 조명 아래에서 대어 보고 결정합니다.</p>
+</div>
+</section>
+
+<footer class="rm-ft" style="border-top: 1px solid #44392F;">
+<div style="max-width: 1296px; margin: 0 auto; padding: 64px 48px 48px; box-sizing: border-box; display: flex; flex-direction: column; gap: 40px;">
+<div style="display: flex; align-items: center; justify-content: space-between;">
+<svg role="img" aria-label="Re.dam" viewBox="39 -784 3283 805" style="display: block; width: 96px; height: auto;"><path fill="#2B221A" d="M39 -708Q62 -707 98.5 -706Q135 -705 171 -705Q219 -705 262.5 -706Q306 -707 324 -707Q409 -707 465.5 -685Q522 -663 549.5 -623.5Q577 -584 577 -533Q577 -502 564.5 -467.5Q552 -433 521 -403.5Q490 -374 437 -355Q409 -345 373 -340Q377 -340 381 -339Q456 -329 490.5 -299Q525 -269 538 -207L563 -105Q572 -62 582.5 -44Q593 -26 614 -26Q630 -27 640.5 -35.5Q651 -44 663 -59L677 -48Q654 -17 629 -1.5Q604 14 562 14Q519 14 488.5 -8.5Q458 -31 445 -94L425 -194Q416 -237 405 -268.5Q394 -300 374.5 -318Q355 -336 318 -336H233V-106Q233 -70 239 -52Q245 -34 262 -28Q279 -22 312 -20V0Q288 -2 251.5 -2.5Q215 -3 177 -3Q135 -3 98.5 -2.5Q62 -2 39 0V-20Q73 -22 90 -28Q107 -34 112.5 -52Q118 -70 118 -106V-602Q118 -639 112.5 -656.5Q107 -674 89.5 -680.5Q72 -687 39 -688ZM233 -356H292Q359 -356 394.5 -378.5Q430 -401 442.5 -438.5Q455 -476 455 -522Q455 -601 421 -644.5Q387 -688 303 -688Q260 -688 246.5 -671Q233 -654 233 -602ZM923 -530Q1011 -530 1061 -477Q1111 -424 1111 -309H809Q808 -297 807 -284Q806 -267 806 -251Q806 -182 827 -135Q848 -88 882 -64.5Q916 -41 951 -41Q978 -41 1003.5 -49.5Q1029 -58 1052 -78.5Q1075 -99 1093 -135L1113 -127Q1101 -93 1076 -60Q1051 -27 1012 -6.5Q973 14 921 14Q851 14 799 -17.5Q747 -49 719 -108Q691 -167 691 -248Q691 -337 720 -400Q749 -463 801.5 -496.5Q854 -530 923 -530ZM807 -328H1005Q1006 -377 997 -418.5Q988 -460 969 -485Q950 -510 919 -510Q876 -510 845 -465Q814 -421 807 -328ZM1876 -784V-109Q1876 -64 1891.5 -42.5Q1907 -21 1948 -21V0Q1917 -3 1886 -3Q1852 -3 1822.5 0Q1793 3 1768 11V-79Q1755 -45 1732 -23Q1694 14 1630 14Q1569 14 1522.5 -15.5Q1476 -45 1451 -105.5Q1426 -166 1426 -258Q1426 -349 1456.5 -409.5Q1487 -470 1538 -500Q1589 -530 1651 -530Q1695 -530 1732 -511Q1754 -499 1768 -478V-664Q1768 -709 1752.5 -730.5Q1737 -752 1696 -752V-773Q1728 -770 1758 -770Q1791 -770 1821 -773.5Q1851 -777 1876 -784ZM1768 -443Q1754 -474 1730 -489Q1703 -505 1669 -505Q1612 -505 1576 -444.5Q1540 -384 1541 -258Q1541 -175 1555 -122.5Q1569 -70 1596.5 -45Q1624 -20 1663 -20Q1702 -20 1734 -53Q1759 -80 1768 -127ZM2121 7Q2079 7 2049 -9Q2019 -25 2004 -53Q1989 -81 1989 -117Q1989 -161 2009 -188.5Q2029 -216 2060.5 -233Q2092 -250 2127.5 -261.5Q2163 -273 2194.5 -283.5Q2226 -294 2246.5 -308Q2267 -322 2267 -345V-413Q2267 -449 2255.5 -470.5Q2244 -492 2224.5 -501Q2205 -510 2178 -510Q2155 -510 2129 -503.5Q2103 -497 2088 -478Q2110 -472 2124.5 -454.5Q2139 -437 2139 -411Q2139 -383 2120.5 -367Q2102 -351 2074 -351Q2043 -351 2028 -370.5Q2013 -390 2013 -416Q2013 -443 2026.5 -460Q2040 -477 2062 -492Q2086 -508 2123.5 -519Q2161 -530 2207 -530Q2250 -530 2281.5 -520.5Q2313 -511 2334 -490Q2359 -467 2367 -432.5Q2375 -398 2375 -349V-73Q2375 -48 2381.5 -37.5Q2388 -27 2403 -27Q2413 -27 2422.5 -32Q2432 -37 2445 -47L2455 -30Q2434 -13 2412.5 -3Q2391 7 2358 7Q2326 7 2306 -3Q2286 -13 2276.5 -32Q2267 -51 2267 -79Q2241 -37 2205 -15Q2169 7 2121 7ZM2169 -41Q2197 -41 2221.5 -57Q2246 -73 2267 -105V-304Q2256 -288 2235 -276.5Q2214 -265 2190 -253Q2166 -241 2144.5 -225.5Q2123 -210 2109 -186Q2095 -162 2095 -125Q2095 -86 2115 -63.5Q2135 -41 2169 -41ZM2811 -530Q2849 -530 2875 -519.5Q2901 -509 2917 -491Q2935 -472 2942 -441Q2944 -430 2946 -418Q2973 -482 3018 -506Q3063 -530 3112 -530Q3150 -530 3176 -519.5Q3202 -509 3218 -491Q3236 -472 3243 -440.5Q3250 -409 3250 -361V-93Q3250 -51 3266.5 -36Q3283 -21 3322 -21V0Q3305 -1 3269 -2.5Q3233 -4 3198 -4Q3164 -4 3131.5 -2.5Q3099 -1 3082 0V-21Q3115 -21 3128.5 -36Q3142 -51 3142 -93V-389Q3142 -418 3138 -441.5Q3134 -465 3119 -479.5Q3104 -494 3072 -494Q3037 -494 3009.5 -472.5Q2982 -451 2965.5 -414.5Q2949 -378 2949 -333V-93Q2949 -51 2965 -36Q2981 -21 3019 -21V0Q3002 -1 2966.5 -2.5Q2931 -4 2897 -4Q2863 -4 2830.5 -2.5Q2798 -1 2781 0V-21Q2814 -21 2827.5 -36Q2841 -51 2841 -93V-389Q2841 -418 2837 -441.5Q2833 -465 2818.5 -479.5Q2804 -494 2773 -494Q2738 -494 2710.5 -473Q2683 -452 2666.5 -415.5Q2650 -379 2650 -334V-93Q2650 -51 2664 -36Q2678 -21 2710 -21V0Q2694 -1 2662 -2.5Q2630 -4 2596 -4Q2562 -4 2525 -2.5Q2488 -1 2470 0V-21Q2509 -21 2525.5 -36Q2542 -51 2542 -93V-407Q2542 -452 2527 -473.5Q2512 -495 2470 -495V-516Q2502 -513 2532 -513Q2566 -513 2595.5 -516.5Q2625 -520 2650 -527V-418Q2676 -478 2719.5 -504Q2763 -530 2811 -530Z"></path><path fill="#8A4A22" d="M1341.55 -54.50C1341.55 -13.33 1308.17 20.05 1267.00 20.05C1225.83 20.05 1192.45 -13.33 1192.45 -54.50C1192.45 -95.67 1225.83 -129.05 1267.00 -129.05C1308.17 -129.05 1341.55 -95.67 1341.55 -54.50Z"></path></svg>
+<div style="display: flex; align-items: center; gap: 8px;">
+<a href="tel:" aria-label="전화로 상담" style="width: 48px; height: 48px; box-sizing: border-box; border: 1px solid #CFCAC1; border-radius: 4px; display: flex; align-items: center; justify-content: center;">
+<svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 3h3.5l1.7 4.3-2.2 1.4a11 11 0 0 0 6.3 6.3l1.4-2.2 4.3 1.7V18a2 2 0 0 1-2 2A16 16 0 0 1 3 5a2 2 0 0 1 2-2z"></path></svg>
+</a>
+<a href="#" style="width: 280px; height: 48px; display: flex; align-items: center; justify-content: center; background: #8A4A22; color: #FFFFFF; border-radius: 4px; text-decoration: none; font-size: 15px;">카톡으로 상담 신청</a>
+</div>
+</div>
+<div style="display: flex; justify-content: space-between; color: #A89A8A; font-size: 14px; line-height: 1.9;">
+<span>카카오톡 채널 [채널 이름] · 전화 [전화번호]</span>
+<span>[상호] · 사업자등록번호 [번호]</span>
+</div>
+</div>
+</footer>
+</div>
+
+</div>
+
+</div>
+<template id="dc-tpl">
+<div data-hf="{{ hf }}" data-rm="story-pc" ref="{{ setRoot }}" style="width: 100%; background: #F7F5F1; font-family: 'Noto Sans KR', sans-serif; font-weight: 400; color: #2A2723;">
+
+<header style="position: sticky; top: 0; z-index: 2; background: #F7F5F1;">
+<div style="max-width: 1296px; margin: 0 auto; padding: 0 48px; box-sizing: border-box; height: 72px; display: flex; align-items: center; justify-content: space-between;">
+<a href="index.html" style="display: block; padding: 10px 0;"><svg role="img" aria-label="Re.dam" viewBox="39 -784 3283 805" style="display: block; width: 96px; height: auto;"><path fill="#2B221A" d="M39 -708Q62 -707 98.5 -706Q135 -705 171 -705Q219 -705 262.5 -706Q306 -707 324 -707Q409 -707 465.5 -685Q522 -663 549.5 -623.5Q577 -584 577 -533Q577 -502 564.5 -467.5Q552 -433 521 -403.5Q490 -374 437 -355Q409 -345 373 -340Q377 -340 381 -339Q456 -329 490.5 -299Q525 -269 538 -207L563 -105Q572 -62 582.5 -44Q593 -26 614 -26Q630 -27 640.5 -35.5Q651 -44 663 -59L677 -48Q654 -17 629 -1.5Q604 14 562 14Q519 14 488.5 -8.5Q458 -31 445 -94L425 -194Q416 -237 405 -268.5Q394 -300 374.5 -318Q355 -336 318 -336H233V-106Q233 -70 239 -52Q245 -34 262 -28Q279 -22 312 -20V0Q288 -2 251.5 -2.5Q215 -3 177 -3Q135 -3 98.5 -2.5Q62 -2 39 0V-20Q73 -22 90 -28Q107 -34 112.5 -52Q118 -70 118 -106V-602Q118 -639 112.5 -656.5Q107 -674 89.5 -680.5Q72 -687 39 -688ZM233 -356H292Q359 -356 394.5 -378.5Q430 -401 442.5 -438.5Q455 -476 455 -522Q455 -601 421 -644.5Q387 -688 303 -688Q260 -688 246.5 -671Q233 -654 233 -602ZM923 -530Q1011 -530 1061 -477Q1111 -424 1111 -309H809Q808 -297 807 -284Q806 -267 806 -251Q806 -182 827 -135Q848 -88 882 -64.5Q916 -41 951 -41Q978 -41 1003.5 -49.5Q1029 -58 1052 -78.5Q1075 -99 1093 -135L1113 -127Q1101 -93 1076 -60Q1051 -27 1012 -6.5Q973 14 921 14Q851 14 799 -17.5Q747 -49 719 -108Q691 -167 691 -248Q691 -337 720 -400Q749 -463 801.5 -496.5Q854 -530 923 -530ZM807 -328H1005Q1006 -377 997 -418.5Q988 -460 969 -485Q950 -510 919 -510Q876 -510 845 -465Q814 -421 807 -328ZM1876 -784V-109Q1876 -64 1891.5 -42.5Q1907 -21 1948 -21V0Q1917 -3 1886 -3Q1852 -3 1822.5 0Q1793 3 1768 11V-79Q1755 -45 1732 -23Q1694 14 1630 14Q1569 14 1522.5 -15.5Q1476 -45 1451 -105.5Q1426 -166 1426 -258Q1426 -349 1456.5 -409.5Q1487 -470 1538 -500Q1589 -530 1651 -530Q1695 -530 1732 -511Q1754 -499 1768 -478V-664Q1768 -709 1752.5 -730.5Q1737 -752 1696 -752V-773Q1728 -770 1758 -770Q1791 -770 1821 -773.5Q1851 -777 1876 -784ZM1768 -443Q1754 -474 1730 -489Q1703 -505 1669 -505Q1612 -505 1576 -444.5Q1540 -384 1541 -258Q1541 -175 1555 -122.5Q1569 -70 1596.5 -45Q1624 -20 1663 -20Q1702 -20 1734 -53Q1759 -80 1768 -127ZM2121 7Q2079 7 2049 -9Q2019 -25 2004 -53Q1989 -81 1989 -117Q1989 -161 2009 -188.5Q2029 -216 2060.5 -233Q2092 -250 2127.5 -261.5Q2163 -273 2194.5 -283.5Q2226 -294 2246.5 -308Q2267 -322 2267 -345V-413Q2267 -449 2255.5 -470.5Q2244 -492 2224.5 -501Q2205 -510 2178 -510Q2155 -510 2129 -503.5Q2103 -497 2088 -478Q2110 -472 2124.5 -454.5Q2139 -437 2139 -411Q2139 -383 2120.5 -367Q2102 -351 2074 -351Q2043 -351 2028 -370.5Q2013 -390 2013 -416Q2013 -443 2026.5 -460Q2040 -477 2062 -492Q2086 -508 2123.5 -519Q2161 -530 2207 -530Q2250 -530 2281.5 -520.5Q2313 -511 2334 -490Q2359 -467 2367 -432.5Q2375 -398 2375 -349V-73Q2375 -48 2381.5 -37.5Q2388 -27 2403 -27Q2413 -27 2422.5 -32Q2432 -37 2445 -47L2455 -30Q2434 -13 2412.5 -3Q2391 7 2358 7Q2326 7 2306 -3Q2286 -13 2276.5 -32Q2267 -51 2267 -79Q2241 -37 2205 -15Q2169 7 2121 7ZM2169 -41Q2197 -41 2221.5 -57Q2246 -73 2267 -105V-304Q2256 -288 2235 -276.5Q2214 -265 2190 -253Q2166 -241 2144.5 -225.5Q2123 -210 2109 -186Q2095 -162 2095 -125Q2095 -86 2115 -63.5Q2135 -41 2169 -41ZM2811 -530Q2849 -530 2875 -519.5Q2901 -509 2917 -491Q2935 -472 2942 -441Q2944 -430 2946 -418Q2973 -482 3018 -506Q3063 -530 3112 -530Q3150 -530 3176 -519.5Q3202 -509 3218 -491Q3236 -472 3243 -440.5Q3250 -409 3250 -361V-93Q3250 -51 3266.5 -36Q3283 -21 3322 -21V0Q3305 -1 3269 -2.5Q3233 -4 3198 -4Q3164 -4 3131.5 -2.5Q3099 -1 3082 0V-21Q3115 -21 3128.5 -36Q3142 -51 3142 -93V-389Q3142 -418 3138 -441.5Q3134 -465 3119 -479.5Q3104 -494 3072 -494Q3037 -494 3009.5 -472.5Q2982 -451 2965.5 -414.5Q2949 -378 2949 -333V-93Q2949 -51 2965 -36Q2981 -21 3019 -21V0Q3002 -1 2966.5 -2.5Q2931 -4 2897 -4Q2863 -4 2830.5 -2.5Q2798 -1 2781 0V-21Q2814 -21 2827.5 -36Q2841 -51 2841 -93V-389Q2841 -418 2837 -441.5Q2833 -465 2818.5 -479.5Q2804 -494 2773 -494Q2738 -494 2710.5 -473Q2683 -452 2666.5 -415.5Q2650 -379 2650 -334V-93Q2650 -51 2664 -36Q2678 -21 2710 -21V0Q2694 -1 2662 -2.5Q2630 -4 2596 -4Q2562 -4 2525 -2.5Q2488 -1 2470 0V-21Q2509 -21 2525.5 -36Q2542 -51 2542 -93V-407Q2542 -452 2527 -473.5Q2512 -495 2470 -495V-516Q2502 -513 2532 -513Q2566 -513 2595.5 -516.5Q2625 -520 2650 -527V-418Q2676 -478 2719.5 -504Q2763 -530 2811 -530Z"></path><path fill="#8A4A22" d="M1341.55 -54.50C1341.55 -13.33 1308.17 20.05 1267.00 20.05C1225.83 20.05 1192.45 -13.33 1192.45 -54.50C1192.45 -95.67 1225.83 -129.05 1267.00 -129.05C1308.17 -129.05 1341.55 -95.67 1341.55 -54.50Z"></path></svg></a>
+<a href="#" style="display: inline-flex; align-items: center; height: 36px; padding: 0 16px; background: #8A4A22; color: #FFFFFF; border-radius: 4px; text-decoration: none; font-size: 14px;">상담 신청</a>
+</div>
+</header>
+
+<div style="position: relative;">
+<img class="rm rm-ph" src="images/b7b4628bf5c04c977ec706220aa9710d.jpg" alt="창턱 위로 늘어진 리넨 속지와 오전 빛" style="display: block; width: 100%; height: 720px; height: min(720px, max(480px, calc(100svh - 72px))); object-fit: cover; background: #CFCAC1;">
+<div style="position: absolute; left: 0; right: 0; bottom: 96px;">
+<div style="max-width: 1296px; margin: 0 auto; padding: 0 48px; box-sizing: border-box;">
+<h1 class="rm rt-h" style="margin: 0; font-family: 'Noto Serif KR', serif; font-size: 48px; line-height: 1.32; font-weight: 400; letter-spacing: -0.025em; color: #2A2723;">공간을 바꾸는 감각에<br>명확한 이유를 붙입니다.</h1>
+</div>
+</div>
+</div>
+
+<section style="padding-top: 140px;">
+<!-- 판 51: 움직임 없이, 사진 세로 가운데에 글 (한 번 내렸을 때 눈이 닿는 높이) -->
+<div style="max-width: 1296px; margin: 0 auto; padding: 0 48px; box-sizing: border-box; display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); column-gap: 24px; align-items: center;">
+<div style="grid-column: 1 / span 5;">
+<div style="display: flex; flex-direction: column; gap: 20px;">
+<p style="margin: 0; max-width: 420px; font-size: 17px; line-height: 1.72; font-weight: 400; letter-spacing: -0.01em; color: #4A453F;" class="rm rm-d1">벽을 허물고 바닥을 새로 깔지 않아도, 창가의 패브릭과 빛, 공간의 색이 정확히 맞물리면 집의 인상은 완전히 달라집니다. 다만 수많은 원단 중 내 공간에 무엇이 가장 부합하는지 막연한 눈대중만으로 알아채기는 쉽지 않습니다.</p>
+<p style="margin: 0; max-width: 420px; font-size: 17px; line-height: 1.72; font-weight: 400; letter-spacing: -0.01em; color: #4A453F;" class="rm rm-d2">그래서 리담은 감각의 영역에 머물던 선택 과정을 측정 가능한 기준으로 바꾸고, 모든 제안 위에 명확한 이유를 붙입니다. 커튼은 리담이 공간을 새롭게 정의하는 첫걸음입니다.</p>
+</div>
+</div>
+<img loading="lazy" decoding="async" class="rm rm-ph" src="images/c697b78e8790e6a30b75fa4d63dd3599.jpg" alt="흰 속지로 둘러싸인 방 구석의 나무 의자" style="grid-column: 7 / span 6; display: block; width: 100%; aspect-ratio: 4 / 5; object-fit: cover; object-position: 50% 85%; background: #DCD8D1;">
+</div>
+</section>
+
+<section style="padding-top: 200px;">
+<div style="max-width: 1296px; margin: 0 auto; padding: 0 48px; box-sizing: border-box;">
+<h2 style="margin: 0; font-family: 'Noto Serif KR', serif; font-size: 36px; line-height: 1.42; font-weight: 400; letter-spacing: -0.02em;" class="rm rt-h">지향하는 공간의 인상마다<br>설계하는 기준이 다릅니다.</h2>
+<div data-imp="0" style="margin-top: 80px; height: 4340px;">
+<div class="imp-stage" style="position: sticky; top: 112px; display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); column-gap: 24px; align-items: center;">
+<div class="imp-box" style="grid-column: 1 / span 6; position: relative; aspect-ratio: 4 / 5; overflow: hidden; background: #DCD8D1;">
+<img loading="lazy" decoding="async" class="imp-ph" data-n="0" src="images/4a833606e450dbd9ca4c2d89d6270760.jpg" alt="벽과 같은 미색 겉지와 흰 속지, 맑은 오전의 방" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover;">
+<img loading="lazy" decoding="async" class="imp-ph" data-n="1" src="images/f905b03581c567b2c0591aacaca1c597.jpg" alt="양쪽에 짙은 와인색 겉지를 건 같은 방" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover;">
+<img loading="lazy" decoding="async" class="imp-ph" data-n="2" src="images/b6167921a0a0d9f3b63bd4930e7239b6.jpg" alt="오트밀 리넨 겉지에 따뜻한 빛이 번지는 같은 방" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover;">
+<img loading="lazy" decoding="async" class="imp-ph" data-n="3" src="images/aa9422e75285184a8859288cdb74fe71.jpg" alt="흰 속지만 건 한낮의 같은 방" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover;">
+<img loading="lazy" decoding="async" class="imp-ph" data-n="4" src="images/5f44ed5752338baa7e818042a9608b93.jpg" alt="짙은 회갈색 겉지를 건 같은 방" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover;">
+<img loading="lazy" decoding="async" class="imp-ph" data-n="5" src="images/c3c44246ba563a474df8e56e227c88a5.jpg" alt="밤, 낮은 스탠드 하나가 닫힌 커튼을 비추는 같은 방" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover;">
+</div>
+<div class="imp-txt" style="grid-column: 8 / span 5; position: relative; height: 340px;">
+<div class="imp-k-row" aria-hidden="true" style="display: flex; gap: 8px;"><span class="imp-k"></span><span class="imp-k"></span><span class="imp-k"></span><span class="imp-k"></span><span class="imp-k"></span><span class="imp-k"></span></div>
+<ol style="position: relative; list-style: none; margin: 0; padding: 0;">
+<li class="imp-c" style="position: absolute; top: 36px; left: 0; right: 0; display: flex; flex-direction: column;"><span style="font-size: 26px; font-weight: 500; letter-spacing: -0.02em;">확장감</span><span style="margin-top: 6px; font-size: 15px; color: #6B655D;">넓어 보이는 공간</span><span style="margin-top: 28px; max-width: 420px; font-size: 17px; line-height: 1.72; letter-spacing: -0.01em; color: #4A453F;">벽면의 명도와 채도에 커튼 톤을 정밀하게 일치시켜, 시선이 끊기지 않고 창가가 하나의 넓은 벽처럼 이어지게 설계합니다.</span></li>
+<li class="imp-c" style="position: absolute; top: 36px; left: 0; right: 0; display: flex; flex-direction: column;"><span style="font-size: 26px; font-weight: 500; letter-spacing: -0.02em;">포인트</span><span style="margin-top: 6px; font-size: 15px; color: #6B655D;">시선이 머무는 공간</span><span style="margin-top: 28px; max-width: 420px; font-size: 17px; line-height: 1.72; letter-spacing: -0.01em; color: #4A453F;">벽이나 바닥재와 계산된 대비를 이루는 채도와 명도를 부여하여, 공간에 들어섰을 때 시선이 자연스럽게 창가로 집중되도록 유도합니다.</span></li>
+<li class="imp-c" style="position: absolute; top: 36px; left: 0; right: 0; display: flex; flex-direction: column;"><span style="font-size: 26px; font-weight: 500; letter-spacing: -0.02em;">온기</span><span style="margin-top: 6px; font-size: 15px; color: #6B655D;">포근함이 머무는 공간</span><span style="margin-top: 28px; max-width: 420px; font-size: 17px; line-height: 1.72; letter-spacing: -0.01em; color: #4A453F;">색상보다 표면의 직조감을 우선합니다. 빛이 닿았을 때 가장자리가 부드럽게 산란되는 매트하고 보송한 결의 패브릭을 제안합니다.</span></li>
+<li class="imp-c" style="position: absolute; top: 36px; left: 0; right: 0; display: flex; flex-direction: column;"><span style="font-size: 26px; font-weight: 500; letter-spacing: -0.02em;">채광</span><span style="margin-top: 6px; font-size: 15px; color: #6B655D;">밝고 환한 공간</span><span style="margin-top: 28px; max-width: 420px; font-size: 17px; line-height: 1.72; letter-spacing: -0.01em; color: #4A453F;">창이 향한 방위와 낮 시간대의 빛을 살펴, 외부 시선은 정돈하면서도 자연광을 실내 깊숙이 확산시키는 속지를 매칭합니다.</span></li>
+<li class="imp-c" style="position: absolute; top: 36px; left: 0; right: 0; display: flex; flex-direction: column;"><span style="font-size: 26px; font-weight: 500; letter-spacing: -0.02em;">밀도</span><span style="margin-top: 6px; font-size: 15px; color: #6B655D;">무게감 있고 고급스러운 공간</span><span style="margin-top: 28px; max-width: 420px; font-size: 17px; line-height: 1.72; letter-spacing: -0.01em; color: #4A453F;">바닥재와 가구의 물성을 고려해, 주름의 형태가 탄탄하게 잡히고 빛의 각도에 따라 은은한 윤기가 감도는 원단을 배치합니다.</span></li>
+<li class="imp-c" style="position: absolute; top: 36px; left: 0; right: 0; display: flex; flex-direction: column;"><span style="font-size: 26px; font-weight: 500; letter-spacing: -0.02em;">밤</span><span style="margin-top: 6px; font-size: 15px; color: #6B655D;">아늑한 공간</span><span style="margin-top: 28px; max-width: 420px; font-size: 17px; line-height: 1.72; letter-spacing: -0.01em; color: #4A453F;">해가 진 뒤 실내 간접 조명의 색온도와 어우러질 때, 차갑게 들뜨지 않고 공간을 차분하게 감싸 안는 톤다운 패브릭을 선정합니다.</span></li>
+</ol>
+</div>
+</div>
+</div>
+</div>
+</section>
+
+<section style="padding-top: 220px;">
+<div style="max-width: 1296px; margin: 0 auto; padding: 0 48px; box-sizing: border-box; display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); column-gap: 24px; align-items: end;">
+<img loading="lazy" decoding="async" class="rm rm-ph" src="images/b6e8c1237cf7d41e9718e3f0957fbcd2.jpg" alt="결이 다른 원단 네 가지" style="grid-column: 1 / span 7; display: block; width: 100%; height: 520px; object-fit: cover; background: #DCD8D1;">
+<div style="grid-column: 9 / span 4; display: flex; flex-direction: column;">
+<h2 style="margin: 0; font-family: 'Noto Serif KR', serif; font-size: 36px; line-height: 1.42; font-weight: 400; letter-spacing: -0.02em;" class="rm rm-d1 rt-h">기준,<br>한 사람의 감에<br>기대지 않는 데이터.</h2>
+<p style="margin: 28px 0 0; max-width: 340px; font-size: 17px; line-height: 1.72; font-weight: 400; letter-spacing: -0.01em; color: #4A453F;" class="rm rm-d2">벽과 바닥, 가구, 그리고 다루는 모든 원단의 색상 값을 측정해 데이터로 구축해 두었습니다. 어떤 공간 조건에서 어떤 배색 방식을 택해야 고객이 원하는 분위기에 정확히 도달하는지 명확한 설계 기준을 따릅니다. 그날의 기분이나 상담가의 주관적인 감에 결과를 맡기지 않기 위해서입니다.</p>
+</div>
+</div>
+</section>
+
+<div class="rm-end" style="margin-top: 240px; background: #2B221A;">
+<section style="position: relative; overflow: hidden;">
+<img loading="lazy" decoding="async" src="images/0229bb70a82602a14b55bec3b55b9edd.jpg" alt="해 질 녘, 노을빛이 바닥에 길게 든 같은 방" style="position: absolute; top: -24px; left: -24px; width: calc(100% + 48px); height: calc(100% + 48px); object-fit: cover; object-position: 50% 50%; filter: blur(6px);">
+<div aria-hidden="true" style="position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: linear-gradient(to bottom, rgba(43,34,26,0) 62%, #2B221A 100%);"></div>
+<div style="position: relative; max-width: 1296px; margin: 0 auto; padding: 240px 48px; box-sizing: border-box; display: flex; flex-direction: column; align-items: flex-start;">
+<h2 style="margin: 0; font-family: 'Noto Serif KR', serif; font-size: 36px; line-height: 1.42; font-weight: 400; letter-spacing: -0.02em; color: #F7F2EA;" class="rm rt-h">현장,<br>매장의 조명이 아닌 그 집의 빛 아래에서.</h2>
+<p style="margin: 32px 0 0; max-width: 460px; font-size: 17px; line-height: 1.72; font-weight: 400; letter-spacing: -0.01em; color: rgba(247, 242, 234, 0.88);" class="rm rm-d1">화려한 매장 조명 아래에서 고른 원단은 정작 우리 집 창가에 걸었을 때 전혀 다른 색으로 보이곤 합니다. 미세한 색온도 차이에 민감한 그레이와 베이지 계열일수록 더욱 그렇습니다. 그래서 리담은 고객을 매장으로 부르는 대신, 엄선한 원단 북을 들고 직접 방문하여 그 집의 실제 채광과 조명 아래에서 대어 보고 결정합니다.</p>
+</div>
+</section>
+
+<footer class="rm-ft" style="border-top: 1px solid #44392F;">
+<div style="max-width: 1296px; margin: 0 auto; padding: 64px 48px 48px; box-sizing: border-box; display: flex; flex-direction: column; gap: 40px;">
+<div style="display: flex; align-items: center; justify-content: space-between;">
+<svg role="img" aria-label="Re.dam" viewBox="39 -784 3283 805" style="display: block; width: 96px; height: auto;"><path fill="#2B221A" d="M39 -708Q62 -707 98.5 -706Q135 -705 171 -705Q219 -705 262.5 -706Q306 -707 324 -707Q409 -707 465.5 -685Q522 -663 549.5 -623.5Q577 -584 577 -533Q577 -502 564.5 -467.5Q552 -433 521 -403.5Q490 -374 437 -355Q409 -345 373 -340Q377 -340 381 -339Q456 -329 490.5 -299Q525 -269 538 -207L563 -105Q572 -62 582.5 -44Q593 -26 614 -26Q630 -27 640.5 -35.5Q651 -44 663 -59L677 -48Q654 -17 629 -1.5Q604 14 562 14Q519 14 488.5 -8.5Q458 -31 445 -94L425 -194Q416 -237 405 -268.5Q394 -300 374.5 -318Q355 -336 318 -336H233V-106Q233 -70 239 -52Q245 -34 262 -28Q279 -22 312 -20V0Q288 -2 251.5 -2.5Q215 -3 177 -3Q135 -3 98.5 -2.5Q62 -2 39 0V-20Q73 -22 90 -28Q107 -34 112.5 -52Q118 -70 118 -106V-602Q118 -639 112.5 -656.5Q107 -674 89.5 -680.5Q72 -687 39 -688ZM233 -356H292Q359 -356 394.5 -378.5Q430 -401 442.5 -438.5Q455 -476 455 -522Q455 -601 421 -644.5Q387 -688 303 -688Q260 -688 246.5 -671Q233 -654 233 -602ZM923 -530Q1011 -530 1061 -477Q1111 -424 1111 -309H809Q808 -297 807 -284Q806 -267 806 -251Q806 -182 827 -135Q848 -88 882 -64.5Q916 -41 951 -41Q978 -41 1003.5 -49.5Q1029 -58 1052 -78.5Q1075 -99 1093 -135L1113 -127Q1101 -93 1076 -60Q1051 -27 1012 -6.5Q973 14 921 14Q851 14 799 -17.5Q747 -49 719 -108Q691 -167 691 -248Q691 -337 720 -400Q749 -463 801.5 -496.5Q854 -530 923 -530ZM807 -328H1005Q1006 -377 997 -418.5Q988 -460 969 -485Q950 -510 919 -510Q876 -510 845 -465Q814 -421 807 -328ZM1876 -784V-109Q1876 -64 1891.5 -42.5Q1907 -21 1948 -21V0Q1917 -3 1886 -3Q1852 -3 1822.5 0Q1793 3 1768 11V-79Q1755 -45 1732 -23Q1694 14 1630 14Q1569 14 1522.5 -15.5Q1476 -45 1451 -105.5Q1426 -166 1426 -258Q1426 -349 1456.5 -409.5Q1487 -470 1538 -500Q1589 -530 1651 -530Q1695 -530 1732 -511Q1754 -499 1768 -478V-664Q1768 -709 1752.5 -730.5Q1737 -752 1696 -752V-773Q1728 -770 1758 -770Q1791 -770 1821 -773.5Q1851 -777 1876 -784ZM1768 -443Q1754 -474 1730 -489Q1703 -505 1669 -505Q1612 -505 1576 -444.5Q1540 -384 1541 -258Q1541 -175 1555 -122.5Q1569 -70 1596.5 -45Q1624 -20 1663 -20Q1702 -20 1734 -53Q1759 -80 1768 -127ZM2121 7Q2079 7 2049 -9Q2019 -25 2004 -53Q1989 -81 1989 -117Q1989 -161 2009 -188.5Q2029 -216 2060.5 -233Q2092 -250 2127.5 -261.5Q2163 -273 2194.5 -283.5Q2226 -294 2246.5 -308Q2267 -322 2267 -345V-413Q2267 -449 2255.5 -470.5Q2244 -492 2224.5 -501Q2205 -510 2178 -510Q2155 -510 2129 -503.5Q2103 -497 2088 -478Q2110 -472 2124.5 -454.5Q2139 -437 2139 -411Q2139 -383 2120.5 -367Q2102 -351 2074 -351Q2043 -351 2028 -370.5Q2013 -390 2013 -416Q2013 -443 2026.5 -460Q2040 -477 2062 -492Q2086 -508 2123.5 -519Q2161 -530 2207 -530Q2250 -530 2281.5 -520.5Q2313 -511 2334 -490Q2359 -467 2367 -432.5Q2375 -398 2375 -349V-73Q2375 -48 2381.5 -37.5Q2388 -27 2403 -27Q2413 -27 2422.5 -32Q2432 -37 2445 -47L2455 -30Q2434 -13 2412.5 -3Q2391 7 2358 7Q2326 7 2306 -3Q2286 -13 2276.5 -32Q2267 -51 2267 -79Q2241 -37 2205 -15Q2169 7 2121 7ZM2169 -41Q2197 -41 2221.5 -57Q2246 -73 2267 -105V-304Q2256 -288 2235 -276.5Q2214 -265 2190 -253Q2166 -241 2144.5 -225.5Q2123 -210 2109 -186Q2095 -162 2095 -125Q2095 -86 2115 -63.5Q2135 -41 2169 -41ZM2811 -530Q2849 -530 2875 -519.5Q2901 -509 2917 -491Q2935 -472 2942 -441Q2944 -430 2946 -418Q2973 -482 3018 -506Q3063 -530 3112 -530Q3150 -530 3176 -519.5Q3202 -509 3218 -491Q3236 -472 3243 -440.5Q3250 -409 3250 -361V-93Q3250 -51 3266.5 -36Q3283 -21 3322 -21V0Q3305 -1 3269 -2.5Q3233 -4 3198 -4Q3164 -4 3131.5 -2.5Q3099 -1 3082 0V-21Q3115 -21 3128.5 -36Q3142 -51 3142 -93V-389Q3142 -418 3138 -441.5Q3134 -465 3119 -479.5Q3104 -494 3072 -494Q3037 -494 3009.5 -472.5Q2982 -451 2965.5 -414.5Q2949 -378 2949 -333V-93Q2949 -51 2965 -36Q2981 -21 3019 -21V0Q3002 -1 2966.5 -2.5Q2931 -4 2897 -4Q2863 -4 2830.5 -2.5Q2798 -1 2781 0V-21Q2814 -21 2827.5 -36Q2841 -51 2841 -93V-389Q2841 -418 2837 -441.5Q2833 -465 2818.5 -479.5Q2804 -494 2773 -494Q2738 -494 2710.5 -473Q2683 -452 2666.5 -415.5Q2650 -379 2650 -334V-93Q2650 -51 2664 -36Q2678 -21 2710 -21V0Q2694 -1 2662 -2.5Q2630 -4 2596 -4Q2562 -4 2525 -2.5Q2488 -1 2470 0V-21Q2509 -21 2525.5 -36Q2542 -51 2542 -93V-407Q2542 -452 2527 -473.5Q2512 -495 2470 -495V-516Q2502 -513 2532 -513Q2566 -513 2595.5 -516.5Q2625 -520 2650 -527V-418Q2676 -478 2719.5 -504Q2763 -530 2811 -530Z"></path><path fill="#8A4A22" d="M1341.55 -54.50C1341.55 -13.33 1308.17 20.05 1267.00 20.05C1225.83 20.05 1192.45 -13.33 1192.45 -54.50C1192.45 -95.67 1225.83 -129.05 1267.00 -129.05C1308.17 -129.05 1341.55 -95.67 1341.55 -54.50Z"></path></svg>
+<div style="display: flex; align-items: center; gap: 8px;">
+<a href="tel:" aria-label="전화로 상담" style="width: 48px; height: 48px; box-sizing: border-box; border: 1px solid #CFCAC1; border-radius: 4px; display: flex; align-items: center; justify-content: center;">
+<svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 3h3.5l1.7 4.3-2.2 1.4a11 11 0 0 0 6.3 6.3l1.4-2.2 4.3 1.7V18a2 2 0 0 1-2 2A16 16 0 0 1 3 5a2 2 0 0 1 2-2z"></path></svg>
+</a>
+<a href="#" style="width: 280px; height: 48px; display: flex; align-items: center; justify-content: center; background: #8A4A22; color: #FFFFFF; border-radius: 4px; text-decoration: none; font-size: 15px;">카톡으로 상담 신청</a>
+</div>
+</div>
+<div style="display: flex; justify-content: space-between; color: #A89A8A; font-size: 14px; line-height: 1.9;">
+<span>카카오톡 채널 [채널 이름] · 전화 [전화번호]</span>
+<span>[상호] · 사업자등록번호 [번호]</span>
+</div>
+</div>
+</footer>
+</div>
+
+</div>
+
+</template>
+<script src="assets/redam-ui.js"></script>
+<script>
+class Component extends DCLogic {
+  // 움직임 (6단계): 글·사진은 처음 들어올 때 한 번만 옅게
+  findRoot(sel) {
+    const hit = document.querySelector(sel);
+    if (hit) return hit;
+    const walk = (node) => {
+      const all = node.querySelectorAll('*');
+      for (let i = 0; i < all.length; i++) {
+        const sr = all[i].shadowRoot;
+        if (sr) { const f = sr.querySelector(sel) || walk(sr); if (f) return f; }
+      }
+      return null;
+    };
+    return walk(document);
+  }
+  componentDidMount() {
+    if (!window.IntersectionObserver) return;
+    const root = this.rootEl || this.findRoot('[data-rm="story-pc"]');
+    if (!root) {
+      this.tries = (this.tries || 0) + 1;
+      if (this.tries < 20) this.retry = setTimeout(() => this.componentDidMount(), 150);
+      return;
+    }
+    this.setupImp(root);
+    let reduce = false;
+    try { reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches; } catch (e) {}
+    if (reduce) return;
+    root.setAttribute('data-on', '');
+    this.io = new IntersectionObserver((list) => {
+      list.forEach((e) => {
+        if (e.isIntersecting) { e.target.setAttribute('data-in', ''); this.io.unobserve(e.target); }
+      });
+    }, { rootMargin: '0px 0px -10% 0px' });
+    root.querySelectorAll('.rm').forEach((el) => this.io.observe(el));
+    // 첫 화면에 보이는 글·사진은 스크롤 없이 바로 (1106t): 화면 높이가 낮은 노트북에서 첫 제목이 안 뜨던 것
+    root.querySelectorAll('.rm').forEach((el) => { const r = el.getBoundingClientRect(); if (r.top < window.innerHeight && r.bottom > 0) { el.setAttribute('data-in', ''); this.io.unobserve(el); } });
+  }
+  // 인상 구획 (판 49): 사진·글은 제자리에 붙어 있고, 스크롤한 만큼 다음 인상으로 바뀜
+  setupImp(root) {
+    const wrap = root.querySelector('[data-imp]');
+    if (!wrap) return;
+    const stage = wrap.querySelector('.imp-stage');
+    if (!stage) return;
+    const n = wrap.querySelectorAll('.imp-c').length || 6;
+    // 판 52·55·56: 캔버스 전체 보기(스크롤 없음)에서만 여섯 인상을 펼침. 화면 높이로 정하면 미리보기에서 넘김이 사라져서,
+    //  판 56부터는 기본이 넘김 → 스크롤이 한 번이라도 일어나면 넘김 → 1.5초가 지나도 어디도 스크롤될 수 없을 때만 펼침
+    const scrolls = (el) => {
+      let n = el.parentElement || (el.getRootNode && el.getRootNode().host) || null;
+      while (n) {
+        const oy = getComputedStyle(n).overflowY;
+        if ((oy === 'auto' || oy === 'scroll' || n === document.body || n === document.documentElement) && n.scrollHeight - n.clientHeight > 1000) return true;
+        n = n.parentElement || (n.getRootNode && n.getRootNode().host) || null;
+      }
+      const se = document.scrollingElement || document.documentElement;
+      return se.scrollHeight - window.innerHeight > 1000;
+    };
+    this.impMoved = false;
+    this.impDecide = setTimeout(() => { if (!this.impMoved && !scrolls(wrap)) wrap.setAttribute('data-flat', ''); }, 1500);
+    const top = parseFloat(getComputedStyle(stage).top) || 0;
+    // 판 50: 한 칸에 약 600px, 빠르게 쓸어도 한 번에 하나씩(0.6초 간격)만 바뀜
+    this.impCur = 0; this.impGo = 0;
+    const step = () => {
+      if (this.impHold || this.impCur === this.impGo) return;
+      this.impCur += this.impGo > this.impCur ? 1 : -1;
+      wrap.setAttribute('data-imp', String(this.impCur));
+      this.impHold = setTimeout(() => { this.impHold = 0; step(); }, 600);
+    };
+    this.onImp = (ev) => {
+      if (ev && ev.type === 'scroll') { this.impMoved = true; if (wrap.hasAttribute('data-flat')) wrap.removeAttribute('data-flat'); }
+      if (this.impRaf) return;
+      this.impRaf = requestAnimationFrame(() => {
+        this.impRaf = 0;
+        const r = wrap.getBoundingClientRect();
+        const run = Math.max(1, r.height - stage.offsetHeight);
+        const p = Math.min(Math.max((top - r.top) / run, 0), 0.9999);
+        this.impGo = Math.floor(p * n);
+        step();
+      });
+    };
+    window.addEventListener('scroll', this.onImp, { capture: true, passive: true });
+    window.addEventListener('resize', this.onImp);
+    this.onImp();
+  }
+  componentWillUnmount() {
+    clearTimeout(this.retry);
+    clearTimeout(this.impHold);
+    clearTimeout(this.impDecide);
+    if (this.onImp) { window.removeEventListener('scroll', this.onImp, { capture: true }); window.removeEventListener('resize', this.onImp); }
+    if (this.impRaf) cancelAnimationFrame(this.impRaf);
+    if (this.io) this.io.disconnect();
+  }
+  renderVals() {
+    const hf = this.props.hf ?? '고딕';   // 제목 글꼴 (8단계)
+    if (!this.setRoot) this.setRoot = (el) => { if (el) this.rootEl = el; };
+    return { hf, setRoot: this.setRoot };
+  }
+}
+DCMount(Component, {"hf": "고딕"});
+</script>
+</body>
+</html>
