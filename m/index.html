@@ -45,6 +45,9 @@ a{color:#2A2723}a:hover{color:#000000}
 .rm-bar[data-dark]{background:#2B221A!important;border-top-color:#44392F!important}
 .rm-bar .rm-tel{transition:border-color .8s ease,color .8s ease}
 .rm-bar[data-dark] .rm-tel{border-color:#5A4D41!important;color:#EFE6DA}
+/* 미리 맞춰 보기 버튼 (1110): 짙게 채움 — 지나치지 않게 */
+.rm-try{transition:background-color .25s ease}
+@media (hover:hover){.rm-try:hover{background:#000000!important;color:#F7F5F1!important}}
 .rm-ghost{transition:background-color .25s ease,color .25s ease}
 @media (hover:hover){.rm-ghost:hover{background:#2A2723;color:#F7F5F1}}
 .rm-bar[data-wait]:not([data-show]){transform:translateY(100%);opacity:0;pointer-events:none}
@@ -136,8 +139,8 @@ a{color:#2A2723}a:hover{color:#000000}
 <p aria-hidden="true" style="grid-area: 1 / 1; margin: 0; font-size: 15px; line-height: 1.72; font-weight: 400; letter-spacing: -0.01em; opacity: 0; transition: opacity 0.4s ease;">벽보다 조금 짙고 따뜻한 겉지에, 빛을 머금는 보송한 결을 더했습니다.</p>
 
 </div>
-<a class="rm rm-go rm-ghost" href="try.html" style="display: inline-flex; align-items: center; gap: 10px; margin: 40px 24px 0; min-height: 48px; padding: 0 20px; box-sizing: border-box; border: 1px solid #2A2723; border-radius: 4px; font-size: 15px; text-decoration: none;">
-<span>내 공간의 색으로 미리 맞춰 보기</span>
+<a class="rm rm-go rm-try" href="try.html" style="display: flex; align-items: center; gap: 12px; margin: 36px 24px 0; min-height: 56px; padding: 0 20px; box-sizing: border-box; background: #2A2723; color: #F7F5F1; border-radius: 4px; font-size: 15px; text-decoration: none;">
+<span style="flex: 1;">내 공간의 색으로 미리 맞춰 보기</span>
 <svg aria-hidden="true" width="16" height="16" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M4 10h12M11 5l5 5-5 5"></path></svg>
 </a>
 </section>
@@ -358,8 +361,8 @@ a{color:#2A2723}a:hover{color:#000000}
 <p aria-hidden="{{ w.hid }}" style="grid-area: 1 / 1; margin: 0; font-size: 15px; line-height: 1.72; font-weight: 400; letter-spacing: -0.01em; opacity: {{ w.op }}; transition: opacity 0.4s ease;">{{ w.line }}</p>
 </sc-for>
 </div>
-<a class="rm rm-go rm-ghost" href="try.html" style="display: inline-flex; align-items: center; gap: 10px; margin: 40px 24px 0; min-height: 48px; padding: 0 20px; box-sizing: border-box; border: 1px solid #2A2723; border-radius: 4px; font-size: 15px; text-decoration: none;">
-<span>내 공간의 색으로 미리 맞춰 보기</span>
+<a class="rm rm-go rm-try" href="try.html" style="display: flex; align-items: center; gap: 12px; margin: 36px 24px 0; min-height: 56px; padding: 0 20px; box-sizing: border-box; background: #2A2723; color: #F7F5F1; border-radius: 4px; font-size: 15px; text-decoration: none;">
+<span style="flex: 1;">내 공간의 색으로 미리 맞춰 보기</span>
 <svg aria-hidden="true" width="16" height="16" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M4 10h12M11 5l5 5-5 5"></path></svg>
 </a>
 </section>
