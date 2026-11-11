@@ -700,6 +700,11 @@ class Component extends DCLogic {
         const b = root && root.querySelector('.ri');
         if (b) b.style.display = 'none';
         if (root) root.removeAttribute('data-intro');
+        // 건너뛰면 첫 글도 바로 (1112): 로고 끝에 맞춰 걸어 둔 2.9초 예약을 다시 건다
+        if (root) root.querySelectorAll('.rm-late, .rm-late2').forEach((el) => {
+          if (!el.hasAttribute('data-in')) return;
+          el.removeAttribute('data-in'); void el.offsetWidth; el.setAttribute('data-in', '');
+        });
       },
       // 머리줄 '홈' (1110): 홈에서는 맨 위 첫 화면으로 올라감
       toTop: (ev) => { if (ev && ev.preventDefault) ev.preventDefault(); try { window.scrollTo({ top: 0, behavior: 'smooth' }); } catch (e) { window.scrollTo(0, 0); } },
