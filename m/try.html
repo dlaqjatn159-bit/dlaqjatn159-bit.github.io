@@ -320,7 +320,7 @@ class Component extends DCLogic {
       sendLabel: s.sent ? '복사했습니다 · 카톡에 붙여 넣어 주세요' : '고른 내용 보내고 상담 신청',
       send: () => {
         try { navigator.clipboard.writeText(summary); } catch (e) {}
-        const KAKAO = '';   // 카톡 채널 대화창 주소 (판 44) — [채널 주소] 정해지면 넣기
+        const KAKAO = 'https://pf.kakao.com/_xkxgxhNX/chat';   // 카톡 채널 대화창 주소 (판 44 · 11-13 리담 채널)
         if (KAKAO) { try { window.open(KAKAO, '_blank', 'noopener'); } catch (e) {} }
         set({ sent: true });
       },

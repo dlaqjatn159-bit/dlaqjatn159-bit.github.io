@@ -202,7 +202,7 @@ a{color:#2A2723}a:hover{color:#000000}
 <p style="margin: 8px 0 0; max-width: 400px; font-size: 16px; line-height: 1.7; letter-spacing: -0.01em;">{{ line2 }}</p>
 <p style="margin: 16px 0 0; font-size: 14px; line-height: 1.6; color: #6B655D;">화면의 색은 실제와 다릅니다. 방문하면 댁에서 잰 색으로 다양한 원단 중 서너 가지를 추려, 댁의 빛에 대어 봅니다.</p>
 <div style="margin-top: auto; display: flex; align-items: center; gap: 8px;">
-<a href="tel:" aria-label="전화로 상담" style="width: 48px; height: 48px; box-sizing: border-box; border: 1px solid #CFCAC1; border-radius: 4px; display: flex; align-items: center; justify-content: center;">
+<a href="tel:010-7523-1952" aria-label="전화로 상담" style="width: 48px; height: 48px; box-sizing: border-box; border: 1px solid #CFCAC1; border-radius: 4px; display: flex; align-items: center; justify-content: center;">
 <svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 3h3.5l1.7 4.3-2.2 1.4a11 11 0 0 0 6.3 6.3l1.4-2.2 4.3 1.7V18a2 2 0 0 1-2 2A16 16 0 0 1 3 5a2 2 0 0 1 2-2z"></path></svg>
 </a>
 <button type="button" onClick="{{ send }}" style="flex: 1; height: 48px; border: none; border-radius: 4px; background: #2A2723; color: #F7F5F1; font-family: inherit; font-size: 15px; cursor: pointer;">{{ sendLabel }}</button>
@@ -351,7 +351,7 @@ class Component extends DCLogic {
       sendLabel: s.sent ? '복사했습니다 · 카톡에 붙여 넣어 주세요' : '고른 내용 보내고 상담 신청',
       send: () => {
         try { navigator.clipboard.writeText(summary); } catch (e) {}
-        const KAKAO = '';   // 카톡 채널 대화창 주소 (판 44) — [채널 주소] 정해지면 넣기
+        const KAKAO = 'https://pf.kakao.com/_xkxgxhNX/chat';   // 카톡 채널 대화창 주소 (판 44 · 11-13 리담 채널)
         if (KAKAO) { try { window.open(KAKAO, '_blank', 'noopener'); } catch (e) {} }
         set({ sent: true });
       },
