@@ -175,9 +175,31 @@ a{color:#2A2723}a:hover{color:#000000}
 <p style="margin: 0; max-width: 320px; font-size: 15px; line-height: 1.7; letter-spacing: -0.01em;">{{ line2 }}</p>
 <p style="margin: 4px 0 0; font-size: 13px; line-height: 1.6; color: #6B655D;">화면의 색은 실제와 다릅니다. 방문하면 댁에서 잰 색으로 다양한 원단 중 서너 가지를 추려, 댁의 빛에 대어 봅니다.</p>
 </div>
-<div style="margin-top: auto; padding: 10px 16px 12px; display: flex; flex-direction: column; gap: 4px; border-top: 1px solid #E2DED7;">
-<button type="button" onClick="{{ send }}" style="height: 48px; border: none; border-radius: 4px; background: #2A2723; color: #F7F5F1; font-family: inherit; font-size: 15px; cursor: pointer;">{{ sendLabel }}</button>
+<div style="margin-top: auto; padding: 10px 16px 12px; display: flex; flex-direction: column; gap: 8px; border-top: 1px solid #E2DED7;">
+<p style="margin: 2px 0 0; font-size: 13px; line-height: 1.5; color: #6B655D; text-align: center;">문자는 고른 내용이 적힌 채로 열립니다.</p>
+<a href="{{ smsHref }}" style="height: 48px; display: flex; align-items: center; justify-content: center; border-radius: 4px; background: #2A2723; color: #F7F5F1; font-size: 15px; text-decoration: none;">문자로 상담 신청</a>
+<button type="button" onClick="{{ kakao }}" style="height: 48px; box-sizing: border-box; border: 1px solid #CFCAC1; border-radius: 4px; background: none; color: #2A2723; font-family: inherit; font-size: 15px; cursor: pointer;">카톡으로 상담 신청</button>
 <button type="button" onClick="{{ restart }}" style="height: 44px; border: none; background: none; font-family: inherit; font-size: 13px; color: #6B655D; cursor: pointer;">다시 해 보기</button>
+</div>
+</div>
+</sc-if>
+
+<sc-if value="{{ guide }}" hint-placeholder-val="{{ false }}">
+<div role="dialog" aria-modal="true" aria-label="카톡으로 상담 신청" style="position: fixed; inset: 0; z-index: 50; display: flex; align-items: flex-end;">
+<div onClick="{{ closeGuide }}" aria-hidden="true" style="position: absolute; inset: 0; background: rgba(42, 39, 35, 0.42);"></div>
+<div class="rq-in" style="position: relative; width: 100%; max-height: 92vh; max-height: 92dvh; overflow: auto; box-sizing: border-box; background: #F7F5F1; border-radius: 12px 12px 0 0; padding: 28px 24px 16px; display: flex; flex-direction: column; gap: 16px;">
+<div style="display: flex; flex-direction: column; gap: 6px;">
+<h2 class="rt-h" style="margin: 0; font-family: 'Noto Serif KR', serif; font-size: 21px; line-height: 1.45; font-weight: 400; letter-spacing: -0.02em;">{{ guideTitle }}</h2>
+</div>
+<pre style="margin: 0; padding: 14px 16px; background: #FFFFFF; border: 1px solid #E2DED7; border-radius: 4px; font-family: inherit; font-size: 13px; line-height: 1.6; color: #2A2723; white-space: pre-wrap; word-break: keep-all; -webkit-user-select: all; user-select: all;">{{ msg }}</pre>
+<p style="margin: 4px 0 -4px; font-size: 14px; line-height: 1.6; color: #6B655D;">카톡 창이 열리면 이렇게 보내 주세요.</p>
+<ol style="margin: 0; padding: 0; list-style: none; display: flex; flex-direction: column; gap: 10px;">
+<sc-for list="{{ guideSteps }}" as="g" hint-placeholder-count="3">
+<li style="display: flex; align-items: baseline; gap: 12px; font-size: 15px; line-height: 1.55; letter-spacing: -0.01em;"><span style="flex: none; width: 22px; height: 22px; border-radius: 50%; background: #2A2723; color: #F7F5F1; font-size: 12px; display: inline-flex; align-items: center; justify-content: center; transform: translateY(-1px);">{{ g.n }}</span><span>{{ g.t }}</span></li>
+</sc-for>
+</ol>
+<a href="https://pf.kakao.com/_xkxgxhNX/chat" target="_blank" rel="noopener" onClick="{{ openKakao }}" style="height: 48px; display: flex; align-items: center; justify-content: center; border-radius: 4px; background: #2A2723; color: #F7F5F1; font-size: 15px; text-decoration: none;">카톡 열기</a>
+<button type="button" onClick="{{ closeGuide }}" style="height: 40px; border: none; background: none; font-family: inherit; font-size: 13px; color: #6B655D; cursor: pointer;">닫기</button>
 </div>
 </div>
 </sc-if>
@@ -213,6 +235,20 @@ class Component extends DCLogic {
     let best = cands[0], score = -1;
     cands.forEach((c) => { const s = Math.min(this.dE(c, W), this.dE(c, F), this.dE(c, U)); if (s > score) { score = s; best = c; } });
     return best;
+  }
+  // 글 복사 (카톡 상담, 11-13): 인스타·네이버 앱 안 브라우저에서 막히면 false — 안내 화면이 '길게 눌러 복사'로 바뀜
+  copyText(txt) {
+    let ok = false;
+    try {
+      const ta = document.createElement('textarea');
+      ta.value = txt; ta.setAttribute('readonly', '');
+      ta.style.cssText = 'position:fixed;top:0;left:0;width:1px;height:1px;opacity:0;font-size:16px;';
+      document.body.appendChild(ta); ta.select(); ta.setSelectionRange(0, txt.length);
+      ok = document.execCommand('copy');
+      document.body.removeChild(ta);
+    } catch (e) {}
+    try { if (navigator.clipboard && window.isSecureContext) navigator.clipboard.writeText(txt).then(() => { if (!ok) this.setState({ copied: true }); }, () => {}); } catch (e) {}
+    return ok;
   }
   componentWillUnmount() { (this.timers || []).forEach(clearTimeout); }
   seek() {
@@ -302,6 +338,13 @@ class Component extends DCLogic {
     const bars = [0, 1, 2, 3].map((i) => ({ c: step >= i ? '#2A2723' : '#E2DED7' }));
     const care = cares[s.care || 0];
     const summary = '[리담 · 내 공간으로 해 보기]\n공간: ' + spaces[s.space || 0] + '\n마음 쓰이는 것: ' + care.label + '\n벽: ' + (W ? walls[s.wall][0] : '') + ' · 바닥: ' + (F ? floors[s.floor][0] : '') + ' · 가구: ' + (U ? furns[s.furn][0] : '') + '\n바라는 느낌: ' + wish.label + '\n방향: ' + dirNames[dirSel];
+    // 상담 신청 (11-13): 문자는 고른 내용이 채워진 채로 열림, 카톡은 글을 미리 넣을 수 없어 붙여 넣기 안내 화면을 거침
+    const msg = '안녕하세요. 리담 홈페이지에서 고른 내용이에요. 상담 받고 싶어요.\n\n' + summary;
+    const ua = (typeof navigator !== 'undefined' && navigator.userAgent) || '';
+    const ios = /iPhone|iPad|iPod/.test(ua);
+    const phone = /iPhone|Android.+Mobile/.test(ua);
+    let touch = true;
+    const copied = s.copied !== false;
     return {
       hf, bars, asking, q, rows, t, dirs, tex,
       colors: step === 2,
@@ -317,13 +360,16 @@ class Component extends DCLogic {
         calm: walls[s.wall][0] + ' 벽보다 한 톤 낮춰, 창가를 가라앉힙니다.'
       })[wish.id] : wish.line,
       line2: care.line,
-      sendLabel: s.sent ? '복사했습니다 · 카톡에 붙여 넣어 주세요' : '고른 내용 보내고 상담 신청',
-      send: () => {
-        try { navigator.clipboard.writeText(summary); } catch (e) {}
-        const KAKAO = 'https://pf.kakao.com/_xkxgxhNX/chat';   // 카톡 채널 대화창 주소 (판 44 · 11-13 리담 채널)
-        if (KAKAO) { try { window.open(KAKAO, '_blank', 'noopener'); } catch (e) {} }
-        set({ sent: true });
-      },
+      msg,
+      smsHref: 'sms:01075231952' + (ios ? '&' : '?') + 'body=' + encodeURIComponent(msg),
+      guide: !!s.guide,
+      guideTitle: copied ? '고른 내용을 복사해 두었습니다' : '아래 글을 길게 눌러 복사해 주세요',
+      guideSteps: (touch
+        ? ['카톡 창 맨 아래, 글 쓰는 칸을 꾹 누릅니다.', '‘붙여넣기’를 누릅니다.', '보내기를 누르면 상담 신청이 끝납니다.']
+        : ['대화창의 글 쓰는 칸을 누릅니다.', 'Ctrl+V(맥은 ⌘+V)로 붙여 넣습니다.', '보내기를 누르면 상담 신청이 끝납니다.']).map((t, i) => ({ n: i + 1, t })),
+      kakao: () => { const ok = this.copyText(msg); this.setState({ guide: true, copied: ok }); },
+      openKakao: () => { if (this.copyText(msg)) this.setState({ copied: true }); },
+      closeGuide: () => this.setState({ guide: false }),
       // 홈에서 들어왔으면 뒤로 가기로 — 보던 자리로 돌아감 (1107)
       goHome: (ev) => {
         try {
@@ -331,10 +377,10 @@ class Component extends DCLogic {
           if (r && r.origin === location.origin && /\/(index\.html)?$/.test(r.pathname) && history.length > 1) { if (ev) ev.preventDefault(); history.back(); }
         } catch (e) {}
       },
-      restart: () => { (this.timers || []).forEach(clearTimeout); this.setState({ step: 0, sent: false, seek: null, dir: null }); },
+      restart: () => { (this.timers || []).forEach(clearTimeout); this.setState({ step: 0, guide: false, seek: null, dir: null }); },
       atStart: step === 0,
       notStart: step > 0,
-      back: () => { (this.timers || []).forEach(clearTimeout); set({ step: Math.max(0, step - 1), sent: false, seek: null, dir: null }); }
+      back: () => { (this.timers || []).forEach(clearTimeout); set({ step: Math.max(0, step - 1), guide: false, seek: null, dir: null }); }
     };
   }
 }
