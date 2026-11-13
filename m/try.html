@@ -30,12 +30,14 @@ a{color:#2A2723}a:hover{color:#000000}
 .rq-tile{transition:background-color .22s ease}
 .rq-sw{transition:transform .2s ease}
 @media (hover:hover){.rq-sw:hover{transform:translateY(-2px)}}
+/* 누른 느낌은 견본이 살짝 들어가는 것으로 (11-13) */
+.rq-sw:active{transform:scale(.96)}
 @media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
 /* 글꼴·자간 (8단계): 제목 글꼴은 Tweaks의 '제목 글꼴'로 바꿔 봄 */
 [data-hf]{word-break:keep-all}
 [data-hf="고딕"] .rt-h{font-family:'Noto Sans KR',sans-serif!important;font-weight:500!important;letter-spacing:-0.03em!important}
 </style>
-<style>/* 움직임이 붙기 전 깜빡임 막기 */[data-js] [data-rm]:not([data-on]) .rm,[data-js] [data-rm]:not([data-on]) .rm-strip{opacity:0}/* 로고는 한 창에서 한 번만 (1107) */[data-seen] .ri{display:none}</style>
+<style>/* 움직임이 붙기 전 깜빡임 막기 */[data-js] [data-rm]:not([data-on]) .rm,[data-js] [data-rm]:not([data-on]) .rm-strip{opacity:0}/* 로고는 한 창에서 한 번만 (1107) */[data-seen] .ri{display:none}/* 폰에서 누를 때 파란 네모 끔 — 화면이 바뀌며 어긋나 깜빡여 보이던 것 (11-13) */html{-webkit-tap-highlight-color:transparent}</style>
 </head>
 <body>
 <div id="dc-root">
@@ -125,7 +127,7 @@ a{color:#2A2723}a:hover{color:#000000}
 <sc-if value="{{ colors }}" hint-placeholder-val="{{ false }}">
 <div class="rq-in" style="padding: 32px 24px 0; display: flex; flex-direction: column; gap: 24px; flex: 1; min-height: 0;">
 <h1 class="rt-h" style="margin: 0; font-family: 'Noto Serif KR', serif; font-size: 24px; line-height: 1.45; font-weight: 400; letter-spacing: -0.02em;">벽·바닥·가구는<br>어떤 색에 가까우세요?</h1>
-<div aria-hidden="true" style="display: grid; grid-template-columns: repeat(6, minmax(0, 1fr)); grid-template-rows: repeat(4, 34px); gap: 3px;">
+<div aria-hidden="true" style="display: grid; grid-template-columns: repeat(6, minmax(0, 1fr)); grid-template-rows: repeat(4, 44px); gap: 3px;">
 <div class="rq-tile" style="grid-column: 1 / span 3; grid-row: 1 / span 2; background: {{ t.wall }};"></div>
 <div class="rq-tile" style="grid-column: 4 / span 1; grid-row: 1 / span 2; background: {{ t.sheer }};"></div>
 <div class="rq-tile" style="grid-column: 5 / span 2; grid-row: 1 / span 3; background: {{ t.drape }};"></div>
@@ -154,7 +156,7 @@ a{color:#2A2723}a:hover{color:#000000}
 
 <sc-if value="{{ done }}" hint-placeholder-val="{{ false }}">
 <div class="rq-in" style="flex: 1; display: flex; flex-direction: column; padding-top: 24px; min-height: 0;">
-<div aria-hidden="true" style="margin: 0 24px; display: grid; grid-template-columns: repeat(6, minmax(0, 1fr)); grid-template-rows: repeat(4, 52px); gap: 3px; flex: none;">
+<div aria-hidden="true" style="margin: 0 24px; display: grid; grid-template-columns: repeat(6, minmax(0, 1fr)); grid-template-rows: repeat(4, 44px); gap: 3px; flex: none;">
 <div class="rq-tile" style="grid-column: 1 / span 3; grid-row: 1 / span 2; background: {{ t.wall }};"></div>
 <div class="rq-tile" style="grid-column: 4 / span 1; grid-row: 1 / span 2; background: {{ t.sheer }}; position: relative; overflow: hidden; isolation: isolate;">
 </div>
@@ -194,7 +196,7 @@ a{color:#2A2723}a:hover{color:#000000}
 
 <sc-if value="{{ form }}" hint-placeholder-val="{{ false }}">
 <div class="rq-in" style="flex: 1; display: flex; flex-direction: column; padding-top: 24px; min-height: 0;">
-<div aria-hidden="true" style="margin: 0 24px; display: grid; grid-template-columns: repeat(6, minmax(0, 1fr)); grid-template-rows: repeat(4, 52px); gap: 3px; flex: none;">
+<div aria-hidden="true" style="margin: 0 24px; display: grid; grid-template-columns: repeat(6, minmax(0, 1fr)); grid-template-rows: repeat(4, 44px); gap: 3px; flex: none;">
 <div class="rq-tile" style="grid-column: 1 / span 3; grid-row: 1 / span 2; background: {{ t.wall }};"></div>
 <div class="rq-tile" style="grid-column: 4 / span 1; grid-row: 1 / span 2; background: {{ t.sheer }}; position: relative; overflow: hidden; isolation: isolate;">
 </div>
@@ -231,9 +233,10 @@ a{color:#2A2723}a:hover{color:#000000}
 </sc-if>
 
 <sc-if value="{{ guide }}" hint-placeholder-val="{{ false }}">
-<div role="dialog" aria-modal="true" aria-label="카톡으로 상담 신청" style="position: fixed; inset: 0; z-index: 50; display: flex; align-items: flex-end;">
+<!-- 카톡 안내 (11-13): 화면 가운데 — 아래에 붙어 있으면 폰이 띄우는 '복사됨' 알림이 '카톡 열기'를 가림 -->
+<div role="dialog" aria-modal="true" aria-label="카톡으로 상담 신청" style="position: fixed; inset: 0; z-index: 50; display: flex; align-items: center; padding: 16px; box-sizing: border-box;">
 <div onClick="{{ closeGuide }}" aria-hidden="true" style="position: absolute; inset: 0; background: rgba(42, 39, 35, 0.42);"></div>
-<div class="rq-in" style="position: relative; width: 100%; max-height: 92vh; max-height: 92dvh; overflow: auto; box-sizing: border-box; background: #F7F5F1; border-radius: 12px 12px 0 0; padding: 28px 24px 16px; display: flex; flex-direction: column; gap: 16px;">
+<div class="rq-in" style="position: relative; width: 100%; max-height: 100%; overflow: auto; box-sizing: border-box; background: #F7F5F1; border-radius: 8px; padding: 28px 24px 12px; display: flex; flex-direction: column; gap: 16px;">
 <div style="display: flex; flex-direction: column; gap: 6px;">
 <h2 class="rt-h" style="margin: 0; font-family: 'Noto Serif KR', serif; font-size: 21px; line-height: 1.45; font-weight: 400; letter-spacing: -0.02em;">{{ guideTitle }}</h2>
 </div>
