@@ -114,18 +114,18 @@ a{color:#2A2723}a:hover{color:#000000}
 <div class="rm rm-d1" role="tablist" style="display: flex; gap: 24px; margin-top: 56px; border-bottom: 1px solid #E2DED7;">
 
 
-<button type="button" role="tab" aria-selected="true" style="height: 44px; padding: 0; margin-bottom: -1px; border: none; border-bottom: 1px solid #2A2723; background: none; font-family: inherit; font-size: 17px; color: #2A2723; cursor: pointer;">확장감</button>
+<button type="button" role="tab" aria-selected="true" style="height: 44px; padding: 0; margin-bottom: -1px; border: none; border-bottom: 1px solid #2A2723; background: none; font-family: inherit; font-size: 17px; color: #2A2723; cursor: pointer; -webkit-tap-highlight-color: transparent;">확장감</button>
 
 
 
 
 
-<button type="button" role="tab" aria-selected="false" style="height: 44px; padding: 0; border: none; background: none; font-family: inherit; font-size: 17px; color: #8A847B; cursor: pointer;">포인트</button>
+<button type="button" role="tab" aria-selected="false" style="height: 44px; padding: 0; margin-bottom: -1px; border: none; border-bottom: 1px solid transparent; background: none; font-family: inherit; font-size: 17px; color: #8A847B; cursor: pointer; -webkit-tap-highlight-color: transparent;">포인트</button>
 
 
 
 
-<button type="button" role="tab" aria-selected="false" style="height: 44px; padding: 0; border: none; background: none; font-family: inherit; font-size: 17px; color: #8A847B; cursor: pointer;">온기</button>
+<button type="button" role="tab" aria-selected="false" style="height: 44px; padding: 0; margin-bottom: -1px; border: none; border-bottom: 1px solid transparent; background: none; font-family: inherit; font-size: 17px; color: #8A847B; cursor: pointer; -webkit-tap-highlight-color: transparent;">온기</button>
 
 
 </div>
@@ -409,12 +409,7 @@ a{color:#2A2723}a:hover{color:#000000}
 <p class="rm rm-d1" style="margin: 32px 0 0; max-width: 384px; font-size: 17px; line-height: 1.72; font-weight: 400; letter-spacing: -0.01em; color: #4A453F;">벽지와 바닥재의 톤을 공간의 바탕색으로 삼고, 머무는 분이 원하는 분위기에 맞추어 원단의 명도와 직조감을 조율합니다. 지금 공간의 벽·바닥 색상에 어떤 커튼이 어울릴지 먼저 확인해 보세요.</p>
 <div class="rm rm-d1" role="tablist" style="display: flex; gap: 24px; margin-top: 56px; border-bottom: 1px solid #E2DED7;">
 <sc-for list="{{ wishes }}" as="w" hint-placeholder-count="3">
-<sc-if value="{{ w.selected }}" hint-placeholder-val="{{ false }}">
-<button type="button" role="tab" aria-selected="true" onClick="{{ w.pick }}" style="height: 44px; padding: 0; margin-bottom: -1px; border: none; border-bottom: 1px solid #2A2723; background: none; font-family: inherit; font-size: 17px; color: #2A2723; cursor: pointer;">{{ w.label }}</button>
-</sc-if>
-<sc-if value="{{ w.idle }}" hint-placeholder-val="{{ true }}">
-<button type="button" role="tab" aria-selected="false" onClick="{{ w.pick }}" style="height: 44px; padding: 0; border: none; background: none; font-family: inherit; font-size: 17px; color: #8A847B; cursor: pointer;">{{ w.label }}</button>
-</sc-if>
+<button type="button" role="tab" aria-selected="{{ w.sel }}" onClick="{{ w.pick }}" style="height: 44px; padding: 0; margin-bottom: -1px; border: none; border-bottom: 1px solid {{ w.bar }}; background: none; font-family: inherit; font-size: 17px; color: {{ w.ink }}; cursor: pointer; -webkit-tap-highlight-color: transparent;">{{ w.label }}</button>
 </sc-for>
 </div>
 <div class="rm rm-d2" style="display: grid; margin-top: 32px; max-width: 340px;">
@@ -674,6 +669,10 @@ class Component extends DCLogic {
       idle: w.id !== picked,
       op: w.id === picked ? 1 : 0,
       hid: w.id === picked ? 'false' : 'true',
+      // 탭은 버튼 하나가 색만 바꿈 (1113): 두 벌을 갈아 끼우면 폰에서 누른 자국이 옆 탭으로 옮겨 가던 것
+      sel: w.id === picked ? 'true' : 'false',
+      ink: w.id === picked ? '#2A2723' : '#8A847B',
+      bar: w.id === picked ? '#2A2723' : 'transparent',
       pick: () => this.setState({ wish: w.id, slide: s.slide || 0, introDone: s.introDone })
     }));
     const houses = [
