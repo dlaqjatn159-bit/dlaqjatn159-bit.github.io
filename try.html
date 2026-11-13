@@ -21,9 +21,10 @@ if('IntersectionObserver' in window&&!(window.matchMedia&&matchMedia('(prefers-r
 setTimeout(function(){document.documentElement.removeAttribute('data-js')},4000);
 try{if(sessionStorage.getItem('rd-intro')==='1')document.documentElement.setAttribute('data-seen','')}catch(e){}</script>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500&amp;family=Noto+Serif+KR:wght@400&amp;display=swap">
+<link rel="stylesheet" href="tokens.css">
 <style>
-body{margin:0;background:#F7F5F1}
-a{color:#2A2723}a:hover{color:#000000}
+body{margin:0;background:var(--rd-site-color-bg)}
+a{color:var(--rd-site-color-text)}a:hover{color:#000000}
 @keyframes rq-a{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
 @keyframes rq-b{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
 .rq-in{animation:rq-a .4s ease both}
@@ -42,15 +43,15 @@ a{color:#2A2723}a:hover{color:#000000}
 </head>
 <body>
 <div id="dc-root">
-<div data-hf="고딕" style="width: 100%; height: 100vh; min-height: 760px; box-sizing: border-box; background: #F7F5F1; font-family: 'Noto Sans KR', sans-serif; font-weight: 400; color: #2A2723; display: flex; flex-direction: column;">
+<div data-hf="고딕" style="width: 100%; height: 100vh; min-height: 760px; box-sizing: border-box; background: var(--rd-site-color-bg); font-family: 'Noto Sans KR', sans-serif; font-weight: 400; color: var(--rd-site-color-text); display: flex; flex-direction: column;">
 
 <header style="flex: none;">
 <div style="max-width: 1296px; margin: 0 auto; padding: 0 48px; box-sizing: border-box; height: 72px; display: flex; align-items: center; justify-content: space-between;">
 <a href="index.html" aria-label="리담 홈" style="display: block; padding: 10px 0;"><svg role="img" aria-label="Re.dam" viewBox="39 -784 3283 805" style="display: block; width: 96px; height: auto;"><path fill="#2B221A" d="M39 -708Q62 -707 98.5 -706Q135 -705 171 -705Q219 -705 262.5 -706Q306 -707 324 -707Q409 -707 465.5 -685Q522 -663 549.5 -623.5Q577 -584 577 -533Q577 -502 564.5 -467.5Q552 -433 521 -403.5Q490 -374 437 -355Q409 -345 373 -340Q377 -340 381 -339Q456 -329 490.5 -299Q525 -269 538 -207L563 -105Q572 -62 582.5 -44Q593 -26 614 -26Q630 -27 640.5 -35.5Q651 -44 663 -59L677 -48Q654 -17 629 -1.5Q604 14 562 14Q519 14 488.5 -8.5Q458 -31 445 -94L425 -194Q416 -237 405 -268.5Q394 -300 374.5 -318Q355 -336 318 -336H233V-106Q233 -70 239 -52Q245 -34 262 -28Q279 -22 312 -20V0Q288 -2 251.5 -2.5Q215 -3 177 -3Q135 -3 98.5 -2.5Q62 -2 39 0V-20Q73 -22 90 -28Q107 -34 112.5 -52Q118 -70 118 -106V-602Q118 -639 112.5 -656.5Q107 -674 89.5 -680.5Q72 -687 39 -688ZM233 -356H292Q359 -356 394.5 -378.5Q430 -401 442.5 -438.5Q455 -476 455 -522Q455 -601 421 -644.5Q387 -688 303 -688Q260 -688 246.5 -671Q233 -654 233 -602ZM923 -530Q1011 -530 1061 -477Q1111 -424 1111 -309H809Q808 -297 807 -284Q806 -267 806 -251Q806 -182 827 -135Q848 -88 882 -64.5Q916 -41 951 -41Q978 -41 1003.5 -49.5Q1029 -58 1052 -78.5Q1075 -99 1093 -135L1113 -127Q1101 -93 1076 -60Q1051 -27 1012 -6.5Q973 14 921 14Q851 14 799 -17.5Q747 -49 719 -108Q691 -167 691 -248Q691 -337 720 -400Q749 -463 801.5 -496.5Q854 -530 923 -530ZM807 -328H1005Q1006 -377 997 -418.5Q988 -460 969 -485Q950 -510 919 -510Q876 -510 845 -465Q814 -421 807 -328ZM1876 -784V-109Q1876 -64 1891.5 -42.5Q1907 -21 1948 -21V0Q1917 -3 1886 -3Q1852 -3 1822.5 0Q1793 3 1768 11V-79Q1755 -45 1732 -23Q1694 14 1630 14Q1569 14 1522.5 -15.5Q1476 -45 1451 -105.5Q1426 -166 1426 -258Q1426 -349 1456.5 -409.5Q1487 -470 1538 -500Q1589 -530 1651 -530Q1695 -530 1732 -511Q1754 -499 1768 -478V-664Q1768 -709 1752.5 -730.5Q1737 -752 1696 -752V-773Q1728 -770 1758 -770Q1791 -770 1821 -773.5Q1851 -777 1876 -784ZM1768 -443Q1754 -474 1730 -489Q1703 -505 1669 -505Q1612 -505 1576 -444.5Q1540 -384 1541 -258Q1541 -175 1555 -122.5Q1569 -70 1596.5 -45Q1624 -20 1663 -20Q1702 -20 1734 -53Q1759 -80 1768 -127ZM2121 7Q2079 7 2049 -9Q2019 -25 2004 -53Q1989 -81 1989 -117Q1989 -161 2009 -188.5Q2029 -216 2060.5 -233Q2092 -250 2127.5 -261.5Q2163 -273 2194.5 -283.5Q2226 -294 2246.5 -308Q2267 -322 2267 -345V-413Q2267 -449 2255.5 -470.5Q2244 -492 2224.5 -501Q2205 -510 2178 -510Q2155 -510 2129 -503.5Q2103 -497 2088 -478Q2110 -472 2124.5 -454.5Q2139 -437 2139 -411Q2139 -383 2120.5 -367Q2102 -351 2074 -351Q2043 -351 2028 -370.5Q2013 -390 2013 -416Q2013 -443 2026.5 -460Q2040 -477 2062 -492Q2086 -508 2123.5 -519Q2161 -530 2207 -530Q2250 -530 2281.5 -520.5Q2313 -511 2334 -490Q2359 -467 2367 -432.5Q2375 -398 2375 -349V-73Q2375 -48 2381.5 -37.5Q2388 -27 2403 -27Q2413 -27 2422.5 -32Q2432 -37 2445 -47L2455 -30Q2434 -13 2412.5 -3Q2391 7 2358 7Q2326 7 2306 -3Q2286 -13 2276.5 -32Q2267 -51 2267 -79Q2241 -37 2205 -15Q2169 7 2121 7ZM2169 -41Q2197 -41 2221.5 -57Q2246 -73 2267 -105V-304Q2256 -288 2235 -276.5Q2214 -265 2190 -253Q2166 -241 2144.5 -225.5Q2123 -210 2109 -186Q2095 -162 2095 -125Q2095 -86 2115 -63.5Q2135 -41 2169 -41ZM2811 -530Q2849 -530 2875 -519.5Q2901 -509 2917 -491Q2935 -472 2942 -441Q2944 -430 2946 -418Q2973 -482 3018 -506Q3063 -530 3112 -530Q3150 -530 3176 -519.5Q3202 -509 3218 -491Q3236 -472 3243 -440.5Q3250 -409 3250 -361V-93Q3250 -51 3266.5 -36Q3283 -21 3322 -21V0Q3305 -1 3269 -2.5Q3233 -4 3198 -4Q3164 -4 3131.5 -2.5Q3099 -1 3082 0V-21Q3115 -21 3128.5 -36Q3142 -51 3142 -93V-389Q3142 -418 3138 -441.5Q3134 -465 3119 -479.5Q3104 -494 3072 -494Q3037 -494 3009.5 -472.5Q2982 -451 2965.5 -414.5Q2949 -378 2949 -333V-93Q2949 -51 2965 -36Q2981 -21 3019 -21V0Q3002 -1 2966.5 -2.5Q2931 -4 2897 -4Q2863 -4 2830.5 -2.5Q2798 -1 2781 0V-21Q2814 -21 2827.5 -36Q2841 -51 2841 -93V-389Q2841 -418 2837 -441.5Q2833 -465 2818.5 -479.5Q2804 -494 2773 -494Q2738 -494 2710.5 -473Q2683 -452 2666.5 -415.5Q2650 -379 2650 -334V-93Q2650 -51 2664 -36Q2678 -21 2710 -21V0Q2694 -1 2662 -2.5Q2630 -4 2596 -4Q2562 -4 2525 -2.5Q2488 -1 2470 0V-21Q2509 -21 2525.5 -36Q2542 -51 2542 -93V-407Q2542 -452 2527 -473.5Q2512 -495 2470 -495V-516Q2502 -513 2532 -513Q2566 -513 2595.5 -516.5Q2625 -520 2650 -527V-418Q2676 -478 2719.5 -504Q2763 -530 2811 -530Z"></path><path fill="#8A4A22" d="M1341.55 -54.50C1341.55 -13.33 1308.17 20.05 1267.00 20.05C1225.83 20.05 1192.45 -13.33 1192.45 -54.50C1192.45 -95.67 1225.83 -129.05 1267.00 -129.05C1308.17 -129.05 1341.55 -95.67 1341.55 -54.50Z"></path></svg></a>
 <nav aria-label="쪽 이동" style="display: flex; align-items: center; gap: 28px;">
-<a href="index.html" aria-label="홈으로" style="font-size: 14px; text-decoration: none; padding: 14px 0; color: #6B655D;">홈</a>
-<a href="story.html" style="font-size: 14px; text-decoration: none; padding: 14px 0; color: #6B655D;">리담 이야기</a>
-<a href="https://pf.kakao.com/_xkxgxhNX/chat" target="_blank" rel="noopener" style="font-size: 14px; font-weight: 500; padding: 14px 0; color: #2A2723; text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 0.42em;">상담 신청</a>
+<a href="index.html" aria-label="홈으로" style="font-size: var(--rd-site-type-small); text-decoration: none; padding: 14px 0; color: var(--rd-site-color-text-muted);">홈</a>
+<a href="story.html" style="font-size: var(--rd-site-type-small); text-decoration: none; padding: 14px 0; color: var(--rd-site-color-text-muted);">리담 이야기</a>
+<a href="https://pf.kakao.com/_xkxgxhNX/chat" target="_blank" rel="noopener" style="font-size: var(--rd-site-type-small); font-weight: 500; padding: 14px 0; color: var(--rd-site-color-text); text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 0.42em;">상담 신청</a>
 </nav>
 </div>
 </header>
@@ -78,28 +79,28 @@ a{color:#2A2723}a:hover{color:#000000}
 <div style="grid-column: 8 / span 5; display: flex; flex-direction: column; min-height: 0;">
 <div aria-hidden="true" style="display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 6px; flex: none;">
 
-<div style="height: 2px; background: #2A2723; transition: background-color 0.3s ease;"></div>
+<div style="height: 2px; background: var(--rd-site-color-text); transition: background-color 0.3s ease;"></div>
 
-<div style="height: 2px; background: #E2DED7; transition: background-color 0.3s ease;"></div>
+<div style="height: 2px; background: var(--rd-site-color-line-soft); transition: background-color 0.3s ease;"></div>
 
-<div style="height: 2px; background: #E2DED7; transition: background-color 0.3s ease;"></div>
+<div style="height: 2px; background: var(--rd-site-color-line-soft); transition: background-color 0.3s ease;"></div>
 
-<div style="height: 2px; background: #E2DED7; transition: background-color 0.3s ease;"></div>
+<div style="height: 2px; background: var(--rd-site-color-line-soft); transition: background-color 0.3s ease;"></div>
 
 </div>
 
 
 <div style="padding-top: 64px; display: flex; flex-direction: column; gap: 40px; animation: rq-a 0.3s ease both;">
 <h1 class="rt-h" style="margin: 0; font-family: 'Noto Serif KR', serif; font-size: 30px; line-height: 1.45; font-weight: 400; letter-spacing: -0.02em; white-space: pre-line;">어느 공간의 창인가요?</h1>
-<div style="display: flex; flex-direction: column; border-top: 1px solid #E2DED7;">
+<div style="display: flex; flex-direction: column; border-top: 1px solid var(--rd-site-color-line-soft);">
 
-<button type="button" class="rq-opt" style="display: flex; align-items: center; justify-content: space-between; height: 64px; padding: 0; border: none; border-bottom: 1px solid #E2DED7; background: none; font-family: inherit; font-size: 16px; font-weight: 400; letter-spacing: -0.01em; color: #2A2723; text-align: left; cursor: pointer;"><span>거실</span><svg class="rq-arw" aria-hidden="true" width="18" height="18" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M4 10h12M11 5l5 5-5 5"></path></svg></button>
+<button type="button" class="rq-opt" style="display: flex; align-items: center; justify-content: space-between; height: 64px; padding: 0; border: none; border-bottom: 1px solid var(--rd-site-color-line-soft); background: none; font-family: inherit; font-size: 16px; font-weight: 400; letter-spacing: -0.01em; color: var(--rd-site-color-text); text-align: left; cursor: pointer;"><span>거실</span><svg class="rq-arw" aria-hidden="true" width="18" height="18" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M4 10h12M11 5l5 5-5 5"></path></svg></button>
 
-<button type="button" class="rq-opt" style="display: flex; align-items: center; justify-content: space-between; height: 64px; padding: 0; border: none; border-bottom: 1px solid #E2DED7; background: none; font-family: inherit; font-size: 16px; font-weight: 400; letter-spacing: -0.01em; color: #2A2723; text-align: left; cursor: pointer;"><span>침실</span><svg class="rq-arw" aria-hidden="true" width="18" height="18" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M4 10h12M11 5l5 5-5 5"></path></svg></button>
+<button type="button" class="rq-opt" style="display: flex; align-items: center; justify-content: space-between; height: 64px; padding: 0; border: none; border-bottom: 1px solid var(--rd-site-color-line-soft); background: none; font-family: inherit; font-size: 16px; font-weight: 400; letter-spacing: -0.01em; color: var(--rd-site-color-text); text-align: left; cursor: pointer;"><span>침실</span><svg class="rq-arw" aria-hidden="true" width="18" height="18" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M4 10h12M11 5l5 5-5 5"></path></svg></button>
 
-<button type="button" class="rq-opt" style="display: flex; align-items: center; justify-content: space-between; height: 64px; padding: 0; border: none; border-bottom: 1px solid #E2DED7; background: none; font-family: inherit; font-size: 16px; font-weight: 400; letter-spacing: -0.01em; color: #2A2723; text-align: left; cursor: pointer;"><span>아이 방</span><svg class="rq-arw" aria-hidden="true" width="18" height="18" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M4 10h12M11 5l5 5-5 5"></path></svg></button>
+<button type="button" class="rq-opt" style="display: flex; align-items: center; justify-content: space-between; height: 64px; padding: 0; border: none; border-bottom: 1px solid var(--rd-site-color-line-soft); background: none; font-family: inherit; font-size: 16px; font-weight: 400; letter-spacing: -0.01em; color: var(--rd-site-color-text); text-align: left; cursor: pointer;"><span>아이 방</span><svg class="rq-arw" aria-hidden="true" width="18" height="18" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M4 10h12M11 5l5 5-5 5"></path></svg></button>
 
-<button type="button" class="rq-opt" style="display: flex; align-items: center; justify-content: space-between; height: 64px; padding: 0; border: none; border-bottom: 1px solid #E2DED7; background: none; font-family: inherit; font-size: 16px; font-weight: 400; letter-spacing: -0.01em; color: #2A2723; text-align: left; cursor: pointer;"><span>작업실 · 가게</span><svg class="rq-arw" aria-hidden="true" width="18" height="18" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M4 10h12M11 5l5 5-5 5"></path></svg></button>
+<button type="button" class="rq-opt" style="display: flex; align-items: center; justify-content: space-between; height: 64px; padding: 0; border: none; border-bottom: 1px solid var(--rd-site-color-line-soft); background: none; font-family: inherit; font-size: 16px; font-weight: 400; letter-spacing: -0.01em; color: var(--rd-site-color-text); text-align: left; cursor: pointer;"><span>작업실 · 가게</span><svg class="rq-arw" aria-hidden="true" width="18" height="18" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M4 10h12M11 5l5 5-5 5"></path></svg></button>
 
 </div>
 </div>
@@ -115,7 +116,7 @@ a{color:#2A2723}a:hover{color:#000000}
 
 </div>
 <template id="dc-tpl">
-<div data-hf="{{ hf }}" style="width: 100%; height: 100vh; min-height: 760px; box-sizing: border-box; background: #F7F5F1; font-family: 'Noto Sans KR', sans-serif; font-weight: 400; color: #2A2723; display: flex; flex-direction: column;">
+<div data-hf="{{ hf }}" style="width: 100%; height: 100vh; min-height: 760px; box-sizing: border-box; background: var(--rd-site-color-bg); font-family: 'Noto Sans KR', sans-serif; font-weight: 400; color: var(--rd-site-color-text); display: flex; flex-direction: column;">
 
 <header style="flex: none;">
 <div style="max-width: 1296px; margin: 0 auto; padding: 0 48px; box-sizing: border-box; height: 72px; display: flex; align-items: center; justify-content: space-between;">
@@ -123,9 +124,9 @@ a{color:#2A2723}a:hover{color:#000000}
 <sc-if value="{{ topNav }}" hint-placeholder-val="{{ true }}">
 <a href="index.html" aria-label="리담 홈" onClick="{{ goHome }}" style="display: block; padding: 10px 0;"><svg role="img" aria-label="Re.dam" viewBox="39 -784 3283 805" style="display: block; width: 96px; height: auto;"><path fill="#2B221A" d="M39 -708Q62 -707 98.5 -706Q135 -705 171 -705Q219 -705 262.5 -706Q306 -707 324 -707Q409 -707 465.5 -685Q522 -663 549.5 -623.5Q577 -584 577 -533Q577 -502 564.5 -467.5Q552 -433 521 -403.5Q490 -374 437 -355Q409 -345 373 -340Q377 -340 381 -339Q456 -329 490.5 -299Q525 -269 538 -207L563 -105Q572 -62 582.5 -44Q593 -26 614 -26Q630 -27 640.5 -35.5Q651 -44 663 -59L677 -48Q654 -17 629 -1.5Q604 14 562 14Q519 14 488.5 -8.5Q458 -31 445 -94L425 -194Q416 -237 405 -268.5Q394 -300 374.5 -318Q355 -336 318 -336H233V-106Q233 -70 239 -52Q245 -34 262 -28Q279 -22 312 -20V0Q288 -2 251.5 -2.5Q215 -3 177 -3Q135 -3 98.5 -2.5Q62 -2 39 0V-20Q73 -22 90 -28Q107 -34 112.5 -52Q118 -70 118 -106V-602Q118 -639 112.5 -656.5Q107 -674 89.5 -680.5Q72 -687 39 -688ZM233 -356H292Q359 -356 394.5 -378.5Q430 -401 442.5 -438.5Q455 -476 455 -522Q455 -601 421 -644.5Q387 -688 303 -688Q260 -688 246.5 -671Q233 -654 233 -602ZM923 -530Q1011 -530 1061 -477Q1111 -424 1111 -309H809Q808 -297 807 -284Q806 -267 806 -251Q806 -182 827 -135Q848 -88 882 -64.5Q916 -41 951 -41Q978 -41 1003.5 -49.5Q1029 -58 1052 -78.5Q1075 -99 1093 -135L1113 -127Q1101 -93 1076 -60Q1051 -27 1012 -6.5Q973 14 921 14Q851 14 799 -17.5Q747 -49 719 -108Q691 -167 691 -248Q691 -337 720 -400Q749 -463 801.5 -496.5Q854 -530 923 -530ZM807 -328H1005Q1006 -377 997 -418.5Q988 -460 969 -485Q950 -510 919 -510Q876 -510 845 -465Q814 -421 807 -328ZM1876 -784V-109Q1876 -64 1891.5 -42.5Q1907 -21 1948 -21V0Q1917 -3 1886 -3Q1852 -3 1822.5 0Q1793 3 1768 11V-79Q1755 -45 1732 -23Q1694 14 1630 14Q1569 14 1522.5 -15.5Q1476 -45 1451 -105.5Q1426 -166 1426 -258Q1426 -349 1456.5 -409.5Q1487 -470 1538 -500Q1589 -530 1651 -530Q1695 -530 1732 -511Q1754 -499 1768 -478V-664Q1768 -709 1752.5 -730.5Q1737 -752 1696 -752V-773Q1728 -770 1758 -770Q1791 -770 1821 -773.5Q1851 -777 1876 -784ZM1768 -443Q1754 -474 1730 -489Q1703 -505 1669 -505Q1612 -505 1576 -444.5Q1540 -384 1541 -258Q1541 -175 1555 -122.5Q1569 -70 1596.5 -45Q1624 -20 1663 -20Q1702 -20 1734 -53Q1759 -80 1768 -127ZM2121 7Q2079 7 2049 -9Q2019 -25 2004 -53Q1989 -81 1989 -117Q1989 -161 2009 -188.5Q2029 -216 2060.5 -233Q2092 -250 2127.5 -261.5Q2163 -273 2194.5 -283.5Q2226 -294 2246.5 -308Q2267 -322 2267 -345V-413Q2267 -449 2255.5 -470.5Q2244 -492 2224.5 -501Q2205 -510 2178 -510Q2155 -510 2129 -503.5Q2103 -497 2088 -478Q2110 -472 2124.5 -454.5Q2139 -437 2139 -411Q2139 -383 2120.5 -367Q2102 -351 2074 -351Q2043 -351 2028 -370.5Q2013 -390 2013 -416Q2013 -443 2026.5 -460Q2040 -477 2062 -492Q2086 -508 2123.5 -519Q2161 -530 2207 -530Q2250 -530 2281.5 -520.5Q2313 -511 2334 -490Q2359 -467 2367 -432.5Q2375 -398 2375 -349V-73Q2375 -48 2381.5 -37.5Q2388 -27 2403 -27Q2413 -27 2422.5 -32Q2432 -37 2445 -47L2455 -30Q2434 -13 2412.5 -3Q2391 7 2358 7Q2326 7 2306 -3Q2286 -13 2276.5 -32Q2267 -51 2267 -79Q2241 -37 2205 -15Q2169 7 2121 7ZM2169 -41Q2197 -41 2221.5 -57Q2246 -73 2267 -105V-304Q2256 -288 2235 -276.5Q2214 -265 2190 -253Q2166 -241 2144.5 -225.5Q2123 -210 2109 -186Q2095 -162 2095 -125Q2095 -86 2115 -63.5Q2135 -41 2169 -41ZM2811 -530Q2849 -530 2875 -519.5Q2901 -509 2917 -491Q2935 -472 2942 -441Q2944 -430 2946 -418Q2973 -482 3018 -506Q3063 -530 3112 -530Q3150 -530 3176 -519.5Q3202 -509 3218 -491Q3236 -472 3243 -440.5Q3250 -409 3250 -361V-93Q3250 -51 3266.5 -36Q3283 -21 3322 -21V0Q3305 -1 3269 -2.5Q3233 -4 3198 -4Q3164 -4 3131.5 -2.5Q3099 -1 3082 0V-21Q3115 -21 3128.5 -36Q3142 -51 3142 -93V-389Q3142 -418 3138 -441.5Q3134 -465 3119 -479.5Q3104 -494 3072 -494Q3037 -494 3009.5 -472.5Q2982 -451 2965.5 -414.5Q2949 -378 2949 -333V-93Q2949 -51 2965 -36Q2981 -21 3019 -21V0Q3002 -1 2966.5 -2.5Q2931 -4 2897 -4Q2863 -4 2830.5 -2.5Q2798 -1 2781 0V-21Q2814 -21 2827.5 -36Q2841 -51 2841 -93V-389Q2841 -418 2837 -441.5Q2833 -465 2818.5 -479.5Q2804 -494 2773 -494Q2738 -494 2710.5 -473Q2683 -452 2666.5 -415.5Q2650 -379 2650 -334V-93Q2650 -51 2664 -36Q2678 -21 2710 -21V0Q2694 -1 2662 -2.5Q2630 -4 2596 -4Q2562 -4 2525 -2.5Q2488 -1 2470 0V-21Q2509 -21 2525.5 -36Q2542 -51 2542 -93V-407Q2542 -452 2527 -473.5Q2512 -495 2470 -495V-516Q2502 -513 2532 -513Q2566 -513 2595.5 -516.5Q2625 -520 2650 -527V-418Q2676 -478 2719.5 -504Q2763 -530 2811 -530Z"></path><path fill="#8A4A22" d="M1341.55 -54.50C1341.55 -13.33 1308.17 20.05 1267.00 20.05C1225.83 20.05 1192.45 -13.33 1192.45 -54.50C1192.45 -95.67 1225.83 -129.05 1267.00 -129.05C1308.17 -129.05 1341.55 -95.67 1341.55 -54.50Z"></path></svg></a>
 <nav aria-label="쪽 이동" style="display: flex; align-items: center; gap: 28px;">
-<a href="index.html" aria-label="홈으로" onClick="{{ goHome }}" style="font-size: 14px; text-decoration: none; padding: 14px 0; color: #6B655D;">홈</a>
-<a href="story.html" style="font-size: 14px; text-decoration: none; padding: 14px 0; color: #6B655D;">리담 이야기</a>
-<a href="https://pf.kakao.com/_xkxgxhNX/chat" target="_blank" rel="noopener" style="font-size: 14px; font-weight: 500; padding: 14px 0; color: #2A2723; text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 0.42em;">상담 신청</a>
+<a href="index.html" aria-label="홈으로" onClick="{{ goHome }}" style="font-size: var(--rd-site-type-small); text-decoration: none; padding: 14px 0; color: var(--rd-site-color-text-muted);">홈</a>
+<a href="story.html" style="font-size: var(--rd-site-type-small); text-decoration: none; padding: 14px 0; color: var(--rd-site-color-text-muted);">리담 이야기</a>
+<a href="https://pf.kakao.com/_xkxgxhNX/chat" target="_blank" rel="noopener" style="font-size: var(--rd-site-type-small); font-weight: 500; padding: 14px 0; color: var(--rd-site-color-text); text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 0.42em;">상담 신청</a>
 </nav>
 </sc-if>
 <sc-if value="{{ midQ }}" hint-placeholder-val="{{ false }}">
@@ -165,9 +166,9 @@ a{color:#2A2723}a:hover{color:#000000}
 <sc-if value="{{ asking }}" hint-placeholder-val="{{ true }}">
 <div style="padding-top: 64px; display: flex; flex-direction: column; gap: 40px; animation: {{ q.anim }} 0.3s ease both;">
 <h1 class="rt-h" style="margin: 0; font-family: 'Noto Serif KR', serif; font-size: 30px; line-height: 1.45; font-weight: 400; letter-spacing: -0.02em; white-space: pre-line;">{{ q.title }}</h1>
-<div style="display: flex; flex-direction: column; border-top: 1px solid #E2DED7;">
+<div style="display: flex; flex-direction: column; border-top: 1px solid var(--rd-site-color-line-soft);">
 <sc-for list="{{ q.options }}" as="o" hint-placeholder-count="4">
-<button type="button" class="rq-opt" onClick="{{ o.pick }}" style="display: flex; align-items: center; justify-content: space-between; height: 64px; padding: 0; border: none; border-bottom: 1px solid #E2DED7; background: none; font-family: inherit; font-size: 16px; font-weight: 400; letter-spacing: -0.01em; color: #2A2723; text-align: left; cursor: pointer;"><span>{{ o.label }}</span><svg class="rq-arw" aria-hidden="true" width="18" height="18" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M4 10h12M11 5l5 5-5 5"></path></svg></button>
+<button type="button" class="rq-opt" onClick="{{ o.pick }}" style="display: flex; align-items: center; justify-content: space-between; height: 64px; padding: 0; border: none; border-bottom: 1px solid var(--rd-site-color-line-soft); background: none; font-family: inherit; font-size: 16px; font-weight: 400; letter-spacing: -0.01em; color: var(--rd-site-color-text); text-align: left; cursor: pointer;"><span>{{ o.label }}</span><svg class="rq-arw" aria-hidden="true" width="18" height="18" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M4 10h12M11 5l5 5-5 5"></path></svg></button>
 </sc-for>
 </div>
 </div>
@@ -179,7 +180,7 @@ a{color:#2A2723}a:hover{color:#000000}
 <div style="display: flex; flex-direction: column; gap: 22px;">
 <sc-for list="{{ rows }}" as="r" hint-placeholder-count="3">
 <div role="radiogroup" aria-label="{{ r.label }}" style="display: flex; flex-direction: column; gap: 10px;">
-<p style="margin: 0; font-size: 15px; line-height: 1.5; letter-spacing: -0.01em;"><span style="font-weight: 500;">{{ r.label }}</span><span style="color: #6B655D;">{{ r.pickedName }}</span></p>
+<p style="margin: 0; font-size: var(--rd-site-type-body); line-height: 1.5; letter-spacing: -0.01em;"><span style="font-weight: 500;">{{ r.label }}</span><span style="color: var(--rd-site-color-text-muted);">{{ r.pickedName }}</span></p>
 <div style="display: flex; gap: 10px;">
 <sc-for list="{{ r.opts }}" as="o" hint-placeholder-count="6">
 <button type="button" class="rq-sw" role="radio" aria-checked="{{ o.on }}" aria-label="{{ o.name }}" onClick="{{ o.pick }}" style="width: 52px; height: 62px; padding: 0; border: none; background: none; cursor: pointer; display: flex; flex-direction: column; align-items: center; gap: 7px;">
@@ -191,7 +192,7 @@ a{color:#2A2723}a:hover{color:#000000}
 </div>
 </sc-for>
 </div>
-<button type="button" onClick="{{ next }}" disabled="{{ notReady }}" style="align-self: flex-start; width: 280px; height: 48px; border: none; border-radius: 4px; background: {{ nextBg }}; color: #FFFFFF; font-family: inherit; font-size: 15px; cursor: pointer;">다음</button>
+<button type="button" onClick="{{ next }}" disabled="{{ notReady }}" style="align-self: flex-start; width: 280px; height: 48px; border: none; border-radius: 4px; background: {{ nextBg }}; color: #FFFFFF; font-family: inherit; font-size: var(--rd-site-type-body); cursor: pointer;">다음</button>
 </div>
 </sc-if>
 
@@ -208,42 +209,42 @@ a{color:#2A2723}a:hover{color:#000000}
 </div>
 <p style="margin: 24px 0 0; max-width: 400px; font-size: 16px; line-height: 1.7; letter-spacing: -0.01em;">{{ line }}</p>
 <p style="margin: 8px 0 0; max-width: 400px; font-size: 16px; line-height: 1.7; letter-spacing: -0.01em;">{{ line2 }}</p>
-<p style="margin: 16px 0 0; font-size: 14px; line-height: 1.6; color: #6B655D;">화면의 색은 실제와 다릅니다. 방문하면 공간의 색과 창으로 드는 빛을 재고, 그에 맞는 원단 서너 가지를 추려 권합니다.</p>
-<a href="cases.html" style="align-self: flex-start; display: inline-flex; align-items: center; gap: 10px; margin-top: 12px; min-height: 44px; font-size: 17px; color: inherit; text-decoration: none;">
+<p style="margin: 16px 0 0; font-size: var(--rd-site-type-small); line-height: 1.6; color: var(--rd-site-color-text-muted);">화면의 색은 실제와 다릅니다. 방문하면 공간의 색과 창으로 드는 빛을 재고, 그에 맞는 원단 서너 가지를 추려 권합니다.</p>
+<a href="cases.html" style="align-self: flex-start; display: inline-flex; align-items: center; gap: 10px; margin-top: 12px; min-height: 44px; font-size: var(--rd-site-type-lead); color: inherit; text-decoration: none;">
 <span style="text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 0.42em;">시공 사례</span>
 <svg aria-hidden="true" width="16" height="16" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M4 10h12M11 5l5 5-5 5"></path></svg>
 </a>
 <div style="margin-top: auto; display: flex; align-items: center; gap: 8px;">
-<a href="tel:010-7523-1952" aria-label="전화로 상담" style="width: 48px; height: 48px; box-sizing: border-box; border: 1px solid #CFCAC1; border-radius: 4px; display: flex; align-items: center; justify-content: center; flex: none;">
+<a href="tel:010-7523-1952" aria-label="전화로 상담" style="width: 48px; height: 48px; box-sizing: border-box; border: 1px solid var(--rd-site-color-line-strong); border-radius: 4px; display: flex; align-items: center; justify-content: center; flex: none;">
 <svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 3h3.5l1.7 4.3-2.2 1.4a11 11 0 0 0 6.3 6.3l1.4-2.2 4.3 1.7V18a2 2 0 0 1-2 2A16 16 0 0 1 3 5a2 2 0 0 1 2-2z"></path></svg>
 </a>
-<button type="button" onClick="{{ toForm }}" style="flex: 1; height: 48px; border: none; border-radius: 4px; background: #2A2723; color: #F7F5F1; font-family: inherit; font-size: 15px; cursor: pointer;">상담 신청</button>
+<button type="button" onClick="{{ toForm }}" style="flex: 1; height: 48px; border: none; border-radius: 4px; background: var(--rd-site-color-button); color: var(--rd-site-color-button-text); font-family: inherit; font-size: var(--rd-site-type-body); cursor: pointer;">상담 신청</button>
 </div>
-<button type="button" onClick="{{ restart }}" style="align-self: center; height: 44px; margin-top: 8px; border: none; background: none; font-family: inherit; font-size: 13px; color: #6B655D; cursor: pointer;">다시 해 보기</button>
+<button type="button" onClick="{{ restart }}" style="align-self: center; height: 44px; margin-top: 8px; border: none; background: none; font-family: inherit; font-size: var(--rd-site-type-tiny); color: var(--rd-site-color-text-muted); cursor: pointer;">다시 해 보기</button>
 </div>
 </sc-if>
 
 <sc-if value="{{ form }}" hint-placeholder-val="{{ false }}">
 <div class="rq-in" style="flex: 1; display: flex; flex-direction: column; padding-top: 64px; min-height: 0;">
 <h1 class="rt-h" style="margin: 0; font-family: 'Noto Serif KR', serif; font-size: 30px; line-height: 1.45; font-weight: 400; letter-spacing: -0.02em; white-space: pre-line;">{{ formTitle }}</h1>
-<dl style="margin: 36px 0 0; border-top: 1px solid #E2DED7;">
+<dl style="margin: 36px 0 0; border-top: 1px solid var(--rd-site-color-line-soft);">
 <sc-for list="{{ formRows }}" as="r" hint-placeholder-count="3">
-<div style="display: flex; align-items: center; justify-content: space-between; height: 60px; border-bottom: 1px solid #E2DED7;"><dt style="font-size: 14px; color: #6B655D;">{{ r.k }}</dt><dd style="margin: 0; font-size: 16px; letter-spacing: -0.01em;">{{ r.v }}</dd></div>
+<div style="display: flex; align-items: center; justify-content: space-between; height: 60px; border-bottom: 1px solid var(--rd-site-color-line-soft);"><dt style="font-size: var(--rd-site-type-small); color: var(--rd-site-color-text-muted);">{{ r.k }}</dt><dd style="margin: 0; font-size: 16px; letter-spacing: -0.01em;">{{ r.v }}</dd></div>
 </sc-for>
 </dl>
-<span style="align-self: flex-end; margin-top: 12px; font-size: 14px; color: #6B655D; letter-spacing: 0.04em; font-variant-numeric: tabular-nums;">{{ code }}</span>
+<span style="align-self: flex-end; margin-top: 12px; font-size: var(--rd-site-type-small); color: var(--rd-site-color-text-muted); letter-spacing: 0.04em; font-variant-numeric: tabular-nums;">{{ code }}</span>
 <div style="margin-top: auto; display: flex; align-items: center; gap: 8px;">
 <sc-if value="{{ sending }}" hint-placeholder-val="{{ true }}">
-<a href="tel:010-7523-1952" aria-label="전화로 상담" style="width: 48px; height: 48px; box-sizing: border-box; border: 1px solid #CFCAC1; border-radius: 4px; display: flex; align-items: center; justify-content: center; flex: none;">
+<a href="tel:010-7523-1952" aria-label="전화로 상담" style="width: 48px; height: 48px; box-sizing: border-box; border: 1px solid var(--rd-site-color-line-strong); border-radius: 4px; display: flex; align-items: center; justify-content: center; flex: none;">
 <svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 3h3.5l1.7 4.3-2.2 1.4a11 11 0 0 0 6.3 6.3l1.4-2.2 4.3 1.7V18a2 2 0 0 1-2 2A16 16 0 0 1 3 5a2 2 0 0 1 2-2z"></path></svg>
 </a>
 <sc-if value="{{ phone }}" hint-placeholder-val="{{ false }}">
-<a href="{{ smsHref }}" style="flex: 1; height: 48px; display: flex; align-items: center; justify-content: center; border-radius: 4px; background: #2A2723; color: #F7F5F1; font-size: 15px; text-decoration: none;">문자로 보내기</a>
+<a href="{{ smsHref }}" style="flex: 1; height: 48px; display: flex; align-items: center; justify-content: center; border-radius: 4px; background: var(--rd-site-color-button); color: var(--rd-site-color-button-text); font-size: var(--rd-site-type-body); text-decoration: none;">문자로 보내기</a>
 </sc-if>
-<button type="button" onClick="{{ kakao }}" style="flex: 1; height: 48px; box-sizing: border-box; {{ kakaoStyle }} border-radius: 4px; font-family: inherit; font-size: 15px; cursor: pointer;">카톡으로 보내기</button>
+<button type="button" onClick="{{ kakao }}" style="flex: 1; height: 48px; box-sizing: border-box; {{ kakaoStyle }} border-radius: 4px; font-family: inherit; font-size: var(--rd-site-type-body); cursor: pointer;">카톡으로 보내기</button>
 </sc-if>
 <sc-if value="{{ view }}" hint-placeholder-val="{{ false }}">
-<button type="button" onClick="{{ restart }}" style="flex: 1; height: 48px; box-sizing: border-box; border: 1px solid #CFCAC1; border-radius: 4px; background: none; color: #2A2723; font-family: inherit; font-size: 15px; cursor: pointer;">직접 해 보기</button>
+<button type="button" onClick="{{ restart }}" style="flex: 1; height: 48px; box-sizing: border-box; border: 1px solid var(--rd-site-color-line-strong); border-radius: 4px; background: none; color: var(--rd-site-color-text); font-family: inherit; font-size: var(--rd-site-type-body); cursor: pointer;">직접 해 보기</button>
 </sc-if>
 </div>
 </div>
@@ -252,14 +253,14 @@ a{color:#2A2723}a:hover{color:#000000}
 <sc-if value="{{ guide }}" hint-placeholder-val="{{ false }}">
 <div role="dialog" aria-modal="true" aria-label="카톡으로 상담 신청" style="position: fixed; inset: 0; z-index: 50; display: flex; align-items: center; justify-content: center; padding: 24px; box-sizing: border-box;">
 <div onClick="{{ closeGuide }}" aria-hidden="true" style="position: absolute; inset: 0; background: rgba(42, 39, 35, 0.42);"></div>
-<div class="rq-in" style="position: relative; width: 100%; max-width: 440px; max-height: 100%; overflow: auto; box-sizing: border-box; background: #F7F5F1; border-radius: 8px; padding: 32px 32px 20px; display: flex; flex-direction: column; gap: 18px;">
+<div class="rq-in" style="position: relative; width: 100%; max-width: 440px; max-height: 100%; overflow: auto; box-sizing: border-box; background: var(--rd-site-color-bg); border-radius: 8px; padding: 32px 32px 20px; display: flex; flex-direction: column; gap: 18px;">
 <div style="display: flex; flex-direction: column; gap: 6px;">
 <h2 class="rt-h" style="margin: 0; font-family: 'Noto Serif KR', serif; font-size: 21px; line-height: 1.45; font-weight: 400; letter-spacing: -0.02em;">{{ guideTitle }}</h2>
 </div>
-<pre style="margin: 0; padding: 14px 16px; background: #FFFFFF; border: 1px solid #E2DED7; border-radius: 4px; font-family: inherit; font-size: 13px; line-height: 1.6; color: #2A2723; white-space: pre-wrap; word-break: keep-all; -webkit-user-select: all; user-select: all;">{{ msg }}</pre>
-<p style="margin: 0; font-size: 15px; line-height: 1.6; letter-spacing: -0.01em;">{{ guideLine }}</p>
-<a href="https://pf.kakao.com/_xkxgxhNX/chat" target="_blank" rel="noopener" onClick="{{ openKakao }}" style="height: 48px; display: flex; align-items: center; justify-content: center; border-radius: 4px; background: #2A2723; color: #F7F5F1; font-size: 15px; text-decoration: none;">카톡 열기</a>
-<button type="button" onClick="{{ closeGuide }}" style="height: 40px; border: none; background: none; font-family: inherit; font-size: 13px; color: #6B655D; cursor: pointer;">닫기</button>
+<pre style="margin: 0; padding: 14px 16px; background: #FFFFFF; border: 1px solid var(--rd-site-color-line-soft); border-radius: 4px; font-family: inherit; font-size: var(--rd-site-type-tiny); line-height: 1.6; color: var(--rd-site-color-text); white-space: pre-wrap; word-break: keep-all; -webkit-user-select: all; user-select: all;">{{ msg }}</pre>
+<p style="margin: 0; font-size: var(--rd-site-type-body); line-height: 1.6; letter-spacing: -0.01em;">{{ guideLine }}</p>
+<a href="https://pf.kakao.com/_xkxgxhNX/chat" target="_blank" rel="noopener" onClick="{{ openKakao }}" style="height: 48px; display: flex; align-items: center; justify-content: center; border-radius: 4px; background: var(--rd-site-color-button); color: var(--rd-site-color-button-text); font-size: var(--rd-site-type-body); text-decoration: none;">카톡 열기</a>
+<button type="button" onClick="{{ closeGuide }}" style="height: 40px; border: none; background: none; font-family: inherit; font-size: var(--rd-site-type-tiny); color: var(--rd-site-color-text-muted); cursor: pointer;">닫기</button>
 </div>
 </div>
 </sc-if>
@@ -376,7 +377,7 @@ class Component extends DCLogic {
       opts: list.map(([name, hex], i) => ({
         name, hex,
         on: s[key] === i ? 'true' : 'false',
-        dot: s[key] === i ? '#8A4A22' : 'transparent',
+        dot: s[key] === i ? 'var(--rd-common-point-base)' : 'transparent',
         pick: () => { const p = {}; p[key] = i; set(p); }
       }))
     }));
@@ -398,7 +399,7 @@ class Component extends DCLogic {
       const dh = [[6, 0.9], [0, 1], [-7, 1.1]].map(([dl, c]) => this.labHex(d[0] + dl, d[1] * c, d[2] * c));
       drape = k >= 5 ? dh[dirSel] : (k < 0 ? E.drape : seekCols[k]);
       sheer = k >= 5 ? this.labHex(94, WL[1] * 0.3, Math.max(2, WL[2] * 0.4)) : E.sheer;
-      dirs = dh.map((hx, i) => ({ hex: k >= 5 ? hx : PAPER, dot: k >= 5 && i === dirSel ? '#8A4A22' : 'transparent', on: i === dirSel ? 'true' : 'false', name: dirNames[i], pick: () => set({ dir: i }) }));
+      dirs = dh.map((hx, i) => ({ hex: k >= 5 ? hx : PAPER, dot: k >= 5 && i === dirSel ? 'var(--rd-common-point-base)' : 'transparent', on: i === dirSel ? 'true' : 'false', name: dirNames[i], pick: () => set({ dir: i }) }));
     }
     const t = { wall: W || E.wall, floor: F || E.floor, furn: U || E.furn, drape, sheer };
     // 원단 결 (판 63): 창가 칸이 자리를 잡으면 옅은 기본 결(천이라는 표시) — 포근만 보송한 결
@@ -409,7 +410,7 @@ class Component extends DCLogic {
     const tex = {
       drape: [['images/e0f06c5fa1ee1083c4fad69a385c5b36.jpg', landed && !fluffy ? 0.55 : 0], ['images/1151f80ec70004b9b8a3da4c16533801.jpg', landed && fluffy ? 0.8 : 0]].map(([src, op]) => ({ src, op }))
     };
-    const bars = [0, 1, 2, 3].map((i) => ({ c: step >= i ? '#2A2723' : '#E2DED7' }));
+    const bars = [0, 1, 2, 3].map((i) => ({ c: step >= i ? 'var(--rd-site-color-text)' : 'var(--rd-site-color-line-soft)' }));
     const care = cares[s.care || 0];
     // 상담 신청 (11-13): 문자는 고른 내용이 채워진 채로 열림, 카톡은 글을 미리 넣을 수 없어 붙여 넣기 안내 화면을 거침
     // 신청 번호 (11-13): 고른 것 일곱 가지를 다섯 자리 숫자 하나로 (10000~44559). 같은 것을 고르면 같은 번호
@@ -434,7 +435,7 @@ class Component extends DCLogic {
       code,
       toForm: () => set({ step: 5, guide: false }),
       notReady: !ready,
-      nextBg: ready ? '#2A2723' : '#CFCAC1',
+      nextBg: ready ? 'var(--rd-site-color-button)' : 'var(--rd-site-color-button-off)',
       next: () => { if (ready) set({ step: 3 }); },
       // 바람별 첫 문장 (판 63): 손님이 고른 색 이름을 넣어, 계산과 맞는 말만
       line: ready ? ({
@@ -447,7 +448,7 @@ class Component extends DCLogic {
       msg,
       smsHref: 'sms:01075231952' + (ios ? '&' : '?') + 'body=' + encodeURIComponent(msg),
       phone,
-      kakaoStyle: phone ? 'border: 1px solid #CFCAC1; background: none; color: #2A2723;' : 'border: none; background: #2A2723; color: #F7F5F1;',
+      kakaoStyle: phone ? 'border: 1px solid var(--rd-site-color-line-strong); background: none; color: var(--rd-site-color-text);' : 'border: none; background: var(--rd-site-color-button); color: var(--rd-site-color-button-text);',
       guide: !!s.guide,
       guideTitle: copied ? '신청 글을 복사해 두었습니다' : '아래 글을 길게 눌러 복사해 주세요',
       guideLine: touch ? '카톡 창의 글 쓰는 칸을 꾹 눌러 붙여 넣어 주세요.' : '카톡 창의 글 쓰는 칸에 Ctrl+V(맥은 ⌘+V)로 붙여 넣어 주세요.',

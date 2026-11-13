@@ -1,0 +1,261 @@
+/* 리담 디자인 토큰 — 손으로 고치지 말고 tokens/ 를 고친 뒤 npm run build.
+   앱·홈페이지의 tokens.css는 redam-design 저장소 dist/tokens.css를 그대로 복사한 것입니다(231번). 값을 바꾸려면 그 저장소에서.
+   화면 코드는 뜻 토큰(--rd-common-* · --rd-app-* · --rd-site-*)만 씁니다. 원재료(--rd-color-* 등)는 뜻 토큰이 가리키는 바닥 값입니다. */
+:root {
+  --rd-app-color-line-ink: rgba(43, 34, 26, 0.1411764705882353); /** 짙은 갈색 14% 선. 작은 창 그림·견본 테·조각보 칸·색 조각 테 — 옅은 짙은 선은 모두 이것(정리 B, 11-13) */
+  --rd-app-color-line-joint: rgba(43, 34, 26, 0.45098039215686275); /** 짙은 갈색 45% 마디 선. 중심 화면 공간과 공간 사이에만(정리 B에서 남김, 11-13) */
+  --rd-space-2: 2px;
+  --rd-space-4: 4px;
+  --rd-space-6: 6px;
+  --rd-space-8: 8px;
+  --rd-space-10: 10px;
+  --rd-space-12: 12px;
+  --rd-space-14: 14px;
+  --rd-space-16: 16px;
+  --rd-space-20: 20px;
+  --rd-space-24: 24px;
+  --rd-space-28: 28px;
+  --rd-space-32: 32px;
+  --rd-space-40: 40px;
+  --rd-space-48: 48px;
+  --rd-space-56: 56px;
+  --rd-space-64: 64px;
+  --rd-space-72: 72px;
+  --rd-space-88: 88px;
+  --rd-space-120: 120px;
+  --rd-space-200: 200px;
+  --rd-space-360: 360px;
+  --rd-radius-none: 0px; /** 앱 손님 화면은 네모 모서리(둥근 상자 없음) */
+  --rd-radius-site: 4px; /** 사이트 사진·카드 모서리 */
+  --rd-radius-round: 50%; /** 점과 원(원 로고 = 커진 점) */
+  --rd-border-hairline: 0.5px; /** 초세선. 색 조각 테두리에만 */
+  --rd-border-line: 1px; /** 선과 누르는 것의 밑줄 */
+  --rd-border-progress: 2px; /** 앱 진행 선 */
+  --rd-shadow-night-front: -6px -6px 18px 0px #2B221A14; /** 최종 제안 견본 겹침(앞 장)의 그늘 */
+  --rd-shadow-site-card: 0px 1px 2px 0px #2A27230F, 0px 16px 40px 0px #2A272314; /** 사이트 첫 화면 카드 그늘(가장 많이 보인 모양) */
+  --rd-duration-quick: 0.15s; /** 누를 때 색·밑줄이 바뀌는 시간(0.12·0.16을 여기로, 정리 J) */
+  --rd-duration-pick: 0.25s; /** 고르면 점이 붙고 이만큼 뒤 다음 화면(11-02, 137번). 점이 나타나는 시간도 이것(0.2·0.3을 여기로, 정리 J) */
+  --rd-duration-page: 0.45s; /** 앱 화면 넘어가는 시간 */
+  --rd-duration-fill: 0.7s; /** 조각보 칸이 채워지는 시간 */
+  --rd-duration-site-reveal: 0.8s; /** 사이트 글·사진이 떠오르는 시간 */
+  --rd-duration-strip: 0.85s; /** 원단 띠가 건너가며 어두워지는 시간(187번) */
+  --rd-duration-site-photo: 1s; /** 사이트 사진이 서서히 나타나는 시간 */
+  --rd-duration-logo-intro: 3.3s; /** 사이트 첫 화면 로고 모션 */
+  --rd-easing-page: cubic-bezier(0.2, 0.9, 0.3, 1); /** 앱 화면 전환·띠 이동 곡선 */
+  --rd-easing-site: cubic-bezier(0.22, 0.61, 0.36, 1); /** 사이트 떠오름 곡선 */
+  --rd-font-family-serif: 'Noto Serif KR', Georgia, serif; /** 명조. 앱·사이트·종이 공통 제목과 이름 */
+  --rd-font-family-sans-app: Pretendard, -apple-system, BlinkMacSystemFont, system-ui, sans-serif; /** 앱 고딕(Pretendard). 1단에서는 사이트와 다른 그대로 둠. 주의: 앱이 글꼴 파일을 불러오지 않아 실제로는 기기 기본 고딕으로 보임(후보 K) */
+  --rd-font-family-sans-site: 'Noto Sans KR', sans-serif; /** 사이트·블로그 카드 고딕(Noto Sans KR) */
+  --rd-font-family-logo: 'Playfair Display', Georgia, serif; /** 글씨 로고 'Re.dam' 글꼴. 로고 파일은 글자를 선으로 바꿔 둬서 글꼴 없이도 같음 */
+  --rd-font-weight-regular: 400; /** 보통 */
+  --rd-font-weight-medium: 500; /** 조금 굵게. 로고(Playfair 500), 블로그 카드 명조 제목 */
+  --rd-font-weight-semibold: 600; /** 더 굵게. 앱 시작하기 같은 문 글자, 사이트 로고 글자 */
+  --rd-font-size-12: 12px;
+  --rd-font-size-13: 13px;
+  --rd-font-size-14: 14px;
+  --rd-font-size-15: 15px;
+  --rd-font-size-16: 16px;
+  --rd-font-size-17: 17px;
+  --rd-font-size-18: 18px;
+  --rd-font-size-19: 19px;
+  --rd-font-size-20: 20px;
+  --rd-font-size-22: 22px;
+  --rd-font-size-24: 24px;
+  --rd-font-size-26: 26px;
+  --rd-font-size-28: 28px;
+  --rd-font-size-30: 30px;
+  --rd-font-size-32: 32px;
+  --rd-font-size-34: 34px;
+  --rd-font-size-36: 36px;
+  --rd-font-size-38: 38px;
+  --rd-font-size-40: 40px;
+  --rd-font-size-44: 44px;
+  --rd-font-size-48: 48px;
+  --rd-font-size-56: 56px;
+  --rd-font-size-72: 72px;
+  --rd-font-size-84: 84px;
+  --rd-font-size-96: 96px;
+  --rd-font-line-height-tight: 1.15; /** 큰 이름·큰 숫자(1.1·1.2를 여기로, 정리 I) */
+  --rd-font-line-height-title: 1.35; /** 앱 제목(1.25~1.4를 여기로, 정리 I) */
+  --rd-font-line-height-body: 1.5; /** 앱 기본 줄 간격(1.45~1.6을 여기로, 정리 I) */
+  --rd-font-line-height-loose: 1.8; /** 최종 제안 인용 · 긴 글(1.65~2.14를 여기로, 정리 I) */
+  --rd-font-line-height-site-body: 1.72; /** 사이트 본문 단락 */
+  --rd-font-tracking-hero: -0.035em; /** 72px 색 이름 */
+  --rd-font-tracking-tight: -0.03em; /** 44px 원단 이름 · 사이트 큰 제목 */
+  --rd-font-tracking-snug: -0.02em; /** 앱 문 글자 · 사이트 제목 */
+  --rd-font-tracking-logo: -0.015em; /** 글씨 로고 자간 −1.5% */
+  --rd-font-tracking-body: -0.01em; /** 사이트 본문 */
+  --rd-font-tracking-wide: 0.06em; /** 최종 제안 '이 집의 밤' 작은 머리글 */
+  --rd-font-tracking-label: 0.2em; /** 사이트 작은 영문 머리글 */
+  --rd-color-earth-300: #d19a72; /** 밝힌 흙빛. 브랜드 어둠(#2B221A) 위의 점 */
+  --rd-color-earth-500: #8a4a22; /** 흙빛. 로고 점과 원, 고른 것 점 */
+  --rd-color-dark-brand: #2b221a; /** 짙은 갈색 · 브랜드 어둠. 로고 글씨, 앱 본문, 정해진 것의 어두운 바탕, 명함 뒤 */
+  --rd-color-dark-deep: #231c16; /** 가장 짙은 갈색. 견적서 그림 글자. 앱 뜻 토큰은 232번부터 안 가리킴(정리 C) */
+  --rd-color-dark-ink: #2a2723; /** 먹색. 사이트·블로그 카드 본문 글자와 사이트의 짙은 버튼 면 */
+  --rd-color-dark-shade: #1e1a16; /** 블로그 표지형 카드 아래쪽 그늘 */
+  --rd-color-dark-line: #44392f; /** 어두운 바탕 위의 선(사이트 맨 아래 띠) */
+  --rd-color-dark-line-soft: #5a4d41; /** 어두운 바탕 위의 옅은 선(사이트 폰 전화 버튼 테) */
+  --rd-color-cream-50: #f7f2ea; /** 사이트 '리담 이야기' 어두운 띠의 제목 글자, 카톡 채널 프로필 글자 */
+  --rd-color-cream-100: #efe6da; /** 어두운 바탕 위 글자 · 어두운 바탕 로고 글씨 · 원단 기운 어두운 띠 위의 점 */
+  --rd-color-cream-profile: #f7f3ee; /** 인스타·카톡 프로필 그림(profile-1080)의 'R.' 종이색 */
+  --rd-color-paper-50: #fffdf9; /** 가장 밝은 종이. 견적서 그림 종이(ticket.js). 앱 화면 뜻 토큰은 232번부터 안 가리킴(정리 A) */
+  --rd-color-paper-100: #fbf9f5; /** 앱 바탕 종이 */
+  --rd-color-paper-200: #f4efe7; /** 살짝 다른 종이색 면. 선 대신 칸을 나눔(88번) */
+  --rd-color-paper-300: #e6dfd5; /** 옛 최종 제안 도록의 옅은 선. 앱 뜻 토큰은 232번부터 안 가리킴(정리 B) */
+  --rd-color-paper-350: #e5dcd0; /** 앱 선 · 진행 막대 바탕 */
+  --rd-color-paper-400: #ddd2c2; /** 린넨. 상담 중 사진 칸 화면 아래 120px 띠(138번) */
+  --rd-color-paper-500: #d5cbbd; /** 옛 최종 제안 공간 구획의 선 · 견적서 그림 선. 앱 뜻 토큰은 232번부터 안 가리킴(정리 B) */
+  --rd-color-stone-50: #fefdf9; /** 사이트 첫 화면 카드 면 */
+  --rd-color-stone-100: #f7f5f1; /** 사이트 바탕 · 블로그 카드 바탕 · 명함 앞 */
+  --rd-color-stone-150: #ece7e0; /** 블로그 카드의 옅은 선 */
+  --rd-color-stone-200: #e2ded7; /** 사이트 옅은 선(칸 나눔·체험하기 보기 테) */
+  --rd-color-stone-250: #dcd8d1; /** 사이트 선(기준문서 값). 지금 화면에선 사진이 뜨기 전 자리 색으로만 보임 */
+  --rd-color-stone-300: #cfcac1; /** 사이트 선(번호 목록·넘김 화살표 테) */
+  --rd-color-taupe-400: #c4b6a3; /** 최종 제안 '이 집의 밤' 글자(어두운 바탕 위) */
+  --rd-color-taupe-600: #6f6256; /** 옛 최종 제안 도록의 뒤로 · 작은 단추 글자. 앱 뜻 토큰은 232번부터 안 가리킴(정리 D) */
+  --rd-color-taupe-650: #6f5f4f; /** 앱 옅은 글자. 안 고른 답, 설명 한 줄 */
+  --rd-color-taupe-700: #5a4a3c; /** 린넨 띠 위 옅은 글자(린넨 위 대비 때문에 더 짙음) */
+  --rd-color-gray-300: #c9bdae; /** 사이트 어두운 띠 위 본문 단락 */
+  --rd-color-gray-350: #b8afa4; /** 사이트 사진 설명 · 블로그 어두운 카드의 작은 줄 */
+  --rd-color-gray-400: #a89a8a; /** 사이트 작은 이름표 · 번호 */
+  --rd-color-gray-500: #8e877c; /** 사이트 단계 표시에서 아직 안 간 점의 테 */
+  --rd-color-gray-520: #8a847b; /** 사이트 첫 화면 넘김 단추 글자(지금 안 고른 쪽) */
+  --rd-color-gray-600: #74695e; /** 블로그 카드 번호 · 사이트 첫 화면 한 줄 */
+  --rd-color-gray-650: #6b655d; /** 사이트 설명 글 · 블로그 카드 작은 줄 */
+  --rd-color-gray-750: #4a453f; /** 사이트 본문 단락(짙은 설명) */
+  --rd-color-glow-300: #ffc489; /** 밤 글 속 강조 낱말 */
+  --rd-color-glow-400: #e9a868; /** 밤 그림의 조명 선 */
+  --rd-color-sky-200: #cfe0ea; /** 창 그림 속 창밖 하늘 */
+  --rd-color-white: #ffffff; /** 흰색. 원단 색 위 화살표, 사진 위 흰 로고 */
+  --rd-common-point-base: var(--rd-color-earth-500); /** 밝은 바탕 위의 점: 로고 점, 원 로고, 고른 것 점, 빈 첫 화면의 점 하나 */
+  --rd-common-point-on-dark: var(--rd-color-earth-300); /** 브랜드 어둠(#2B221A) 위의 점: 어두운 바탕 로고, 시공 날짜 고른 칸 */
+  --rd-common-point-on-band: var(--rd-color-cream-100); /** 원단 기운으로 물든 어두운 띠 위의 점(흙빛은 대비 1.7:1이라 안 보임, 11-10) */
+  --rd-common-settled-ground: var(--rd-color-dark-brand); /** 정해진 것의 어둠: 시공 날짜 고른 칸, 최종 제안 '이 집의 밤'과 맺음, 명함 뒤 */
+  --rd-common-settled-text: var(--rd-color-cream-100); /** 어둠 위 글자 */
+  --rd-common-logo-ink: var(--rd-color-dark-brand); /** 글씨 로고 글자(밝은 바탕) */
+  --rd-common-logo-ink-on-dark: var(--rd-color-cream-100); /** 글씨 로고 글자(어두운 바탕) */
+  --rd-common-logo-on-photo: var(--rd-color-white); /** 사진 위 흰 로고 */
+  --rd-common-logo-profile-paper: var(--rd-color-cream-profile); /** 프로필 그림의 'R.' 종이색(흙빛 바탕 위) */
+  --rd-common-font-serif: var(--rd-font-family-serif); /** 명조 — 앱·사이트·종이 같음 */
+  --rd-common-font-logo: var(--rd-font-family-logo); /** 글씨 로고 Playfair Display 500, 자간 −1.5% */
+  --rd-common-logo-type-weight: var(--rd-font-weight-medium); /** 로고 굵기 500 */
+  --rd-common-logo-type-tracking: var(--rd-font-tracking-logo); /** 로고 자간 −1.5% */
+  --rd-common-line-hairline: var(--rd-border-hairline); /** 색 조각 테두리에만 */
+  --rd-common-line-underline: var(--rd-border-line); /** 누르는 것의 밑줄 1px */
+  --rd-common-shape-dot: var(--rd-radius-round); /** 점과 원 */
+  --rd-site-color-bg: var(--rd-color-stone-100); /** 바탕 미색 — 사이트·블로그 카드·명함 앞 */
+  --rd-site-color-card: var(--rd-color-stone-50); /** 첫 화면 카드 면 */
+  --rd-site-color-line: var(--rd-color-stone-250); /** 선(기준문서 값). 지금은 사진 자리 색으로만 보임 */
+  --rd-site-color-line-soft: var(--rd-color-stone-200); /** 옅은 선 — 칸 나눔·체험하기 보기 테 */
+  --rd-site-color-line-strong: var(--rd-color-stone-300); /** 번호 목록·넘김 화살표 테 */
+  --rd-site-color-line-card: var(--rd-color-stone-150); /** 블로그 카드의 옅은 선 */
+  --rd-site-color-text: var(--rd-color-dark-ink); /** 글자 먹색 */
+  --rd-site-color-text-body: var(--rd-color-gray-750); /** 본문 단락(짙은 설명) */
+  --rd-site-color-text-muted: var(--rd-color-gray-650); /** 설명 글 · 카드 작은 줄 */
+  --rd-site-color-text-number: var(--rd-color-gray-600); /** 블로그 카드 번호(번호 뒤 점만 흙빛) */
+  --rd-site-color-text-quiet: var(--rd-color-gray-520); /** 넘김 단추 안 고른 쪽 */
+  --rd-site-color-text-label: var(--rd-color-gray-400); /** 작은 이름표·번호 */
+  --rd-site-color-dot-empty: var(--rd-color-gray-500); /** 단계 표시에서 아직 안 간 점의 테 */
+  --rd-site-color-action: var(--rd-color-dark-ink); /** 누르는 것: 글자 + 밑줄 1px */
+  --rd-site-color-button: var(--rd-color-dark-ink); /** 상담 신청 단추 면(밝은 바탕 위). 흙빛 면 안 씀(11-10) */
+  --rd-site-color-button-text: var(--rd-color-stone-100); /** 짙은 단추 위 글자 */
+  --rd-site-color-button-off: var(--rd-color-stone-300); /** 아직 못 누르는 단추 면(체험하기 '다음', 고르기 전). 홈페이지 토큰 끼우기(11-14)에서 이름 붙임 */
+  --rd-site-color-photo-wait: var(--rd-color-stone-250); /** 사진이 뜨기 전 자리 색(사진 칸 바탕). 선과 같은 값이지만 뜻이 달라 따로(11-14) */
+  --rd-site-color-photo-wait-deep: var(--rd-color-stone-300); /** 큰 사진(첫 화면·어두운 띠)이 뜨기 전 자리 색(11-14) */
+  --rd-site-color-on-dark-title: var(--rd-color-cream-50); /** '리담 이야기' 어두운 띠 제목(지금 값) */
+  --rd-site-color-on-dark-body: var(--rd-color-gray-300); /** 어두운 띠 위 본문 단락 */
+  --rd-site-color-on-dark-sub: var(--rd-color-gray-350); /** 사진 설명 · 블로그 어두운 카드 작은 줄 */
+  --rd-site-color-on-dark-line: var(--rd-color-dark-line); /** 어둠 위 선(맨 아래 띠) */
+  --rd-site-color-on-dark-line-soft: var(--rd-color-dark-line-soft); /** 어둠 위 옅은 선(폰 전화 단추 테) */
+  --rd-site-color-cover-shade: var(--rd-color-dark-shade); /** 블로그 표지형 카드 아래 그늘 */
+  --rd-site-font-sans: var(--rd-font-family-sans-site); /** 고딕 Noto Sans KR(블로그 카드는 Noto Sans CJK) */
+  --rd-site-type-display: var(--rd-font-size-56); /** 가장 큰 제목 */
+  --rd-site-type-h1: var(--rd-font-size-48); /** 큰 제목 */
+  --rd-site-type-h2: var(--rd-font-size-36); /** 구획 제목(PC) */
+  --rd-site-type-h2-m: var(--rd-font-size-28); /** 구획 제목(폰) */
+  --rd-site-type-h3: var(--rd-font-size-20); /** 작은 제목 */
+  --rd-site-type-lead: var(--rd-font-size-17); /** 본문 단락 */
+  --rd-site-type-body: var(--rd-font-size-15); /** 본문 */
+  --rd-site-type-small: var(--rd-font-size-14); /** 작게 · 단추 · 사진 설명 */
+  --rd-site-type-tiny: var(--rd-font-size-13); /** 아주 작게 */
+  --rd-site-paper-type-cover: var(--rd-font-size-96); /** 표지 큰 글 */
+  --rd-site-paper-type-title: var(--rd-font-size-84); /** 카드 제목(명조 500) */
+  --rd-site-paper-type-number: var(--rd-font-size-56); /** 번호(명조) */
+  --rd-site-paper-type-sub: var(--rd-font-size-38); /** 표지 작은 줄(고딕) */
+  --rd-site-paper-type-page: var(--rd-font-size-30); /** 쪽 번호 '1 / 5' */
+  --rd-site-line-height-body: var(--rd-font-line-height-site-body); /** 본문 단락 */
+  --rd-site-radius: var(--rd-radius-site); /** 사진·카드 모서리 */
+  --rd-site-shadow-card: var(--rd-shadow-site-card); /** 첫 화면 카드 그늘 */
+  --rd-site-motion-reveal: var(--rd-duration-site-reveal); /** 글·사진 떠오름 */
+  --rd-site-motion-photo: var(--rd-duration-site-photo); /** 사진 서서히 */
+  --rd-site-motion-press: var(--rd-duration-quick); /** 누를 때 */
+  --rd-site-motion-logo-intro: var(--rd-duration-logo-intro); /** 첫 화면 로고 모션 */
+  --rd-site-motion-ease: var(--rd-easing-site); /** 떠오름 곡선 */
+  --rd-app-color-bg: var(--rd-color-paper-100); /** 바탕 종이 */
+  --rd-app-color-sheet: var(--rd-color-paper-100); /** 최종 제안 도록 종이 · 지도 종이 · 예약 달력 칸 — 바탕과 같은 값(정리 A, 11-13). 칸은 선으로 나눔 */
+  --rd-app-color-panel: var(--rd-color-paper-200); /** 살짝 다른 종이색 면 — 표 모양 화면에서 선 대신 칸을 나눔 */
+  --rd-app-color-band: var(--rd-color-paper-400); /** 상담 중 띠(린넨). 사진 칸 화면 아래 120px */
+  --rd-app-color-line: var(--rd-color-paper-350); /** 선 · 진행 막대 바탕 */
+  --rd-app-color-line-sheet: var(--rd-color-paper-350); /** 최종 제안 도록의 옅은 선 — line과 같은 값(정리 B, 11-13) */
+  --rd-app-color-line-room: var(--rd-color-paper-350); /** 최종 제안 공간 구획의 선 — line과 같은 값(정리 B, 11-13) */
+  --rd-app-color-text: var(--rd-color-dark-brand); /** 글자 · 고른 것 */
+  --rd-app-color-text-deep: var(--rd-color-dark-brand); /** 최종 제안 도록의 제목·이름 — text와 같은 값(정리 C, 11-13) */
+  --rd-app-color-text-muted: var(--rd-color-taupe-650); /** 약한 글자 · 안 고른 것 */
+  --rd-app-color-text-muted-sheet: var(--rd-color-taupe-650); /** 최종 제안 도록의 뒤로·작은 단추 — text-muted와 같은 값(정리 D, 11-13) */
+  --rd-app-color-text-on-band: var(--rd-color-taupe-700); /** 린넨 띠 위 약한 글자 */
+  --rd-app-color-action: var(--rd-color-dark-brand); /** 누르는 것: 짙은 갈색 글자 + 밑줄 1px. 흙빛 없음 */
+  --rd-app-color-night-text: var(--rd-color-taupe-400); /** '이 집의 밤' 글자 */
+  --rd-app-color-night-glow: var(--rd-color-glow-300); /** '이 집의 밤' 글 속 불빛 낱말 */
+  --rd-app-color-night-lamp: var(--rd-color-glow-400); /** '이 집의 밤' 그림의 조명 선 */
+  --rd-app-color-window-sky: var(--rd-color-sky-200); /** 창 그림 속 하늘 */
+  --rd-app-color-on-fabric: var(--rd-color-white); /** 원단 색 위 화살표 */
+  --rd-app-font-sans: var(--rd-font-family-sans-app); /** 고딕 Pretendard */
+  --rd-app-type-question-xl: var(--rd-font-size-48); /** 질문 화면 가장 큰 글(창 크기 숫자) */
+  --rd-app-type-question-title: var(--rd-font-size-30); /** 질문 · 시작하기 */
+  --rd-app-type-question-body: var(--rd-font-size-20); /** 답 · 설명 */
+  --rd-app-type-question-base: var(--rd-font-size-16); /** 보통 */
+  --rd-app-type-question-small: var(--rd-font-size-14); /** 작게 · 뒤로 */
+  --rd-app-type-center-title: var(--rd-font-size-40); /** 공간 이름 */
+  --rd-app-type-center-sub: var(--rd-font-size-22); /** 소제목 */
+  --rd-app-type-center-body: var(--rd-font-size-17); /** 본문 */
+  --rd-app-type-center-small: var(--rd-font-size-15); /** 작게 */
+  --rd-app-type-final-section: var(--rd-font-size-40); /** 구획 제목 */
+  --rd-app-type-final-room: var(--rd-font-size-28); /** 공간 이름 */
+  --rd-app-type-final-sub: var(--rd-font-size-22); /** 소제목 · 공간 이름 줄 */
+  --rd-app-type-final-body: var(--rd-font-size-17); /** 본문 */
+  --rd-app-type-final-small: var(--rd-font-size-15); /** 작게 */
+  --rd-app-type-color-sheet-hero: var(--rd-font-size-72); /** 색 이름 하나 */
+  --rd-app-type-color-sheet-strip-name: var(--rd-font-size-44); /** 열림·고른 뒤 띠의 원단 이름 */
+  --rd-app-type-color-sheet-door: var(--rd-font-size-30); /** 문 '원단 N가지 보기 →' */
+  --rd-app-type-color-sheet-name: var(--rd-font-size-22); /** 세 색 이름(밝게·사이·진하게) */
+  --rd-app-type-color-sheet-why: var(--rd-font-size-18); /** 이유 한 줄 */
+  --rd-app-type-color-sheet-fact: var(--rd-font-size-16); /** 뒤로 · 다음 · 사실 한 줄 */
+  --rd-app-type-band-name: var(--rd-font-size-24); /** 띠 1줄 이름(명조) */
+  --rd-app-type-band-diff: var(--rd-font-size-16); /** 띠 2줄 '차이 한 줄' */
+  --rd-app-line-height-tight: var(--rd-font-line-height-tight); /** 큰 이름·큰 숫자(72px 색 이름, 원단 이름, 창 크기 숫자) */
+  --rd-app-line-height-title: var(--rd-font-line-height-title); /** 제목 · 질문 · 짧은 이름 줄 */
+  --rd-app-line-height-body: var(--rd-font-line-height-body); /** 본문 · 기본 */
+  --rd-app-line-height-long: var(--rd-font-line-height-loose); /** 긴 글 · 들은 말 · 최종 제안 인용 */
+  --rd-app-size-strip-w: var(--rd-space-360); /** 원단 고르기 왼쪽 세로 띠 폭 */
+  --rd-app-size-band-h: var(--rd-space-120); /** 상담 중 가로 띠 높이 */
+  --rd-app-size-wall-frame: var(--rd-space-88); /** 포인트 색 한 장: 양옆 잰 벽 색 폭 */
+  --rd-app-size-floor-frame: var(--rd-space-56); /** 포인트 색 한 장: 아래 잰 바닥 색 높이 */
+  --rd-app-size-hit-min: var(--rd-space-64); /** 누르는 범위 높이 최소(88번) */
+  --rd-app-size-hit-small: var(--rd-space-14); /** 작은 보조 단추의 위아래 누르는 범위 */
+  --rd-app-line-progress: var(--rd-border-progress); /** 진행 선 2px */
+  --rd-app-line-underline-offset: var(--rd-space-4); /** 누르는 것 밑줄 띄움 */
+  --rd-app-motion-pick: var(--rd-duration-pick); /** 고르면 0.25초 뒤 다음 */
+  --rd-app-motion-dot: var(--rd-duration-pick); /** 점이 서서히 나타나는 시간 — 고르기와 같은 0.25초(정리 J, 11-13) */
+  --rd-app-motion-press: var(--rd-duration-quick); /** 누를 때 바뀌는 시간 */
+  --rd-app-motion-page: var(--rd-duration-page); /** 화면 넘김 */
+  --rd-app-motion-strip: var(--rd-duration-strip); /** 띠가 건너가며 어두워짐 */
+  --rd-app-motion-fill: var(--rd-duration-fill); /** 조각보 칸 채움 */
+  --rd-app-motion-ease: var(--rd-easing-page); /** 화면·띠 곡선 */
+  --rd-app-shadow-night-front: var(--rd-shadow-night-front); /** 최종 제안 견본 겹침 그늘 */
+  --rd-site-color-dark: var(--rd-common-settled-ground); /** 어두운 띠·맨 아래 바탕 · 명함 뒤 · 블로그 어두운 카드 */
+  --rd-site-color-on-dark: var(--rd-common-settled-text); /** 어둠 위 글자 · 어둠 위 밝은 단추 면 */
+  --rd-site-font-serif: var(--rd-common-font-serif); /** 명조 Noto Serif KR(블로그 카드는 같은 글꼴 Noto Serif CJK 500) */
+  --rd-app-color-dark: var(--rd-common-settled-ground); /** 정해진 것의 어둠 */
+  --rd-app-color-on-dark: var(--rd-common-settled-text); /** 어둠 위 글자 */
+  --rd-app-font-serif: var(--rd-common-font-serif); /** 명조 Noto Serif KR */
+}
