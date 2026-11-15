@@ -29,6 +29,9 @@ a{color:var(--rd-site-color-text)}a:hover{color:#000000}
 @keyframes rq-b{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
 .rq-in{animation:rq-a .4s ease both}
 .rq-tile{transition:background-color .22s ease}
+/* 창가 장면 조각 (11-16 결정 #282): 자리 0.95초(접힘) · 색 0.7초 */
+.rq-p{position:absolute;transition:left .95s cubic-bezier(.6,0,.2,1),top .95s cubic-bezier(.6,0,.2,1),width .95s cubic-bezier(.6,0,.2,1),height .95s cubic-bezier(.6,0,.2,1),background-color var(--rd-duration-fill) ease,border-radius .95s ease,opacity .6s ease,box-shadow .7s ease}
+.rq-p img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;mix-blend-mode:soft-light;transition:opacity .6s ease;pointer-events:none}
 .rq-sw{transition:transform .2s ease}
 @media (hover:hover){.rq-sw:hover{transform:translateY(-2px)}}
 /* 누른 느낌은 견본이 살짝 들어가는 것으로 (11-13) */
@@ -128,13 +131,15 @@ a{color:var(--rd-site-color-text)}a:hover{color:#000000}
 <sc-if value="{{ colors }}" hint-placeholder-val="{{ false }}">
 <div class="rq-in" style="padding: 32px 24px 0; display: flex; flex-direction: column; gap: 24px; flex: 1; min-height: 0;">
 <h1 class="rt-h" style="margin: 0; font-family: 'Noto Serif KR', serif; font-size: var(--rd-site-type-h2-m); line-height: 1.45; font-weight: 400; letter-spacing: -0.02em;">벽·바닥·가구는<br>어떤 색에 가까우세요?</h1>
-<div aria-hidden="true" style="display: grid; grid-template-columns: repeat(6, minmax(0, 1fr)); grid-template-rows: repeat(4, 44px); gap: 3px;">
-<div class="rq-tile" style="grid-column: 1 / span 3; grid-row: 1 / span 2; background: {{ t.wall }};"></div>
-<div class="rq-tile" style="grid-column: 4 / span 1; grid-row: 1 / span 2; background: {{ t.sheer }};"></div>
-<div class="rq-tile" style="grid-column: 5 / span 2; grid-row: 1 / span 3; background: {{ t.drape }};"></div>
-<div class="rq-tile" style="grid-column: 1 / span 2; grid-row: 3 / span 2; background: {{ t.furn }};"></div>
-<div class="rq-tile" style="grid-column: 3 / span 2; grid-row: 3 / span 2; background: {{ t.floor }};"></div>
-<div class="rq-tile" style="grid-column: 5 / span 2; grid-row: 4 / span 1; background: {{ t.wall }};"></div>
+<!-- 창가 장면 (11-16 결정 #282 B '빛 하나'): 2단계는 장면, 결과에서 조각들이 6×4 조각보 칸으로 접힘. 자리·색은 아래 renderVals의 scene -->
+<div aria-hidden="true" style="position: relative; height: 185px; overflow: hidden; isolation: isolate; flex: none;">
+<sc-for list="{{ scene }}" as="p" hint-placeholder-count="14">
+<div class="rq-p" style="{{ p.st }}">
+<sc-for list="{{ p.tex }}" as="x" hint-placeholder-count="0">
+<img src="{{ x.src }}" alt="" style="opacity: {{ x.op }};">
+</sc-for>
+</div>
+</sc-for>
 </div>
 <div style="display: flex; flex-direction: column; gap: 18px;">
 <sc-for list="{{ rows }}" as="r" hint-placeholder-count="3">
@@ -157,18 +162,15 @@ a{color:var(--rd-site-color-text)}a:hover{color:#000000}
 
 <sc-if value="{{ done }}" hint-placeholder-val="{{ false }}">
 <div class="rq-in" style="flex: 1; display: flex; flex-direction: column; padding-top: 24px; min-height: 0;">
-<div aria-hidden="true" style="margin: 0 24px; display: grid; grid-template-columns: repeat(6, minmax(0, 1fr)); grid-template-rows: repeat(4, 44px); gap: 3px; flex: none;">
-<div class="rq-tile" style="grid-column: 1 / span 3; grid-row: 1 / span 2; background: {{ t.wall }};"></div>
-<div class="rq-tile" style="grid-column: 4 / span 1; grid-row: 1 / span 2; background: {{ t.sheer }}; position: relative; overflow: hidden; isolation: isolate;">
-</div>
-<div class="rq-tile" style="grid-column: 5 / span 2; grid-row: 1 / span 3; background: {{ t.drape }}; position: relative; overflow: hidden; isolation: isolate;">
-<sc-for list="{{ tex.drape }}" as="x" hint-placeholder-count="2">
-<img src="{{ x.src }}" alt="" style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; mix-blend-mode: soft-light; opacity: {{ x.op }}; transition: opacity 0.6s ease;">
+<!-- 창가 장면 (11-16 결정 #282 B '빛 하나'): 2단계는 장면, 결과에서 조각들이 6×4 조각보 칸으로 접힘. 자리·색은 아래 renderVals의 scene -->
+<div aria-hidden="true" style="margin: 0 24px; position: relative; height: 185px; overflow: hidden; isolation: isolate; flex: none;">
+<sc-for list="{{ scene }}" as="p" hint-placeholder-count="14">
+<div class="rq-p" style="{{ p.st }}">
+<sc-for list="{{ p.tex }}" as="x" hint-placeholder-count="0">
+<img src="{{ x.src }}" alt="" style="opacity: {{ x.op }};">
 </sc-for>
 </div>
-<div class="rq-tile" style="grid-column: 1 / span 2; grid-row: 3 / span 2; background: {{ t.furn }};"></div>
-<div class="rq-tile" style="grid-column: 3 / span 2; grid-row: 3 / span 2; background: {{ t.floor }};"></div>
-<div class="rq-tile" style="grid-column: 5 / span 2; grid-row: 4 / span 1; background: {{ t.wall }};"></div>
+</sc-for>
 </div>
 <div style="padding: 28px 24px 0; display: flex; flex-direction: column; gap: 12px;">
 <h1 class="rt-h" style="margin: 0; font-family: 'Noto Serif KR', serif; font-size: var(--rd-site-type-h2-m); line-height: 1.45; font-weight: 400; letter-spacing: -0.02em;">이런 쪽으로 고릅니다</h1>
@@ -197,18 +199,15 @@ a{color:var(--rd-site-color-text)}a:hover{color:#000000}
 
 <sc-if value="{{ form }}" hint-placeholder-val="{{ false }}">
 <div class="rq-in" style="flex: 1; display: flex; flex-direction: column; padding-top: 24px; min-height: 0;">
-<div aria-hidden="true" style="margin: 0 24px; display: grid; grid-template-columns: repeat(6, minmax(0, 1fr)); grid-template-rows: repeat(4, 44px); gap: 3px; flex: none;">
-<div class="rq-tile" style="grid-column: 1 / span 3; grid-row: 1 / span 2; background: {{ t.wall }};"></div>
-<div class="rq-tile" style="grid-column: 4 / span 1; grid-row: 1 / span 2; background: {{ t.sheer }}; position: relative; overflow: hidden; isolation: isolate;">
-</div>
-<div class="rq-tile" style="grid-column: 5 / span 2; grid-row: 1 / span 3; background: {{ t.drape }}; position: relative; overflow: hidden; isolation: isolate;">
-<sc-for list="{{ tex.drape }}" as="x" hint-placeholder-count="2">
-<img src="{{ x.src }}" alt="" style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; mix-blend-mode: soft-light; opacity: {{ x.op }}; transition: opacity 0.6s ease;">
+<!-- 창가 장면 (11-16 결정 #282 B '빛 하나'): 2단계는 장면, 결과에서 조각들이 6×4 조각보 칸으로 접힘. 자리·색은 아래 renderVals의 scene -->
+<div aria-hidden="true" style="margin: 0 24px; position: relative; height: 185px; overflow: hidden; isolation: isolate; flex: none;">
+<sc-for list="{{ scene }}" as="p" hint-placeholder-count="14">
+<div class="rq-p" style="{{ p.st }}">
+<sc-for list="{{ p.tex }}" as="x" hint-placeholder-count="0">
+<img src="{{ x.src }}" alt="" style="opacity: {{ x.op }};">
 </sc-for>
 </div>
-<div class="rq-tile" style="grid-column: 1 / span 2; grid-row: 3 / span 2; background: {{ t.furn }};"></div>
-<div class="rq-tile" style="grid-column: 3 / span 2; grid-row: 3 / span 2; background: {{ t.floor }};"></div>
-<div class="rq-tile" style="grid-column: 5 / span 2; grid-row: 4 / span 1; background: {{ t.wall }};"></div>
+</sc-for>
 </div>
 <div style="padding: 28px 24px 0; display: flex; flex-direction: column; gap: 20px;">
 <h1 class="rt-h" style="margin: 0; font-family: 'Noto Serif KR', serif; font-size: var(--rd-site-type-h2-m); line-height: 1.45; font-weight: 400; letter-spacing: -0.02em; white-space: pre-line;">{{ formTitle }}</h1>
@@ -313,7 +312,8 @@ class Component extends DCLogic {
     let reduce = false;
     try { reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches; } catch (e) {}
     if (reduce) { this.setState({ seek: 5 }); return; }
-    this.timers = [0, 1, 2, 3, 4, 5].map((k) => setTimeout(() => this.setState({ seek: k }), 260 + k * 190));
+    // 창가 장면 (11-16): 바람을 고르면 -1 맨 창 → 0 속지가 닫히며 커튼 색이 앉음 → 5 조각보로 접힘
+    this.timers = [setTimeout(() => this.setState({ seek: 0 }), 120), setTimeout(() => this.setState({ seek: 5 }), 1900)];
   }
   renderVals() {
     const hf = this.props.hf ?? '고딕';
@@ -371,27 +371,77 @@ class Component extends DCLogic {
     const dirSel = s.dir == null ? 1 : s.dir;
     const dirNames = ['한 톤 밝게', '가운데', '한 톤 짙게'];
     let drape = E.drape, sheer = E.sheer, dirs = [];
+    // 창가 장면 단계 (11-16): k -1 = 바람을 막 고름(맨 창) · 0~4 = 커튼 색이 앉음 · 5 = 조각보로 접힘
+    const k = s.seek == null ? 5 : s.seek;
+    const lit = step >= 4 && ready && k >= 0;
+    const fold = step >= 4 && ready && k >= 5;
     if (step >= 4 && ready) {
       const WL = this.hexLab(W), FL = this.hexLab(F), UL = this.hexLab(U);
       const d = this.drapeLab(wish.id, WL, FL, UL);
-      const fin = this.labHex(d[0], d[1], d[2]);
-      const seekCols = ['#D8CFC2', '#B8AFA4', '#9A8F84', '#C9BBA8', '#A79E92'];
-      const k = s.seek == null ? 5 : s.seek;
       // 방향 세 칸 (판 44): 누른 칸의 색이 창가 칸에 들어감
       const dh = [[6, 0.9], [0, 1], [-7, 1.1]].map(([dl, c]) => this.labHex(d[0] + dl, d[1] * c, d[2] * c));
-      drape = k >= 5 ? dh[dirSel] : (k < 0 ? E.drape : seekCols[k]);
-      sheer = k >= 5 ? this.labHex(94, WL[1] * 0.3, Math.max(2, WL[2] * 0.4)) : E.sheer;
-      dirs = dh.map((hx, i) => ({ hex: k >= 5 ? hx : PAPER, dot: k >= 5 && i === dirSel ? 'var(--rd-common-point-base)' : 'transparent', on: i === dirSel ? 'true' : 'false', name: dirNames[i], pick: () => set({ dir: i }) }));
+      drape = lit ? dh[dirSel] : E.drape;
+      sheer = lit ? this.labHex(94, WL[1] * 0.3, Math.max(2, WL[2] * 0.4)) : E.sheer;
+      dirs = dh.map((hx, i) => ({ hex: fold ? hx : PAPER, dot: fold && i === dirSel ? 'var(--rd-common-point-base)' : 'transparent', on: i === dirSel ? 'true' : 'false', name: dirNames[i], pick: () => set({ dir: i }) }));
     }
     const t = { wall: W || E.wall, floor: F || E.floor, furn: U || E.furn, drape, sheer };
-    // 원단 결 (판 63): 창가 칸이 자리를 잡으면 옅은 기본 결(천이라는 표시) — 포근만 보송한 결
+    // 원단 결 (판 63): 커튼 색이 앉으면 옅은 기본 결(천이라는 표시) — 포근만 보송한 결
     //  바람이 결을 정하는 규칙은 리담 기준에 없으므로 만들지 않음(겉지 결은 상담에서 손님이 따로 고름). 속지 결은 넣지 않음
     //  결 사진: 기본 = 데미안 샤인, 보송 = 데미안 부클 (흑백 결만 뽑음)
-    const landed = step >= 4 && ready && (s.seek == null || s.seek >= 5);
     const fluffy = wish.id === 'soft';
-    const tex = {
-      drape: [['../images/e0f06c5fa1ee1083c4fad69a385c5b36.jpg', landed && !fluffy ? 0.55 : 0], ['../images/1151f80ec70004b9b8a3da4c16533801.jpg', landed && fluffy ? 0.8 : 0]].map(([src, op]) => ({ src, op }))
-    };
+    const texOf = (on) => [['../images/e0f06c5fa1ee1083c4fad69a385c5b36.jpg', on && !fluffy ? 0.55 : 0], ['../images/1151f80ec70004b9b8a3da4c16533801.jpg', on && fluffy ? 0.8 : 0]].map(([src, op]) => ({ src, op }));
+    // 창가 장면 (11-16 결정 #282 B '빛 하나'): 방은 살짝 가라앉히고 창 하나에만 빛. 바람을 고르기 전엔 맨 창(커튼을 양옆에 걷어 둠, 속지 없음)
+    //  고르면 속지가 닫히며 커튼 색이 앉고, 결과에서 조각들이 지금 조각보 칸(6×4, 칸 나눔 그대로)으로 옮겨 가며 접힘
+    //  조각 자리는 시안(해보기_창가장면_1116_시안.html PIECES) 그대로 [왼, 위, 폭, 높이] %, 조각보 칸은 [열, 줄, 열 수, 줄 수]
+    const GAP = 3;      // 조각보 칸 사이 (px, 폰)
+    const shade = (hex, dl) => { const l = this.hexLab(hex); return this.labHex(l[0] + dl, l[1], l[2]); };
+    const TILE = { wall: [0, 0, 3, 2], sheer: [3, 0, 1, 2], drape: [4, 0, 2, 3], furn: [0, 2, 2, 2], floor: [2, 2, 2, 2], wall2: [4, 3, 2, 1] };
+    const tileBox = ([a, b, n, m]) => [`calc(${(a * 100 / 6).toFixed(3)}% + ${(a * GAP / 6).toFixed(2)}px)`, `calc(${b * 25}% + ${(b * GAP / 4).toFixed(2)}px)`, `calc(${(n * 100 / 6).toFixed(3)}% - ${((1 - n / 6) * GAP).toFixed(2)}px)`, `calc(${m * 25}% - ${((1 - m / 4) * GAP).toFixed(2)}px)`];
+    const sceneBox = (r) => r.map((v) => `calc(${v}% + 0px)`);
+    const PIECES = [
+      ['wallL', [0, 0, 58, 75], 'wall'], ['wallR', [58, 0, 42, 75], 'wall2'],
+      ['glow', [8, -14, 96, 104]],      // 창 둘레 벽에 번지는 빛
+      ['glass', [37, 11, 38, 56]],      // 창 (바깥 빛)
+      ['sill', [35, 66.4, 42, 1.4]],      // 창턱 한 줄
+      ['floor', [0, 75, 100, 25], 'floor'],
+      ['patch', [30, 75, 58, 25]],      // 바닥에 떨어진 빛
+      ['sheer', [38, 9, 36, 66], 'sheer'],
+      ['drapeL', [30, 7, 10, 69], 'drape'], ['drapeR', [72, 7, 10, 69], 'drape'],
+      ['rod', [28, 6, 56, 0.9]],
+      ['sofaBack', [-4, 63, 33, 11], 'furn'], ['sofaSeat', [-4, 70, 35, 11], 'furn'],
+      ['shade', [0, 0, 100, 100]]      // 방 가장자리 가라앉힘
+    ];
+    const BARE = { drapeL: [30, 7, 5, 69], drapeR: [77, 7, 5, 69], sheer: [38, 9, 0, 66] };      // 맨 창: 걷어 둔 커튼, 속지는 아직 안 닫힘
+    const PLEAT = 'repeating-linear-gradient(90deg, rgba(42,34,26,0.10) 0, rgba(42,34,26,0) 7px, rgba(255,255,255,0.10) 13px, rgba(42,34,26,0) 19px, rgba(42,34,26,0.10) 26px)';
+    const PLEAT_THIN = 'repeating-linear-gradient(90deg, rgba(255,255,255,0) 0, rgba(255,255,255,0.22) 14px, rgba(255,255,255,0) 22px, rgba(42,34,26,0.035) 31px, rgba(255,255,255,0) 40px)';
+    const tileCol = { wall: t.wall, wall2: t.wall, sheer: t.sheer, drape: t.drape, furn: t.furn, floor: t.floor };
+    const scene = PIECES.map(([key, r, tile]) => {
+      const p = { bg: 'transparent', img: 'none', op: 1, rad: '0', sh: 'none', clip: 'none' };
+      let box;
+      if (fold) {
+        box = tile ? tileBox(TILE[tile]) : sceneBox(r);
+        if (tile) p.bg = tileCol[tile]; else p.op = 0;
+      } else {
+        box = sceneBox(!lit && BARE[key] ? BARE[key] : r);
+        const a = lit ? 1 : 0;      // 0 = 맨 창(빛이 가장 셈), 1 = 속지 너머로 걸러짐
+        if (key === 'wallL' || key === 'wallR') p.bg = t.wall;
+        else if (key === 'floor') p.bg = t.floor;
+        else if (key === 'glow') p.img = `radial-gradient(ellipse 46% 48% at 50% 48%, rgba(255,252,243,${a ? 0.4 : 0.55}) 0%, rgba(255,252,243,0) 100%)`;
+        else if (key === 'glass') { p.bg = '#FFFDF7'; p.img = 'radial-gradient(ellipse 70% 60% at 50% 42%, #FFFFFF 0%, #FFFCF4 45%, #F3EEE4 100%)'; p.sh = `0 0 36px 14px rgba(255,251,240,${a ? 0.45 : 0.7})`; }
+        else if (key === 'sill') p.bg = shade(t.wall, 3);
+        else if (key === 'patch') { p.img = `linear-gradient(180deg, rgba(255,250,236,${a ? 0.32 : 0.5}) 0%, rgba(255,250,236,0) 100%)`; p.clip = 'polygon(16% 0, 84% 0, 100% 100%, 0 100%)'; }
+        else if (key === 'sheer') { p.bg = t.sheer; p.img = PLEAT_THIN; p.op = lit ? 0.78 : 0; }
+        else if (key === 'drapeL' || key === 'drapeR') { p.bg = t.drape; p.img = PLEAT; }
+        else if (key === 'rod') p.bg = shade(t.wall, -28);
+        else if (key === 'sofaBack') { p.bg = shade(t.furn, -4); p.rad = '6px 6px 2px 2px'; }
+        else if (key === 'sofaSeat') { p.bg = t.furn; p.rad = '3px'; }
+        else if (key === 'shade') p.img = 'radial-gradient(ellipse 75% 85% at 56% 42%, rgba(60,44,30,0) 0%, rgba(60,44,30,0) 45%, rgba(60,44,30,0.10) 75%, rgba(60,44,30,0.22) 100%)';
+      }
+      return {
+        st: `left: ${box[0]}; top: ${box[1]}; width: ${box[2]}; height: ${box[3]}; background-color: ${p.bg}; background-image: ${p.img}; opacity: ${p.op}; border-radius: ${p.rad}; box-shadow: ${p.sh}; clip-path: ${p.clip};`,
+        tex: key === 'drapeL' ? texOf(lit && !fold) : key === 'drapeR' ? texOf(lit) : []      // 접히면 두 폭이 한 칸에 겹침 → 위에 오는 오른쪽 폭에만 결
+      };
+    });
     const bars = [0, 1, 2, 3].map((i) => ({ c: step >= i ? 'var(--rd-site-color-text)' : 'var(--rd-site-color-line-soft)' }));
     const care = cares[s.care || 0];
     // 상담 신청 (11-13): 문자는 고른 내용이 채워진 채로 열림, 카톡은 글을 미리 넣을 수 없어 붙여 넣기 안내 화면을 거침
@@ -404,7 +454,7 @@ class Component extends DCLogic {
     let touch = true;
     const copied = s.copied !== false;
     return {
-      hf, bars, asking, q, rows, t, dirs, tex,
+      hf, bars, asking, q, rows, t, dirs, scene,
       colors: step === 2,
       done: step === 4,
       // 신청서 (11-13): 5단계. 링크(?r=)로 열면 view — 보내기 대신 직접 해 보기
