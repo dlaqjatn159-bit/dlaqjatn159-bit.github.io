@@ -62,6 +62,9 @@ h2{font-size:var(--rd-site-type-h3);line-height:1.45}
 .chips{display:flex;flex-wrap:wrap;gap:10px}
 .chip{width:52px;height:62px;padding:0;border:none;background:none;cursor:pointer;display:flex;flex-direction:column;align-items:center;gap:7px;transition:transform .2s}
 .chip.big{width:72px}
+/* 벽·바닥·가구 세 줄은 일곱 칸 격자 — 가구 일곱 가지가 한 줄에, 세 줄 칩 크기가 같게 (11-18) */
+.chips.g7{display:grid;grid-template-columns:repeat(7,minmax(0,1fr));gap:8px}
+.chips.g7 .chip{width:auto}
 @media(hover:hover){.chip:hover{transform:translateY(-2px)}}
 .chip .sw{display:block;width:100%;height:46px;border-radius:2px;box-shadow:inset 0 0 0 .5px rgba(42,39,35,.18)}
 .chip .dt{display:block;width:6px;height:6px;border-radius:50%}
@@ -868,7 +871,10 @@ function drapeLab(wish,W,F,U){
 const WALLS=[['웜 화이트','#F4EFE6'],['퓨어 화이트','#F5F6F7'],['크림 베이지','#ECE2D0'],['그레이지','#E1DCD3'],['스톤 그레이','#CFCDC8'],['세이지','#DBE0D7']];
 const FLOORS=[['화이트 오크','#D8C8AE'],['내추럴 오크','#C4A47C'],['월넛','#7A5A42'],['진한 마루','#5E4636'],['회색 타일','#CFCBC4'],['흰 타일','#ECEAE5']];
 // 가구는 색 이름만 (11-18 사장님: 재질은 넣지 않음)
-const FURNS=[['흰색','#EEEBE6'],['밝은 갈색','#CDB08A'],['짙은 갈색','#6E5140'],['회색','#A9A6A0'],['검정','#3B3836']];
+// 11-18 사장님: 요즘 흔한 밝은 가구 위주로 일곱 가지(아이보리 넣음 · 검정 뺌 · 짙은 색은 갈색 · 회색 하나씩)
+const FURNS=[['아이보리','#E9E1CF'],['흰색','#F1EFEA'],['베이지','#D6C7AE'],['밝은 회색','#C8C6C1'],['밝은 갈색','#C49E74'],['짙은 갈색','#6E5140'],['짙은 회색','#5F5D5A']];
+// 옛 신청 번호(10000~44559)의 가구 다섯 가지 → 지금 칸 (흰색 · 밝은 갈색 · 짙은 갈색 · 회색→밝은 회색 · 검정→짙은 회색)
+const OLD_FURN=[1,4,5,3,6];
 const WISHES=[{id:'wide',name:'넓어 보이게'},{id:'soft',name:'포근하게'},{id:'point',name:'포인트'},{id:'calm',name:'차분하게'}];
 const SPACES=[
   {id:'living',name:'거실',cares:[
@@ -913,7 +919,8 @@ function curtainColors(){
 }
 function lightsFor(c){S.time=c.time;S.ceil=c.id==='living-3';S.stand=c.id==='bed-2';}
 // 신청 번호: 고른 것을 다섯 자리 숫자 하나로 (지금 사이트와 같은 체계, 방향 자리는 늘 가운데=1)
-function code(){return String(10000+((((((S.space||0)*4+(S.care||0))*6+(S.wall||0))*6+(S.floor||0))*5+(S.furn||0))*4+(S.wish||0))*3+1);}
+// 11-18부터 가구가 일곱이라 50000부터 셈(50000~98383) — 옛 번호(10000~44559)와 겹치지 않게
+function code(){return String(50000+((((((S.space||0)*4+(S.care||0))*6+(S.wall||0))*6+(S.floor||0))*7+(S.furn||0))*4+(S.wish||0))*3+1);}
 
 // ───── 그림 ─────
 function syncWindow(key){
@@ -1043,7 +1050,7 @@ function drawHead(){
 }
 function chipRow(label,list,key,big){
   const picked=S[key]!=null?' · '+list[S[key]][0]:'';
-  return `<div class="row" role="radiogroup" aria-label="${label}"><p><b>${label}</b><span>${picked}</span></p><div class="chips">${
+  return `<div class="row" role="radiogroup" aria-label="${label}"><p><b>${label}</b><span>${picked}</span></p><div class="chips${big?'':' g7'}">${
     list.map(([n,h],i)=>`<button type="button" class="chip${big?' big':''}" role="radio" aria-checked="${S[key]===i}" aria-label="${n}" data-k="${key}" data-i="${i}"><span class="sw" style="background:${h}"></span><span class="dt"></span></button>`).join('')}</div></div>`;
 }
 function resultLine(){
@@ -1150,12 +1157,12 @@ document.addEventListener('click',e=>{
     else if(k==='stand')S.stand=!S.stand;
     render();}
 });
-// 신청 번호 링크(?r=10000~44559): 고른 것을 되살려 신청서로 — 커튼은 닫힌 모습
+// 신청 번호 링크(?r=50000~98383, 옛 번호 10000~44559도): 고른 것을 되살려 신청서로 — 커튼은 닫힌 모습
 (function(){try{
   const m=/[?&]r=(\d{5})(?:&|$)/.exec(location.search);if(!m)return;
-  let n=parseInt(m[1],10)-10000;if(!(n>=0&&n<34560))return;
+  const r=parseInt(m[1],10),old=r<50000;let n=r-(old?10000:50000);if(!(n>=0&&n<(old?34560:48384)))return;
   const take=k=>{const v=n%k;n=(n-v)/k;return v;};
-  take(3);const wish=take(4),furn=take(5),floor=take(6),wall=take(6),c=take(4),space=n;
+  take(3);const wish=take(4),furn=old?OLD_FURN[take(5)]:take(7),floor=take(6),wall=take(6),c=take(4),space=n;
   Object.assign(S,{step:5,view:true,space,care:c,wall,floor,furn,wish,closed:true});lightsFor(care());S.stand=false;
 }catch(e){}})();
 render();
