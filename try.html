@@ -854,10 +854,14 @@ function shade(h,dl){const l=hexLab(h);return labHex(l[0]+dl,l[1],l[2]);}
 function mix(a,b,t){const p=hexLab(a),q=hexLab(b);return labHex(p[0]+(q[0]-p[0])*t,p[1]+(q[1]-p[1])*t,p[2]+(q[2]-p[2])*t);}
 function drapeLab(wish,W,F,U){
   if(wish==='wide')return[W[0]-4,W[1]*0.8,W[2]*0.8+1];
-  if(wish==='soft')return[W[0]-10,(W[1]+F[1])*0.3+0.5,Math.max(W[2],5)+3];
+  // 포근하게: 벽에서 바닥 쪽으로 45% 다가간 색, 벽보다 14 이상 짙고 늘 따뜻하게 — 넓어 보이게와 또렷이 갈림 (11-18 사장님)
+  if(wish==='soft'){const t=0.45;return[Math.min(W[0]+(F[0]-W[0])*t,W[0]-14),Math.max(W[1]+(F[1]-W[1])*t,2.5),Math.max(W[2]+(F[2]-W[2])*t,10)];}
   if(wish==='calm')return[W[0]-21,W[1]*0.3,W[2]*0.3-1];
-  const c=[[30,26,9],[46,-4,-15],[47,-6,17],[36,1,-2]];let best=c[0],sc=-1;
-  c.forEach(x=>{const s=Math.min(dE(x,W),dE(x,F),dE(x,U));if(s>sc){sc=s;best=x;}});return best;
+  // 포인트: 리담 포인트 여덟 계열(견적 앱 POINT_FAMILY 가운데 색) 중 벽·바닥·가구 어디와도 가장 먼 것.
+  // 밝기 차는 0.8배로만 셈 — 짙은 색만 이기지 않고 집마다 계열이 갈리게 (11-18 사장님: 포인트를 늘림)
+  const c=[[67,32,90],[52,27,45],[35,27,18],[62,16,125],[42,20,180],[33,11,270],[60,17,250],[65,16,355]].map(([L,C,h])=>[L,C*Math.cos(h*Math.PI/180),C*Math.sin(h*Math.PI/180)]);
+  const d=(p,q)=>Math.hypot((p[0]-q[0])*0.8,p[1]-q[1],p[2]-q[2]);let best=c[0],sc=-1;
+  c.forEach(x=>{const s=Math.min(d(x,W),d(x,F),d(x,U));if(s>sc){sc=s;best=x;}});return best;
 }
 
 // ───── 고를 것 ─────
@@ -1048,6 +1052,7 @@ function resultLine(){
     point:wn+' 벽, '+FLOORS[S.floor][0]+' 바닥, '+FURNS[S.furn][0]+' 가구 어디와도 겹치지 않는 색을 고릅니다.',calm:wn+' 벽보다 한 톤 낮춰, 창가를 가라앉힙니다.'})[w];
 }
 function msg(){return '안녕하세요. 리담 홈페이지에서 상담 신청해요.\nredam.kr/try?r='+code();}
+let lastPanelStep=-1;
 function drawPanel(){
   const b=$('panelBody'),st=S.step;
   document.querySelectorAll('.bars i').forEach((e,i)=>e.classList.toggle('on',st>=i));
@@ -1077,6 +1082,8 @@ function drawPanel(){
       <dl>${rows.map(([k,v])=>`<div><dt>${k}</dt><dd>${v}</dd></div>`).join('')}</dl><span class="code">${code()}</span>
       <div class="actions" style="padding-top:28px">${send}</div></div>`;
   }
+  // 같은 질문 안에서 다시 그릴 때(색 고르기 · 커튼 닫기 단추)는 떠오르는 움직임을 다시 돌리지 않음 — 누를 때마다 깜빡이던 것 (11-18)
+  const q=b.querySelector('.q');if(q&&st===lastPanelStep)q.style.animation='none';lastPanelStep=st;
 }
 function drawToggles(){
   const t=$('toggles');
