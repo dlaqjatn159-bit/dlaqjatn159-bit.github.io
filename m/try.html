@@ -16,490 +16,1142 @@
 <link rel="icon" type="image/svg+xml" href="../assets/favicon.svg">
 <link rel="apple-touch-icon" href="../assets/apple-touch-icon.png">
 <link rel="canonical" href="../try.html">
-<script>if(!window.__RD_PRERENDER){var w=window.innerWidth||screen.width;if(w>=768)location.replace('../try.html'+location.search+location.hash);}
-if('IntersectionObserver' in window&&!(window.matchMedia&&matchMedia('(prefers-reduced-motion: reduce)').matches))document.documentElement.setAttribute('data-js','');
-setTimeout(function(){document.documentElement.removeAttribute('data-js')},4000);
-try{if(sessionStorage.getItem('rd-intro')==='1')document.documentElement.setAttribute('data-seen','')}catch(e){}</script>
+<script>if(!window.__RD_PRERENDER){var w=window.innerWidth||screen.width;if(w>=768)location.replace('../try.html'+location.search+location.hash);}</script>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500&amp;family=Noto+Serif+KR:wght@400&amp;display=swap">
 <link rel="stylesheet" href="../tokens.css">
+<!--
+  내 공간으로 해 보기 — 창가 장면 판 (11-18, 결정 #309 · #310)
+  그림: 제미나이 판(커튼박스 간접등 빛 · 침실 아침 해 쪽 빛줄기 · 이모지 · 이름표 뺌)
+  흐름: 공간 → 마음 쓰이는 것(공간마다 넷) → 벽·바닥·가구 색(가구는 핵심 하나, 나머지 자동) → 커튼 색(손님이 직접, 칩은 그 집 색으로 계산한 바람별 색) → 결과 → 신청서
+  밤: 방 등 · 스탠드 따로. 신청 번호(?r=) 체계는 그대로(방향 자리는 늘 가운데)
+-->
 <style>
-body{margin:0;background:var(--rd-site-color-bg)}
-a{color:var(--rd-site-color-text)}a:hover{color:#000000}
-@keyframes rq-a{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
-@keyframes rq-b{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
-.rq-in{animation:rq-a .4s ease both}
-.rq-tile{transition:background-color .22s ease}
-/* 창가 장면 조각 (11-16 결정 #282): 자리 0.95초(접힘) · 색 0.7초 */
-.rq-p{position:absolute;transition:left .95s cubic-bezier(.6,0,.2,1),top .95s cubic-bezier(.6,0,.2,1),width .95s cubic-bezier(.6,0,.2,1),height .95s cubic-bezier(.6,0,.2,1),background-color var(--rd-duration-fill) ease,border-radius .95s ease,opacity .6s ease,box-shadow .7s ease}
-.rq-p img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;mix-blend-mode:soft-light;transition:opacity .6s ease;pointer-events:none}
-.rq-sw{transition:transform .2s ease}
-@media (hover:hover){.rq-sw:hover{transform:translateY(-2px)}}
-/* 누른 느낌은 견본이 살짝 들어가는 것으로 (11-13) */
-.rq-sw:active{transform:scale(.96)}
+*{box-sizing:border-box}
+body{margin:0;background:var(--rd-site-color-bg);color:var(--rd-site-color-text);font-family:'Noto Sans KR',sans-serif;font-size:var(--rd-site-type-body);line-height:1.6;letter-spacing:-.01em;word-break:keep-all}
+a{color:var(--rd-site-color-text)}a:hover{color:#000}
+button{-webkit-tap-highlight-color:transparent}
+.wrap{max-width:1296px;margin:0 auto;padding:0 48px}
+header .wrap{height:72px;display:flex;align-items:center;justify-content:space-between}
+.logo{display:block;padding:10px 0}.logo svg{display:block;width:96px;height:auto}
+nav{display:flex;align-items:center;gap:28px}
+nav a{font-size:var(--rd-site-type-small);text-decoration:none;padding:14px 0;color:var(--rd-site-color-text-muted)}
+nav a.cta{font-weight:500;color:var(--rd-site-color-text);text-decoration:underline;text-decoration-thickness:1px;text-underline-offset:.42em}
+.midq{display:flex;align-items:center;gap:8px}
+.iconbtn{width:44px;height:44px;margin-left:-12px;display:flex;align-items:center;justify-content:center;padding:0;border:none;background:none;color:inherit;cursor:pointer}
+main.wrap{padding-top:24px;padding-bottom:56px;display:grid;grid-template-columns:repeat(12,minmax(0,1fr));column-gap:24px;align-items:start}
+.stagecol{grid-column:1 / span 7;display:flex;flex-direction:column;gap:12px}
+.stage{position:relative;width:100%;aspect-ratio:16/11;overflow:hidden;background:#EAE8E1}
+.panel{grid-column:9 / span 4;display:flex;flex-direction:column;min-height:560px}
+.bars{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:6px}
+.bars i{display:block;height:2px;background:var(--rd-site-color-line-soft);transition:background-color .3s}
+.bars i.on{background:var(--rd-site-color-text)}
+.q{padding-top:56px;display:flex;flex-direction:column;gap:36px;animation:rq .3s ease both;flex:1}
+@keyframes rq{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
+h1,h2{margin:0;font-family:'Noto Serif KR',serif;font-weight:400;letter-spacing:-.02em;white-space:pre-line}
+h1{font-size:var(--rd-site-type-h2-m);line-height:1.45}
+h2{font-size:var(--rd-site-type-h3);line-height:1.45}
+.list{display:flex;flex-direction:column;border-top:1px solid var(--rd-site-color-line-soft)}
+.opt{display:flex;align-items:center;justify-content:space-between;height:64px;padding:0;border:none;border-bottom:1px solid var(--rd-site-color-line-soft);background:none;font:inherit;color:var(--rd-site-color-text);text-align:left;cursor:pointer}
+.opt svg{opacity:0;transform:translateX(-6px);transition:opacity .2s,transform .2s}
+@media(hover:hover){.opt:hover svg{opacity:1;transform:none}}
+.opt:focus-visible svg{opacity:1;transform:none}
+.rows{display:flex;flex-direction:column;gap:22px}
+.row p{margin:0 0 10px;line-height:1.5}
+.row p b{font-weight:500}
+.row p span{color:var(--rd-site-color-text-muted)}
+.chips{display:flex;flex-wrap:wrap;gap:10px}
+.chip{width:52px;height:62px;padding:0;border:none;background:none;cursor:pointer;display:flex;flex-direction:column;align-items:center;gap:7px;transition:transform .2s}
+.chip.big{width:72px}
+@media(hover:hover){.chip:hover{transform:translateY(-2px)}}
+.chip .sw{display:block;width:100%;height:46px;border-radius:2px;box-shadow:inset 0 0 0 .5px rgba(42,39,35,.18)}
+.chip .dt{display:block;width:6px;height:6px;border-radius:50%}
+.chip[aria-checked="true"] .dt{background:var(--rd-common-point-base)}
+.btn{height:48px;border:none;border-radius:4px;background:var(--rd-site-color-button);color:var(--rd-site-color-button-text);font:inherit;cursor:pointer;display:flex;align-items:center;justify-content:center;text-decoration:none}
+.btn.line{border:1px solid var(--rd-site-color-line-strong);background:none;color:var(--rd-site-color-text)}
+.next{align-self:flex-start;width:280px;max-width:100%}
+.next[disabled]{background:var(--rd-site-color-button-off);cursor:default}
+.res p{margin:0;max-width:400px;line-height:1.7}
+.small{font-size:var(--rd-site-type-small);color:var(--rd-site-color-text-muted);line-height:1.6}
+.textlink{align-self:flex-start;display:inline-flex;align-items:center;min-height:44px;font-size:var(--rd-site-type-lead);text-decoration:underline;text-decoration-thickness:1px;text-underline-offset:.42em}
+.actions{margin-top:auto;display:flex;align-items:center;gap:8px}
+.actions .btn{flex:1}
+.tel{width:48px;height:48px;border:1px solid var(--rd-site-color-line-strong);border-radius:4px;display:flex;align-items:center;justify-content:center;flex:none}
+.quiet{align-self:center;height:44px;padding:0;border:none;background:none;font:inherit;font-size:var(--rd-site-type-tiny);color:var(--rd-site-color-text-muted);cursor:pointer}
+dl{margin:36px 0 0;border-top:1px solid var(--rd-site-color-line-soft)}
+dl div{display:flex;align-items:center;justify-content:space-between;height:60px;border-bottom:1px solid var(--rd-site-color-line-soft)}
+dt{font-size:var(--rd-site-type-small);color:var(--rd-site-color-text-muted)}dd{margin:0}
+.code{align-self:flex-end;margin-top:12px;font-size:var(--rd-site-type-small);color:var(--rd-site-color-text-muted);letter-spacing:.04em;font-variant-numeric:tabular-nums}
+.toggles{display:flex;flex-wrap:wrap;gap:0 24px;min-height:44px}
+.toggles button{height:44px;padding:0;border:none;background:none;font:inherit;font-size:var(--rd-site-type-small);color:var(--rd-site-color-text);cursor:pointer;text-decoration:underline;text-decoration-thickness:1px;text-underline-offset:.42em}
+.guide{position:fixed;inset:0;z-index:50;display:flex;align-items:center;justify-content:center;padding:24px}
+.guide .dim{position:absolute;inset:0;background:rgba(42,39,35,.42)}
+.guide .box{position:relative;width:100%;max-width:440px;max-height:100%;overflow:auto;background:var(--rd-site-color-bg);border-radius:8px;padding:32px 32px 20px;display:flex;flex-direction:column;gap:18px;animation:rq .3s ease both}
+.guide pre{margin:0;padding:14px 16px;background:#fff;border:1px solid var(--rd-site-color-line-soft);border-radius:4px;font:inherit;font-size:var(--rd-site-type-tiny);line-height:1.6;white-space:pre-wrap;user-select:all;-webkit-user-select:all}
+/* 그림 */
+.svg-transition{transition:fill .65s cubic-bezier(.22,1,.36,1),stroke .65s cubic-bezier(.22,1,.36,1),opacity .6s cubic-bezier(.22,1,.36,1),transform .75s cubic-bezier(.22,1,.36,1),filter .7s ease}
+.curtain-panel-left,.curtain-panel-right,.sheer-panel{transition:transform .85s cubic-bezier(.22,1,.36,1),opacity .5s ease}
+#layer4-furniture>g,#layer5-lighting>g[id^="lamp-"]{transition:opacity .6s ease}
+.pointer-events-none{pointer-events:none}
 @media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
-/* 글꼴·자간 (8단계): 제목 글꼴은 Tweaks의 '제목 글꼴'로 바꿔 봄 */
-[data-hf]{word-break:keep-all}
-[data-hf="고딕"] .rt-h{font-family:'Noto Sans KR',sans-serif!important;font-weight:500!important;letter-spacing:-0.03em!important}
+/* 폰 · 좁은 화면: 그림 위, 질문 아래 */
+@media (max-width:900px){
+  .wrap{padding:0 20px}
+  header .wrap{height:56px}
+  nav{gap:18px}
+  main.wrap{display:flex;flex-direction:column;gap:20px;padding-top:4px;padding-bottom:40px}
+  .stagecol{width:100%}
+  .panel{width:100%;min-height:0}
+  .q{padding-top:28px;gap:28px}
+  .next{width:100%}
+  .chip{width:calc((100% - 50px)/6)}
+  .chip.big{width:calc((100% - 30px)/4)}
+}
 </style>
-<style>/* 움직임이 붙기 전 깜빡임 막기 */[data-js] [data-rm]:not([data-on]) .rm,[data-js] [data-rm]:not([data-on]) .rm-strip{opacity:0}/* 로고는 한 창에서 한 번만 (1107) */[data-seen] .ri{display:none}/* 폰에서 누를 때 파란 네모 끔 — 화면이 바뀌며 어긋나 깜빡여 보이던 것 (11-13) */html{-webkit-tap-highlight-color:transparent}</style>
 </head>
 <body>
-<div id="dc-root">
-<div data-hf="고딕" style="width: 100%; min-height: 100vh; min-height: 100dvh; box-sizing: border-box; background: var(--rd-site-color-bg); font-family: 'Noto Sans KR', sans-serif; font-weight: 400; color: var(--rd-site-color-text); display: flex; flex-direction: column;">
+<header><div class="wrap" id="head"></div></header>
+<main class="wrap">
+  <div class="stagecol">
+    <div class="stage" aria-hidden="true">
+<svg id="roomSvg" viewBox="0 0 800 550" style="display:block;width:100%;height:100%" xmlns="http://www.w3.org/2000/svg">
+              <defs>
+                <!-- Dynamic Clip Path for Space-Specific Window Glass Opening (Updated by JS per Space so curtains NEVER overlap furniture!) -->
+                <clipPath id="windowClip">
+                  <rect id="windowClipRect" x="410" y="68" width="270" height="310" />
+                </clipPath>
 
-<header style="display: flex; align-items: center; justify-content: space-between; height: 60px; padding: 0 12px; box-sizing: border-box; flex: none;">
-<a href="index.html" aria-label="홈으로" style="height: 44px; display: flex; align-items: center; gap: 6px; padding: 0 12px 0 10px; font-size: var(--rd-site-type-small); text-decoration: none; color: var(--rd-site-color-text);">
-<svg aria-hidden="true" width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M16 10H4M9 5l-5 5 5 5"></path></svg>
-<span>홈</span>
-</a>
-<a href="index.html" aria-label="리담 홈" style="display: block; padding: 10px 0;"><svg role="img" aria-label="Re.dam" viewBox="39 -784 3283 805" style="display: block; width: 80px; height: auto;"><path fill="#2B221A" d="M39 -708Q62 -707 98.5 -706Q135 -705 171 -705Q219 -705 262.5 -706Q306 -707 324 -707Q409 -707 465.5 -685Q522 -663 549.5 -623.5Q577 -584 577 -533Q577 -502 564.5 -467.5Q552 -433 521 -403.5Q490 -374 437 -355Q409 -345 373 -340Q377 -340 381 -339Q456 -329 490.5 -299Q525 -269 538 -207L563 -105Q572 -62 582.5 -44Q593 -26 614 -26Q630 -27 640.5 -35.5Q651 -44 663 -59L677 -48Q654 -17 629 -1.5Q604 14 562 14Q519 14 488.5 -8.5Q458 -31 445 -94L425 -194Q416 -237 405 -268.5Q394 -300 374.5 -318Q355 -336 318 -336H233V-106Q233 -70 239 -52Q245 -34 262 -28Q279 -22 312 -20V0Q288 -2 251.5 -2.5Q215 -3 177 -3Q135 -3 98.5 -2.5Q62 -2 39 0V-20Q73 -22 90 -28Q107 -34 112.5 -52Q118 -70 118 -106V-602Q118 -639 112.5 -656.5Q107 -674 89.5 -680.5Q72 -687 39 -688ZM233 -356H292Q359 -356 394.5 -378.5Q430 -401 442.5 -438.5Q455 -476 455 -522Q455 -601 421 -644.5Q387 -688 303 -688Q260 -688 246.5 -671Q233 -654 233 -602ZM923 -530Q1011 -530 1061 -477Q1111 -424 1111 -309H809Q808 -297 807 -284Q806 -267 806 -251Q806 -182 827 -135Q848 -88 882 -64.5Q916 -41 951 -41Q978 -41 1003.5 -49.5Q1029 -58 1052 -78.5Q1075 -99 1093 -135L1113 -127Q1101 -93 1076 -60Q1051 -27 1012 -6.5Q973 14 921 14Q851 14 799 -17.5Q747 -49 719 -108Q691 -167 691 -248Q691 -337 720 -400Q749 -463 801.5 -496.5Q854 -530 923 -530ZM807 -328H1005Q1006 -377 997 -418.5Q988 -460 969 -485Q950 -510 919 -510Q876 -510 845 -465Q814 -421 807 -328ZM1876 -784V-109Q1876 -64 1891.5 -42.5Q1907 -21 1948 -21V0Q1917 -3 1886 -3Q1852 -3 1822.5 0Q1793 3 1768 11V-79Q1755 -45 1732 -23Q1694 14 1630 14Q1569 14 1522.5 -15.5Q1476 -45 1451 -105.5Q1426 -166 1426 -258Q1426 -349 1456.5 -409.5Q1487 -470 1538 -500Q1589 -530 1651 -530Q1695 -530 1732 -511Q1754 -499 1768 -478V-664Q1768 -709 1752.5 -730.5Q1737 -752 1696 -752V-773Q1728 -770 1758 -770Q1791 -770 1821 -773.5Q1851 -777 1876 -784ZM1768 -443Q1754 -474 1730 -489Q1703 -505 1669 -505Q1612 -505 1576 -444.5Q1540 -384 1541 -258Q1541 -175 1555 -122.5Q1569 -70 1596.5 -45Q1624 -20 1663 -20Q1702 -20 1734 -53Q1759 -80 1768 -127ZM2121 7Q2079 7 2049 -9Q2019 -25 2004 -53Q1989 -81 1989 -117Q1989 -161 2009 -188.5Q2029 -216 2060.5 -233Q2092 -250 2127.5 -261.5Q2163 -273 2194.5 -283.5Q2226 -294 2246.5 -308Q2267 -322 2267 -345V-413Q2267 -449 2255.5 -470.5Q2244 -492 2224.5 -501Q2205 -510 2178 -510Q2155 -510 2129 -503.5Q2103 -497 2088 -478Q2110 -472 2124.5 -454.5Q2139 -437 2139 -411Q2139 -383 2120.5 -367Q2102 -351 2074 -351Q2043 -351 2028 -370.5Q2013 -390 2013 -416Q2013 -443 2026.5 -460Q2040 -477 2062 -492Q2086 -508 2123.5 -519Q2161 -530 2207 -530Q2250 -530 2281.5 -520.5Q2313 -511 2334 -490Q2359 -467 2367 -432.5Q2375 -398 2375 -349V-73Q2375 -48 2381.5 -37.5Q2388 -27 2403 -27Q2413 -27 2422.5 -32Q2432 -37 2445 -47L2455 -30Q2434 -13 2412.5 -3Q2391 7 2358 7Q2326 7 2306 -3Q2286 -13 2276.5 -32Q2267 -51 2267 -79Q2241 -37 2205 -15Q2169 7 2121 7ZM2169 -41Q2197 -41 2221.5 -57Q2246 -73 2267 -105V-304Q2256 -288 2235 -276.5Q2214 -265 2190 -253Q2166 -241 2144.5 -225.5Q2123 -210 2109 -186Q2095 -162 2095 -125Q2095 -86 2115 -63.5Q2135 -41 2169 -41ZM2811 -530Q2849 -530 2875 -519.5Q2901 -509 2917 -491Q2935 -472 2942 -441Q2944 -430 2946 -418Q2973 -482 3018 -506Q3063 -530 3112 -530Q3150 -530 3176 -519.5Q3202 -509 3218 -491Q3236 -472 3243 -440.5Q3250 -409 3250 -361V-93Q3250 -51 3266.5 -36Q3283 -21 3322 -21V0Q3305 -1 3269 -2.5Q3233 -4 3198 -4Q3164 -4 3131.5 -2.5Q3099 -1 3082 0V-21Q3115 -21 3128.5 -36Q3142 -51 3142 -93V-389Q3142 -418 3138 -441.5Q3134 -465 3119 -479.5Q3104 -494 3072 -494Q3037 -494 3009.5 -472.5Q2982 -451 2965.5 -414.5Q2949 -378 2949 -333V-93Q2949 -51 2965 -36Q2981 -21 3019 -21V0Q3002 -1 2966.5 -2.5Q2931 -4 2897 -4Q2863 -4 2830.5 -2.5Q2798 -1 2781 0V-21Q2814 -21 2827.5 -36Q2841 -51 2841 -93V-389Q2841 -418 2837 -441.5Q2833 -465 2818.5 -479.5Q2804 -494 2773 -494Q2738 -494 2710.5 -473Q2683 -452 2666.5 -415.5Q2650 -379 2650 -334V-93Q2650 -51 2664 -36Q2678 -21 2710 -21V0Q2694 -1 2662 -2.5Q2630 -4 2596 -4Q2562 -4 2525 -2.5Q2488 -1 2470 0V-21Q2509 -21 2525.5 -36Q2542 -51 2542 -93V-407Q2542 -452 2527 -473.5Q2512 -495 2470 -495V-516Q2502 -513 2532 -513Q2566 -513 2595.5 -516.5Q2625 -520 2650 -527V-418Q2676 -478 2719.5 -504Q2763 -530 2811 -530Z"></path><path fill="#8A4A22" d="M1341.55 -54.50C1341.55 -13.33 1308.17 20.05 1267.00 20.05C1225.83 20.05 1192.45 -13.33 1192.45 -54.50C1192.45 -95.67 1225.83 -129.05 1267.00 -129.05C1308.17 -129.05 1341.55 -95.67 1341.55 -54.50Z"></path></svg></a>
-</header>
+                <!-- Clip path for the interior room wall & floor -->
+                <clipPath id="roomInteriorClip">
+                  <rect x="0" y="0" width="800" height="550" />
+                </clipPath>
 
-<div aria-hidden="true" style="display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 6px; padding: 0 24px; flex: none;">
+                <!-- Clip path for Studio Ultrawide Monitor Screen -->
+                <clipPath id="monitorScreenClip">
+                  <rect x="524" y="268" width="132" height="72" rx="3" />
+                </clipPath>
 
-<div style="height: 2px; background: var(--rd-site-color-text); transition: background-color 0.3s ease;"></div>
+                <!-- Subtle Pleat Pattern for Full Curtain -->
+                <pattern id="curtainPleatPattern" x="0" y="0" width="24" height="360" patternUnits="userSpaceOnUse">
+                  <rect x="0" y="0" width="9" height="360" fill="#000000" fill-opacity="0.075" />
+                  <rect x="9" y="0" width="5" height="360" fill="#000000" fill-opacity="0.025" />
+                  <rect x="14" y="0" width="10" height="360" fill="#FFFFFF" fill-opacity="0.06" />
+                </pattern>
 
-<div style="height: 2px; background: var(--rd-site-color-line-soft); transition: background-color 0.3s ease;"></div>
+                <!-- Subtle Sheer Pleat Pattern -->
+                <pattern id="sheerPleatPattern" x="0" y="0" width="16" height="360" patternUnits="userSpaceOnUse">
+                  <rect x="0" y="0" width="8" height="360" fill="#FFFFFF" fill-opacity="0.25" />
+                  <rect x="8" y="0" width="8" height="360" fill="#000000" fill-opacity="0.035" />
+                </pattern>
+              </defs>
 
-<div style="height: 2px; background: var(--rd-site-color-line-soft); transition: background-color 0.3s ease;"></div>
+              <!-- =======================================================
+                   LAYER 1: ROOM ARCHITECTURE (WALL, MOLDING, FLOOR)
+                   ======================================================= -->
+              <g id="layer1-architecture">
+                <!-- Back Wall -->
+                <rect id="roomWall" x="0" y="0" width="800" height="404" fill="#E3E1DC" class="svg-transition" />
+                <!-- Architectural Ceiling Cornice Shadow -->
+                <rect x="0" y="0" width="800" height="6" fill="#000000" fill-opacity="0.035" />
+                <!-- Architectural Baseboard Molding (걸레받이) -->
+                <rect id="roomBaseboardTop" x="0" y="394" width="800" height="2" fill="#FFFFFF" fill-opacity="0.4" />
+                <rect id="roomBaseboard" x="0" y="396" width="800" height="8" fill="#D2CFC7" class="svg-transition" />
+                <!-- Floor Plane -->
+                <rect id="roomFloor" x="0" y="404" width="800" height="146" fill="#C4C1B8" class="svg-transition" />
+                <!-- Subtle Architectural Herringbone / Wide Plank Lines -->
+                <g stroke="#000000" stroke-opacity="0.045" stroke-width="1">
+                  <line x1="0" y1="436" x2="800" y2="436" />
+                  <line x1="0" y1="472" x2="800" y2="472" />
+                  <line x1="0" y1="512" x2="800" y2="512" />
+                  <line x1="130" y1="404" x2="80" y2="550" />
+                  <line x1="295" y1="404" x2="260" y2="550" />
+                  <line x1="475" y1="404" x2="505" y2="550" />
+                  <line x1="650" y1="404" x2="695" y2="550" />
+                </g>
+              </g>
 
-<div style="height: 2px; background: var(--rd-site-color-line-soft); transition: background-color 0.3s ease;"></div>
+              <!-- =======================================================
+                   LAYER 2: SPACE-SPECIFIC RECESSED WINDOW & EXTERIOR WORLD
+                   (Window position dynamically shifts per space so curtains never collide with furniture!)
+                   ======================================================= -->
+              <g id="layer2-window-exterior">
+                <!-- Outer Window Casing & 3D Recessed Reveal -->
+                <rect id="windowOuterFrame" x="398" y="56" width="294" height="332" rx="2" fill="#CFCBC2" class="svg-transition" />
+                <rect id="windowInnerReveal" x="406" y="64" width="278" height="318" rx="1" fill="#B5B1A7" class="svg-transition" />
 
-</div>
+                <!-- Clipped Exterior World inside Window -->
+                <g clip-path="url(#windowClip)">
+                  <g id="exteriorWorldGroup" class="svg-transition">
+                    <!-- Base Sky (Covers full 800x450 so it works at any window X position) -->
+                    <rect id="extSky" x="0" y="0" width="800" height="450" fill="#FFFFFF" class="svg-transition" />
 
+                    <!-- Sub-group A: Morning / Afternoon Warm Horizon Sky -->
+                    <g id="extHorizonBand" opacity="0" class="svg-transition">
+                      <rect id="extHorizonTop" x="0" y="50" width="800" height="165" fill="#DCE4EC" class="svg-transition" />
+                      <rect id="extHorizonMid" x="0" y="210" width="800" height="80" fill="#F2DEC0" class="svg-transition" />
+                      <rect id="extHorizonLow" x="0" y="280" width="800" height="120" fill="#F7E8CC" class="svg-transition" />
+                      <circle id="extSunDisc" cx="560" cy="195" r="34" fill="#FFFDF7" fill-opacity="0.92" />
+                    </g>
 
-<div style="padding: 48px 24px 0; display: flex; flex-direction: column; gap: 36px; animation: rq-a 0.3s ease both;">
-<h1 class="rt-h" style="margin: 0; font-family: 'Noto Serif KR', serif; font-size: var(--rd-site-type-h2-m); line-height: 1.45; font-weight: 400; letter-spacing: -0.02em; white-space: pre-line;">어느 공간의 창인가요?</h1>
-<div style="display: flex; flex-direction: column; border-top: 1px solid var(--rd-site-color-line-soft);">
+                    <!-- Sub-group B: Soft Greenery Hills ('채광은 살리고 싶어요' / '낮엔 환하게' / '밝고 환했으면') -->
+                    <g id="extNatureHills" opacity="0" class="svg-transition">
+                      <circle id="extNatureSun" cx="560" cy="130" r="24" fill="#FFFFFF" fill-opacity="0.75" />
+                      <path d="M0 400 L0 265 Q180 230 360 265 T720 250 L800 260 L800 400 Z" fill="#C7D1C5" id="hillBack" class="svg-transition" />
+                      <path d="M0 400 L0 300 Q220 270 430 302 T800 285 L800 400 Z" fill="#B2C0B0" id="hillFront" class="svg-transition" />
+                    </g>
 
-<button type="button" style="display: flex; align-items: center; height: 64px; padding: 0; border: none; border-bottom: 1px solid var(--rd-site-color-line-soft); background: none; font-family: inherit; font-size: var(--rd-site-type-body); font-weight: 400; letter-spacing: -0.01em; color: var(--rd-site-color-text); text-align: left; cursor: pointer;">거실</button>
+                    <!-- Sub-group C: Opposite Apartment Building ('바깥 시선이 신경 쓰여요') -->
+                    <g id="extOppositeBuilding" opacity="0" class="svg-transition">
+                      <rect id="oppBldgLeft" x="420" y="135" width="60" height="255" fill="#D5D3CD" />
+                      <rect id="oppBldgMain" x="462" y="102" width="185" height="288" fill="#C4C1BA" />
+                      <rect id="oppBldgRoof" x="458" y="96" width="193" height="7" fill="#ABA8A0" />
+                      <g id="oppBldgWindows" fill="#8F8C85">
+                        <rect x="480" y="122" width="28" height="32" rx="1" /><rect x="520" y="122" width="28" height="32" rx="1" />
+                        <rect x="564" y="122" width="28" height="32" rx="1" /><rect x="604" y="122" width="28" height="32" rx="1" />
+                        <rect x="480" y="174" width="28" height="32" rx="1" /><rect x="520" y="174" width="28" height="32" rx="1" fill="#75726B" />
+                        <rect x="564" y="174" width="28" height="32" rx="1" /><rect x="604" y="174" width="28" height="32" rx="1" />
+                        <rect x="480" y="226" width="28" height="32" rx="1" /><rect x="520" y="226" width="28" height="32" rx="1" />
+                        <rect x="564" y="226" width="28" height="32" rx="1" fill="#75726B" /><rect x="604" y="226" width="28" height="32" rx="1" />
+                        <rect x="480" y="278" width="28" height="32" rx="1" /><rect x="520" y="278" width="28" height="32" rx="1" />
+                        <rect x="564" y="278" width="28" height="32" rx="1" /><rect x="604" y="278" width="28" height="32" rx="1" />
+                      </g>
+                      <!-- Neighbor Silhouette in opposite window -->
+                      <circle id="oppNeighborHead" cx="534" cy="188" r="5.5" fill="#4A4843" />
+                      <path id="oppNeighborBody" d="M524 206 C524 196 544 196 544 206 Z" fill="#4A4843" />
+                    </g>
 
-<button type="button" style="display: flex; align-items: center; height: 64px; padding: 0; border: none; border-bottom: 1px solid var(--rd-site-color-line-soft); background: none; font-family: inherit; font-size: var(--rd-site-type-body); font-weight: 400; letter-spacing: -0.01em; color: var(--rd-site-color-text); text-align: left; cursor: pointer;">침실</button>
+                    <!-- Sub-group D: Night Sky, Crescent Moon & Lit Apartment Windows ('밤 모드' & '밤에 불 켜면 안이 다 보여요') -->
+                    <g id="extNightExposed" opacity="0" class="svg-transition">
+                      <rect x="0" y="0" width="800" height="450" fill="#141923" />
+                      <!-- Crescent Moon & Subtle Stars -->
+                      <circle id="nightMoon" cx="620" cy="112" r="14" fill="#F7E8BA" />
+                      <circle id="nightMoonCut" cx="626" cy="108" r="12" fill="#141923" />
+                      <circle cx="465" cy="98" r="1.5" fill="#FFF8DE" opacity="0.7" />
+                      <circle cx="535" cy="126" r="1.2" fill="#FFF8DE" opacity="0.5" />
+                      <circle cx="345" cy="105" r="1.5" fill="#FFF8DE" opacity="0.6" />
+                      <circle cx="155" cy="112" r="1.5" fill="#FFF8DE" opacity="0.6" />
+                      <!-- Distant Night Skyline across all X coordinates -->
+                      <rect x="90" y="145" width="95" height="260" fill="#1F2633" />
+                      <rect x="200" y="165" width="110" height="240" fill="#1B212D" />
+                      <rect x="325" y="135" width="100" height="270" fill="#212836" />
+                      <rect x="440" y="128" width="105" height="275" fill="#222938" />
+                      <rect x="560" y="152" width="115" height="250" fill="#1C222E" />
+                      <!-- Warm Lit Distant Windows -->
+                      <g fill="#E8C974" opacity="0.9">
+                        <rect x="112" y="175" width="16" height="18" rx="1" />
+                        <rect x="148" y="220" width="16" height="18" rx="1" />
+                        <rect x="225" y="195" width="16" height="18" rx="1" />
+                        <rect x="268" y="245" width="16" height="18" rx="1" />
+                        <rect x="348" y="168" width="16" height="18" rx="1" />
+                        <rect x="386" y="212" width="16" height="18" rx="1" />
+                        <rect x="462" y="156" width="18" height="20" rx="1" />
+                        <rect x="502" y="198" width="18" height="20" rx="1" />
+                        <rect x="462" y="262" width="18" height="20" rx="1" />
+                        <rect x="584" y="182" width="18" height="20" rx="1" />
+                        <rect x="626" y="226" width="18" height="20" rx="1" />
+                      </g>
+                    </g>
 
-<button type="button" style="display: flex; align-items: center; height: 64px; padding: 0; border: none; border-bottom: 1px solid var(--rd-site-color-line-soft); background: none; font-family: inherit; font-size: var(--rd-site-type-body); font-weight: 400; letter-spacing: -0.01em; color: var(--rd-site-color-text); text-align: left; cursor: pointer;">아이 방</button>
+                    <!-- Sub-group E: Night Streetlight Glare ('밤에 바깥 불빛이 들어와요') -->
+                    <g id="extNightStreetlight" opacity="0" class="svg-transition">
+                      <rect x="0" y="0" width="800" height="450" fill="#141822" />
+                      <rect x="475" y="175" width="135" height="215" fill="#1E2430" />
+                      <!-- Architectural Streetlamp Outside Bedroom Window -->
+                      <rect x="688" y="118" width="6" height="265" fill="#464B57" />
+                      <path d="M691 122 L624 122 L614 132" stroke="#5E6472" stroke-width="5" stroke-linecap="round" stroke-linejoin="round" fill="none" />
+                      <polygon points="598,132 632,132 638,141 592,141" fill="#3A3F4B" />
+                      <rect x="598" y="140" width="34" height="5" rx="2" fill="#FFF5CC" />
+                      <polygon points="598,144 632,144 730,365 460,365" fill="#DCE6F7" fill-opacity="0.25" />
+                    </g>
 
-<button type="button" style="display: flex; align-items: center; height: 64px; padding: 0; border: none; border-bottom: 1px solid var(--rd-site-color-line-soft); background: none; font-family: inherit; font-size: var(--rd-site-type-body); font-weight: 400; letter-spacing: -0.01em; color: var(--rd-site-color-text); text-align: left; cursor: pointer;">작업실 · 가게</button>
+                    <!-- Sub-group F: Street Passerby Silhouette ('지나가는 시선이 신경 쓰여요' - Studio Window Left) -->
+                    <g id="extStreetPasserby" opacity="0" class="svg-transition">
+                      <rect x="0" y="0" width="800" height="450" fill="#E3E1DA" />
+                      <rect x="50" y="95" width="340" height="175" fill="#D2CFC7" />
+                      <rect x="95" y="125" width="95" height="95" fill="#BDB9B0" />
+                      <rect x="225" y="125" width="95" height="95" fill="#BDB9B0" />
+                      <rect x="50" y="270" width="340" height="120" fill="#C4C0B7" />
+                      <line x1="50" y1="270" x2="390" y2="270" stroke="#ABA79E" stroke-width="3" />
+                      <!-- Minimalist Passerby Figures Looking In -->
+                      <g fill="#57544F">
+                        <circle cx="168" cy="276" r="11" />
+                        <path d="M148 385 L152 306 C152 294 184 294 184 306 L188 385 Z" />
+                      </g>
+                      <g fill="#75726B">
+                        <circle cx="264" cy="288" r="9.5" />
+                        <path d="M247 385 L250 316 C250 305 278 305 278 316 L281 385 Z" />
+                      </g>
+                    </g>
+                  </g>
+                </g>
 
-</div>
-</div>
+                <!-- Architectural Window Mullions & Sill (Dynamically positioned by JS to match each space's window!) -->
+                <g id="windowMullions">
+                  <rect id="winGlassBorder" x="410" y="68" width="270" height="310" fill="none" stroke="#B5B1A7" stroke-width="6" />
+                  <rect id="winCenterMullion" x="541" y="68" width="8" height="310" fill="#B5B1A7" />
+                  <line id="winCenterLine" x1="545" y1="68" x2="545" y2="378" stroke="#99958B" stroke-width="1.5" />
+                  <line id="winTransomBar" x1="410" y1="142" x2="680" y2="142" stroke="#B5B1A7" stroke-width="3" stroke-opacity="0.65" />
+                  <rect id="winSill" x="392" y="376" width="306" height="8" rx="1" fill="#C4C0B6" />
+                  <rect id="winSillShadow" x="396" y="384" width="298" height="4" fill="#000000" fill-opacity="0.08" />
+                </g>
+              </g>
 
+              <!-- =======================================================
+                   LAYER 3: INTERACTIVE CURTAIN LAYER & PELMET BOX
+                   (Placed BEHIND foreground furniture & in a dedicated window zone so it NEVER slices through furniture!)
+                   ======================================================= -->
+              <g id="layer3-curtains">
 
+                <!-- Architectural Recessed Curtain Pelmet Box (커튼박스 몰딩) -->
+                <g id="curtainTrack" opacity="1" class="svg-transition">
+                  <rect id="pelmetBoxOuter" x="386" y="48" width="318" height="14" rx="2" fill="#D5D1C8" class="svg-transition" />
+                  <rect id="pelmetBoxShadow" x="390" y="60" width="310" height="4" fill="#9E9A90" />
+                </g>
 
+                <!-- 3A. Inner Sheer Chiffon Curtain ('속지 시폰 커튼') -->
+                <g id="curtainSheerGroup" class="sheer-panel" style="transform: scaleX(0); opacity: 0;">
+                  <rect id="curtainSheerRect" x="404" y="62" width="282" height="336" fill="#FAF8F2" fill-opacity="0.88" class="svg-transition" />
+                  <rect id="curtainSheerPleats" x="404" y="62" width="282" height="336" fill="url(#sheerPleatPattern)" />
+                  <line id="curtainSheerHem" x1="404" y1="395" x2="686" y2="395" stroke="#000000" stroke-opacity="0.09" stroke-width="2" />
+                </g>
 
+                <!-- 3B. Left Outer Drape Panel -->
+                <g id="curtainLeftPanel" class="curtain-panel-left" style="transform: scaleX(0); opacity: 0;">
+                  <rect id="curtainLeftRect" x="392" y="62" width="154" height="338" rx="1" fill="#8C8881" class="svg-transition" />
+                  <rect id="curtainLeftPleats" x="392" y="62" width="154" height="338" fill="url(#curtainPleatPattern)" />
+                  <line id="curtainLeftEdge" x1="545" y1="62" x2="545" y2="400" stroke="#000000" stroke-opacity="0.14" stroke-width="1.5" />
+                </g>
 
+                <!-- 3C. Right Outer Drape Panel -->
+                <g id="curtainRightPanel" class="curtain-panel-right" style="transform: scaleX(0); opacity: 0;">
+                  <rect id="curtainRightRect" x="544" y="62" width="154" height="338" rx="1" fill="#8C8881" class="svg-transition" />
+                  <rect id="curtainRightPleats" x="544" y="62" width="154" height="338" fill="url(#curtainPleatPattern)" />
+                  <line id="curtainRightEdge" x1="545" y1="62" x2="545" y2="400" stroke="#FFFFFF" stroke-opacity="0.14" stroke-width="1" />
+                </g>
 
-</div>
+                <!-- Subtle Hover Highlight Outline for Curtain Interactive Area -->
+              </g>
 
-</div>
-<template id="dc-tpl">
-<div data-hf="{{ hf }}" style="width: 100%; min-height: 100vh; min-height: 100dvh; box-sizing: border-box; background: var(--rd-site-color-bg); font-family: 'Noto Sans KR', sans-serif; font-weight: 400; color: var(--rd-site-color-text); display: flex; flex-direction: column;">
+              <!-- =======================================================
+                   LAYER 4: HIGH-END SPACE-SPECIFIC FOREGROUND FURNITURE
+                   (Clearly differentiated Living Room vs. Hotel Bedroom vs. Kids Room vs. Studio!)
+                   ======================================================= -->
+              <g id="layer4-furniture">
 
-<header style="display: flex; align-items: center; justify-content: space-between; height: 60px; padding: 0 12px; box-sizing: border-box; flex: none;">
-<!-- 머리줄 (해 보기 나가는 길 11-13): 첫 질문·결과는 이야기 쪽과 같은 머리, 질문 푸는 동안은 이전 질문 화살표 + 로고만 -->
-<sc-if value="{{ topNav }}" hint-placeholder-val="{{ true }}">
-<a href="index.html" aria-label="홈으로" onClick="{{ goHome }}" style="height: 44px; display: flex; align-items: center; gap: 6px; padding: 0 12px 0 10px; font-size: var(--rd-site-type-small); text-decoration: none; color: var(--rd-site-color-text);">
-<svg aria-hidden="true" width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M16 10H4M9 5l-5 5 5 5"></path></svg>
-<span>홈</span>
-</a>
-<a href="index.html" aria-label="리담 홈" onClick="{{ goHome }}" style="display: block; padding: 10px 0;"><svg role="img" aria-label="Re.dam" viewBox="39 -784 3283 805" style="display: block; width: 80px; height: auto;"><path fill="#2B221A" d="M39 -708Q62 -707 98.5 -706Q135 -705 171 -705Q219 -705 262.5 -706Q306 -707 324 -707Q409 -707 465.5 -685Q522 -663 549.5 -623.5Q577 -584 577 -533Q577 -502 564.5 -467.5Q552 -433 521 -403.5Q490 -374 437 -355Q409 -345 373 -340Q377 -340 381 -339Q456 -329 490.5 -299Q525 -269 538 -207L563 -105Q572 -62 582.5 -44Q593 -26 614 -26Q630 -27 640.5 -35.5Q651 -44 663 -59L677 -48Q654 -17 629 -1.5Q604 14 562 14Q519 14 488.5 -8.5Q458 -31 445 -94L425 -194Q416 -237 405 -268.5Q394 -300 374.5 -318Q355 -336 318 -336H233V-106Q233 -70 239 -52Q245 -34 262 -28Q279 -22 312 -20V0Q288 -2 251.5 -2.5Q215 -3 177 -3Q135 -3 98.5 -2.5Q62 -2 39 0V-20Q73 -22 90 -28Q107 -34 112.5 -52Q118 -70 118 -106V-602Q118 -639 112.5 -656.5Q107 -674 89.5 -680.5Q72 -687 39 -688ZM233 -356H292Q359 -356 394.5 -378.5Q430 -401 442.5 -438.5Q455 -476 455 -522Q455 -601 421 -644.5Q387 -688 303 -688Q260 -688 246.5 -671Q233 -654 233 -602ZM923 -530Q1011 -530 1061 -477Q1111 -424 1111 -309H809Q808 -297 807 -284Q806 -267 806 -251Q806 -182 827 -135Q848 -88 882 -64.5Q916 -41 951 -41Q978 -41 1003.5 -49.5Q1029 -58 1052 -78.5Q1075 -99 1093 -135L1113 -127Q1101 -93 1076 -60Q1051 -27 1012 -6.5Q973 14 921 14Q851 14 799 -17.5Q747 -49 719 -108Q691 -167 691 -248Q691 -337 720 -400Q749 -463 801.5 -496.5Q854 -530 923 -530ZM807 -328H1005Q1006 -377 997 -418.5Q988 -460 969 -485Q950 -510 919 -510Q876 -510 845 -465Q814 -421 807 -328ZM1876 -784V-109Q1876 -64 1891.5 -42.5Q1907 -21 1948 -21V0Q1917 -3 1886 -3Q1852 -3 1822.5 0Q1793 3 1768 11V-79Q1755 -45 1732 -23Q1694 14 1630 14Q1569 14 1522.5 -15.5Q1476 -45 1451 -105.5Q1426 -166 1426 -258Q1426 -349 1456.5 -409.5Q1487 -470 1538 -500Q1589 -530 1651 -530Q1695 -530 1732 -511Q1754 -499 1768 -478V-664Q1768 -709 1752.5 -730.5Q1737 -752 1696 -752V-773Q1728 -770 1758 -770Q1791 -770 1821 -773.5Q1851 -777 1876 -784ZM1768 -443Q1754 -474 1730 -489Q1703 -505 1669 -505Q1612 -505 1576 -444.5Q1540 -384 1541 -258Q1541 -175 1555 -122.5Q1569 -70 1596.5 -45Q1624 -20 1663 -20Q1702 -20 1734 -53Q1759 -80 1768 -127ZM2121 7Q2079 7 2049 -9Q2019 -25 2004 -53Q1989 -81 1989 -117Q1989 -161 2009 -188.5Q2029 -216 2060.5 -233Q2092 -250 2127.5 -261.5Q2163 -273 2194.5 -283.5Q2226 -294 2246.5 -308Q2267 -322 2267 -345V-413Q2267 -449 2255.5 -470.5Q2244 -492 2224.5 -501Q2205 -510 2178 -510Q2155 -510 2129 -503.5Q2103 -497 2088 -478Q2110 -472 2124.5 -454.5Q2139 -437 2139 -411Q2139 -383 2120.5 -367Q2102 -351 2074 -351Q2043 -351 2028 -370.5Q2013 -390 2013 -416Q2013 -443 2026.5 -460Q2040 -477 2062 -492Q2086 -508 2123.5 -519Q2161 -530 2207 -530Q2250 -530 2281.5 -520.5Q2313 -511 2334 -490Q2359 -467 2367 -432.5Q2375 -398 2375 -349V-73Q2375 -48 2381.5 -37.5Q2388 -27 2403 -27Q2413 -27 2422.5 -32Q2432 -37 2445 -47L2455 -30Q2434 -13 2412.5 -3Q2391 7 2358 7Q2326 7 2306 -3Q2286 -13 2276.5 -32Q2267 -51 2267 -79Q2241 -37 2205 -15Q2169 7 2121 7ZM2169 -41Q2197 -41 2221.5 -57Q2246 -73 2267 -105V-304Q2256 -288 2235 -276.5Q2214 -265 2190 -253Q2166 -241 2144.5 -225.5Q2123 -210 2109 -186Q2095 -162 2095 -125Q2095 -86 2115 -63.5Q2135 -41 2169 -41ZM2811 -530Q2849 -530 2875 -519.5Q2901 -509 2917 -491Q2935 -472 2942 -441Q2944 -430 2946 -418Q2973 -482 3018 -506Q3063 -530 3112 -530Q3150 -530 3176 -519.5Q3202 -509 3218 -491Q3236 -472 3243 -440.5Q3250 -409 3250 -361V-93Q3250 -51 3266.5 -36Q3283 -21 3322 -21V0Q3305 -1 3269 -2.5Q3233 -4 3198 -4Q3164 -4 3131.5 -2.5Q3099 -1 3082 0V-21Q3115 -21 3128.5 -36Q3142 -51 3142 -93V-389Q3142 -418 3138 -441.5Q3134 -465 3119 -479.5Q3104 -494 3072 -494Q3037 -494 3009.5 -472.5Q2982 -451 2965.5 -414.5Q2949 -378 2949 -333V-93Q2949 -51 2965 -36Q2981 -21 3019 -21V0Q3002 -1 2966.5 -2.5Q2931 -4 2897 -4Q2863 -4 2830.5 -2.5Q2798 -1 2781 0V-21Q2814 -21 2827.5 -36Q2841 -51 2841 -93V-389Q2841 -418 2837 -441.5Q2833 -465 2818.5 -479.5Q2804 -494 2773 -494Q2738 -494 2710.5 -473Q2683 -452 2666.5 -415.5Q2650 -379 2650 -334V-93Q2650 -51 2664 -36Q2678 -21 2710 -21V0Q2694 -1 2662 -2.5Q2630 -4 2596 -4Q2562 -4 2525 -2.5Q2488 -1 2470 0V-21Q2509 -21 2525.5 -36Q2542 -51 2542 -93V-407Q2542 -452 2527 -473.5Q2512 -495 2470 -495V-516Q2502 -513 2532 -513Q2566 -513 2595.5 -516.5Q2625 -520 2650 -527V-418Q2676 -478 2719.5 -504Q2763 -530 2811 -530Z"></path><path fill="#8A4A22" d="M1341.55 -54.50C1341.55 -13.33 1308.17 20.05 1267.00 20.05C1225.83 20.05 1192.45 -13.33 1192.45 -54.50C1192.45 -95.67 1225.83 -129.05 1267.00 -129.05C1308.17 -129.05 1341.55 -95.67 1341.55 -54.50Z"></path></svg></a>
-</sc-if>
-<sc-if value="{{ midQ }}" hint-placeholder-val="{{ false }}">
-<button type="button" aria-label="이전 질문" onClick="{{ back }}" style="width: 44px; height: 44px; display: flex; align-items: center; justify-content: center; padding: 0; border: none; background: none; color: inherit; cursor: pointer;">
-<svg aria-hidden="true" width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M16 10H4M9 5l-5 5 5 5"></path></svg>
-</button>
-<a href="index.html" aria-label="리담 홈" onClick="{{ goHome }}" style="display: block; padding: 10px 0;"><svg role="img" aria-label="Re.dam" viewBox="39 -784 3283 805" style="display: block; width: 80px; height: auto;"><path fill="#2B221A" d="M39 -708Q62 -707 98.5 -706Q135 -705 171 -705Q219 -705 262.5 -706Q306 -707 324 -707Q409 -707 465.5 -685Q522 -663 549.5 -623.5Q577 -584 577 -533Q577 -502 564.5 -467.5Q552 -433 521 -403.5Q490 -374 437 -355Q409 -345 373 -340Q377 -340 381 -339Q456 -329 490.5 -299Q525 -269 538 -207L563 -105Q572 -62 582.5 -44Q593 -26 614 -26Q630 -27 640.5 -35.5Q651 -44 663 -59L677 -48Q654 -17 629 -1.5Q604 14 562 14Q519 14 488.5 -8.5Q458 -31 445 -94L425 -194Q416 -237 405 -268.5Q394 -300 374.5 -318Q355 -336 318 -336H233V-106Q233 -70 239 -52Q245 -34 262 -28Q279 -22 312 -20V0Q288 -2 251.5 -2.5Q215 -3 177 -3Q135 -3 98.5 -2.5Q62 -2 39 0V-20Q73 -22 90 -28Q107 -34 112.5 -52Q118 -70 118 -106V-602Q118 -639 112.5 -656.5Q107 -674 89.5 -680.5Q72 -687 39 -688ZM233 -356H292Q359 -356 394.5 -378.5Q430 -401 442.5 -438.5Q455 -476 455 -522Q455 -601 421 -644.5Q387 -688 303 -688Q260 -688 246.5 -671Q233 -654 233 -602ZM923 -530Q1011 -530 1061 -477Q1111 -424 1111 -309H809Q808 -297 807 -284Q806 -267 806 -251Q806 -182 827 -135Q848 -88 882 -64.5Q916 -41 951 -41Q978 -41 1003.5 -49.5Q1029 -58 1052 -78.5Q1075 -99 1093 -135L1113 -127Q1101 -93 1076 -60Q1051 -27 1012 -6.5Q973 14 921 14Q851 14 799 -17.5Q747 -49 719 -108Q691 -167 691 -248Q691 -337 720 -400Q749 -463 801.5 -496.5Q854 -530 923 -530ZM807 -328H1005Q1006 -377 997 -418.5Q988 -460 969 -485Q950 -510 919 -510Q876 -510 845 -465Q814 -421 807 -328ZM1876 -784V-109Q1876 -64 1891.5 -42.5Q1907 -21 1948 -21V0Q1917 -3 1886 -3Q1852 -3 1822.5 0Q1793 3 1768 11V-79Q1755 -45 1732 -23Q1694 14 1630 14Q1569 14 1522.5 -15.5Q1476 -45 1451 -105.5Q1426 -166 1426 -258Q1426 -349 1456.5 -409.5Q1487 -470 1538 -500Q1589 -530 1651 -530Q1695 -530 1732 -511Q1754 -499 1768 -478V-664Q1768 -709 1752.5 -730.5Q1737 -752 1696 -752V-773Q1728 -770 1758 -770Q1791 -770 1821 -773.5Q1851 -777 1876 -784ZM1768 -443Q1754 -474 1730 -489Q1703 -505 1669 -505Q1612 -505 1576 -444.5Q1540 -384 1541 -258Q1541 -175 1555 -122.5Q1569 -70 1596.5 -45Q1624 -20 1663 -20Q1702 -20 1734 -53Q1759 -80 1768 -127ZM2121 7Q2079 7 2049 -9Q2019 -25 2004 -53Q1989 -81 1989 -117Q1989 -161 2009 -188.5Q2029 -216 2060.5 -233Q2092 -250 2127.5 -261.5Q2163 -273 2194.5 -283.5Q2226 -294 2246.5 -308Q2267 -322 2267 -345V-413Q2267 -449 2255.5 -470.5Q2244 -492 2224.5 -501Q2205 -510 2178 -510Q2155 -510 2129 -503.5Q2103 -497 2088 -478Q2110 -472 2124.5 -454.5Q2139 -437 2139 -411Q2139 -383 2120.5 -367Q2102 -351 2074 -351Q2043 -351 2028 -370.5Q2013 -390 2013 -416Q2013 -443 2026.5 -460Q2040 -477 2062 -492Q2086 -508 2123.5 -519Q2161 -530 2207 -530Q2250 -530 2281.5 -520.5Q2313 -511 2334 -490Q2359 -467 2367 -432.5Q2375 -398 2375 -349V-73Q2375 -48 2381.5 -37.5Q2388 -27 2403 -27Q2413 -27 2422.5 -32Q2432 -37 2445 -47L2455 -30Q2434 -13 2412.5 -3Q2391 7 2358 7Q2326 7 2306 -3Q2286 -13 2276.5 -32Q2267 -51 2267 -79Q2241 -37 2205 -15Q2169 7 2121 7ZM2169 -41Q2197 -41 2221.5 -57Q2246 -73 2267 -105V-304Q2256 -288 2235 -276.5Q2214 -265 2190 -253Q2166 -241 2144.5 -225.5Q2123 -210 2109 -186Q2095 -162 2095 -125Q2095 -86 2115 -63.5Q2135 -41 2169 -41ZM2811 -530Q2849 -530 2875 -519.5Q2901 -509 2917 -491Q2935 -472 2942 -441Q2944 -430 2946 -418Q2973 -482 3018 -506Q3063 -530 3112 -530Q3150 -530 3176 -519.5Q3202 -509 3218 -491Q3236 -472 3243 -440.5Q3250 -409 3250 -361V-93Q3250 -51 3266.5 -36Q3283 -21 3322 -21V0Q3305 -1 3269 -2.5Q3233 -4 3198 -4Q3164 -4 3131.5 -2.5Q3099 -1 3082 0V-21Q3115 -21 3128.5 -36Q3142 -51 3142 -93V-389Q3142 -418 3138 -441.5Q3134 -465 3119 -479.5Q3104 -494 3072 -494Q3037 -494 3009.5 -472.5Q2982 -451 2965.5 -414.5Q2949 -378 2949 -333V-93Q2949 -51 2965 -36Q2981 -21 3019 -21V0Q3002 -1 2966.5 -2.5Q2931 -4 2897 -4Q2863 -4 2830.5 -2.5Q2798 -1 2781 0V-21Q2814 -21 2827.5 -36Q2841 -51 2841 -93V-389Q2841 -418 2837 -441.5Q2833 -465 2818.5 -479.5Q2804 -494 2773 -494Q2738 -494 2710.5 -473Q2683 -452 2666.5 -415.5Q2650 -379 2650 -334V-93Q2650 -51 2664 -36Q2678 -21 2710 -21V0Q2694 -1 2662 -2.5Q2630 -4 2596 -4Q2562 -4 2525 -2.5Q2488 -1 2470 0V-21Q2509 -21 2525.5 -36Q2542 -51 2542 -93V-407Q2542 -452 2527 -473.5Q2512 -495 2470 -495V-516Q2502 -513 2532 -513Q2566 -513 2595.5 -516.5Q2625 -520 2650 -527V-418Q2676 -478 2719.5 -504Q2763 -530 2811 -530Z"></path><path fill="#8A4A22" d="M1341.55 -54.50C1341.55 -13.33 1308.17 20.05 1267.00 20.05C1225.83 20.05 1192.45 -13.33 1192.45 -54.50C1192.45 -95.67 1225.83 -129.05 1267.00 -129.05C1308.17 -129.05 1341.55 -95.67 1341.55 -54.50Z"></path></svg></a>
-</sc-if>
-</header>
+                <!-- =====================================================
+                     SPACE A: 거실 (Living Room)
+                     Left Zone (x: 25..385): 3-Seater Modular Sofa, Framed Art, Monstera Planter, Round Layered Coffee Table, Area Rug
+                     Right-Center Zone (x: 410..680): Floor-to-ceiling Window (Curtain drops cleanly!)
+                     Far Right (x: 725): Panthella Floor Lamp
+                     ===================================================== -->
+                <g id="furn-living" class="svg-transition">
+                  <!-- Large Gallery Wall Art above Sofa (Left Wall) -->
+                  <g id="livingWallArt">
+                    <rect x="115" y="76" width="136" height="106" rx="2" fill="#8C887F" class="svg-transition" id="livingArtFrame" />
+                    <rect x="121" y="82" width="124" height="94" fill="#F2EFE9" />
+                    <!-- Abstract Architectural Art Motif -->
+                    <circle cx="164" cy="124" r="24" fill="#D5D0C5" class="svg-transition" id="livingArtCircle" />
+                    <path d="M136 164 Q185 120 232 164 Z" fill="#9E9A90" class="svg-transition" id="livingArtHill" />
+                    <line x1="136" y1="102" x2="180" y2="102" stroke="#7A766E" stroke-width="2" />
+                  </g>
 
-<div aria-hidden="true" style="display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 6px; padding: 0 24px; flex: none;">
-<sc-for list="{{ bars }}" as="b" hint-placeholder-count="4">
-<div style="height: 2px; background: {{ b.c }}; transition: background-color 0.3s ease;"></div>
-</sc-for>
-</div>
+                  <!-- Lush Monstera Planter beside Sofa (Left Corner x: 24..76) -->
+                  <g id="livingPlanterGroup">
+                    <rect x="40" y="388" width="5" height="18" rx="1" fill="#595650" />
+                    <rect x="73" y="388" width="5" height="18" rx="1" fill="#595650" />
+                    <path id="livingLampTable" d="M32 342 L86 342 L81 394 C80 398 38 398 37 394 Z" fill="#B5B2A8" class="svg-transition" />
+                    <path d="M59 342 Q48 292 32 264 M59 342 Q68 286 86 258 M59 342 L59 246" stroke="#5A6154" stroke-width="3" fill="none" stroke-linecap="round" />
+                    <g id="livingPlantLeaves" fill="#8A9184" class="svg-transition">
+                      <ellipse cx="30" cy="264" rx="18" ry="11" transform="rotate(-26 30 264)" />
+                      <ellipse cx="86" cy="258" rx="18" ry="11" transform="rotate(24 86 258)" />
+                      <ellipse cx="59" cy="240" rx="15" ry="22" />
+                      <ellipse cx="42" cy="300" rx="15" ry="9" transform="rotate(-16 42 300)" />
+                    </g>
+                  </g>
 
-<sc-if value="{{ asking }}" hint-placeholder-val="{{ true }}">
-<div style="padding: 48px 24px 0; display: flex; flex-direction: column; gap: 36px; animation: {{ q.anim }} 0.3s ease both;">
-<h1 class="rt-h" style="margin: 0; font-family: 'Noto Serif KR', serif; font-size: var(--rd-site-type-h2-m); line-height: 1.45; font-weight: 400; letter-spacing: -0.02em; white-space: pre-line;">{{ q.title }}</h1>
-<div style="display: flex; flex-direction: column; border-top: 1px solid var(--rd-site-color-line-soft);">
-<sc-for list="{{ q.options }}" as="o" hint-placeholder-count="4">
-<button type="button" onClick="{{ o.pick }}" style="display: flex; align-items: center; height: 64px; padding: 0; border: none; border-bottom: 1px solid var(--rd-site-color-line-soft); background: none; font-family: inherit; font-size: var(--rd-site-type-body); font-weight: 400; letter-spacing: -0.01em; color: var(--rd-site-color-text); text-align: left; cursor: pointer;">{{ o.label }}</button>
-</sc-for>
-</div>
-</div>
-</sc-if>
+                  <!-- Wide Woven Area Rug anchoring the Living Zone -->
+                  <polygon id="livingRug" points="42,418 465,418 495,534 14,534" fill="#D5D2C9" class="svg-transition" />
+                  <polygon points="52,424 455,424 481,526 26,526" fill="none" stroke="#FFFFFF" stroke-opacity="0.4" stroke-width="1.5" />
 
-<sc-if value="{{ colors }}" hint-placeholder-val="{{ false }}">
-<div class="rq-in" style="padding: 32px 24px 0; display: flex; flex-direction: column; gap: 24px; flex: 1; min-height: 0;">
-<h1 class="rt-h" style="margin: 0; font-family: 'Noto Serif KR', serif; font-size: var(--rd-site-type-h2-m); line-height: 1.45; font-weight: 400; letter-spacing: -0.02em;">벽·바닥·가구는<br>어떤 색에 가까우세요?</h1>
-<!-- 창가 장면 (11-16 결정 #282 B '빛 하나'): 2단계는 장면, 결과에서 조각들이 6×4 조각보 칸으로 접힘. 자리·색은 아래 renderVals의 scene -->
-<div aria-hidden="true" style="position: relative; height: 185px; overflow: hidden; isolation: isolate; flex: none;">
-<sc-for list="{{ scene }}" as="p" hint-placeholder-count="14">
-<div class="rq-p" style="{{ p.st }}">
-<sc-for list="{{ p.tex }}" as="x" hint-placeholder-count="0">
-<img src="{{ x.src }}" alt="" style="opacity: {{ x.op }};">
-</sc-for>
-</div>
-</sc-for>
-</div>
-<div style="display: flex; flex-direction: column; gap: 18px;">
-<sc-for list="{{ rows }}" as="r" hint-placeholder-count="3">
-<div role="radiogroup" aria-label="{{ r.label }}" style="display: flex; flex-direction: column; gap: 10px;">
-<p style="margin: 0; font-size: var(--rd-site-type-small); line-height: 1.5; letter-spacing: -0.01em;"><span style="font-weight: 500;">{{ r.label }}</span><span style="color: var(--rd-site-color-text-muted);">{{ r.pickedName }}</span></p>
-<div style="display: flex; gap: 8px;">
-<sc-for list="{{ r.opts }}" as="o" hint-placeholder-count="6">
-<button type="button" class="rq-sw" role="radio" aria-checked="{{ o.on }}" aria-label="{{ o.name }}" onClick="{{ o.pick }}" style="width: 44px; height: 54px; padding: 0; border: none; background: none; cursor: pointer; display: flex; flex-direction: column; align-items: center; gap: 6px;">
-<span style="display: block; width: 44px; height: 40px; border-radius: 2px; background: {{ o.hex }}; box-shadow: inset 0 0 0 0.5px rgba(42, 39, 35, 0.18);"></span>
-<span style="display: block; width: 6px; height: 6px; border-radius: 50%; background: {{ o.dot }};"></span>
-</button>
-</sc-for>
-</div>
-</div>
-</sc-for>
-</div>
-<button type="button" onClick="{{ next }}" disabled="{{ notReady }}" style="margin-top: auto; margin-bottom: 20px; height: 48px; border: none; border-radius: 4px; background: {{ nextBg }}; color: #FFFFFF; font-family: inherit; font-size: var(--rd-site-type-body); cursor: pointer;">다음</button>
-</div>
-</sc-if>
+                  <!-- 3-Seater Modular Fabric Sofa (x: 72..376 - Clearly a Living Room Sofa with 3 Back Cushions, Armrests, Throw Pillows) -->
+                  <g id="livingSofaGroup">
+                    <!-- Sofa Floor Shadow -->
+                    <ellipse cx="224" cy="414" rx="156" ry="8" fill="#000000" fill-opacity="0.10" />
+                    <!-- 3 Distinct Plush Backrest Cushions -->
+                    <rect id="livingSofaBack" x="88" y="276" width="272" height="68" rx="10" fill="#96938C" class="svg-transition" />
+                    <line x1="178" y1="278" x2="178" y2="342" stroke="#000000" stroke-opacity="0.10" stroke-width="2" />
+                    <line x1="270" y1="278" x2="270" y2="342" stroke="#000000" stroke-opacity="0.10" stroke-width="2" />
+                    <!-- Top Cushion Piping Highlight -->
+                    <line x1="98" y1="280" x2="350" y2="280" stroke="#FFFFFF" stroke-opacity="0.22" stroke-width="2" stroke-linecap="round" />
 
-<sc-if value="{{ done }}" hint-placeholder-val="{{ false }}">
-<div class="rq-in" style="flex: 1; display: flex; flex-direction: column; padding-top: 24px; min-height: 0;">
-<!-- 창가 장면 (11-16 결정 #282 B '빛 하나'): 2단계는 장면, 결과에서 조각들이 6×4 조각보 칸으로 접힘. 자리·색은 아래 renderVals의 scene -->
-<div aria-hidden="true" style="margin: 0 24px; position: relative; height: 185px; overflow: hidden; isolation: isolate; flex: none;">
-<sc-for list="{{ scene }}" as="p" hint-placeholder-count="14">
-<div class="rq-p" style="{{ p.st }}">
-<sc-for list="{{ p.tex }}" as="x" hint-placeholder-count="0">
-<img src="{{ x.src }}" alt="" style="opacity: {{ x.op }};">
-</sc-for>
-</div>
-</sc-for>
-</div>
-<div style="padding: 28px 24px 0; display: flex; flex-direction: column; gap: 12px;">
-<h1 class="rt-h" style="margin: 0; font-family: 'Noto Serif KR', serif; font-size: var(--rd-site-type-h2-m); line-height: 1.45; font-weight: 400; letter-spacing: -0.02em;">이런 쪽으로 고릅니다</h1>
-<div role="radiogroup" aria-label="방향" style="display: flex; gap: 8px; padding-top: 4px;">
-<sc-for list="{{ dirs }}" as="d" hint-placeholder-count="3">
-<button type="button" class="rq-sw" role="radio" aria-checked="{{ d.on }}" aria-label="{{ d.name }}" onClick="{{ d.pick }}" style="padding: 0; border: none; background: none; cursor: pointer; display: flex; flex-direction: column; align-items: center; gap: 6px;">
-<span class="rq-tile" style="display: block; width: 56px; height: 36px; border-radius: 2px; background: {{ d.hex }}; box-shadow: inset 0 0 0 0.5px rgba(42, 39, 35, 0.18);"></span>
-<span style="display: block; width: 6px; height: 6px; border-radius: 50%; background: {{ d.dot }};"></span>
-</button>
-</sc-for>
-</div>
-<p style="margin: 0; max-width: 320px; font-size: var(--rd-site-type-body); line-height: 1.7; letter-spacing: -0.01em;">{{ line }}</p>
-<p style="margin: 0; max-width: 320px; font-size: var(--rd-site-type-body); line-height: 1.7; letter-spacing: -0.01em;">{{ line2 }}</p>
-<p style="margin: 4px 0 0; font-size: var(--rd-site-type-tiny); line-height: 1.6; color: var(--rd-site-color-text-muted);">화면의 색은 실제와 다릅니다. 방문하면 공간의 색과 창으로 드는 빛을 재고, 그에 맞는 원단 서너 가지를 추려 권합니다.</p>
-<a href="cases.html" style="align-self: flex-start; display: inline-flex; align-items: center; gap: 10px; min-height: 44px; font-size: var(--rd-site-type-body); color: inherit; text-decoration: none;">
-<span style="text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 0.42em;">시공 사례</span>
-<svg aria-hidden="true" width="16" height="16" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M4 10h12M11 5l5 5-5 5"></path></svg>
-</a>
-</div>
-<div style="margin-top: auto; padding: 10px 16px 12px; display: flex; flex-direction: column; gap: 8px; border-top: 1px solid var(--rd-site-color-line-soft);">
-<button type="button" onClick="{{ toForm }}" style="height: 48px; border: none; border-radius: 4px; background: var(--rd-site-color-button); color: var(--rd-site-color-button-text); font-family: inherit; font-size: var(--rd-site-type-body); cursor: pointer;">상담 신청</button>
-<button type="button" onClick="{{ restart }}" style="height: 44px; border: none; background: none; font-family: inherit; font-size: var(--rd-site-type-tiny); color: var(--rd-site-color-text-muted); cursor: pointer;">다시 해 보기</button>
-</div>
-</div>
-</sc-if>
+                    <!-- Left & Right Wide Low-Profile Track Armrests -->
+                    <rect id="livingSofaArmL" x="68" y="314" width="28" height="78" rx="7" fill="#827F78" class="svg-transition" />
+                    <rect id="livingSofaArmR" x="352" y="314" width="28" height="78" rx="7" fill="#827F78" class="svg-transition" />
 
-<sc-if value="{{ form }}" hint-placeholder-val="{{ false }}">
-<div class="rq-in" style="flex: 1; display: flex; flex-direction: column; padding-top: 24px; min-height: 0;">
-<!-- 창가 장면 (11-16 결정 #282 B '빛 하나'): 2단계는 장면, 결과에서 조각들이 6×4 조각보 칸으로 접힘. 자리·색은 아래 renderVals의 scene -->
-<div aria-hidden="true" style="margin: 0 24px; position: relative; height: 185px; overflow: hidden; isolation: isolate; flex: none;">
-<sc-for list="{{ scene }}" as="p" hint-placeholder-count="14">
-<div class="rq-p" style="{{ p.st }}">
-<sc-for list="{{ p.tex }}" as="x" hint-placeholder-count="0">
-<img src="{{ x.src }}" alt="" style="opacity: {{ x.op }};">
-</sc-for>
-</div>
-</sc-for>
-</div>
-<div style="padding: 28px 24px 0; display: flex; flex-direction: column; gap: 20px;">
-<h1 class="rt-h" style="margin: 0; font-family: 'Noto Serif KR', serif; font-size: var(--rd-site-type-h2-m); line-height: 1.45; font-weight: 400; letter-spacing: -0.02em; white-space: pre-line;">{{ formTitle }}</h1>
-<div style="display: flex; flex-direction: column; gap: 12px;">
-<dl style="margin: 0; border-top: 1px solid var(--rd-site-color-line-soft);">
-<sc-for list="{{ formRows }}" as="r" hint-placeholder-count="3">
-<div style="display: flex; align-items: center; justify-content: space-between; height: 52px; border-bottom: 1px solid var(--rd-site-color-line-soft);"><dt style="font-size: var(--rd-site-type-tiny); color: var(--rd-site-color-text-muted);">{{ r.k }}</dt><dd style="margin: 0; font-size: var(--rd-site-type-body); letter-spacing: -0.01em;">{{ r.v }}</dd></div>
-</sc-for>
-</dl>
-<span style="align-self: flex-end; font-size: var(--rd-site-type-tiny); color: var(--rd-site-color-text-muted); letter-spacing: 0.04em; font-variant-numeric: tabular-nums;">{{ code }}</span>
-</div>
-</div>
-<div style="margin-top: auto; padding: 10px 16px 12px; display: flex; flex-direction: column; gap: 8px; border-top: 1px solid var(--rd-site-color-line-soft);">
-<sc-if value="{{ sending }}" hint-placeholder-val="{{ true }}">
-<a href="{{ smsHref }}" style="height: 48px; display: flex; align-items: center; justify-content: center; border-radius: 4px; background: var(--rd-site-color-button); color: var(--rd-site-color-button-text); font-size: var(--rd-site-type-body); text-decoration: none;">문자로 보내기</a>
-<button type="button" onClick="{{ kakao }}" style="height: 48px; box-sizing: border-box; border: 1px solid var(--rd-site-color-line-strong); border-radius: 4px; background: none; color: var(--rd-site-color-text); font-family: inherit; font-size: var(--rd-site-type-body); cursor: pointer;">카톡으로 보내기</button>
-</sc-if>
-<sc-if value="{{ view }}" hint-placeholder-val="{{ false }}">
-<button type="button" onClick="{{ restart }}" style="height: 48px; box-sizing: border-box; border: 1px solid var(--rd-site-color-line-strong); border-radius: 4px; background: none; color: var(--rd-site-color-text); font-family: inherit; font-size: var(--rd-site-type-body); cursor: pointer;">직접 해 보기</button>
-</sc-if>
-</div>
-</div>
-</sc-if>
+                    <!-- 3-Module Deep Seat Cushions -->
+                    <rect id="livingSofaSeat" x="92" y="334" width="264" height="34" rx="6" fill="#8A8780" class="svg-transition" />
+                    <line x1="180" y1="334" x2="180" y2="368" stroke="#000000" stroke-opacity="0.11" stroke-width="2" />
+                    <line x1="268" y1="334" x2="268" y2="368" stroke="#000000" stroke-opacity="0.11" stroke-width="2" />
 
-<sc-if value="{{ guide }}" hint-placeholder-val="{{ false }}">
-<!-- 카톡 안내 (11-13): 화면 가운데 — 아래에 붙어 있으면 폰이 띄우는 '복사됨' 알림이 '카톡 열기'를 가림 -->
-<div role="dialog" aria-modal="true" aria-label="카톡으로 상담 신청" style="position: fixed; inset: 0; z-index: 50; display: flex; align-items: center; padding: 16px; box-sizing: border-box;">
-<div onClick="{{ closeGuide }}" aria-hidden="true" style="position: absolute; inset: 0; background: rgba(42, 39, 35, 0.42);"></div>
-<div class="rq-in" style="position: relative; width: 100%; max-height: 100%; overflow: auto; box-sizing: border-box; background: var(--rd-site-color-bg); border-radius: 8px; padding: 28px 24px 12px; display: flex; flex-direction: column; gap: 16px;">
-<div style="display: flex; flex-direction: column; gap: 6px;">
-<h2 class="rt-h" style="margin: 0; font-family: 'Noto Serif KR', serif; font-size: var(--rd-site-type-h3); line-height: 1.45; font-weight: 400; letter-spacing: -0.02em;">{{ guideTitle }}</h2>
-</div>
-<pre style="margin: 0; padding: 14px 16px; background: #FFFFFF; border: 1px solid var(--rd-site-color-line-soft); border-radius: 4px; font-family: inherit; font-size: var(--rd-site-type-tiny); line-height: 1.6; color: var(--rd-site-color-text); white-space: pre-wrap; word-break: keep-all; -webkit-user-select: all; user-select: all;">{{ msg }}</pre>
-<p style="margin: 0; font-size: var(--rd-site-type-body); line-height: 1.6; letter-spacing: -0.01em;">{{ guideLine }}</p>
-<a href="https://pf.kakao.com/_xkxgxhNX/chat" target="_blank" rel="noopener" onClick="{{ openKakao }}" style="height: 48px; display: flex; align-items: center; justify-content: center; border-radius: 4px; background: var(--rd-site-color-button); color: var(--rd-site-color-button-text); font-size: var(--rd-site-type-body); text-decoration: none;">카톡 열기</a>
-<button type="button" onClick="{{ closeGuide }}" style="height: 40px; border: none; background: none; font-family: inherit; font-size: var(--rd-site-type-tiny); color: var(--rd-site-color-text-muted); cursor: pointer;">닫기</button>
-</div>
-</div>
-</sc-if>
+                    <!-- Lower Upholstered Plinth Base -->
+                    <rect id="livingSofaBase" x="72" y="366" width="304" height="28" rx="4" fill="#75726B" class="svg-transition" />
+                    <!-- Architectural Block Legs -->
+                    <rect x="88" y="394" width="12" height="14" rx="1" fill="#3D3A35" />
+                    <rect x="348" y="394" width="12" height="14" rx="1" fill="#3D3A35" />
 
-</div>
+                    <!-- Square Throw Pillows & Textured Bouclé Cushion -->
+                    <rect id="livingCushion1" x="104" y="292" width="46" height="42" rx="8" transform="rotate(-6 127 313)" fill="#B5B2A8" class="svg-transition" />
+                    <circle cx="154" cy="318" r="17" fill="#DEDBD2" />
+                    <rect id="livingCushion2" x="288" y="292" width="48" height="42" rx="8" transform="rotate(5 312 313)" fill="#C4C1B8" class="svg-transition" />
+                    <!-- Cashmere Throw Blanket Draped over Right Seat Module -->
+                    <path id="livingThrow" d="M294 334 L338 334 L334 388 C334 392 298 392 298 388 Z" fill="#D0CDC4" class="svg-transition" />
+                  </g>
 
-</template>
-<script src="../assets/redam-ui.js"></script>
+                  <!-- Layered Round Architectural Coffee Table in Front of Sofa -->
+                  <g id="livingCoffeeTable">
+                    <ellipse cx="238" cy="482" rx="86" ry="12" fill="#000000" fill-opacity="0.09" />
+                    <!-- Wooden Cylinder Pedestal & Legs -->
+                    <rect id="livingTableLegL" x="188" y="440" width="14" height="38" rx="3" fill="#6E6B64" class="svg-transition" />
+                    <rect id="livingTableLegR" x="272" y="440" width="14" height="38" rx="3" fill="#6E6B64" class="svg-transition" />
+                    <!-- Wide Oval Tabletop -->
+                    <ellipse id="livingTableTop" cx="236" cy="436" rx="82" ry="14" fill="#827F78" class="svg-transition" />
+                    <ellipse cx="236" cy="433" rx="80" ry="12" fill="#FFFFFF" fill-opacity="0.08" />
+                    <!-- Hardcover Art Book, Ceramic Tea Mug & Ikebana Branch -->
+                    <polygon points="184,434 226,430 234,438 192,442" fill="#EAE7DF" />
+                    <polygon id="livingBookCover" points="186,431 224,427 231,434 193,438" fill="#9E9B93" class="svg-transition" />
+                    <!-- Ceramic Vase -->
+                    <path d="M262 434 C256 434 255 412 262 404 L272 404 C279 412 278 434 272 434 Z" fill="#DEDBD2" />
+                    <path d="M267 404 Q276 386 286 382" stroke="#6E7568" stroke-width="2" fill="none" stroke-linecap="round" />
+                    <ellipse cx="282" cy="386" rx="6" ry="3.5" transform="rotate(-25 282 386)" fill="#7E8777" id="livingSmallLeaf" class="svg-transition" />
+                  </g>
+                </g>
+
+                <!-- =====================================================
+                     SPACE B: 침실 (Boutique Hotel Bedroom - Unmistakable Front-3/4 Bed!)
+                     Left Zone (x: 38..375): Tall Channel-Tufted Headboard, Plump Pillows, Folded White Top Sheet, Voluminous Rounded Duvet, Quilted Bed Runner, Plush Rug
+                     Center Zone (x: 388..446): Solid Wood Nightstand + Ceramic Mushroom Lamp + Wall Sconce above
+                     Right Zone (x: 470..730): Bedroom Window where Curtains drop cleanly without touching the bed!
+                     ===================================================== -->
+                <g id="furn-bedroom" class="svg-transition">
+                  <!-- Minimalist Framed Diptych Art Centered above Bed Headboard -->
+                  <g id="bedWallDecor">
+                    <rect x="132" y="74" width="66" height="84" rx="2" fill="#9E9B93" class="svg-transition" id="bedArt1" />
+                    <rect x="137" y="79" width="56" height="74" fill="#EFECE6" />
+                    <path d="M148 138 C148 106 182 106 182 138 Z" fill="#C4C0B7" class="svg-transition" id="bedArtArch" />
+
+                    <rect x="212" y="74" width="66" height="84" rx="2" fill="#9E9B93" class="svg-transition" id="bedArt2" />
+                    <rect x="217" y="79" width="56" height="74" fill="#EFECE6" />
+                    <circle cx="245" cy="114" r="16" fill="#B5B1A8" class="svg-transition" id="bedArtSun" />
+                  </g>
+
+                  <!-- Soft Woven Plush Bedroom Area Rug under the Bed -->
+                  <polygon id="bedRug" points="22,416 430,416 456,540 6,540" fill="#D8D5CC" class="svg-transition" />
+                  <polygon points="32,422 418,422 440,532 18,532" fill="none" stroke="#FFFFFF" stroke-opacity="0.38" stroke-width="1.5" />
+
+                  <!-- BOUTIQUE HOTEL BED (Front-3/4 Perspective so it looks 100% like a luxurious bed, never a sofa!) -->
+                  <g id="hotelBedGroup">
+                    <!-- Under-bed Soft Floor Shadow -->
+                    <ellipse cx="206" cy="492" rx="172" ry="14" fill="#000000" fill-opacity="0.14" />
+
+                    <!-- 1. Extended Architectural Wood Wingback / Headboard Backing -->
+                    <rect x="36" y="196" width="340" height="150" rx="4" fill="#5E5B54" />
+                    <!-- 2. Upholstered Vertical Channel-Tufted Hotel Headboard (템바보드/패브릭 쿠션 헤드보드) -->
+                    <rect id="bedHeadboard" x="48" y="206" width="316" height="126" rx="8" fill="#78756E" class="svg-transition" />
+                    <!-- Vertical Channel Tufting Seams -->
+                    <g stroke="#000000" stroke-opacity="0.14" stroke-width="2">
+                      <line x1="92" y1="208" x2="92" y2="318" />
+                      <line x1="136" y1="208" x2="136" y2="318" />
+                      <line x1="180" y1="208" x2="180" y2="318" />
+                      <line x1="224" y1="208" x2="224" y2="318" />
+                      <line x1="268" y1="208" x2="268" y2="318" />
+                      <line x1="312" y1="208" x2="312" y2="318" />
+                    </g>
+
+                    <!-- 3. Two Large Plump White Hotel Sleeping Pillows (봉긋한 호텔 침구 베개) -->
+                    <path id="bedPillowBackL" d="M72 266 Q132 254 192 266 L196 312 Q132 320 68 312 Z" fill="#F5F3EE" class="svg-transition" />
+                    <path id="bedPillowBackR" d="M216 266 Q276 254 336 266 L340 312 Q276 320 212 312 Z" fill="#F5F3EE" class="svg-transition" />
+                    <!-- Subtle Pillow Plumpness Crease -->
+                    <path d="M84 276 Q132 268 180 276" stroke="#000000" stroke-opacity="0.06" stroke-width="2" fill="none" />
+                    <path d="M228 276 Q276 268 324 276" stroke="#000000" stroke-opacity="0.06" stroke-width="2" fill="none" />
+
+                    <!-- 4. Two Tailored Accent Sham Pillows Propped in Front -->
+                    <rect id="bedPillowFrontL" x="88" y="282" width="90" height="34" rx="10" fill="#C4C1B8" class="svg-transition" />
+                    <rect id="bedPillowFrontR" x="230" y="282" width="90" height="34" rx="10" fill="#C4C1B8" class="svg-transition" />
+
+                    <!-- 5. Upper Mattress Base & Crisp Folded-Back White Top Sheet Collar (호텔식 접힌 화이트 시트) -->
+                    <rect id="bedMattress" x="56" y="308" width="300" height="44" rx="8" fill="#EAE8E1" class="svg-transition" />
+                    <path d="M54 316 Q206 306 358 316 L364 344 Q206 336 48 344 Z" fill="#FAF9F5" stroke="#000000" stroke-opacity="0.06" stroke-width="1" />
+
+                    <!-- 6. Thick Voluminous Goose-Down Duvet Extending Forward in 3/4 Perspective (풍성한 볼륨감의 구스다운 이불) -->
+                    <path id="bedDuvet" d="M48 334 Q206 324 364 334 L374 446 C374 458 364 464 350 464 L62 464 C48 464 38 458 38 446 Z" fill="#96938C" class="svg-transition" />
+                    <!-- Subtle Duvet Baffle Box Quilting & Drape Folds -->
+                    <path d="M52 374 Q206 364 360 374" stroke="#FFFFFF" stroke-opacity="0.16" stroke-width="1.5" fill="none" />
+                    <path d="M46 410 Q206 402 366 410" stroke="#000000" stroke-opacity="0.08" stroke-width="1.5" fill="none" />
+                    <line x1="148" y1="332" x2="140" y2="424" stroke="#000000" stroke-opacity="0.06" stroke-width="1.5" />
+                    <line x1="264" y1="332" x2="272" y2="424" stroke="#000000" stroke-opacity="0.06" stroke-width="1.5" />
+
+                    <!-- 7. Textured Quilted Bed Runner Across the Foot of the Bed (하단 호텔 베드러너) -->
+                    <path id="bedThrowRunner" d="M39 412 Q206 404 373 412 L375 454 C375 462 366 466 352 466 L60 466 C46 466 37 462 37 454 Z" fill="#7D7A73" class="svg-transition" />
+                    <path d="M44 426 Q206 418 368 426" stroke="#FFFFFF" stroke-opacity="0.14" stroke-width="1" stroke-dasharray="6 4" fill="none" />
+
+                    <!-- 8. Solid Wood Platform Bed Surround & Tapered Wooden Legs at the Foot -->
+                    <rect id="bedFrame" x="34" y="458" width="344" height="20" rx="4" fill="#68655E" class="svg-transition" />
+                    <polygon points="52,478 66,478 62,498 48,498" fill="#4A4741" />
+                    <polygon points="346,478 360,478 364,498 350,498" fill="#4A4741" />
+                  </g>
+                </g>
+
+                <!-- =====================================================
+                     SPACE C: 아이 방 (Kids' Room)
+                     Left Zone (x: 28..236): Montessori Picture Book & Toy Cubby Unit
+                     Center Window (x: 275..525): Clean Curtain Drop Zone behind Foreground Round Play Mat & Rocking Horse
+                     Right Zone (x: 552..772): Scandinavian Pitched-Roof House Bed with Garland, Bunny & Guardrails
+                     ===================================================== -->
+                <g id="furn-kids" class="svg-transition">
+                  <!-- Whimsical Framed Rainbow Wall Poster on Left Wall -->
+                  <g id="kidsWallDecor">
+                    <rect x="86" y="88" width="76" height="92" rx="4" fill="#9E9B93" class="svg-transition" id="kidsArtFrame" />
+                    <rect x="92" y="94" width="64" height="80" rx="2" fill="#F4F2EC" />
+                    <path d="M104 156 A20 20 0 0 1 144 156" stroke="#B5B2A9" stroke-width="5.5" fill="none" id="kidsRainbow1" class="svg-transition" />
+                    <path d="M111 156 A13 13 0 0 1 137 156" stroke="#8C887F" stroke-width="4.5" fill="none" id="kidsRainbow2" class="svg-transition" />
+                  </g>
+
+                  <!-- Left Side: Montessori Multi-Cubby Book & Toy Storage Unit (x: 32..216) -->
+                  <g id="kidsCubbyUnit">
+                    <polygon id="kidsRoofBlock" points="60,252 76,234 92,252" fill="#8C887F" class="svg-transition" />
+                    <rect x="63" y="252" width="26" height="18" rx="1" fill="#C4C1B8" />
+                    <rect id="kidsTopBasket" x="142" y="246" width="44" height="24" rx="6" fill="#B5B1A7" class="svg-transition" />
+                    <circle cx="150" cy="244" r="5" fill="#B5B1A7" />
+                    <circle cx="178" cy="244" r="5" fill="#B5B1A7" />
+
+                    <rect id="kidsCabinet" x="34" y="270" width="180" height="134" rx="6" fill="#96938C" class="svg-transition" />
+                    <rect x="44" y="280" width="76" height="52" rx="3" fill="#6E6B64" fill-opacity="0.45" />
+                    <rect x="128" y="280" width="76" height="52" rx="3" fill="#6E6B64" fill-opacity="0.45" />
+                    <rect x="44" y="340" width="76" height="54" rx="3" fill="#6E6B64" fill-opacity="0.45" />
+                    <rect x="128" y="340" width="76" height="54" rx="3" fill="#6E6B64" fill-opacity="0.45" />
+
+                    <rect id="kidsBook1" x="50" y="290" width="9" height="42" rx="1" fill="#B8B4AA" class="svg-transition" />
+                    <rect id="kidsBook2" x="61" y="294" width="9" height="38" rx="1" fill="#827F78" class="svg-transition" />
+                    <rect id="kidsBook3" x="72" y="288" width="9" height="44" rx="1" fill="#D5D2C9" class="svg-transition" />
+                    <circle id="kidsToyBall" cx="154" cy="314" r="14" fill="#B0ADA4" class="svg-transition" />
+                    <circle cx="182" cy="318" r="10" fill="#D6D3CB" />
+
+                    <rect id="kidsBin1" x="50" y="346" width="64" height="46" rx="4" fill="#C9C5BC" class="svg-transition" />
+                    <rect x="73" y="354" width="18" height="6" rx="3" fill="#7A7770" />
+                    <rect id="kidsBin2" x="134" y="346" width="64" height="46" rx="4" fill="#C9C5BC" class="svg-transition" />
+                    <rect x="157" y="354" width="18" height="6" rx="3" fill="#7A7770" />
+                  </g>
+
+                  <!-- Center Floor (Foreground below window): Round Quilted Play Mat & Wooden Rocking Horse -->
+                  <g id="kidsPlayZone">
+                    <ellipse id="kidsPlayRug" cx="395" cy="476" rx="132" ry="38" fill="#D6D3CA" class="svg-transition" />
+                    <ellipse cx="395" cy="476" rx="116" ry="31" fill="none" stroke="#FFFFFF" stroke-opacity="0.45" stroke-width="1.5" stroke-dasharray="6 4" />
+
+                    <g id="kidsRockingHorse">
+                      <path d="M326 478 Q364 492 402 478" stroke="#6E6B64" stroke-width="4.5" stroke-linecap="round" fill="none" />
+                      <line x1="344" y1="454" x2="336" y2="480" stroke="#7D7A73" stroke-width="4" stroke-linecap="round" />
+                      <line x1="382" y1="454" x2="390" y2="480" stroke="#7D7A73" stroke-width="4" stroke-linecap="round" />
+                      <rect id="kidsHorseBody" x="340" y="444" width="46" height="14" rx="6" fill="#9E9B93" class="svg-transition" />
+                      <path id="kidsHorseHead" d="M376 448 L388 422 L400 428 L390 450 Z" fill="#8C887F" class="svg-transition" />
+                      <path d="M340 448 Q328 450 326 462" stroke="#8C887F" stroke-width="4" stroke-linecap="round" fill="none" />
+                    </g>
+                  </g>
+
+                  <!-- Right Side (x: 556..776): Scandinavian Pitched-Roof House Bed (박공지붕 하우스 침대) -->
+                  <g id="kidsHouseBed">
+                    <path id="kidsHouseFrameBack" d="M558 408 L558 224 L666 150 L774 224 L774 408" stroke="#827F78" stroke-width="7" stroke-linecap="round" stroke-linejoin="round" fill="none" class="svg-transition" />
+                    <!-- Bunting Garland Flags -->
+                    <path d="M564 230 Q666 258 768 230" stroke="#9E9B93" stroke-width="1.5" fill="none" />
+                    <polygon id="kidsFlag1" points="590,236 606,239 597,254" fill="#B5B2A8" class="svg-transition" />
+                    <polygon id="kidsFlag2" points="626,242 642,244 634,260" fill="#8C887F" class="svg-transition" />
+                    <polygon id="kidsFlag3" points="660,244 676,244 668,261" fill="#D0CDC4" class="svg-transition" />
+                    <polygon id="kidsFlag4" points="696,243 712,241 705,258" fill="#8C887F" class="svg-transition" />
+                    <polygon id="kidsFlag5" points="730,238 746,234 740,252" fill="#B5B2A8" class="svg-transition" />
+
+                    <!-- Kids Mattress, Bunny Plush & Quilt -->
+                    <rect id="kidsMattress" x="564" y="344" width="204" height="28" rx="5" fill="#E3E1DA" class="svg-transition" />
+                    <g id="kidsToySilhouette" fill="#8A7968" class="svg-transition">
+                      <rect x="614" y="314" width="24" height="30" rx="10" />
+                      <circle cx="626" cy="308" r="11" />
+                      <ellipse cx="620" cy="293" rx="3.5" ry="8.5" transform="rotate(-8 620 293)" />
+                      <ellipse cx="632" cy="293" rx="3.5" ry="8.5" transform="rotate(8 632 293)" />
+                    </g>
+                    <rect id="kidsPillow" x="710" y="322" width="52" height="24" rx="8" fill="#C9C5BC" class="svg-transition" />
+                    <path id="kidsBlanket" d="M564 342 L714 342 L714 372 L564 372 Z" fill="#9E9B94" class="svg-transition" />
+
+                    <rect id="kidsFrame" x="554" y="370" width="224" height="24" rx="3" fill="#7D7A73" class="svg-transition" />
+                    <g id="kidsGuardrail" fill="#8E8B84" class="svg-transition">
+                      <rect x="632" y="332" width="142" height="6" rx="2" />
+                      <rect x="644" y="336" width="5" height="36" />
+                      <rect x="666" y="336" width="5" height="36" />
+                      <rect x="688" y="336" width="5" height="36" />
+                      <rect x="710" y="336" width="5" height="36" />
+                      <rect x="732" y="336" width="5" height="36" />
+                      <rect x="754" y="336" width="5" height="36" />
+                    </g>
+                    <line x1="558" y1="224" x2="774" y2="224" stroke="#8E8B84" stroke-width="5" id="kidsHouseTieBeam" class="svg-transition" />
+                  </g>
+                </g>
+
+                <!-- =====================================================
+                     SPACE D: 작업실 · 가게 (Architectural Studio / Atelier)
+                     Left Zone (x: 70..360): Large Architectural Studio Window (Curtain drops cleanly to floor!)
+                     Right Zone (x: 410..765): Wide Workbench Desk, Ultrawide Monitor, Laptop, Ergonomic Chair, Upper Wall Shelves
+                     ===================================================== -->
+                <g id="furn-studio" class="svg-transition">
+                  <!-- Upper Wall-Mounted Modular Shelving above Studio Desk (x: 430..750, y: 120..225) -->
+                  <g id="studioBookcase">
+                    <rect id="studioShelfPostL" x="454" y="118" width="5" height="106" rx="1" fill="#68655E" class="svg-transition" />
+                    <rect id="studioShelfPostM" x="594" y="118" width="5" height="106" rx="1" fill="#68655E" class="svg-transition" />
+                    <rect id="studioShelfPostR" x="734" y="118" width="5" height="106" rx="1" fill="#68655E" class="svg-transition" />
+
+                    <g id="studioShelf" fill="#96938C" class="svg-transition">
+                      <rect x="436" y="158" width="318" height="7" rx="1.5" />
+                      <rect x="436" y="214" width="318" height="7" rx="1.5" />
+                    </g>
+
+                    <!-- Curated Studio Objects on Upper Shelves -->
+                    <path d="M472 158 C468 158 467 136 474 130 L482 130 C489 136 488 158 484 158 Z" fill="#DEDBD2" />
+                    <circle cx="502" cy="146" r="11" fill="#B5B2A9" />
+                    <rect id="studioBook1" x="468" y="174" width="9" height="40" rx="1" fill="#7D7A73" class="svg-transition" />
+                    <rect id="studioBook2" x="479" y="178" width="10" height="36" rx="1" fill="#B5B1A7" class="svg-transition" />
+                    <rect id="studioBook3" x="491" y="172" width="8" height="42" rx="1" fill="#D5D2C9" class="svg-transition" />
+                    <rect id="studioBox1" x="526" y="182" width="54" height="32" rx="2" fill="#C4C1B8" class="svg-transition" />
+                    <rect id="studioCrate1" x="616" y="178" width="56" height="36" rx="2" fill="#827F78" class="svg-transition" />
+                    <rect id="studioCrate2" x="680" y="184" width="44" height="30" rx="2" fill="#ABA8A0" class="svg-transition" />
+                    <!-- Trailing Studio Plant on Right Shelf -->
+                    <rect x="692" y="134" width="28" height="24" rx="3" fill="#CFCBC2" />
+                    <path id="studioVine" d="M700 138 Q688 156 690 182 M712 138 Q724 158 720 188" stroke="#768071" stroke-width="3" stroke-linecap="round" fill="none" class="svg-transition" />
+                  </g>
+
+                  <!-- Right Work Desk, Ergonomic Studio Chair, Ultrawide Monitor & Laptop (x: 416..766) -->
+                  <g id="studioDeskGroup">
+                    <!-- Ergonomic Studio Chair -->
+                    <rect x="586" y="366" width="8" height="62" fill="#4A4742" />
+                    <path d="M558 428 L622 428" stroke="#4A4742" stroke-width="5" stroke-linecap="round" />
+                    <rect id="studioChair" x="552" y="298" width="76" height="58" rx="12" fill="#827F78" class="svg-transition" />
+
+                    <!-- Wide Solid-Wood Studio Workbench -->
+                    <polygon points="440,364 454,364 438,448 424,448" fill="#595650" />
+                    <polygon points="458,364 468,364 478,448 468,448" fill="#474540" />
+                    <polygon points="732,364 746,364 760,448 746,448" fill="#595650" />
+                    <polygon points="716,364 726,364 714,448 704,448" fill="#474540" />
+                    <line x1="436" y1="416" x2="748" y2="416" stroke="#595650" stroke-width="4" />
+
+                    <!-- Thick Wood Workbench Top -->
+                    <rect id="studioDeskTop" x="418" y="352" width="348" height="13" rx="3" fill="#75726B" class="svg-transition" />
+
+                    <!-- Laptop on Stand (Left of Monitor) -->
+                    <path d="M448 352 L476 352 L470 338 L488 338" stroke="#6E6B64" stroke-width="3" fill="none" />
+                    <polygon points="450,338 496,338 504,314 458,314" fill="#3D3C38" />
+
+                    <!-- Ultrawide Studio Monitor on Aluminum Stand -->
+                    <rect x="580" y="334" width="20" height="18" fill="#9E9B93" />
+                    <rect x="560" y="349" width="60" height="3" rx="1" fill="#827F78" />
+                    <rect x="520" y="264" width="140" height="80" rx="4" fill="#2B2A27" />
+                    <rect id="studioMonitorScreen" x="524" y="268" width="132" height="72" rx="3" fill="#3D3C38" class="svg-transition" />
+                    <!-- Subtle UI Wireframe inside Monitor Screen -->
+                    <rect x="532" y="276" width="36" height="54" rx="1" fill="#FFFFFF" fill-opacity="0.09" />
+                    <rect x="574" y="276" width="72" height="32" rx="1" fill="#FFFFFF" fill-opacity="0.14" />
+                    <rect x="574" y="314" width="48" height="16" rx="1" fill="#FFFFFF" fill-opacity="0.08" />
+
+                    <!-- Monitor Screen Reflection Glare (Visible when concern = '화면에 빛이 비쳐요' and curtain is open) -->
+                    <g id="monitorScreenGlareSlash" clip-path="url(#monitorScreenClip)" opacity="0" class="svg-transition">
+                      <polygon points="520,344 576,264 614,264 558,344" fill="#FFFFFF" fill-opacity="0.88" />
+                      <polygon points="570,344 626,264 646,264 590,344" fill="#FFFFFF" fill-opacity="0.54" />
+                    </g>
+                  </g>
+                </g>
+
+              </g>
+
+              <!-- =======================================================
+                   LAYER 4.5: CONTINUOUS PROBLEM SUNLIGHT & GLARE PROJECTIONS
+                   (Aligned with each space's dedicated window coordinates!)
+                   ======================================================= -->
+              <g id="layer4b-problem-light" clip-path="url(#roomInteriorClip)" class="svg-transition pointer-events-none">
+
+                <!-- 1. Midday Harsh Sunbeam & Floor Glare ('한낮 햇빛이 강해요' / '낮잠 잘 때 어두웠으면') -->
+                <g id="glareMiddayFloor" opacity="0" class="svg-transition">
+                  <polygon id="glareMiddayShaft" points="410,68 680,68 745,522 315,522" fill="#FFFFFF" fill-opacity="0.28" />
+                  <polygon id="glareMiddayPatchL" points="345,414 525,414 510,518 315,518" fill="#FFFDF7" fill-opacity="0.72" />
+                  <polygon id="glareMiddayPatchR" points="540,414 715,414 738,518 532,518" fill="#FFFDF7" fill-opacity="0.72" />
+                </g>
+
+                <!-- 2. Morning Diagonal Sunbeam from Right Bedroom Window onto Left Hotel Bed ('아침 빛에 잠이 깨요') -->
+                <g id="glareMorningBed" opacity="0" class="svg-transition">
+                  <polygon points="470,68 730,68 380,470 48,470 48,250" fill="#FFF6D6" fill-opacity="0.35" />
+                  <!-- Crisp Illuminated Sun Patch across the Hotel Bed Pillows & Duvet -->
+                  <polygon points="68,266 340,266 368,425 48,425" fill="#FFFDF5" fill-opacity="0.52" />
+                </g>
+
+                <!-- 2B. Morning Diagonal Sunbeam from Center Kids Window onto Right Kids House Bed ('아침에 너무 일찍 깨요') -->
+                <g id="glareMorningKidsBed" opacity="0" class="svg-transition">
+                  <polygon points="275,68 525,68 790,260 790,465 545,465 275,350" fill="#FFF6D6" fill-opacity="0.35" />
+                  <polygon points="564,314 768,314 772,376 564,376" fill="#FFFDF5" fill-opacity="0.56" />
+                </g>
+
+                <!-- 3. Night Streetlight Beam from Right Bedroom Window onto Hotel Bed ('밤에 바깥 불빛이 들어와요') -->
+                <g id="glareNightBeam" opacity="0" class="svg-transition">
+                  <polygon points="615,142 730,360 390,540 35,540 35,320 470,220" fill="#DCE6F7" fill-opacity="0.28" />
+                  <polygon points="48,334 364,334 374,458 38,458" fill="#E6F0FF" fill-opacity="0.30" />
+                </g>
+
+                <!-- 4. Afternoon Angled Sun Glare from Left Studio Window onto Right Workbench ('오후 햇빛이 강해요') -->
+                <g id="glareAfternoonRoom" opacity="0" class="svg-transition">
+                  <polygon points="70,68 360,68 780,285 780,530 395,530 70,380" fill="#F7C98B" fill-opacity="0.34" />
+                  <polygon points="418,352 766,352 766,365 418,365" fill="#FFE8B8" fill-opacity="0.68" />
+                </g>
+
+                <!-- 5. Studio Monitor Screen Glare Ray from Left Window onto Right Ultrawide Monitor ('화면에 빛이 비쳐요') -->
+                <g id="glareMonitorBeam" opacity="0" class="svg-transition">
+                  <polygon points="70,68 360,68 680,356 490,356 70,380" fill="#FFFFFF" fill-opacity="0.34" />
+                  <polygon points="215,68 360,68 660,344 515,344" fill="#FFFFFF" fill-opacity="0.28" />
+                </g>
+              </g>
+
+              <!-- =======================================================
+                   LAYER 5: AMBIENT ROOM DARKNESS (NIGHT / BLACKOUT DIMMING)
+                   & REVITALIZED ARCHITECTURAL LIGHTING (T5 Curtain Box + Designer Lamps)
+                   ======================================================= -->
+              <g id="layer5-lighting">
+
+                <!-- 5A. Dynamic Ambient Room Dimming Veil (Darkens room realistically in Night Mode or when Blackout Curtain closes!) -->
+                <rect id="ambientDarknessVeil" x="0" y="0" width="800" height="550" fill="#121622" opacity="0" class="svg-transition pointer-events-none" />
+
+                <!-- 5B. Warm Ambient Room Glow when Lamp is ON -->
+                <rect id="ceilWash" x="0" y="0" width="800" height="550" fill="#F3F6F8" opacity="0" class="svg-transition pointer-events-none" />
+                <rect id="lampRoomWash" x="0" y="0" width="800" height="550" fill="#FFE6A3" opacity="0" class="svg-transition pointer-events-none" style="mix-blend-mode: soft-light;" />
+
+                <!-- 5C. Active Architectural Light Cones & Curtain Box T5 Indirect Wash (Switched by Space) -->
+                <g id="lampGlowCone" opacity="0" class="svg-transition pointer-events-none">
+
+                  <!--Universal Curtain Box T5 Indirect Lighting Wash (커튼박스 간접조명 - Illuminates the curtain folds from the top pelmet!) -->
+                  
+
+                  <!-- Living Room: Right Panthella Floor Lamp Cone + Sofa Warm Rim Highlight -->
+                  <g id="lightCone-living">
+                    <polygon points="708,262 744,262 795,442 615,442" fill="#FFE89E" fill-opacity="0.42" />
+                    <polygon points="714,262 738,262 770,442 660,442" fill="#FFF5CC" fill-opacity="0.34" />
+                    <ellipse cx="726" cy="442" rx="85" ry="18" fill="#FFE89E" fill-opacity="0.45" />
+                    <!-- Warm Light Bounce on Sofa & Coffee Table -->
+                    <polygon points="88,276 360,276 376,368 72,368" fill="#FFE89E" fill-opacity="0.14" />
+                    <ellipse cx="236" cy="436" rx="82" ry="14" fill="#FFF3C4" fill-opacity="0.28" />
+                  </g>
+
+                  <!-- Bedroom: Center-Right Nightstand Mushroom Lamp + Wall Sconce + Warm Bed Duvet Glow -->
+                  <g id="lightCone-bedroom">
+                    <!-- Wall Sconce Warm Up/Down Cone -->
+                    <polygon points="414,202 428,202 454,155 388,155" fill="#FFF3C4" fill-opacity="0.30" />
+                    <polygon points="410,214 432,214 478,348 358,348" fill="#FFE89E" fill-opacity="0.38" />
+                    <!-- Mushroom Table Lamp Cone -->
+                    <polygon points="402,298 440,298 492,422 342,422" fill="#FFE89E" fill-opacity="0.44" />
+                    <ellipse cx="421" cy="340" rx="38" ry="7" fill="#FFF7D6" fill-opacity="0.65" />
+                    <ellipse cx="421" cy="422" rx="76" ry="15" fill="#FFE89E" fill-opacity="0.38" />
+                    <!-- Warm Cozy Illumination across the Hotel Bed Pillows & Duvet -->
+                    <path d="M48 312 Q206 302 364 312 L374 456 L38 456 Z" fill="#FFE89E" fill-opacity="0.18" />
+                  </g>
+
+                  <!-- Kids Room: Tripod Floor Lamp + Warm House Bed Garland Glow -->
+                  <g id="lightCone-kids">
+                    <polygon points="518,242 554,242 582,190 490,190" fill="#FFF3C4" fill-opacity="0.28" />
+                    <polygon points="512,282 560,282 630,442 435,442" fill="#FFE89E" fill-opacity="0.40" />
+                    <ellipse cx="536" cy="442" rx="92" ry="18" fill="#FFE89E" fill-opacity="0.40" />
+                    <!-- Warm Glow inside House Bed Roof -->
+                    <polygon points="558,224 666,150 774,224 774,372 558,372" fill="#FFE89E" fill-opacity="0.16" />
+                  </g>
+
+                  <!-- Studio: Linear Ceiling Pendant + Articulated Architect Task Lamp on Desk -->
+                  <g id="lightCone-studio">
+                    <!-- Linear Ceiling Pendant Downward Wash -->
+                    <polygon points="530,98 650,98 710,352 465,352" fill="#FFF3C4" fill-opacity="0.26" />
+                    <!-- Articulated Task Lamp Focused Cone -->
+                    <polygon points="704,264 726,274 762,358 585,358" fill="#FFE89E" fill-opacity="0.45" />
+                    <ellipse cx="672" cy="356" rx="86" ry="9" fill="#FFF7D6" fill-opacity="0.65" />
+                  </g>
+                </g>
+
+                <!-- =====================================================
+                     DESIGNER LAMP FIXTURES (Positioned cleanly per Space)
+                     ===================================================== -->
+                <!-- 1. 거실: Far-Right Panthella Floor Lamp (x: 726) -->
+                <g id="lamp-living">
+                  <ellipse cx="726" cy="436" rx="24" ry="5" fill="#000000" fill-opacity="0.12" />
+                  <path d="M706 434 C716 434 722 424 724 404 L728 404 C730 424 736 434 746 434 Z" fill="#8C887F" />
+                  <rect x="724.5" y="258" width="3" height="148" fill="#8C887F" />
+                  <ellipse id="livingBulbCore" cx="726" cy="262" rx="15" ry="5" fill="#CFCBC2" class="svg-transition" />
+                  <path id="livingLampShade" d="M694 262 C694 224 758 224 758 262 Z" fill="#D6D3CB" class="svg-transition" />
+                  <ellipse cx="726" cy="262" rx="32" ry="4" fill="#000000" fill-opacity="0.08" />
+                </g>
+
+                <!-- 2. 침실: Nightstand between Hotel Bed & Right Window (x: 386..456) + Mushroom Lamp + Wall Sconce -->
+                <g id="lamp-bedroom">
+                  <!-- Brass Wall Sconce above Nightstand -->
+                  <circle cx="421" cy="196" r="5" fill="#78756E" />
+                  <path d="M421 196 L421 206" stroke="#78756E" stroke-width="2.5" />
+                  <polygon id="bedSconceShade" points="409,214 433,214 427,202 415,202" fill="#D6D3CB" class="svg-transition" />
+
+                  <!-- Solid Wood Nightstand beside the Hotel Bed -->
+                  <polygon points="394,390 400,390 396,420 390,420" fill="#595650" />
+                  <polygon points="442,390 448,390 452,420 446,420" fill="#595650" />
+                  <rect id="bedNightstand" x="386" y="340" width="70" height="50" rx="4" fill="#827F78" class="svg-transition" />
+                  <rect x="392" y="346" width="58" height="20" rx="2" fill="#000000" fill-opacity="0.09" />
+                  <circle cx="421" cy="356" r="3" fill="#D5D2C9" />
+                  <rect x="392" y="370" width="58" height="14" rx="1" fill="#000000" fill-opacity="0.16" />
+
+                  <!-- Ceramic Mushroom Table Lamp on Nightstand -->
+                  <path id="bedLampBase" d="M411 340 C411 318 414 306 417 298 L425 298 C428 306 431 318 431 340 Z" fill="#BDB9B0" class="svg-transition" />
+                  <ellipse id="bedBulbCore" cx="421" cy="298" rx="15" ry="4" fill="#CFCBC2" class="svg-transition" />
+                  <path id="bedLampShade" d="M393 298 C393 266 449 266 449 298 Z" fill="#DFDCD4" class="svg-transition" />
+                </g>
+
+                <!-- 3. 아이 방: Wooden Tripod Floor Lamp beside House Bed (x: 536) -->
+                <g id="lamp-kids">
+                  <ellipse cx="536" cy="436" rx="28" ry="6" fill="#000000" fill-opacity="0.08" />
+                  <line x1="536" y1="278" x2="514" y2="434" stroke="#7D7A73" stroke-width="4.5" stroke-linecap="round" id="kidsTripodL" class="svg-transition" />
+                  <line x1="536" y1="278" x2="558" y2="434" stroke="#7D7A73" stroke-width="4.5" stroke-linecap="round" id="kidsTripodR" class="svg-transition" />
+                  <line x1="536" y1="278" x2="536" y2="438" stroke="#68655E" stroke-width="4" stroke-linecap="round" />
+                  <ellipse id="kidsBulbCore" cx="536" cy="282" rx="14" ry="4" fill="#CFCBC2" class="svg-transition" />
+                  <polygon id="kidsLampShade" points="514,240 558,240 566,282 506,282" fill="#E3E0D8" class="svg-transition" />
+                  <line x1="508" y1="278" x2="564" y2="278" stroke="#000000" stroke-opacity="0.08" stroke-width="2" stroke-dasharray="5 3" />
+                </g>
+
+                <!-- 4. 작업실 · 가게: Articulated Architect Task Lamp + Suspended Linear Pendant -->
+                <g id="lamp-studio">
+                  <!-- Suspended Linear Ceiling Pendant above Desk -->
+                  <line x1="550" y1="0" x2="550" y2="90" stroke="#78756E" stroke-width="1.5" />
+                  <line x1="630" y1="0" x2="630" y2="90" stroke="#78756E" stroke-width="1.5" />
+                  <rect x="526" y="90" width="128" height="6" rx="2" fill="#4A4742" />
+                  <rect id="studioPendantDiffuser" x="530" y="96" width="120" height="3.5" rx="1" fill="#CFCBC2" class="svg-transition" />
+
+                  <!-- Articulated Architect Task Lamp on Right Edge of Workbench -->
+                  <rect x="724" y="346" width="26" height="6" rx="2" fill="#4A4742" />
+                  <path d="M738 346 L752 294 L716 260" stroke="#5E5C56" stroke-width="3.5" fill="none" stroke-linecap="round" stroke-linejoin="round" />
+                  <circle cx="752" cy="294" r="4" fill="#3D3C38" />
+                  <ellipse id="studioBulbCore" cx="710" cy="266" rx="10" ry="5" transform="rotate(24 710 266)" fill="#CFCBC2" class="svg-transition" />
+                  <polygon id="studioLampShade" points="712,252 724,258 728,276 696,262" fill="#D6D3CB" class="svg-transition" />
+                </g>
+
+                <!-- Hover Highlight Outline for Lamp Interactive Area -->
+              </g>
+            </svg>
+    </div>
+    <div class="toggles" id="toggles"></div>
+  </div>
+  <div class="panel">
+    <div class="bars" aria-hidden="true"><i></i><i></i><i></i><i></i></div>
+    <div id="panelBody" style="flex:1;display:flex;flex-direction:column"></div>
+  </div>
+</main>
+<div id="guideRoot"></div>
+<template id="logoTpl"><svg role="img" aria-label="Re.dam" viewBox="39 -784 3283 805" style="display: block; width: 96px; height: auto;"><path fill="#2B221A" d="M39 -708Q62 -707 98.5 -706Q135 -705 171 -705Q219 -705 262.5 -706Q306 -707 324 -707Q409 -707 465.5 -685Q522 -663 549.5 -623.5Q577 -584 577 -533Q577 -502 564.5 -467.5Q552 -433 521 -403.5Q490 -374 437 -355Q409 -345 373 -340Q377 -340 381 -339Q456 -329 490.5 -299Q525 -269 538 -207L563 -105Q572 -62 582.5 -44Q593 -26 614 -26Q630 -27 640.5 -35.5Q651 -44 663 -59L677 -48Q654 -17 629 -1.5Q604 14 562 14Q519 14 488.5 -8.5Q458 -31 445 -94L425 -194Q416 -237 405 -268.5Q394 -300 374.5 -318Q355 -336 318 -336H233V-106Q233 -70 239 -52Q245 -34 262 -28Q279 -22 312 -20V0Q288 -2 251.5 -2.5Q215 -3 177 -3Q135 -3 98.5 -2.5Q62 -2 39 0V-20Q73 -22 90 -28Q107 -34 112.5 -52Q118 -70 118 -106V-602Q118 -639 112.5 -656.5Q107 -674 89.5 -680.5Q72 -687 39 -688ZM233 -356H292Q359 -356 394.5 -378.5Q430 -401 442.5 -438.5Q455 -476 455 -522Q455 -601 421 -644.5Q387 -688 303 -688Q260 -688 246.5 -671Q233 -654 233 -602ZM923 -530Q1011 -530 1061 -477Q1111 -424 1111 -309H809Q808 -297 807 -284Q806 -267 806 -251Q806 -182 827 -135Q848 -88 882 -64.5Q916 -41 951 -41Q978 -41 1003.5 -49.5Q1029 -58 1052 -78.5Q1075 -99 1093 -135L1113 -127Q1101 -93 1076 -60Q1051 -27 1012 -6.5Q973 14 921 14Q851 14 799 -17.5Q747 -49 719 -108Q691 -167 691 -248Q691 -337 720 -400Q749 -463 801.5 -496.5Q854 -530 923 -530ZM807 -328H1005Q1006 -377 997 -418.5Q988 -460 969 -485Q950 -510 919 -510Q876 -510 845 -465Q814 -421 807 -328ZM1876 -784V-109Q1876 -64 1891.5 -42.5Q1907 -21 1948 -21V0Q1917 -3 1886 -3Q1852 -3 1822.5 0Q1793 3 1768 11V-79Q1755 -45 1732 -23Q1694 14 1630 14Q1569 14 1522.5 -15.5Q1476 -45 1451 -105.5Q1426 -166 1426 -258Q1426 -349 1456.5 -409.5Q1487 -470 1538 -500Q1589 -530 1651 -530Q1695 -530 1732 -511Q1754 -499 1768 -478V-664Q1768 -709 1752.5 -730.5Q1737 -752 1696 -752V-773Q1728 -770 1758 -770Q1791 -770 1821 -773.5Q1851 -777 1876 -784ZM1768 -443Q1754 -474 1730 -489Q1703 -505 1669 -505Q1612 -505 1576 -444.5Q1540 -384 1541 -258Q1541 -175 1555 -122.5Q1569 -70 1596.5 -45Q1624 -20 1663 -20Q1702 -20 1734 -53Q1759 -80 1768 -127ZM2121 7Q2079 7 2049 -9Q2019 -25 2004 -53Q1989 -81 1989 -117Q1989 -161 2009 -188.5Q2029 -216 2060.5 -233Q2092 -250 2127.5 -261.5Q2163 -273 2194.5 -283.5Q2226 -294 2246.5 -308Q2267 -322 2267 -345V-413Q2267 -449 2255.5 -470.5Q2244 -492 2224.5 -501Q2205 -510 2178 -510Q2155 -510 2129 -503.5Q2103 -497 2088 -478Q2110 -472 2124.5 -454.5Q2139 -437 2139 -411Q2139 -383 2120.5 -367Q2102 -351 2074 -351Q2043 -351 2028 -370.5Q2013 -390 2013 -416Q2013 -443 2026.5 -460Q2040 -477 2062 -492Q2086 -508 2123.5 -519Q2161 -530 2207 -530Q2250 -530 2281.5 -520.5Q2313 -511 2334 -490Q2359 -467 2367 -432.5Q2375 -398 2375 -349V-73Q2375 -48 2381.5 -37.5Q2388 -27 2403 -27Q2413 -27 2422.5 -32Q2432 -37 2445 -47L2455 -30Q2434 -13 2412.5 -3Q2391 7 2358 7Q2326 7 2306 -3Q2286 -13 2276.5 -32Q2267 -51 2267 -79Q2241 -37 2205 -15Q2169 7 2121 7ZM2169 -41Q2197 -41 2221.5 -57Q2246 -73 2267 -105V-304Q2256 -288 2235 -276.5Q2214 -265 2190 -253Q2166 -241 2144.5 -225.5Q2123 -210 2109 -186Q2095 -162 2095 -125Q2095 -86 2115 -63.5Q2135 -41 2169 -41ZM2811 -530Q2849 -530 2875 -519.5Q2901 -509 2917 -491Q2935 -472 2942 -441Q2944 -430 2946 -418Q2973 -482 3018 -506Q3063 -530 3112 -530Q3150 -530 3176 -519.5Q3202 -509 3218 -491Q3236 -472 3243 -440.5Q3250 -409 3250 -361V-93Q3250 -51 3266.5 -36Q3283 -21 3322 -21V0Q3305 -1 3269 -2.5Q3233 -4 3198 -4Q3164 -4 3131.5 -2.5Q3099 -1 3082 0V-21Q3115 -21 3128.5 -36Q3142 -51 3142 -93V-389Q3142 -418 3138 -441.5Q3134 -465 3119 -479.5Q3104 -494 3072 -494Q3037 -494 3009.5 -472.5Q2982 -451 2965.5 -414.5Q2949 -378 2949 -333V-93Q2949 -51 2965 -36Q2981 -21 3019 -21V0Q3002 -1 2966.5 -2.5Q2931 -4 2897 -4Q2863 -4 2830.5 -2.5Q2798 -1 2781 0V-21Q2814 -21 2827.5 -36Q2841 -51 2841 -93V-389Q2841 -418 2837 -441.5Q2833 -465 2818.5 -479.5Q2804 -494 2773 -494Q2738 -494 2710.5 -473Q2683 -452 2666.5 -415.5Q2650 -379 2650 -334V-93Q2650 -51 2664 -36Q2678 -21 2710 -21V0Q2694 -1 2662 -2.5Q2630 -4 2596 -4Q2562 -4 2525 -2.5Q2488 -1 2470 0V-21Q2509 -21 2525.5 -36Q2542 -51 2542 -93V-407Q2542 -452 2527 -473.5Q2512 -495 2470 -495V-516Q2502 -513 2532 -513Q2566 -513 2595.5 -516.5Q2625 -520 2650 -527V-418Q2676 -478 2719.5 -504Q2763 -530 2811 -530Z"></path><path fill="#8A4A22" d="M1341.55 -54.50C1341.55 -13.33 1308.17 20.05 1267.00 20.05C1225.83 20.05 1192.45 -13.33 1192.45 -54.50C1192.45 -95.67 1225.83 -129.05 1267.00 -129.05C1308.17 -129.05 1341.55 -95.67 1341.55 -54.50Z"></path></svg></template>
 <script>
-class Component extends DCLogic {
-  // 내 공간으로 해 보기 (8단계): 공간 → 마음 쓰이는 것 → 벽·바닥·가구 색 → 바람 → 조각보와 방향
-  //  맞추는 기준은 보이지 않게, 고른 색에 따라 창가 칸이 달라지는 것만 보여 줌
-  hexLab(h) {
-    const v = [1, 3, 5].map((i) => parseInt(h.slice(i, i + 2), 16) / 255).map((c) => c > 0.04045 ? Math.pow((c + 0.055) / 1.055, 2.4) : c / 12.92);
-    const x = (v[0] * 0.4124 + v[1] * 0.3576 + v[2] * 0.1805) / 0.95047, y = v[0] * 0.2126 + v[1] * 0.7152 + v[2] * 0.0722, z = (v[0] * 0.0193 + v[1] * 0.1192 + v[2] * 0.9505) / 1.08883;
-    const f = (t) => t > 0.008856 ? Math.cbrt(t) : 7.787 * t + 16 / 116;
-    return [116 * f(y) - 16, 500 * (f(x) - f(y)), 200 * (f(y) - f(z))];
-  }
-  labHex(L, a, b) {
-    const fy = (L + 16) / 116, fx = fy + a / 500, fz = fy - b / 200;
-    const g = (t) => t * t * t > 0.008856 ? t * t * t : (t - 16 / 116) / 7.787;
-    const X = 0.95047 * g(fx), Y = g(fy), Z = 1.08883 * g(fz);
-    const r = [3.2406 * X - 1.5372 * Y - 0.4986 * Z, -0.9689 * X + 1.8758 * Y + 0.0415 * Z, 0.0557 * X - 0.204 * Y + 1.057 * Z];
-    return '#' + r.map((c) => { c = Math.max(0, Math.min(1, c)); c = c > 0.0031308 ? 1.055 * Math.pow(c, 1 / 2.4) - 0.055 : 12.92 * c; return ('0' + Math.round(c * 255).toString(16)).slice(-2); }).join('').toUpperCase();
-  }
-  dE(p, q) { return Math.hypot(p[0] - q[0], p[1] - q[1], p[2] - q[2]); }
-  // 창가 칸 색 (안쪽 계산 — 화면에는 결과만)
-  drapeLab(wish, W, F, U) {
-    if (wish === 'wide') return [W[0] - 4, W[1] * 0.8, W[2] * 0.8 + 1];
-    if (wish === 'soft') return [W[0] - 10, (W[1] + F[1]) * 0.3 + 0.5, Math.max(W[2], 5) + 3];
-    if (wish === 'calm') return [W[0] - 21, W[1] * 0.3, W[2] * 0.3 - 1];
-    const cands = [[30, 26, 9], [46, -4, -15], [47, -6, 17], [36, 1, -2]];
-    let best = cands[0], score = -1;
-    cands.forEach((c) => { const s = Math.min(this.dE(c, W), this.dE(c, F), this.dE(c, U)); if (s > score) { score = s; best = c; } });
-    return best;
-  }
-  // 글 복사 (카톡 상담, 11-13): 인스타·네이버 앱 안 브라우저에서 막히면 false — 안내 화면이 '길게 눌러 복사'로 바뀜
-  copyText(txt) {
-    let ok = false;
-    try {
-      const ta = document.createElement('textarea');
-      ta.value = txt; ta.setAttribute('readonly', '');
-      ta.style.cssText = 'position:fixed;top:0;left:0;width:1px;height:1px;opacity:0;font-size:16px;';
-      document.body.appendChild(ta); ta.select(); ta.setSelectionRange(0, txt.length);
-      ok = document.execCommand('copy');
-      document.body.removeChild(ta);
-    } catch (e) {}
-    try { if (navigator.clipboard && window.isSecureContext) navigator.clipboard.writeText(txt).then(() => { if (!ok) this.setState({ copied: true }); }, () => {}); } catch (e) {}
-    return ok;
-  }
-  // 신청 번호 링크 (11-13): ?r=10000~44559 → 고른 것을 되살려 신청서(view)로
-  componentDidMount() {
-    try {
-      const m = /[?&]r=(\d{5})(?:&|$)/.exec(location.search);
-      if (!m) return;
-      let n = parseInt(m[1], 10) - 10000;
-      if (!(n >= 0 && n < 34560)) return;
-      const take = (k) => { const v = n % k; n = (n - v) / k; return v; };
-      const dir = take(3), wish = take(4), furn = take(5), floor = take(6), wall = take(6), care = take(4), space = n;
-      this.setState({ step: 5, view: true, space, care, wall, floor, furn, wish, dir, seek: 5 });
-    } catch (e) {}
-  }
-  componentWillUnmount() { (this.timers || []).forEach(clearTimeout); }
-  seek() {
-    (this.timers || []).forEach(clearTimeout);
-    let reduce = false;
-    try { reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches; } catch (e) {}
-    if (reduce) { this.setState({ seek: 5 }); return; }
-    // 창가 장면 (11-16): 바람을 고르면 -1 맨 창 → 0 속지가 닫히며 커튼 색이 앉음 → 5 조각보로 접힘
-    this.timers = [setTimeout(() => this.setState({ seek: 0 }), 120), setTimeout(() => this.setState({ seek: 5 }), 1900)];
-  }
-  renderVals() {
-    const hf = this.props.hf ?? '고딕';
-    const s = this.state || {};
-    const step = s.step || 0;
-    const set = (patch) => this.setState(Object.assign({}, s, patch));
-    const PAPER = '#EDE9E2';
-    const walls = [['웜 화이트', '#F4EFE6'], ['퓨어 화이트', '#F5F6F7'], ['크림 베이지', '#ECE2D0'], ['그레이지', '#E1DCD3'], ['스톤 그레이', '#CFCDC8'], ['세이지', '#DBE0D7']];
-    const floors = [['화이트 오크', '#D8C8AE'], ['내추럴 오크', '#C4A47C'], ['월넛', '#7A5A42'], ['진한 마루', '#5E4636'], ['회색 타일', '#CFCBC4'], ['흰 타일', '#ECEAE5']];
-    const furns = [['흰색', '#EEEBE6'], ['밝은 원목', '#CDB08A'], ['짙은 원목', '#6E5140'], ['회색 패브릭', '#A9A6A0'], ['검정', '#3B3836']];
-    const spaces = ['거실', '침실', '아이 방', '작업실 · 가게'];
-    const cares = [
-      { label: '한낮 햇빛이 강해요', short: '한낮 햇빛', line: '한낮 햇빛은 속지가 비치는 정도로 덜어 냅니다.' },
-      { label: '바깥 시선이 신경 쓰여요', short: '바깥 시선', line: '밖에서 보이는 정도는 속지가 비치는 정도로 정합니다.' },
-      { label: '아침 빛에 잠이 깨요', short: '아침 빛', line: '아침 빛까지 막으려면 겉지는 암막으로 갑니다.' },
-      { label: '채광은 살리고 싶어요', short: '채광', line: '빛은 살리고 눈부심만 덜어 내는 속지를 고릅니다.' }
-    ];
-    const wishes = [
-      { id: 'wide', label: '넓어 보였으면 해요', short: '넓어 보이게', line: '벽 색에 커튼을 녹여, 창가가 벽처럼 이어지게 합니다.' },
-      { id: 'soft', label: '포근했으면 해요', short: '포근하게', line: '벽보다 조금 짙고 따뜻한 색을 고르고, 결은 보송한 쪽으로 봅니다.' },
-      { id: 'point', label: '포인트가 있었으면 해요', short: '포인트', line: '벽·바닥과 다른 색으로, 눈이 먼저 창가로 가게 합니다.' },
-      { id: 'calm', label: '차분했으면 해요', short: '차분하게', line: '벽보다 한 톤 낮은 색으로 창가를 가라앉힙니다.' }
-    ];
-    // 0 공간 · 1 마음 쓰이는 것 · 2 색 · 3 바람 · 4 결과
-    const qs = { 0: { title: '어느 공간의 창인가요?', list: spaces.map((x) => ({ label: x })), key: 'space' }, 1: { title: '창가에서 가장\n마음 쓰이는 것은요?', list: cares, key: 'care' }, 3: { title: '어떤 느낌을\n바라세요?', list: wishes, key: 'wish' } };
-    const asking = step === 0 || step === 1 || step === 3;
-    const qd = qs[asking ? step : 0];
-    const q = {
-      title: qd.title,
-      anim: step % 2 ? 'rq-b' : 'rq-a',
-      options: qd.list.map((o, i) => ({
-        label: o.label,
-        pick: () => {
-          const p = { step: step + 1 }; p[qd.key] = i;
-          if (step === 3) { p.seek = -1; set(p); this.seek(); } else set(p);
-        }
-      }))
-    };
-    const rowDef = [['벽', walls, 'wall'], ['바닥', floors, 'floor'], ['가구', furns, 'furn']];
-    const rows = rowDef.map(([label, list, key]) => ({
-      label,
-      pickedName: s[key] != null ? ' · ' + list[s[key]][0] : '',
-      opts: list.map(([name, hex], i) => ({
-        name, hex,
-        on: s[key] === i ? 'true' : 'false',
-        dot: s[key] === i ? 'var(--rd-common-point-base)' : 'transparent',
-        pick: () => { const p = {}; p[key] = i; set(p); }
-      }))
-    }));
-    const ready = s.wall != null && s.floor != null && s.furn != null;
-    const W = s.wall != null ? walls[s.wall][1] : null, F = s.floor != null ? floors[s.floor][1] : null, U = s.furn != null ? furns[s.furn][1] : null;
-    const wish = wishes[s.wish || 0];
-    // 빈 조각보 (판 44): 고르기 전에도 칸 나눔이 보이게 칸마다 조금씩 다른 옅은 색
-    const E = { wall: '#ECE8E1', sheer: '#F2EFEA', drape: '#E3DED6', furn: '#E8E4DD', floor: '#DFDAD2' };
-    const dirSel = s.dir == null ? 1 : s.dir;
-    const dirNames = ['한 톤 밝게', '가운데', '한 톤 짙게'];
-    let drape = E.drape, sheer = E.sheer, dirs = [];
-    // 창가 장면 단계 (11-16): k -1 = 바람을 막 고름(맨 창) · 0~4 = 커튼 색이 앉음 · 5 = 조각보로 접힘
-    const k = s.seek == null ? 5 : s.seek;
-    const lit = step >= 4 && ready && k >= 0;
-    const fold = step >= 4 && ready && k >= 5;
-    if (step >= 4 && ready) {
-      const WL = this.hexLab(W), FL = this.hexLab(F), UL = this.hexLab(U);
-      const d = this.drapeLab(wish.id, WL, FL, UL);
-      // 방향 세 칸 (판 44): 누른 칸의 색이 창가 칸에 들어감
-      const dh = [[6, 0.9], [0, 1], [-7, 1.1]].map(([dl, c]) => this.labHex(d[0] + dl, d[1] * c, d[2] * c));
-      drape = lit ? dh[dirSel] : E.drape;
-      sheer = lit ? this.labHex(94, WL[1] * 0.3, Math.max(2, WL[2] * 0.4)) : E.sheer;
-      dirs = dh.map((hx, i) => ({ hex: fold ? hx : PAPER, dot: fold && i === dirSel ? 'var(--rd-common-point-base)' : 'transparent', on: i === dirSel ? 'true' : 'false', name: dirNames[i], pick: () => set({ dir: i }) }));
-    }
-    const t = { wall: W || E.wall, floor: F || E.floor, furn: U || E.furn, drape, sheer };
-    // 원단 결 (판 63): 커튼 색이 앉으면 옅은 기본 결(천이라는 표시) — 포근만 보송한 결
-    //  바람이 결을 정하는 규칙은 리담 기준에 없으므로 만들지 않음(겉지 결은 상담에서 손님이 따로 고름). 속지 결은 넣지 않음
-    //  결 사진: 기본 = 데미안 샤인, 보송 = 데미안 부클 (흑백 결만 뽑음)
-    const fluffy = wish.id === 'soft';
-    const texOf = (on) => [['../images/e0f06c5fa1ee1083c4fad69a385c5b36.jpg', on && !fluffy ? 0.55 : 0], ['../images/1151f80ec70004b9b8a3da4c16533801.jpg', on && fluffy ? 0.8 : 0]].map(([src, op]) => ({ src, op }));
-    // 창가 장면 (11-16 결정 #282 B '빛 하나'): 방은 살짝 가라앉히고 창 하나에만 빛. 바람을 고르기 전엔 맨 창(커튼을 양옆에 걷어 둠, 속지 없음)
-    //  고르면 속지가 닫히며 커튼 색이 앉고, 결과에서 조각들이 지금 조각보 칸(6×4, 칸 나눔 그대로)으로 옮겨 가며 접힘
-    //  조각 자리는 시안(해보기_창가장면_1116_시안.html PIECES) 그대로 [왼, 위, 폭, 높이] %, 조각보 칸은 [열, 줄, 열 수, 줄 수]
-    const GAP = 3;      // 조각보 칸 사이 (px, 폰)
-    const shade = (hex, dl) => { const l = this.hexLab(hex); return this.labHex(l[0] + dl, l[1], l[2]); };
-    const TILE = { wall: [0, 0, 3, 2], sheer: [3, 0, 1, 2], drape: [4, 0, 2, 3], furn: [0, 2, 2, 2], floor: [2, 2, 2, 2], wall2: [4, 3, 2, 1] };
-    const tileBox = ([a, b, n, m]) => [`calc(${(a * 100 / 6).toFixed(3)}% + ${(a * GAP / 6).toFixed(2)}px)`, `calc(${b * 25}% + ${(b * GAP / 4).toFixed(2)}px)`, `calc(${(n * 100 / 6).toFixed(3)}% - ${((1 - n / 6) * GAP).toFixed(2)}px)`, `calc(${m * 25}% - ${((1 - m / 4) * GAP).toFixed(2)}px)`];
-    const sceneBox = (r) => r.map((v) => `calc(${v}% + 0px)`);
-    const PIECES = [
-      ['wallL', [0, 0, 58, 75], 'wall'], ['wallR', [58, 0, 42, 75], 'wall2'],
-      ['glow', [8, -14, 96, 104]],      // 창 둘레 벽에 번지는 빛
-      ['glass', [37, 11, 38, 56]],      // 창 (바깥 빛)
-      ['sill', [35, 66.4, 42, 1.4]],      // 창턱 한 줄
-      ['floor', [0, 75, 100, 25], 'floor'],
-      ['patch', [30, 75, 58, 25]],      // 바닥에 떨어진 빛
-      ['sheer', [38, 9, 36, 66], 'sheer'],
-      ['drapeL', [30, 7, 10, 69], 'drape'], ['drapeR', [72, 7, 10, 69], 'drape'],
-      ['rod', [28, 6, 56, 0.9]],
-      ['sofaBack', [-4, 63, 33, 11], 'furn'], ['sofaSeat', [-4, 70, 35, 11], 'furn'],
-      ['shade', [0, 0, 100, 100]]      // 방 가장자리 가라앉힘
-    ];
-    const BARE = { drapeL: [30, 7, 5, 69], drapeR: [77, 7, 5, 69], sheer: [38, 9, 0, 66] };      // 맨 창: 걷어 둔 커튼, 속지는 아직 안 닫힘
-    const PLEAT = 'repeating-linear-gradient(90deg, rgba(42,34,26,0.10) 0, rgba(42,34,26,0) 7px, rgba(255,255,255,0.10) 13px, rgba(42,34,26,0) 19px, rgba(42,34,26,0.10) 26px)';
-    const PLEAT_THIN = 'repeating-linear-gradient(90deg, rgba(255,255,255,0) 0, rgba(255,255,255,0.22) 14px, rgba(255,255,255,0) 22px, rgba(42,34,26,0.035) 31px, rgba(255,255,255,0) 40px)';
-    const tileCol = { wall: t.wall, wall2: t.wall, sheer: t.sheer, drape: t.drape, furn: t.furn, floor: t.floor };
-    const scene = PIECES.map(([key, r, tile]) => {
-      const p = { bg: 'transparent', img: 'none', op: 1, rad: '0', sh: 'none', clip: 'none' };
-      let box;
-      if (fold) {
-        box = tile ? tileBox(TILE[tile]) : sceneBox(r);
-        if (tile) p.bg = tileCol[tile]; else p.op = 0;
-      } else {
-        box = sceneBox(!lit && BARE[key] ? BARE[key] : r);
-        const a = lit ? 1 : 0;      // 0 = 맨 창(빛이 가장 셈), 1 = 속지 너머로 걸러짐
-        if (key === 'wallL' || key === 'wallR') p.bg = t.wall;
-        else if (key === 'floor') p.bg = t.floor;
-        else if (key === 'glow') p.img = `radial-gradient(ellipse 46% 48% at 50% 48%, rgba(255,252,243,${a ? 0.4 : 0.55}) 0%, rgba(255,252,243,0) 100%)`;
-        else if (key === 'glass') { p.bg = '#FFFDF7'; p.img = 'radial-gradient(ellipse 70% 60% at 50% 42%, #FFFFFF 0%, #FFFCF4 45%, #F3EEE4 100%)'; p.sh = `0 0 36px 14px rgba(255,251,240,${a ? 0.45 : 0.7})`; }
-        else if (key === 'sill') p.bg = shade(t.wall, 3);
-        else if (key === 'patch') { p.img = `linear-gradient(180deg, rgba(255,250,236,${a ? 0.32 : 0.5}) 0%, rgba(255,250,236,0) 100%)`; p.clip = 'polygon(16% 0, 84% 0, 100% 100%, 0 100%)'; }
-        else if (key === 'sheer') { p.bg = t.sheer; p.img = PLEAT_THIN; p.op = lit ? 0.78 : 0; }
-        else if (key === 'drapeL' || key === 'drapeR') { p.bg = t.drape; p.img = PLEAT; }
-        else if (key === 'rod') p.bg = shade(t.wall, -28);
-        else if (key === 'sofaBack') { p.bg = shade(t.furn, -4); p.rad = '6px 6px 2px 2px'; }
-        else if (key === 'sofaSeat') { p.bg = t.furn; p.rad = '3px'; }
-        else if (key === 'shade') p.img = 'radial-gradient(ellipse 75% 85% at 56% 42%, rgba(60,44,30,0) 0%, rgba(60,44,30,0) 45%, rgba(60,44,30,0.10) 75%, rgba(60,44,30,0.22) 100%)';
-      }
-      return {
-        st: `left: ${box[0]}; top: ${box[1]}; width: ${box[2]}; height: ${box[3]}; background-color: ${p.bg}; background-image: ${p.img}; opacity: ${p.op}; border-radius: ${p.rad}; box-shadow: ${p.sh}; clip-path: ${p.clip};`,
-        tex: key === 'drapeL' ? texOf(lit && !fold) : key === 'drapeR' ? texOf(lit) : []      // 접히면 두 폭이 한 칸에 겹침 → 위에 오는 오른쪽 폭에만 결
-      };
-    });
-    const bars = [0, 1, 2, 3].map((i) => ({ c: step >= i ? 'var(--rd-site-color-text)' : 'var(--rd-site-color-line-soft)' }));
-    const care = cares[s.care || 0];
-    // 상담 신청 (11-13): 문자는 고른 내용이 채워진 채로 열림, 카톡은 글을 미리 넣을 수 없어 붙여 넣기 안내 화면을 거침
-    // 신청 번호 (11-13): 고른 것 일곱 가지를 다섯 자리 숫자 하나로 (10000~44559). 같은 것을 고르면 같은 번호
-    const code = String(10000 + ((((((s.space || 0) * 4 + (s.care || 0)) * 6 + (s.wall || 0)) * 6 + (s.floor || 0)) * 5 + (s.furn || 0)) * 4 + (s.wish || 0)) * 3 + dirSel);
-    const msg = '안녕하세요. 리담 홈페이지에서 상담 신청해요.\nredam.kr/try?r=' + code;
-    const ua = (typeof navigator !== 'undefined' && navigator.userAgent) || '';
-    const ios = /iPhone|iPad|iPod/.test(ua);
-    const phone = /iPhone|Android.+Mobile/.test(ua);
-    let touch = true;
-    const copied = s.copied !== false;
-    return {
-      hf, bars, asking, q, rows, t, dirs, scene,
-      colors: step === 2,
-      done: step === 4,
-      // 신청서 (11-13): 5단계. 링크(?r=)로 열면 view — 보내기 대신 직접 해 보기
-      form: step === 5,
-      view: !!s.view,
-      sending: !s.view,
-      formTitle: s.view ? '이렇게 고르셨습니다' : '이 내용으로\n상담을 신청합니다',
-      formRows: [['공간', spaces[s.space || 0]], ['마음 쓰이는 것', care.short], ['바라는 느낌', wish.short]].map(([k, v]) => ({ k, v })),
-      code,
-      toForm: () => set({ step: 5, guide: false }),
-      notReady: !ready,
-      nextBg: ready ? 'var(--rd-site-color-button)' : 'var(--rd-site-color-button-off)',
-      next: () => { if (ready) set({ step: 3 }); },
-      // 바람별 첫 문장 (판 63): 손님이 고른 색 이름을 넣어, 계산과 맞는 말만
-      line: ready ? ({
-        wide: walls[s.wall][0] + ' 벽의 밝기에 맞춰, 창가가 벽처럼 이어지게 합니다.',
-        soft: walls[s.wall][0] + ' 벽보다 조금 짙고 따뜻한 색을 고르고, 결은 보송한 쪽으로 봅니다.',
-        point: walls[s.wall][0] + ' 벽, ' + floors[s.floor][0] + ' 바닥, ' + furns[s.furn][0] + ' 가구 어디와도 겹치지 않는 색을 고릅니다.',
-        calm: walls[s.wall][0] + ' 벽보다 한 톤 낮춰, 창가를 가라앉힙니다.'
-      })[wish.id] : wish.line,
-      line2: care.line,
-      msg,
-      smsHref: 'sms:01075231952' + (ios ? '&' : '?') + 'body=' + encodeURIComponent(msg),
-      guide: !!s.guide,
-      guideTitle: copied ? '신청 글을 복사해 두었습니다' : '아래 글을 길게 눌러 복사해 주세요',
-      guideLine: touch ? '카톡 창의 글 쓰는 칸을 꾹 눌러 붙여 넣어 주세요.' : '카톡 창의 글 쓰는 칸에 Ctrl+V(맥은 ⌘+V)로 붙여 넣어 주세요.',
-      kakao: () => { const ok = this.copyText(msg); this.setState({ guide: true, copied: ok }); },
-      openKakao: () => { if (this.copyText(msg)) this.setState({ copied: true }); },
-      closeGuide: () => this.setState({ guide: false }),
-      // 홈에서 들어왔으면 뒤로 가기로 — 보던 자리로 돌아감 (1107)
-      goHome: (ev) => {
-        try {
-          const r = document.referrer ? new URL(document.referrer) : null;
-          if (r && r.origin === location.origin && /\/(index\.html)?$/.test(r.pathname) && history.length > 1) { if (ev) ev.preventDefault(); history.back(); }
-        } catch (e) {}
-      },
-      restart: () => { (this.timers || []).forEach(clearTimeout); try { if (location.search) history.replaceState(null, '', location.pathname); } catch (e) {} this.setState({ step: 0, guide: false, seek: null, dir: null, view: false }); },
-      // 머리줄 (11-13): 첫 질문·결과 = 다른 쪽과 같은 머리, 그 사이 = 이전 질문 + 로고
-      topNav: step === 0 || step === 4 || !!s.view,
-      midQ: (step > 0 && step < 4) || (step === 5 && !s.view),
-      back: () => { (this.timers || []).forEach(clearTimeout); if (step === 5) { set({ step: 4, guide: false }); return; } set({ step: Math.max(0, step - 1), guide: false, seek: null, dir: null }); }
-    };
+const P='../';
+// ───── 색 계산 (지금 사이트와 같음) ─────
+function hexLab(h){const v=[1,3,5].map(i=>parseInt(h.slice(i,i+2),16)/255).map(c=>c>0.04045?Math.pow((c+0.055)/1.055,2.4):c/12.92);const x=(v[0]*0.4124+v[1]*0.3576+v[2]*0.1805)/0.95047,y=v[0]*0.2126+v[1]*0.7152+v[2]*0.0722,z=(v[0]*0.0193+v[1]*0.1192+v[2]*0.9505)/1.08883;const f=t=>t>0.008856?Math.cbrt(t):7.787*t+16/116;return[116*f(y)-16,500*(f(x)-f(y)),200*(f(y)-f(z))];}
+function labHex(L,a,b){const fy=(L+16)/116,fx=fy+a/500,fz=fy-b/200;const g=t=>t*t*t>0.008856?t*t*t:(t-16/116)/7.787;const X=0.95047*g(fx),Y=g(fy),Z=1.08883*g(fz);const r=[3.2406*X-1.5372*Y-0.4986*Z,-0.9689*X+1.8758*Y+0.0415*Z,0.0557*X-0.204*Y+1.057*Z];return'#'+r.map(c=>{c=Math.max(0,Math.min(1,c));c=c>0.0031308?1.055*Math.pow(c,1/2.4)-0.055:12.92*c;return('0'+Math.round(c*255).toString(16)).slice(-2);}).join('').toUpperCase();}
+function dE(p,q){return Math.hypot(p[0]-q[0],p[1]-q[1],p[2]-q[2]);}
+function shade(h,dl){const l=hexLab(h);return labHex(l[0]+dl,l[1],l[2]);}
+function mix(a,b,t){const p=hexLab(a),q=hexLab(b);return labHex(p[0]+(q[0]-p[0])*t,p[1]+(q[1]-p[1])*t,p[2]+(q[2]-p[2])*t);}
+function drapeLab(wish,W,F,U){
+  if(wish==='wide')return[W[0]-4,W[1]*0.8,W[2]*0.8+1];
+  if(wish==='soft')return[W[0]-10,(W[1]+F[1])*0.3+0.5,Math.max(W[2],5)+3];
+  if(wish==='calm')return[W[0]-21,W[1]*0.3,W[2]*0.3-1];
+  const c=[[30,26,9],[46,-4,-15],[47,-6,17],[36,1,-2]];let best=c[0],sc=-1;
+  c.forEach(x=>{const s=Math.min(dE(x,W),dE(x,F),dE(x,U));if(s>sc){sc=s;best=x;}});return best;
+}
+
+// ───── 고를 것 ─────
+const WALLS=[['웜 화이트','#F4EFE6'],['퓨어 화이트','#F5F6F7'],['크림 베이지','#ECE2D0'],['그레이지','#E1DCD3'],['스톤 그레이','#CFCDC8'],['세이지','#DBE0D7']];
+const FLOORS=[['화이트 오크','#D8C8AE'],['내추럴 오크','#C4A47C'],['월넛','#7A5A42'],['진한 마루','#5E4636'],['회색 타일','#CFCBC4'],['흰 타일','#ECEAE5']];
+// 가구는 색 이름만 (11-18 사장님: 재질은 넣지 않음)
+const FURNS=[['흰색','#EEEBE6'],['밝은 갈색','#CDB08A'],['짙은 갈색','#6E5140'],['회색','#A9A6A0'],['검정','#3B3836']];
+const WISHES=[{id:'wide',name:'넓어 보이게'},{id:'soft',name:'포근하게'},{id:'point',name:'포인트'},{id:'calm',name:'차분하게'}];
+const SPACES=[
+  {id:'living',name:'거실',cares:[
+    {id:'living-1',t:'한낮 햇빛이 강해요',s:'한낮 햇빛',ext:'brightDay',glare:'middayFloor',style:'layered',time:'day',line:'한낮 햇빛은 속지가 비치는 정도로 덜어 냅니다.'},
+    {id:'living-2',t:'바깥 시선이 신경 쓰여요',s:'바깥 시선',ext:'oppositeBuilding',glare:'none',style:'sheer',time:'day',line:'밖에서 보이는 정도는 속지가 비치는 정도로 정합니다.'},
+    {id:'living-3',t:'밤에 불 켜면 안이 다 보여요',s:'밤에 안이 보임',ext:'nightExposed',glare:'none',style:'full',time:'night',line:'밤에는 겉지가 가립니다. 불빛이 비치지 않는 두께로 고릅니다.'},
+    {id:'living-4',t:'채광은 살리고 싶어요',s:'채광',ext:'natureHills',glare:'none',style:'layered',time:'day',line:'빛은 살리고 눈부심만 덜어 내는 속지를 고릅니다.'}]},
+  {id:'bedroom',name:'침실',cares:[
+    {id:'bed-1',t:'아침 빛에 잠이 깨요',s:'아침 빛',ext:'morningSky',glare:'morningBed',style:'full',time:'day',line:'아침 빛까지 막으려면 겉지는 암막으로 갑니다.'},
+    {id:'bed-2',t:'밤에 바깥 불빛이 들어와요',s:'밤 바깥 불빛',ext:'nightStreetlight',glare:'nightBeam',style:'full',time:'night',line:'바깥 불빛은 암막 겉지로 막고, 겉지 색은 밤에 켜는 등 아래에서도 봅니다.'},
+    {id:'bed-3',t:'바깥 시선이 신경 쓰여요',s:'바깥 시선',ext:'oppositeBuilding',glare:'none',style:'layered',time:'day',line:'밖에서 보이는 정도는 속지가 비치는 정도로 정합니다.'},
+    {id:'bed-4',t:'낮엔 환하게 쓰고 싶어요',s:'낮엔 환하게',ext:'natureHills',glare:'none',style:'layered',time:'day',line:'낮에는 빛이 드는 속지로, 밤에는 겉지로 나눠 씁니다.'}]},
+  {id:'kids',name:'아이 방',cares:[
+    {id:'kids-1',t:'낮잠 잘 때 어두웠으면 해요',s:'낮잠',ext:'brightDay',glare:'middayFloor',style:'full',time:'day',line:'낮에도 어둡게 하려면 겉지는 암막으로 갑니다.'},
+    {id:'kids-2',t:'아침에 너무 일찍 깨요',s:'아침 빛',ext:'morningSky',glare:'morningBed',style:'full',time:'day',line:'아침 빛까지 막으려면 겉지는 암막으로 갑니다.'},
+    {id:'kids-3',t:'한낮 햇빛이 강해요',s:'한낮 햇빛',ext:'brightDay',glare:'middayFloor',style:'layered',time:'day',line:'한낮 햇빛은 속지가 비치는 정도로 덜어 냅니다.'},
+    {id:'kids-4',t:'밝고 환했으면 해요',s:'밝고 환하게',ext:'natureHills',glare:'none',style:'layered',time:'day',line:'빛은 살리고 눈부심만 덜어 내는 속지를 고릅니다.'}]},
+  {id:'studio',name:'작업실 · 가게',cares:[
+    {id:'studio-1',t:'화면에 빛이 비쳐요',s:'화면 눈부심',ext:'brightDay',glare:'monitorBeam',style:'layered',time:'day',line:'화면에 꽂히는 빛은 속지나 블라인드로 덜어 냅니다.'},
+    {id:'studio-2',t:'오후 햇빛이 강해요',s:'오후 햇빛',ext:'afternoonSun',glare:'afternoonRoom',style:'layered',time:'day',line:'낮게 드는 오후 햇빛은 속지로 걸러, 방 안 깊이 들지 않게 합니다.'},
+    {id:'studio-3',t:'지나가는 시선이 신경 쓰여요',s:'지나가는 시선',ext:'streetPasserby',glare:'none',style:'sheer',time:'day',line:'지나가는 시선은 속지가 비치는 정도로 가립니다.'},
+    {id:'studio-4',t:'채광은 살리고 싶어요',s:'채광',ext:'natureHills',glare:'none',style:'layered',time:'day',line:'빛은 살리고 눈부심만 덜어 내는 속지를 고릅니다.'}]}
+];
+const WIN={living:{winX:410,winY:68,winW:270,winH:310,curtainTop:62,curtainH:336},bedroom:{winX:472,winY:72,winW:248,winH:278,curtainTop:64,curtainH:334},kids:{winX:275,winY:72,winW:230,winH:268,curtainTop:64,curtainH:334},studio:{winX:72,winY:68,winW:286,winH:308,curtainTop:62,curtainH:336}};
+
+// ───── 상태 ─────
+// step 0 공간 · 1 마음 쓰이는 것 · 2 색 · 3 커튼 색 · 4 결과 · 5 신청서(view = ?r= 링크로 연 신청서)
+const S={step:0,space:null,care:null,wall:null,floor:null,furn:null,wish:null,closed:false,time:'day',ceil:false,stand:false,view:false,guide:false,copied:true};
+let timers=[];
+const $=id=>document.getElementById(id);
+const reduce=(()=>{try{return matchMedia('(prefers-reduced-motion: reduce)').matches;}catch(e){return false;}})();
+const UA=navigator.userAgent||'',IOS=/iPhone|iPad|iPod/.test(UA),PHONE=/iPhone|Android.+Mobile/.test(UA);
+const TOUCH=(()=>{try{return matchMedia('(pointer: coarse)').matches;}catch(e){return false;}})();
+function stop(){timers.forEach(clearTimeout);timers=[];}
+function sp(){return S.space==null?null:SPACES[S.space];}
+function care(){const s=sp();return s&&S.care!=null?s.cares[S.care]:null;}
+function hexes(){return{W:S.wall!=null?WALLS[S.wall][1]:null,F:S.floor!=null?FLOORS[S.floor][1]:null,U:S.furn!=null?FURNS[S.furn][1]:null};}
+function curtainColors(){
+  const {W,F,U}=hexes();if(!W||!F||!U)return null;
+  const WL=hexLab(W),FL=hexLab(F),UL=hexLab(U);
+  return{drapes:WISHES.map(w=>{const d=drapeLab(w.id,WL,FL,UL);return labHex(d[0],d[1],d[2]);}),sheer:labHex(94,WL[1]*0.3,Math.max(2,WL[2]*0.4))};
+}
+function lightsFor(c){S.time=c.time;S.ceil=c.id==='living-3';S.stand=c.id==='bed-2';}
+// 신청 번호: 고른 것을 다섯 자리 숫자 하나로 (지금 사이트와 같은 체계, 방향 자리는 늘 가운데=1)
+function code(){return String(10000+((((((S.space||0)*4+(S.care||0))*6+(S.wall||0))*6+(S.floor||0))*5+(S.furn||0))*4+(S.wish||0))*3+1);}
+
+// ───── 그림 ─────
+function syncWindow(key){
+  const c=WIN[key],cx=c.winX+c.winW/2,at=(id,o)=>{const e=$(id);if(e)Object.entries(o).forEach(([k,v])=>e.setAttribute(k,v));};
+  at('windowClipRect',{x:c.winX,y:c.winY,width:c.winW,height:c.winH});
+  at('windowOuterFrame',{x:c.winX-12,y:c.winY-12,width:c.winW+24,height:c.winH+22});
+  at('windowInnerReveal',{x:c.winX-4,y:c.winY-4,width:c.winW+8,height:c.winH+8});
+  at('winGlassBorder',{x:c.winX,y:c.winY,width:c.winW,height:c.winH});
+  at('winCenterMullion',{x:cx-4,y:c.winY,height:c.winH});
+  at('winCenterLine',{x1:cx,y1:c.winY,x2:cx,y2:c.winY+c.winH});
+  at('winTransomBar',{x1:c.winX,y1:c.winY+72,x2:c.winX+c.winW,y2:c.winY+72});
+  at('winSill',{x:c.winX-18,y:c.winY+c.winH-2,width:c.winW+36});
+  at('winSillShadow',{x:c.winX-14,y:c.winY+c.winH+6,width:c.winW+28});
+  const px=c.winX-22,pw=c.winW+44;
+  at('pelmetBoxOuter',{x:px,y:c.curtainTop-14,width:pw});
+  at('pelmetBoxShadow',{x:px+4,y:c.curtainTop-2,width:pw-8});
+  const sx=c.winX-8,sw=c.winW+16;
+  $('curtainSheerGroup').style.transformOrigin=`${cx}px ${c.curtainTop}px`;
+  ['curtainSheerRect','curtainSheerPleats'].forEach(id=>at(id,{x:sx,y:c.curtainTop,width:sw,height:c.curtainH}));
+  at('curtainSheerHem',{x1:sx,y1:c.curtainTop+c.curtainH-3,x2:sx+sw,y2:c.curtainTop+c.curtainH-3});
+  const lx=c.winX-16,w=(c.winW+32)/2+1,rx=cx-1;
+  $('curtainLeftPanel').style.transformOrigin=`${lx}px ${c.curtainTop}px`;
+  ['curtainLeftRect','curtainLeftPleats'].forEach(id=>at(id,{x:lx,y:c.curtainTop,width:w,height:c.curtainH}));
+  at('curtainLeftEdge',{x1:cx,y1:c.curtainTop,x2:cx,y2:c.curtainTop+c.curtainH});
+  $('curtainRightPanel').style.transformOrigin=`${rx+w}px ${c.curtainTop}px`;
+  ['curtainRightRect','curtainRightPleats'].forEach(id=>at(id,{x:rx,y:c.curtainTop,width:w,height:c.curtainH}));
+  at('curtainRightEdge',{x1:cx,y1:c.curtainTop,x2:cx,y2:c.curtainTop+c.curtainH});
+  at('glareMiddayShaft',{points:`${c.winX},${c.winY} ${c.winX+c.winW},${c.winY} ${c.winX+c.winW+55},522 ${c.winX-55},522`});
+  at('glareMiddayPatchL',{points:`${c.winX-35},414 ${cx-6},414 ${cx-14},518 ${c.winX-52},518`});
+  at('glareMiddayPatchR',{points:`${cx+6},414 ${c.winX+c.winW+35},414 ${c.winX+c.winW+52},518 ${cx+14},518`});
+  $('extOppositeBuilding').setAttribute('transform',`translate(${cx-545},0)`);
+  at('extSunDisc',{cx:cx+25});at('extNatureSun',{cx:cx+35});at('nightMoon',{cx:cx+55});at('nightMoonCut',{cx:cx+61});
+}
+function drawOutside(c){
+  ['extHorizonBand','extNatureHills','extOppositeBuilding','extNightExposed','extNightStreetlight','extStreetPasserby'].forEach(id=>$(id).setAttribute('opacity','0'));
+  const night=S.time==='night',fill=(id,v)=>$(id).setAttribute('fill',v);
+  if(!c){fill('extSky','#E4E2DD');}
+  else if(night){$(c.ext==='nightStreetlight'?'extNightStreetlight':'extNightExposed').setAttribute('opacity','1');}
+  else if(c.ext==='brightDay'||c.ext==='nightExposed'){fill('extSky','#FFFFFF');}
+  else if(c.ext==='morningSky'){fill('extSky','#D4DEE8');fill('extHorizonTop','#D5E1EC');fill('extHorizonMid','#F2DFBC');fill('extHorizonLow','#FAE9C8');$('extHorizonBand').setAttribute('opacity','1');}
+  else if(c.ext==='afternoonSun'){fill('extSky','#F5DEC2');fill('extHorizonTop','#EED2B3');fill('extHorizonMid','#E8B884');fill('extHorizonLow','#DF9E62');$('extHorizonBand').setAttribute('opacity','1');}
+  else if(c.ext==='natureHills'){fill('extSky','#E9F0F4');fill('hillBack','#C4D4C2');fill('hillFront','#A8BDA6');$('extNatureHills').setAttribute('opacity','1');}
+  else if(c.ext==='oppositeBuilding'||c.ext==='nightStreetlight'){fill('extSky','#E4E2DC');$('extOppositeBuilding').setAttribute('opacity','1');}
+  else if(c.ext==='streetPasserby'){$('extStreetPasserby').setAttribute('opacity','1');}
+  ['glareMiddayFloor','glareMorningBed','glareMorningKidsBed','glareNightBeam','glareAfternoonRoom','glareMonitorBeam','monitorScreenGlareSlash'].forEach(id=>$(id).setAttribute('opacity','0'));
+  $('extOppositeBuilding').style.filter=S.closed&&c&&c.ext==='oppositeBuilding'?'blur(2.5px)':'none';
+  $('extStreetPasserby').style.filter=S.closed&&c&&c.ext==='streetPasserby'?'blur(2.5px)':'none';
+  if(!c)return;
+  const on=S.closed?'0':'1',key=sp().id;
+  if(night){if(c.glare==='nightBeam')$('glareNightBeam').setAttribute('opacity',on);}
+  else if(c.glare==='middayFloor')$('glareMiddayFloor').setAttribute('opacity',on);
+  else if(c.glare==='morningBed')$(key==='kids'?'glareMorningKidsBed':'glareMorningBed').setAttribute('opacity',on);
+  else if(c.glare==='afternoonRoom')$('glareAfternoonRoom').setAttribute('opacity',on);
+  else if(c.glare==='monitorBeam'){$('glareMonitorBeam').setAttribute('opacity',on);$('monitorScreenGlareSlash').setAttribute('opacity',on);}
+}
+const ROLE={
+  primary:['livingSofaBack','livingSofaSeat','bedHeadboard','bedDuvet','kidsCabinet','kidsBlanket','studioChair','kidsHorseBody'],
+  secondary:['livingSofaArmL','livingSofaArmR','livingSofaBase','livingTableTop','livingTableLegL','livingTableLegR','bedThrowRunner','bedFrame','bedNightstand','kidsFrame','kidsHouseFrameBack','kidsHouseTieBeam','kidsGuardrail','studioDeskTop','studioShelf','studioShelfPostL','studioShelfPostM','studioShelfPostR','kidsHorseHead'],
+  accent:['livingCushion1','livingCushion2','livingThrow','livingRug','livingLampTable','bedPillowFrontL','bedPillowFrontR','bedRug','kidsPillow','kidsBin1','kidsBin2','kidsPlayRug','kidsTopBasket','studioBox1','studioCrate2'],
+  plant:['livingPlantLeaves','studioVine']
+};
+function paintFurniture(){
+  const {W,U}=hexes();
+  const pal=U?{primary:U,secondary:shade(U,-10),accent:mix(U,W||'#EFEBE4',0.6),plant:'#8C9A84'}:null;
+  Object.entries(ROLE).forEach(([role,ids])=>ids.forEach(id=>{
+    const el=$(id);if(!el)return;
+    const attr=el.getAttribute('fill')==='none'?'stroke':'fill';
+    if(el.dataset.mono===undefined)el.dataset.mono=el.getAttribute(attr)||'';
+    el.setAttribute(attr,pal?pal[role]:el.dataset.mono);
+  }));
+}
+function drawCurtain(c){
+  const L=$('curtainLeftPanel'),R=$('curtainRightPanel'),Sh=$('curtainSheerGroup');
+  const set=(el,sx,op)=>{el.style.transform=`scaleX(${sx})`;el.style.opacity=String(op);};
+  const cc=curtainColors();
+  if(S.wish==null||!cc||!c){set(L,0,0);set(R,0,0);set(Sh,0,0);return;}
+  const d=cc.drapes[S.wish];
+  $('curtainLeftRect').setAttribute('fill',d);$('curtainRightRect').setAttribute('fill',d);
+  $('curtainSheerRect').setAttribute('fill',cc.sheer);
+  $('curtainSheerRect').setAttribute('fill-opacity',c.style==='sheer'?'0.72':'0.88');
+  const open=!S.closed,side=0.2;
+  if(c.style==='sheer'){set(L,0,0);set(R,0,0);set(Sh,open?0:1,open?0:1);}
+  else if(c.style==='full'){set(L,open?side:1,1);set(R,open?side:1,1);set(Sh,open?0:1,open?0:1);}
+  else{set(L,side,1);set(R,side,1);set(Sh,open?0:1,open?0:1);}
+}
+function drawLight(c){
+  const night=S.time==='night',key=sp()?sp().id:null;
+  let veil=0;
+  if(night)veil=S.ceil?0:(S.stand?0.30:0.56);
+  else if(S.closed&&S.wish!=null&&c){veil=c.style==='full'?(S.stand?0.14:0.34):c.style==='layered'?0.06:0;}
+  $('ambientDarknessVeil').setAttribute('opacity',String(veil));
+  $('ceilWash').setAttribute('opacity',night&&S.ceil?'0.08':'0');
+  ['living','bedroom','kids','studio'].forEach(id=>{const e=$('lightCone-'+id);if(e)e.style.display=id===key?'block':'none';});
+  $('lampGlowCone').setAttribute('opacity',S.stand?'1':'0');
+  $('lampRoomWash').setAttribute('opacity',S.stand?(night&&!S.ceil?'0.34':'0.18'):'0');
+  const sh=S.stand?'#FFE699':'#E6E2D8',bulb=S.stand?'#FFFDF2':'#CFCBC2';
+  ['livingLampShade','bedLampShade','bedSconceShade','kidsLampShade','studioLampShade'].forEach(id=>$(id)&&$(id).setAttribute('fill',sh));
+  ['livingBulbCore','bedBulbCore','kidsBulbCore','studioBulbCore'].forEach(id=>$(id)&&$(id).setAttribute('fill',bulb));
+  $('studioPendantDiffuser').setAttribute('fill',night&&S.ceil?'#FFF6CC':'#CFCBC2');
+}
+function drawScene(){
+  const s=sp(),c=care(),key=s?s.id:'living',{W,F}=hexes();
+  syncWindow(key);
+  $('roomWall').setAttribute('fill',W||'#E2E0DA');
+  $('roomFloor').setAttribute('fill',F||'#C9C6BE');
+  $('roomBaseboard').setAttribute('fill',W?shade(W,-6):'#CFCBC2');
+  $('windowOuterFrame').setAttribute('fill',W?shade(W,-10):'#CCC9C0');
+  ['living','bedroom','kids','studio'].forEach(id=>{
+    const on=s&&s.id===id?'1':'0';
+    $('furn-'+id).style.display='block';$('furn-'+id).setAttribute('opacity',on);
+    $('lamp-'+id).style.display='block';$('lamp-'+id).setAttribute('opacity',on);
+  });
+  drawOutside(c);paintFurniture();drawCurtain(c);drawLight(c);
+}
+
+// ───── 머리줄 · 오른쪽 ─────
+const ARW='<svg aria-hidden="true" width="18" height="18" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M4 10h12M11 5l5 5-5 5"/></svg>';
+const BACK='<svg aria-hidden="true" width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M16 10H4M9 5l-5 5 5 5"/></svg>';
+const TEL='<svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 3h3.5l1.7 4.3-2.2 1.4a11 11 0 0 0 6.3 6.3l1.4-2.2 4.3 1.7V18a2 2 0 0 1-2 2A16 16 0 0 1 3 5a2 2 0 0 1 2-2z"/></svg>';
+const LOGO=document.getElementById('logoTpl').innerHTML;
+function drawHead(){
+  // 첫 질문 · 결과 · 링크로 연 신청서 = 다른 쪽과 같은 머리 / 질문 푸는 동안 = 이전 질문 + 로고
+  const top=S.step===0||S.step===4||S.view;
+  $('head').innerHTML=top
+    ?`<a class="logo" href="${P}index.html" aria-label="리담 홈" data-home>${LOGO}</a><nav aria-label="쪽 이동"><a href="${P}index.html" data-home>홈</a><a href="${P}story.html">리담 이야기</a><a class="cta" href="https://pf.kakao.com/_xkxgxhNX/chat" target="_blank" rel="noopener">상담 신청</a></nav>`
+    :`<div class="midq"><button type="button" class="iconbtn" aria-label="이전 질문" data-back>${BACK}</button><a class="logo" href="${P}index.html" aria-label="리담 홈" data-home>${LOGO}</a></div>`;
+}
+function chipRow(label,list,key,big){
+  const picked=S[key]!=null?' · '+list[S[key]][0]:'';
+  return `<div class="row" role="radiogroup" aria-label="${label}"><p><b>${label}</b><span>${picked}</span></p><div class="chips">${
+    list.map(([n,h],i)=>`<button type="button" class="chip${big?' big':''}" role="radio" aria-checked="${S[key]===i}" aria-label="${n}" data-k="${key}" data-i="${i}"><span class="sw" style="background:${h}"></span><span class="dt"></span></button>`).join('')}</div></div>`;
+}
+function resultLine(){
+  const w=WISHES[S.wish].id,wn=WALLS[S.wall][0];
+  return({wide:wn+' 벽의 밝기에 맞춰, 창가가 벽처럼 이어지게 합니다.',soft:wn+' 벽보다 조금 짙고 따뜻한 색을 고르고, 결은 보송한 쪽으로 봅니다.',
+    point:wn+' 벽, '+FLOORS[S.floor][0]+' 바닥, '+FURNS[S.furn][0]+' 가구 어디와도 겹치지 않는 색을 고릅니다.',calm:wn+' 벽보다 한 톤 낮춰, 창가를 가라앉힙니다.'})[w];
+}
+function msg(){return '안녕하세요. 리담 홈페이지에서 상담 신청해요.\nredam.kr/try?r='+code();}
+function drawPanel(){
+  const b=$('panelBody'),st=S.step;
+  document.querySelectorAll('.bars i').forEach((e,i)=>e.classList.toggle('on',st>=i));
+  document.querySelector('.bars').style.visibility=st>=5?'hidden':'visible';
+  if(st===0||st===1){
+    const title=st===0?'어느 공간의 창인가요?':'창가에서 가장\n마음 쓰이는 것은요?';
+    const opts=st===0?SPACES.map(s=>s.name):sp().cares.map(c=>c.t);
+    b.innerHTML=`<div class="q"><h1>${title}</h1><div class="list">${opts.map((t,i)=>`<button type="button" class="opt" data-pick="${i}"><span>${t}</span>${ARW}</button>`).join('')}</div></div>`;
+  }else if(st===2){
+    const ready=S.wall!=null&&S.floor!=null&&S.furn!=null;
+    b.innerHTML=`<div class="q"><h1>벽·바닥·가구는\n어떤 색에 가까우세요?</h1><div class="rows">${chipRow('벽',WALLS,'wall')}${chipRow('바닥',FLOORS,'floor')}${chipRow('가구',FURNS,'furn')}</div><button type="button" class="btn next" data-next="3" ${ready?'':'disabled'}>다음</button></div>`;
+  }else if(st===3){
+    const cc=curtainColors();
+    b.innerHTML=`<div class="q"><h1>커튼은 어떤 색이\n좋으세요?</h1><div class="rows">${chipRow('커튼',WISHES.map((w,i)=>[w.name,cc.drapes[i]]),'wish',true)}</div><button type="button" class="btn next" data-next="4" ${S.wish!=null?'':'disabled'}>다음</button></div>`;
+  }else if(st===4){
+    b.innerHTML=`<div class="q res" style="gap:0"><h1>이런 쪽으로 고릅니다</h1>
+      <p style="margin-top:28px">${resultLine()}</p><p style="margin-top:8px">${care().line}</p>
+      <p class="small" style="margin-top:16px;max-width:400px">화면의 색은 실제와 다릅니다. 방문하면 공간의 색과 창으로 드는 빛을 재고, 그에 맞는 원단 서너 가지를 추려 권합니다.</p>
+      <a class="textlink" href="${P}cases.html" style="margin-top:12px">시공 사례</a>
+      <div class="actions" style="margin-top:auto;padding-top:28px"><a class="tel" href="tel:010-7523-1952" aria-label="전화로 상담">${TEL}</a><button type="button" class="btn" data-form>상담 신청</button></div>
+      <button type="button" class="quiet" data-again style="margin-top:8px">다시 해 보기</button></div>`;
+  }else{
+    const c=care(),rows=[['공간',sp().name],['마음 쓰이는 것',c.s],['바라는 느낌',WISHES[S.wish].name]];
+    const send=S.view?`<button type="button" class="btn line" data-again>직접 해 보기</button>`
+      :`<a class="tel" href="tel:010-7523-1952" aria-label="전화로 상담">${TEL}</a>${PHONE?`<a class="btn" href="sms:01075231952${IOS?'&':'?'}body=${encodeURIComponent(msg())}">문자로 보내기</a>`:''}<button type="button" class="btn${PHONE?' line':''}" data-kakao>카톡으로 보내기</button>`;
+    b.innerHTML=`<div class="q" style="gap:0"><h1>${S.view?'이렇게 고르셨습니다':'이 내용으로\n상담을 신청합니다'}</h1>
+      <dl>${rows.map(([k,v])=>`<div><dt>${k}</dt><dd>${v}</dd></div>`).join('')}</dl><span class="code">${code()}</span>
+      <div class="actions" style="padding-top:28px">${send}</div></div>`;
   }
 }
-DCMount(Component, {"hf": "고딕"});
+function drawToggles(){
+  const t=$('toggles');
+  if(S.wish==null||S.step<3){t.innerHTML='';return;}
+  const night=S.time==='night',btn=(k,label)=>`<button type="button" data-t="${k}">${label}</button>`;
+  t.innerHTML=btn('curtain',S.closed?'커튼 열기':'커튼 닫기')+btn('time',night?'낮으로 보기':'밤으로 보기')+(night?btn('ceil',S.ceil?'방 등 끄기':'방 등 켜기')+btn('stand',S.stand?'스탠드 끄기':'스탠드 켜기'):'');
+}
+function drawGuide(){
+  const g=$('guideRoot');
+  if(!S.guide){g.innerHTML='';return;}
+  g.innerHTML=`<div class="guide" role="dialog" aria-modal="true" aria-label="카톡으로 상담 신청"><div class="dim" data-close></div><div class="box">
+    <h2>${S.copied?'신청 글을 복사해 두었습니다':'아래 글을 길게 눌러 복사해 주세요'}</h2><pre>${msg()}</pre>
+    <p style="margin:0;line-height:1.6">${TOUCH?'카톡 창의 글 쓰는 칸을 꾹 눌러 붙여 넣어 주세요.':'카톡 창의 글 쓰는 칸에 Ctrl+V(맥은 ⌘+V)로 붙여 넣어 주세요.'}</p>
+    <a class="btn" href="https://pf.kakao.com/_xkxgxhNX/chat" target="_blank" rel="noopener" data-openkakao>카톡 열기</a>
+    <button type="button" class="quiet" data-close>닫기</button></div></div>`;
+}
+function render(){drawScene();drawHead();drawPanel();drawToggles();drawGuide();}
+
+// ───── 누르기 ─────
+function copyText(txt){
+  let ok=false;
+  try{const ta=document.createElement('textarea');ta.value=txt;ta.setAttribute('readonly','');ta.style.cssText='position:fixed;top:0;left:0;width:1px;height:1px;opacity:0;font-size:16px;';document.body.appendChild(ta);ta.select();ta.setSelectionRange(0,txt.length);ok=document.execCommand('copy');document.body.removeChild(ta);}catch(e){}
+  try{if(navigator.clipboard&&window.isSecureContext)navigator.clipboard.writeText(txt).then(()=>{if(!ok){S.copied=true;drawGuide();}},()=>{});}catch(e){}
+  return ok;
+}
+function closeCurtain(){
+  stop();const c=care();
+  // 침실 밤 바깥 불빛: 스탠드가 켜진 채 암막이 닫혀 색을 보여 주고 → 2.6초 뒤 스탠드가 꺼짐
+  const longNight=c.id==='bed-2'&&S.time==='night';
+  if(reduce){S.closed=true;if(longNight)S.stand=false;render();return;}
+  timers.push(setTimeout(()=>{S.closed=true;render();},120));
+  if(longNight){S.stand=true;S.ceil=false;timers.push(setTimeout(()=>{S.stand=false;render();},2600));}
+}
+function restart(){stop();try{if(location.search)history.replaceState(null,'',location.pathname);}catch(e){}
+  Object.assign(S,{step:0,space:null,care:null,wall:null,floor:null,furn:null,wish:null,closed:false,time:'day',ceil:false,stand:false,view:false,guide:false});render();}
+function goBack(){
+  stop();const st=S.step;S.guide=false;
+  if(st===5)S.step=4;
+  else if(st===4)S.step=3;
+  else if(st===3){S.step=2;S.wish=null;S.closed=false;lightsFor(care());}
+  else if(st===2){S.step=1;S.care=null;S.wall=S.floor=S.furn=null;S.time='day';S.ceil=S.stand=false;}
+  else if(st===1){S.step=0;S.space=null;}
+  render();
+}
+document.addEventListener('click',e=>{
+  const t=e.target,q=s=>t.closest(s);
+  if(q('[data-home]')){try{const r=document.referrer?new URL(document.referrer):null;if(r&&r.origin===location.origin&&/\/(index\.html)?$/.test(r.pathname)&&history.length>1){e.preventDefault();history.back();}}catch(err){}return;}
+  if(q('[data-back]')){goBack();return;}
+  const o=q('[data-pick]');
+  if(o){const i=+o.dataset.pick;if(S.step===0){S.space=i;S.step=1;}else{S.care=i;S.step=2;lightsFor(care());}render();return;}
+  const ch=q('.chip');
+  if(ch){const k=ch.dataset.k,i=+ch.dataset.i,first=k==='wish'&&S.wish==null;S[k]=i;if(first){S.closed=false;render();closeCurtain();}else render();return;}
+  const nx=q('[data-next]');if(nx&&!nx.disabled){S.step=+nx.dataset.next;render();return;}
+  if(q('[data-form]')){S.step=5;render();return;}
+  if(q('[data-again]')){restart();return;}
+  if(q('[data-kakao]')){S.copied=copyText(msg());S.guide=true;drawGuide();return;}
+  if(q('[data-openkakao]')){if(copyText(msg()))S.copied=true;return;}
+  if(q('[data-close]')){S.guide=false;drawGuide();return;}
+  const tg=q('[data-t]');
+  if(tg){stop();const k=tg.dataset.t;
+    if(k==='curtain')S.closed=!S.closed;
+    else if(k==='time'){S.time=S.time==='night'?'day':'night';S.ceil=S.time==='night';S.stand=false;}
+    else if(k==='ceil')S.ceil=!S.ceil;
+    else if(k==='stand')S.stand=!S.stand;
+    render();}
+});
+// 신청 번호 링크(?r=10000~44559): 고른 것을 되살려 신청서로 — 커튼은 닫힌 모습
+(function(){try{
+  const m=/[?&]r=(\d{5})(?:&|$)/.exec(location.search);if(!m)return;
+  let n=parseInt(m[1],10)-10000;if(!(n>=0&&n<34560))return;
+  const take=k=>{const v=n%k;n=(n-v)/k;return v;};
+  take(3);const wish=take(4),furn=take(5),floor=take(6),wall=take(6),c=take(4),space=n;
+  Object.assign(S,{step:5,view:true,space,care:c,wall,floor,furn,wish,closed:true});lightsFor(care());S.stand=false;
+}catch(e){}})();
+render();
 </script>
 </body>
 </html>
