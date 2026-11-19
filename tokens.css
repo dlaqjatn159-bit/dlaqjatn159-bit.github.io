@@ -153,7 +153,7 @@
   --rd-site-color-text-body: var(--rd-color-gray-750); /** 본문 단락(짙은 설명) */
   --rd-site-color-text-muted: var(--rd-color-gray-650); /** 설명 글 · 카드 작은 줄 */
   --rd-site-color-text-number: var(--rd-color-gray-650); /** 블로그 카드 번호 · 사이트 첫 화면 한 줄 — text-muted와 같은 값(정리 F, 11-14. 전 #74695E) */
-  --rd-site-color-text-quiet: var(--rd-color-gray-400); /** 넘김 단추 안 고른 쪽 — text-label과 같은 값(정리 F, 11-14. 전 #8A847B) */
+  --rd-site-color-text-quiet: var(--rd-color-gray-650); /** 넘김 단추 안 고른 쪽 — text-muted와 같은 값(11-20 쓰기 쉬움: gray-400은 바탕 대비 2.5라 4.5 못 넘음, AI 할 일 #10. 전 gray-400) */
   --rd-site-color-text-label: var(--rd-color-gray-400); /** 작은 이름표·번호 */
   --rd-site-color-dot-empty: var(--rd-color-gray-500); /** 단계 표시에서 아직 안 간 점의 테 */
   --rd-site-color-action: var(--rd-color-dark-ink); /** 누르는 것: 글자 + 밑줄 1px */
