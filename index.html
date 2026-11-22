@@ -70,6 +70,16 @@ a{color:var(--rd-site-color-text)}a:hover{color:#000000}
 @media (max-width: 1100px){ol[style*="repeat(5, minmax(0, 1fr))"]{border-top:0!important;border-left:1px solid var(--rd-site-color-line-strong)!important;grid-template-columns:minmax(0,1fr)!important;row-gap:36px!important;margin-left:4px!important}ol[style*="repeat(5, minmax(0, 1fr))"]>li{padding:0 0 0 32px!important}ol[style*="repeat(5, minmax(0, 1fr))"]>li>span[aria-hidden]{left:-5px!important;top:6px!important}}
 </style>
 <style>/* 움직임이 붙기 전 깜빡임 막기 */[data-js] [data-rm]:not([data-on]) .rm,[data-js] [data-rm]:not([data-on]) .rm-strip{opacity:0}/* 로고는 한 창에서 한 번만 (1107) */[data-seen] .ri{display:none}/* 폰에서 누를 때 파란 네모 끔 — 화면이 바뀌며 어긋나 깜빡여 보이던 것 (11-13) */html{-webkit-tap-highlight-color:transparent}</style>
+<style>/* 해 짐 (11-22, 결정 #368): 다섯 걸음 뒤에 해가 지고, 밤 · 시공 사례 · 맺음은 어두운 바탕 */
+.n4{color:var(--rd-site-color-on-dark);padding-bottom:240px}
+.n4 [style*="--rd-site-color-text-body"]{color:var(--rd-site-color-on-dark-body)!important}
+.n4 [style*="color: var(--rd-site-color-text)"]{color:var(--rd-site-color-on-dark)!important}
+.n4 a{color:var(--rd-site-color-on-dark)}
+.n4-dusk{margin-top:240px;height:min(56vh,520px);background:linear-gradient(to bottom,var(--rd-site-color-bg),var(--rd-site-color-dark))}
+.rm-end > section > .rm-ph img{background:var(--rd-site-color-dark)!important;transform:scaleX(-1);object-position:50% 74%!important}
+.rm-end > section > .rm-ph::before{content:"";position:absolute;left:0;right:0;top:-1px;height:66%;background:linear-gradient(var(--rd-site-color-dark) 0%,var(--rd-site-color-dark) 12%,rgba(43,34,26,.93) 22%,rgba(43,34,26,.78) 32%,rgba(43,34,26,.56) 42%,rgba(43,34,26,.32) 52%,rgba(43,34,26,.13) 60%,rgba(43,34,26,0) 66%);z-index:1;pointer-events:none}
+.rm-end > section > .rm-ph > div{background:linear-gradient(to bottom,rgba(43,34,26,0) 42%,rgba(43,34,26,.5) 76%,var(--rd-site-color-dark) 100%)!important}
+</style>
 </head>
 <body>
 <div id="dc-root">
@@ -229,18 +239,29 @@ a{color:var(--rd-site-color-text)}a:hover{color:#000000}
 </div>
 </section>
 
-<section style="padding-top: 240px;">
-<div style="max-width: 1296px; margin: 0 auto; padding: 0 48px; box-sizing: border-box; display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); column-gap: 24px; align-items: center;">
-<div class="rm rm-card" style="grid-column: 1 / span 6; background: var(--rd-site-color-dark); padding: 40px 44px 44px; box-shadow: 0 1px 2px rgba(42, 39, 35, 0.08), 0 16px 40px rgba(42, 39, 35, 0.10);">
-<p style="margin: 0; font-family: 'Noto Serif KR', serif; font-size: var(--rd-site-type-h3); line-height: 1.4; color: var(--rd-site-color-on-dark);">공간의 밤</p>
-<div style="margin-top: 24px; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); column-gap: 20px;">
-<figure style="margin: 0;"><img loading="lazy" decoding="async" src="images/a2d969182129926845076a031d536f76.jpg" alt="지금 조명 아래의 집 색" style="display: block; width: 100%; aspect-ratio: 436 / 271; object-fit: cover;"><figcaption style="margin-top: 12px; font-size: var(--rd-site-type-small); line-height: 1.5; color: var(--rd-site-color-on-dark-sub);">지금 조명에 비친 원단</figcaption></figure>
-<figure style="margin: 0;"><img loading="lazy" decoding="async" src="images/77bf7ed3aaf0672226fa9ea40fe2d82e.jpg" alt="3000K 빛 아래의 집 색" style="display: block; width: 100%; aspect-ratio: 436 / 271; object-fit: cover;"><figcaption style="margin-top: 12px; font-size: var(--rd-site-type-small); line-height: 1.5; color: var(--rd-site-color-on-dark-sub);">3000K 빛에 비친 원단</figcaption></figure>
+<section style="padding-top: 220px;">
+<div style="max-width: 1296px; margin: 0 auto; padding: 0 48px; box-sizing: border-box;">
+<h2 class="rm rt-h" style="margin: 0; font-family: 'Noto Serif KR', serif; font-size: var(--rd-site-type-h2); line-height: 1.42; font-weight: 400; letter-spacing: -0.02em;">상담부터 시공까지,<br>다섯 걸음 안에<br>정밀함을 담습니다.</h2>
+<ol style="list-style: none; margin: 72px 0 0; padding: 0; border-top: 1px solid var(--rd-site-color-line-strong); display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); column-gap: 24px;">
+<li class="rm" style="position: relative; padding: 32px 16px 0 0; display: flex; flex-direction: column; gap: 6px;"><span aria-hidden="true" style="position: absolute; left: 0; top: -5px; width: 9px; height: 9px; border-radius: 50%; background: var(--rd-site-color-bg); border: 1px solid var(--rd-site-color-dot-empty);"></span><span style="font-size: var(--rd-site-type-lead);">사전 접수</span><span style="font-size: var(--rd-site-type-small); line-height: 1.6; font-weight: 400; color: var(--rd-site-color-text-muted);">공간의 기본 조건과 원하시는 분위기를 먼저 확인합니다.</span></li>
+<li class="rm rm-d1" style="position: relative; padding: 32px 16px 0 0; display: flex; flex-direction: column; gap: 6px;"><span aria-hidden="true" style="position: absolute; left: 0; top: -5px; width: 9px; height: 9px; border-radius: 50%; background: var(--rd-site-color-bg); border: 1px solid var(--rd-site-color-dot-empty);"></span><span style="font-size: var(--rd-site-type-lead);">방문 및 측색</span><span style="font-size: var(--rd-site-type-small); line-height: 1.6; font-weight: 400; color: var(--rd-site-color-text-muted);">직접 댁으로 찾아가 벽·바닥의 색을 측정하고 채광을 살핍니다.</span></li>
+<li class="rm rm-d2" style="position: relative; padding: 32px 16px 0 0; display: flex; flex-direction: column; gap: 6px;"><span aria-hidden="true" style="position: absolute; left: 0; top: -5px; width: 9px; height: 9px; border-radius: 50%; background: var(--rd-site-color-bg); border: 1px solid var(--rd-site-color-dot-empty);"></span><span style="font-size: var(--rd-site-type-lead);">원단 비교 및 견적</span><span style="font-size: var(--rd-site-type-small); line-height: 1.6; font-weight: 400; color: var(--rd-site-color-text-muted);">그 집의 실제 빛 아래에서 엄선한 원단을 대어 보고, 고른 이유와 금액을 함께 드립니다.</span></li>
+<li class="rm rm-d3" style="position: relative; padding: 32px 16px 0 0; display: flex; flex-direction: column; gap: 6px;"><span aria-hidden="true" style="position: absolute; left: 0; top: -5px; width: 9px; height: 9px; border-radius: 50%; background: var(--rd-site-color-bg); border: 1px solid var(--rd-site-color-dot-empty);"></span><span style="font-size: var(--rd-site-type-lead);">맞춤 제작</span><span style="font-size: var(--rd-site-type-small); line-height: 1.6; font-weight: 400; color: var(--rd-site-color-text-muted);">창의 높이와 주름의 간격, 마감 비율을 계산하여 정교하게 제작합니다. 제작에 들어갈 때 절반을 받습니다.</span></li>
+<li class="rm rm-d4" style="position: relative; padding: 32px 16px 0 0; display: flex; flex-direction: column; gap: 6px;"><span aria-hidden="true" style="position: absolute; left: 0; top: -5px; width: 9px; height: 9px; border-radius: 50%; background: var(--rd-common-point-base); border: 1px solid var(--rd-common-point-base);"></span><span style="font-size: var(--rd-site-type-lead);">시공 및 스팀 마감</span><span style="font-size: var(--rd-site-type-small); line-height: 1.6; font-weight: 400; color: var(--rd-site-color-text-muted);">설치 후 스팀 케어까지 마쳐 공간에 자연스러운 선을 만듭니다. 나머지는 시공을 마친 뒤 받습니다.</span></li>
+</ol>
 </div>
-</div>
-<div style="grid-column: 8 / span 5; display: flex; flex-direction: column;">
+</section>
+
+<div class="n4-dusk" aria-hidden="true"></div>
+<div class="rm-end" style="margin-top: 0; background: var(--rd-site-color-dark);">
+<div class="n4">
+<section style="padding-top: 80px;">
+<div style="max-width: 1296px; margin: 0 auto; padding: 0 48px; box-sizing: border-box;">
 <h2 class="rm rt-h" style="margin: 0; font-family: 'Noto Serif KR', serif; font-size: var(--rd-site-type-h2); line-height: 1.42; font-weight: 400; letter-spacing: -0.02em;">낮에 고른 색은,<br>밤의 빛에서 달라 보입니다.</h2>
-<p class="rm rm-d1" style="margin: 32px 0 0; max-width: 380px; font-size: var(--rd-site-type-lead); line-height: 1.72; font-weight: 400; letter-spacing: -0.01em; color: var(--rd-site-color-text-body);">그래서 제안서에는 그 집의 밤도 담습니다. 지금 조명과 권하는 빛 아래의 색을 나란히 보여 드리고, 빛을 고르는 법은 모든 집에 드리는 작은 책자에 적어 둡니다.</p>
+<p class="rm rm-d1" style="margin: 32px 0 0; max-width: 440px; font-size: var(--rd-site-type-lead); line-height: 1.72; font-weight: 400; letter-spacing: -0.01em; color: var(--rd-site-color-text-body);">그래서 제안서에는 그 집의 밤도 담습니다. 지금 조명과 권하는 빛 아래의 색을 나란히 보여 드리고, 빛을 고르는 법은 모든 집에 드리는 작은 책자에 적어 둡니다.</p>
+<div class="rm rm-ph rm-d1" style="margin-top: 72px; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); column-gap: 24px;">
+<img loading="lazy" decoding="async" src="images/adc3c27cb7b7c52a43bb07dd2446aa9c.jpg" alt="낮의 창가" style="display: block; width: 100%; aspect-ratio: 4 / 5; object-fit: cover; background: var(--rd-site-color-dark);">
+<img loading="lazy" decoding="async" src="images/be5ba2f3866ba65d01b2bb7e18b4533f.jpg" alt="같은 창가의 밤, 스탠드 불빛" style="display: block; width: 100%; aspect-ratio: 4 / 5; object-fit: cover; background: var(--rd-site-color-dark);">
 </div>
 </div>
 </section>
@@ -317,23 +338,11 @@ a{color:var(--rd-site-color-text)}a:hover{color:#000000}
 </div>
 </section>
 
-<section style="padding-top: 220px;">
-<div style="max-width: 1296px; margin: 0 auto; padding: 0 48px; box-sizing: border-box;">
-<h2 class="rm rt-h" style="margin: 0; font-family: 'Noto Serif KR', serif; font-size: var(--rd-site-type-h2); line-height: 1.42; font-weight: 400; letter-spacing: -0.02em;">상담부터 시공까지,<br>다섯 걸음 안에<br>정밀함을 담습니다.</h2>
-<ol style="list-style: none; margin: 72px 0 0; padding: 0; border-top: 1px solid var(--rd-site-color-line-strong); display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); column-gap: 24px;">
-<li class="rm" style="position: relative; padding: 32px 16px 0 0; display: flex; flex-direction: column; gap: 6px;"><span aria-hidden="true" style="position: absolute; left: 0; top: -5px; width: 9px; height: 9px; border-radius: 50%; background: var(--rd-site-color-bg); border: 1px solid var(--rd-site-color-dot-empty);"></span><span style="font-size: var(--rd-site-type-lead);">사전 접수</span><span style="font-size: var(--rd-site-type-small); line-height: 1.6; font-weight: 400; color: var(--rd-site-color-text-muted);">공간의 기본 조건과 원하시는 분위기를 먼저 확인합니다.</span></li>
-<li class="rm rm-d1" style="position: relative; padding: 32px 16px 0 0; display: flex; flex-direction: column; gap: 6px;"><span aria-hidden="true" style="position: absolute; left: 0; top: -5px; width: 9px; height: 9px; border-radius: 50%; background: var(--rd-site-color-bg); border: 1px solid var(--rd-site-color-dot-empty);"></span><span style="font-size: var(--rd-site-type-lead);">방문 및 측색</span><span style="font-size: var(--rd-site-type-small); line-height: 1.6; font-weight: 400; color: var(--rd-site-color-text-muted);">직접 댁으로 찾아가 벽·바닥의 색을 측정하고 채광을 살핍니다.</span></li>
-<li class="rm rm-d2" style="position: relative; padding: 32px 16px 0 0; display: flex; flex-direction: column; gap: 6px;"><span aria-hidden="true" style="position: absolute; left: 0; top: -5px; width: 9px; height: 9px; border-radius: 50%; background: var(--rd-site-color-bg); border: 1px solid var(--rd-site-color-dot-empty);"></span><span style="font-size: var(--rd-site-type-lead);">원단 비교 및 견적</span><span style="font-size: var(--rd-site-type-small); line-height: 1.6; font-weight: 400; color: var(--rd-site-color-text-muted);">그 집의 실제 빛 아래에서 엄선한 원단을 대어 보고, 고른 이유와 금액을 함께 드립니다.</span></li>
-<li class="rm rm-d3" style="position: relative; padding: 32px 16px 0 0; display: flex; flex-direction: column; gap: 6px;"><span aria-hidden="true" style="position: absolute; left: 0; top: -5px; width: 9px; height: 9px; border-radius: 50%; background: var(--rd-site-color-bg); border: 1px solid var(--rd-site-color-dot-empty);"></span><span style="font-size: var(--rd-site-type-lead);">맞춤 제작</span><span style="font-size: var(--rd-site-type-small); line-height: 1.6; font-weight: 400; color: var(--rd-site-color-text-muted);">창의 높이와 주름의 간격, 마감 비율을 계산하여 정교하게 제작합니다. 제작에 들어갈 때 절반을 받습니다.</span></li>
-<li class="rm rm-d4" style="position: relative; padding: 32px 16px 0 0; display: flex; flex-direction: column; gap: 6px;"><span aria-hidden="true" style="position: absolute; left: 0; top: -5px; width: 9px; height: 9px; border-radius: 50%; background: var(--rd-common-point-base); border: 1px solid var(--rd-common-point-base);"></span><span style="font-size: var(--rd-site-type-lead);">시공 및 스팀 마감</span><span style="font-size: var(--rd-site-type-small); line-height: 1.6; font-weight: 400; color: var(--rd-site-color-text-muted);">설치 후 스팀 케어까지 마쳐 공간에 자연스러운 선을 만듭니다. 나머지는 시공을 마친 뒤 받습니다.</span></li>
-</ol>
 </div>
-</section>
 
-<div class="rm-end" style="margin-top: 240px; background: var(--rd-site-color-dark);">
 <section style="position: relative; height: 880px;">
 <div class="rm rm-ph" style="position: absolute; inset: 0;">
-<img loading="lazy" decoding="async" src="images/be355fc6b2a10faa134095a8bde42fe2.jpg" alt="늦은 오후 빛이 드는 거실 소파와 커튼" style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: 50% 55%; background: var(--rd-site-color-photo-wait-deep);">
+<img loading="lazy" decoding="async" src="images/bbd47cbee316d9ac2fc81788fccfac1d.jpg" alt="스탠드를 켠 밤의 거실 소파와 커튼" style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: 50% 55%; background: var(--rd-site-color-photo-wait-deep);">
 <div aria-hidden="true" style="position: absolute; inset: 0; background: linear-gradient(to bottom, rgba(43,34,26,0) 22%, rgba(43,34,26,0.5) 48%, rgba(43,34,26,0.84) 72%, var(--rd-site-color-dark) 100%);"></div>
 </div>
 <div style="position: absolute; left: 0; right: 0; bottom: 104px; color: var(--rd-site-color-on-dark);">
@@ -504,18 +513,29 @@ a{color:var(--rd-site-color-text)}a:hover{color:#000000}
 </div>
 </section>
 
-<section style="padding-top: 240px;">
-<div style="max-width: 1296px; margin: 0 auto; padding: 0 48px; box-sizing: border-box; display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); column-gap: 24px; align-items: center;">
-<div class="rm rm-card" style="grid-column: 1 / span 6; background: var(--rd-site-color-dark); padding: 40px 44px 44px; box-shadow: 0 1px 2px rgba(42, 39, 35, 0.08), 0 16px 40px rgba(42, 39, 35, 0.10);">
-<p style="margin: 0; font-family: 'Noto Serif KR', serif; font-size: var(--rd-site-type-h3); line-height: 1.4; color: var(--rd-site-color-on-dark);">공간의 밤</p>
-<div style="margin-top: 24px; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); column-gap: 20px;">
-<figure style="margin: 0;"><img loading="lazy" decoding="async" src="images/a2d969182129926845076a031d536f76.jpg" alt="지금 조명 아래의 집 색" style="display: block; width: 100%; aspect-ratio: 436 / 271; object-fit: cover;"><figcaption style="margin-top: 12px; font-size: var(--rd-site-type-small); line-height: 1.5; color: var(--rd-site-color-on-dark-sub);">지금 조명에 비친 원단</figcaption></figure>
-<figure style="margin: 0;"><img loading="lazy" decoding="async" src="images/77bf7ed3aaf0672226fa9ea40fe2d82e.jpg" alt="3000K 빛 아래의 집 색" style="display: block; width: 100%; aspect-ratio: 436 / 271; object-fit: cover;"><figcaption style="margin-top: 12px; font-size: var(--rd-site-type-small); line-height: 1.5; color: var(--rd-site-color-on-dark-sub);">3000K 빛에 비친 원단</figcaption></figure>
+<section style="padding-top: 220px;">
+<div style="max-width: 1296px; margin: 0 auto; padding: 0 48px; box-sizing: border-box;">
+<h2 class="rm rt-h" style="margin: 0; font-family: 'Noto Serif KR', serif; font-size: var(--rd-site-type-h2); line-height: 1.42; font-weight: 400; letter-spacing: -0.02em;">상담부터 시공까지,<br>다섯 걸음 안에<br>정밀함을 담습니다.</h2>
+<ol style="list-style: none; margin: 72px 0 0; padding: 0; border-top: 1px solid var(--rd-site-color-line-strong); display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); column-gap: 24px;">
+<li class="rm" style="position: relative; padding: 32px 16px 0 0; display: flex; flex-direction: column; gap: 6px;"><span aria-hidden="true" style="position: absolute; left: 0; top: -5px; width: 9px; height: 9px; border-radius: 50%; background: var(--rd-site-color-bg); border: 1px solid var(--rd-site-color-dot-empty);"></span><span style="font-size: var(--rd-site-type-lead);">사전 접수</span><span style="font-size: var(--rd-site-type-small); line-height: 1.6; font-weight: 400; color: var(--rd-site-color-text-muted);">공간의 기본 조건과 원하시는 분위기를 먼저 확인합니다.</span></li>
+<li class="rm rm-d1" style="position: relative; padding: 32px 16px 0 0; display: flex; flex-direction: column; gap: 6px;"><span aria-hidden="true" style="position: absolute; left: 0; top: -5px; width: 9px; height: 9px; border-radius: 50%; background: var(--rd-site-color-bg); border: 1px solid var(--rd-site-color-dot-empty);"></span><span style="font-size: var(--rd-site-type-lead);">방문 및 측색</span><span style="font-size: var(--rd-site-type-small); line-height: 1.6; font-weight: 400; color: var(--rd-site-color-text-muted);">직접 댁으로 찾아가 벽·바닥의 색을 측정하고 채광을 살핍니다.</span></li>
+<li class="rm rm-d2" style="position: relative; padding: 32px 16px 0 0; display: flex; flex-direction: column; gap: 6px;"><span aria-hidden="true" style="position: absolute; left: 0; top: -5px; width: 9px; height: 9px; border-radius: 50%; background: var(--rd-site-color-bg); border: 1px solid var(--rd-site-color-dot-empty);"></span><span style="font-size: var(--rd-site-type-lead);">원단 비교 및 견적</span><span style="font-size: var(--rd-site-type-small); line-height: 1.6; font-weight: 400; color: var(--rd-site-color-text-muted);">그 집의 실제 빛 아래에서 엄선한 원단을 대어 보고, 고른 이유와 금액을 함께 드립니다.</span></li>
+<li class="rm rm-d3" style="position: relative; padding: 32px 16px 0 0; display: flex; flex-direction: column; gap: 6px;"><span aria-hidden="true" style="position: absolute; left: 0; top: -5px; width: 9px; height: 9px; border-radius: 50%; background: var(--rd-site-color-bg); border: 1px solid var(--rd-site-color-dot-empty);"></span><span style="font-size: var(--rd-site-type-lead);">맞춤 제작</span><span style="font-size: var(--rd-site-type-small); line-height: 1.6; font-weight: 400; color: var(--rd-site-color-text-muted);">창의 높이와 주름의 간격, 마감 비율을 계산하여 정교하게 제작합니다. 제작에 들어갈 때 절반을 받습니다.</span></li>
+<li class="rm rm-d4" style="position: relative; padding: 32px 16px 0 0; display: flex; flex-direction: column; gap: 6px;"><span aria-hidden="true" style="position: absolute; left: 0; top: -5px; width: 9px; height: 9px; border-radius: 50%; background: var(--rd-common-point-base); border: 1px solid var(--rd-common-point-base);"></span><span style="font-size: var(--rd-site-type-lead);">시공 및 스팀 마감</span><span style="font-size: var(--rd-site-type-small); line-height: 1.6; font-weight: 400; color: var(--rd-site-color-text-muted);">설치 후 스팀 케어까지 마쳐 공간에 자연스러운 선을 만듭니다. 나머지는 시공을 마친 뒤 받습니다.</span></li>
+</ol>
 </div>
-</div>
-<div style="grid-column: 8 / span 5; display: flex; flex-direction: column;">
+</section>
+
+<div class="n4-dusk" aria-hidden="true"></div>
+<div class="rm-end" style="margin-top: 0; background: var(--rd-site-color-dark);">
+<div class="n4">
+<section style="padding-top: 80px;">
+<div style="max-width: 1296px; margin: 0 auto; padding: 0 48px; box-sizing: border-box;">
 <h2 class="rm rt-h" style="margin: 0; font-family: 'Noto Serif KR', serif; font-size: var(--rd-site-type-h2); line-height: 1.42; font-weight: 400; letter-spacing: -0.02em;">낮에 고른 색은,<br>밤의 빛에서 달라 보입니다.</h2>
-<p class="rm rm-d1" style="margin: 32px 0 0; max-width: 380px; font-size: var(--rd-site-type-lead); line-height: 1.72; font-weight: 400; letter-spacing: -0.01em; color: var(--rd-site-color-text-body);">그래서 제안서에는 그 집의 밤도 담습니다. 지금 조명과 권하는 빛 아래의 색을 나란히 보여 드리고, 빛을 고르는 법은 모든 집에 드리는 작은 책자에 적어 둡니다.</p>
+<p class="rm rm-d1" style="margin: 32px 0 0; max-width: 440px; font-size: var(--rd-site-type-lead); line-height: 1.72; font-weight: 400; letter-spacing: -0.01em; color: var(--rd-site-color-text-body);">그래서 제안서에는 그 집의 밤도 담습니다. 지금 조명과 권하는 빛 아래의 색을 나란히 보여 드리고, 빛을 고르는 법은 모든 집에 드리는 작은 책자에 적어 둡니다.</p>
+<div class="rm rm-ph rm-d1" style="margin-top: 72px; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); column-gap: 24px;">
+<img loading="lazy" decoding="async" src="images/adc3c27cb7b7c52a43bb07dd2446aa9c.jpg" alt="낮의 창가" style="display: block; width: 100%; aspect-ratio: 4 / 5; object-fit: cover; background: var(--rd-site-color-dark);">
+<img loading="lazy" decoding="async" src="images/be5ba2f3866ba65d01b2bb7e18b4533f.jpg" alt="같은 창가의 밤, 스탠드 불빛" style="display: block; width: 100%; aspect-ratio: 4 / 5; object-fit: cover; background: var(--rd-site-color-dark);">
 </div>
 </div>
 </section>
@@ -556,23 +576,11 @@ a{color:var(--rd-site-color-text)}a:hover{color:#000000}
 </div>
 </section>
 
-<section style="padding-top: 220px;">
-<div style="max-width: 1296px; margin: 0 auto; padding: 0 48px; box-sizing: border-box;">
-<h2 class="rm rt-h" style="margin: 0; font-family: 'Noto Serif KR', serif; font-size: var(--rd-site-type-h2); line-height: 1.42; font-weight: 400; letter-spacing: -0.02em;">상담부터 시공까지,<br>다섯 걸음 안에<br>정밀함을 담습니다.</h2>
-<ol style="list-style: none; margin: 72px 0 0; padding: 0; border-top: 1px solid var(--rd-site-color-line-strong); display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); column-gap: 24px;">
-<li class="rm" style="position: relative; padding: 32px 16px 0 0; display: flex; flex-direction: column; gap: 6px;"><span aria-hidden="true" style="position: absolute; left: 0; top: -5px; width: 9px; height: 9px; border-radius: 50%; background: var(--rd-site-color-bg); border: 1px solid var(--rd-site-color-dot-empty);"></span><span style="font-size: var(--rd-site-type-lead);">사전 접수</span><span style="font-size: var(--rd-site-type-small); line-height: 1.6; font-weight: 400; color: var(--rd-site-color-text-muted);">공간의 기본 조건과 원하시는 분위기를 먼저 확인합니다.</span></li>
-<li class="rm rm-d1" style="position: relative; padding: 32px 16px 0 0; display: flex; flex-direction: column; gap: 6px;"><span aria-hidden="true" style="position: absolute; left: 0; top: -5px; width: 9px; height: 9px; border-radius: 50%; background: var(--rd-site-color-bg); border: 1px solid var(--rd-site-color-dot-empty);"></span><span style="font-size: var(--rd-site-type-lead);">방문 및 측색</span><span style="font-size: var(--rd-site-type-small); line-height: 1.6; font-weight: 400; color: var(--rd-site-color-text-muted);">직접 댁으로 찾아가 벽·바닥의 색을 측정하고 채광을 살핍니다.</span></li>
-<li class="rm rm-d2" style="position: relative; padding: 32px 16px 0 0; display: flex; flex-direction: column; gap: 6px;"><span aria-hidden="true" style="position: absolute; left: 0; top: -5px; width: 9px; height: 9px; border-radius: 50%; background: var(--rd-site-color-bg); border: 1px solid var(--rd-site-color-dot-empty);"></span><span style="font-size: var(--rd-site-type-lead);">원단 비교 및 견적</span><span style="font-size: var(--rd-site-type-small); line-height: 1.6; font-weight: 400; color: var(--rd-site-color-text-muted);">그 집의 실제 빛 아래에서 엄선한 원단을 대어 보고, 고른 이유와 금액을 함께 드립니다.</span></li>
-<li class="rm rm-d3" style="position: relative; padding: 32px 16px 0 0; display: flex; flex-direction: column; gap: 6px;"><span aria-hidden="true" style="position: absolute; left: 0; top: -5px; width: 9px; height: 9px; border-radius: 50%; background: var(--rd-site-color-bg); border: 1px solid var(--rd-site-color-dot-empty);"></span><span style="font-size: var(--rd-site-type-lead);">맞춤 제작</span><span style="font-size: var(--rd-site-type-small); line-height: 1.6; font-weight: 400; color: var(--rd-site-color-text-muted);">창의 높이와 주름의 간격, 마감 비율을 계산하여 정교하게 제작합니다. 제작에 들어갈 때 절반을 받습니다.</span></li>
-<li class="rm rm-d4" style="position: relative; padding: 32px 16px 0 0; display: flex; flex-direction: column; gap: 6px;"><span aria-hidden="true" style="position: absolute; left: 0; top: -5px; width: 9px; height: 9px; border-radius: 50%; background: var(--rd-common-point-base); border: 1px solid var(--rd-common-point-base);"></span><span style="font-size: var(--rd-site-type-lead);">시공 및 스팀 마감</span><span style="font-size: var(--rd-site-type-small); line-height: 1.6; font-weight: 400; color: var(--rd-site-color-text-muted);">설치 후 스팀 케어까지 마쳐 공간에 자연스러운 선을 만듭니다. 나머지는 시공을 마친 뒤 받습니다.</span></li>
-</ol>
 </div>
-</section>
 
-<div class="rm-end" style="margin-top: 240px; background: var(--rd-site-color-dark);">
 <section style="position: relative; height: 880px;">
 <div class="rm rm-ph" style="position: absolute; inset: 0;">
-<img loading="lazy" decoding="async" src="images/be355fc6b2a10faa134095a8bde42fe2.jpg" alt="늦은 오후 빛이 드는 거실 소파와 커튼" style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: 50% 55%; background: var(--rd-site-color-photo-wait-deep);">
+<img loading="lazy" decoding="async" src="images/bbd47cbee316d9ac2fc81788fccfac1d.jpg" alt="스탠드를 켠 밤의 거실 소파와 커튼" style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: 50% 55%; background: var(--rd-site-color-photo-wait-deep);">
 <div aria-hidden="true" style="position: absolute; inset: 0; background: linear-gradient(to bottom, rgba(43,34,26,0) 22%, rgba(43,34,26,0.5) 48%, rgba(43,34,26,0.84) 72%, var(--rd-site-color-dark) 100%);"></div>
 </div>
 <div style="position: absolute; left: 0; right: 0; bottom: 104px; color: var(--rd-site-color-on-dark);">
