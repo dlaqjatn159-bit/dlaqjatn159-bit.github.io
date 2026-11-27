@@ -1045,7 +1045,7 @@ function drawHead(){
   // 첫 질문 · 결과 · 링크로 연 신청서 = 다른 쪽과 같은 머리 / 질문 푸는 동안 = 이전 질문 + 로고
   const top=S.step===0||S.step===4||S.view;
   $('head').innerHTML=top
-    ?`<a class="logo" href="${P}index.html" aria-label="리담 홈" data-home>${LOGO}</a><nav aria-label="쪽 이동"><a href="${P}index.html" data-home>홈</a><a href="${P}story.html">리담 이야기</a><a class="cta" href="https://pf.kakao.com/_xkxgxhNX/chat" target="_blank" rel="noopener">상담 신청</a></nav>`
+    ?`<a class="logo" href="${P}index.html" aria-label="리담 홈" data-home>${LOGO}</a><nav aria-label="쪽 이동"><a href="${P}index.html" data-home>홈</a><a href="${P}story.html">리담 이야기</a><a href="${P}guide.html">고르는 기준</a><a class="cta" href="https://pf.kakao.com/_xkxgxhNX/chat" target="_blank" rel="noopener">상담 신청</a></nav>`
     :`<div class="midq"><button type="button" class="iconbtn" aria-label="이전 질문" data-back>${BACK}</button><a class="logo" href="${P}index.html" aria-label="리담 홈" data-home>${LOGO}</a></div>`;
 }
 function chipRow(label,list,key,big){
