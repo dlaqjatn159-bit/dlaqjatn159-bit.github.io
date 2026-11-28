@@ -1103,7 +1103,7 @@ function drawGuide(){
   if(!S.guide){g.innerHTML='';return;}
   g.innerHTML=`<div class="guide" role="dialog" aria-modal="true" aria-label="카톡으로 상담 신청"><div class="dim" data-close></div><div class="box">
     <h2>${S.copied?'신청 글을 복사해 두었습니다':'아래 글을 길게 눌러 복사해 주세요'}</h2><pre>${msg()}</pre>
-    <p style="margin:0;line-height:1.6">${TOUCH?'카톡 창의 글 쓰는 칸을 꾹 눌러 붙여 넣어 주세요.':'카톡 창의 글 쓰는 칸에 Ctrl+V(맥은 ⌘+V)로 붙여 넣어 주세요.'}</p>
+    <p style="margin:0;line-height:1.6">${TOUCH?'카톡 창의 글 쓰는 칸을 길게 눌러 붙여 넣어 주세요.':'카톡 창의 글 쓰는 칸에 Ctrl+V(맥은 ⌘+V)로 붙여 넣어 주세요.'}</p>
     <a class="btn" href="https://pf.kakao.com/_xkxgxhNX/chat" target="_blank" rel="noopener" data-openkakao>카톡 열기</a>
     <button type="button" class="quiet" data-close>닫기</button></div></div>`;
 }
