@@ -64,6 +64,9 @@ a{color:var(--rd-site-color-text)}a:hover{color:#000000}
 .rm-ft a[href^="tel"]{color:var(--rd-site-color-on-dark);border-color:var(--rd-site-color-on-dark-line-soft)!important}
 </style>
 <style>/* 움직임이 붙기 전 깜빡임 막기 */[data-js] [data-rm]:not([data-on]) .rm,[data-js] [data-rm]:not([data-on]) .rm-strip{opacity:0}/* 로고는 한 창에서 한 번만 (1107) */[data-seen] .ri{display:none}/* 폰에서 누를 때 파란 네모 끔 — 화면이 바뀌며 어긋나 깜빡여 보이던 것 (11-13) */html{-webkit-tap-highlight-color:transparent}</style>
+<style>/* 상담 신청 앞에서 홈처럼 천천히 어두워짐 (11-28) */
+.n4-dusk{height:min(80vh,720px);background:linear-gradient(to bottom,var(--rd-site-color-bg),var(--rd-site-color-dark));background:linear-gradient(to bottom,color-mix(in srgb,var(--rd-site-color-dark) 0%,var(--rd-site-color-bg)) 0%,color-mix(in srgb,var(--rd-site-color-dark) 2%,var(--rd-site-color-bg)) 12%,color-mix(in srgb,var(--rd-site-color-dark) 7%,var(--rd-site-color-bg)) 24%,color-mix(in srgb,var(--rd-site-color-dark) 15%,var(--rd-site-color-bg)) 36%,color-mix(in srgb,var(--rd-site-color-dark) 27%,var(--rd-site-color-bg)) 48%,color-mix(in srgb,var(--rd-site-color-dark) 42%,var(--rd-site-color-bg)) 60%,color-mix(in srgb,var(--rd-site-color-dark) 58%,var(--rd-site-color-bg)) 71%,color-mix(in srgb,var(--rd-site-color-dark) 74%,var(--rd-site-color-bg)) 81%,color-mix(in srgb,var(--rd-site-color-dark) 88%,var(--rd-site-color-bg)) 90%,color-mix(in srgb,var(--rd-site-color-dark) 100%,var(--rd-site-color-bg)) 100%)}/* 세로 계단 다섯 걸음 (11-22) */
+</style>
 </head>
 <body>
 <div id="dc-root">
@@ -178,7 +181,8 @@ a{color:var(--rd-site-color-text)}a:hover{color:#000000}
 </div>
 </div>
 
-<div class="rm-end" style="margin-top: 200px; background: var(--rd-site-color-dark);">
+<div class="n4-dusk" aria-hidden="true" style="margin-top: 200px;"></div>
+<div class="rm-end" style="margin-top: 0; background: var(--rd-site-color-dark);">
 <section style="padding: 220px 0 240px; color: var(--rd-site-color-on-dark);">
 <div style="max-width: 1296px; margin: 0 auto; padding: 0 48px; box-sizing: border-box; display: flex; flex-direction: column;">
 <h2 class="rm rt-h" style="margin: 0; font-family: 'Noto Serif KR', serif; font-size: var(--rd-site-type-h2); line-height: 1.42; font-weight: 400; letter-spacing: -0.02em;">상담 신청</h2>
@@ -186,6 +190,7 @@ a{color:var(--rd-site-color-text)}a:hover{color:#000000}
 <div class="rm rm-d2" style="display: flex; align-items: center; margin-top: 28px;">
 <a href="https://pf.kakao.com/_xkxgxhNX/chat" target="_blank" rel="noopener" style="display: inline-flex; align-items: center; min-height: 48px; font-size: var(--rd-site-type-lead); color: var(--rd-site-color-on-dark); text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 0.42em;">카톡으로 상담 신청</a>
 <a href="tel:010-7523-1952" style="display: inline-flex; align-items: center; min-height: 48px; margin-left: 28px; font-size: var(--rd-site-type-lead); color: var(--rd-site-color-on-dark); text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 0.42em;">전화로 상담</a>
+<a href="sms:010-7523-1952" style="display: inline-flex; align-items: center; min-height: 48px; margin-left: 28px; font-size: var(--rd-site-type-lead); color: var(--rd-site-color-on-dark); text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 0.42em;">문자로 상담</a>
 </div>
 </div>
 </section>
@@ -197,8 +202,8 @@ a{color:var(--rd-site-color-text)}a:hover{color:#000000}
 <div style="display: flex; justify-content: space-between; color: var(--rd-site-color-text-label); font-size: var(--rd-site-type-small); line-height: 1.9;">
 <span>카카오톡 채널 리담커튼 · 전화 010-7523-1952<br>상호 리담 · 사업자등록번호 890-20-02689</span>
 <div style="display: flex; gap: 28px;">
-<a href="https://blog.naver.com/redamcurtain" target="_blank" rel="noopener" style="color: inherit; text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 0.42em;">블로그</a>
-<a href="https://www.instagram.com/redamcurtain" target="_blank" rel="noopener" style="color: inherit; text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 0.42em;">인스타그램</a>
+<a href="https://blog.naver.com/redamcurtain" target="_blank" rel="noopener" style="color: inherit; text-decoration: none; display: inline-flex; align-items: center; gap: 7px;"><svg aria-hidden="true" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="flex: none;"><path style="fill: none;" d="M6 3h12a4 4 0 0 1 4 4v6a4 4 0 0 1-4 4h-6.5L8 20.5V17H6a4 4 0 0 1-4-4V7a4 4 0 0 1 4-4z"></path><path style="fill: none;" d="M10 6.5v7.5"></path><circle cx="12.4" cy="11.6" r="2.4"></circle></svg>블로그</a>
+<a href="https://www.instagram.com/redamcurtain" target="_blank" rel="noopener" style="color: inherit; text-decoration: none; display: inline-flex; align-items: center; gap: 7px;"><svg aria-hidden="true" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="flex: none;"><rect x="3" y="3" width="18" height="18" rx="5"></rect><circle cx="12" cy="12" r="4.2"></circle><circle cx="17.4" cy="6.6" r="1" fill="currentColor" stroke="none"></circle></svg>인스타그램</a>
 </div>
 </div>
 </div>
@@ -320,7 +325,8 @@ a{color:var(--rd-site-color-text)}a:hover{color:#000000}
 </div>
 </div>
 
-<div class="rm-end" style="margin-top: 200px; background: var(--rd-site-color-dark);">
+<div class="n4-dusk" aria-hidden="true" style="margin-top: 200px;"></div>
+<div class="rm-end" style="margin-top: 0; background: var(--rd-site-color-dark);">
 <section style="padding: 220px 0 240px; color: var(--rd-site-color-on-dark);">
 <div style="max-width: 1296px; margin: 0 auto; padding: 0 48px; box-sizing: border-box; display: flex; flex-direction: column;">
 <h2 class="rm rt-h" style="margin: 0; font-family: 'Noto Serif KR', serif; font-size: var(--rd-site-type-h2); line-height: 1.42; font-weight: 400; letter-spacing: -0.02em;">상담 신청</h2>
@@ -328,6 +334,7 @@ a{color:var(--rd-site-color-text)}a:hover{color:#000000}
 <div class="rm rm-d2" style="display: flex; align-items: center; margin-top: 28px;">
 <a href="https://pf.kakao.com/_xkxgxhNX/chat" target="_blank" rel="noopener" style="display: inline-flex; align-items: center; min-height: 48px; font-size: var(--rd-site-type-lead); color: var(--rd-site-color-on-dark); text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 0.42em;">카톡으로 상담 신청</a>
 <a href="tel:010-7523-1952" style="display: inline-flex; align-items: center; min-height: 48px; margin-left: 28px; font-size: var(--rd-site-type-lead); color: var(--rd-site-color-on-dark); text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 0.42em;">전화로 상담</a>
+<a href="sms:010-7523-1952" style="display: inline-flex; align-items: center; min-height: 48px; margin-left: 28px; font-size: var(--rd-site-type-lead); color: var(--rd-site-color-on-dark); text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 0.42em;">문자로 상담</a>
 </div>
 </div>
 </section>
@@ -339,8 +346,8 @@ a{color:var(--rd-site-color-text)}a:hover{color:#000000}
 <div style="display: flex; justify-content: space-between; color: var(--rd-site-color-text-label); font-size: var(--rd-site-type-small); line-height: 1.9;">
 <span>카카오톡 채널 리담커튼 · 전화 010-7523-1952<br>상호 리담 · 사업자등록번호 890-20-02689</span>
 <div style="display: flex; gap: 28px;">
-<a href="https://blog.naver.com/redamcurtain" target="_blank" rel="noopener" style="color: inherit; text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 0.42em;">블로그</a>
-<a href="https://www.instagram.com/redamcurtain" target="_blank" rel="noopener" style="color: inherit; text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 0.42em;">인스타그램</a>
+<a href="https://blog.naver.com/redamcurtain" target="_blank" rel="noopener" style="color: inherit; text-decoration: none; display: inline-flex; align-items: center; gap: 7px;"><svg aria-hidden="true" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="flex: none;"><path style="fill: none;" d="M6 3h12a4 4 0 0 1 4 4v6a4 4 0 0 1-4 4h-6.5L8 20.5V17H6a4 4 0 0 1-4-4V7a4 4 0 0 1 4-4z"></path><path style="fill: none;" d="M10 6.5v7.5"></path><circle cx="12.4" cy="11.6" r="2.4"></circle></svg>블로그</a>
+<a href="https://www.instagram.com/redamcurtain" target="_blank" rel="noopener" style="color: inherit; text-decoration: none; display: inline-flex; align-items: center; gap: 7px;"><svg aria-hidden="true" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="flex: none;"><rect x="3" y="3" width="18" height="18" rx="5"></rect><circle cx="12" cy="12" r="4.2"></circle><circle cx="17.4" cy="6.6" r="1" fill="currentColor" stroke="none"></circle></svg>인스타그램</a>
 </div>
 </div>
 </div>
