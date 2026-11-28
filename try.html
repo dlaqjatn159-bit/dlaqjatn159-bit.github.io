@@ -886,7 +886,7 @@ const SPACES=[
     {id:'bed-1',t:'아침 빛에 잠이 깨요',s:'아침 빛',ext:'morningSky',glare:'morningBed',style:'full',time:'day',line:'아침 햇빛까지 막으려면 겉커튼은 암막으로 하는 것이 좋습니다.'},
     {id:'bed-2',t:'밤에 바깥 불빛이 들어와요',s:'밤 바깥 불빛',ext:'nightStreetlight',glare:'nightBeam',style:'full',time:'night',line:'바깥 불빛은 암막 겉커튼으로 막습니다. 겉커튼 색은 밤에 켜는 조명 아래에서도 확인합니다.'},
     {id:'bed-3',t:'바깥 시선이 신경 쓰여요',s:'바깥 시선',ext:'oppositeBuilding',glare:'none',style:'layered',time:'day',line:'밖에서 안이 보이는 정도는 속커튼이 얼마나 비치는지로 조절합니다.'},
-    {id:'bed-4',t:'낮엔 환하게 쓰고 싶어요',s:'낮엔 환하게',ext:'natureHills',glare:'none',style:'layered',time:'day',line:'낮에는 속커튼만 쳐서 햇빛을 들이고, 밤에는 겉커튼까지 치시면 됩니다.'}]},
+    {id:'bed-4',t:'낮엔 환하게 쓰고 싶어요',s:'낮엔 환하게',ext:'natureHills',glare:'none',style:'layered',time:'day',line:'낮에는 속커튼만 닫아 햇빛을 들이고, 밤에는 겉커튼까지 닫으시면 됩니다.'}]},
   {id:'kids',name:'아이 방',cares:[
     {id:'kids-1',t:'낮잠 잘 때 어두웠으면 해요',s:'낮잠',ext:'brightDay',glare:'middayFloor',style:'full',time:'day',line:'낮에도 어둡게 하려면 겉커튼은 암막으로 하는 것이 좋습니다.'},
     {id:'kids-2',t:'아침에 너무 일찍 깨요',s:'아침 빛',ext:'morningSky',glare:'morningBed',style:'full',time:'day',line:'아침 햇빛까지 막으려면 겉커튼은 암막으로 하는 것이 좋습니다.'},
@@ -1055,7 +1055,7 @@ function chipRow(label,list,key,big){
 }
 function resultLine(){
   const w=WISHES[S.wish].id,wn=WALLS[S.wall][0];
-  return({wide:wn+' 벽과 비슷한 밝기로 맞춰, 창가가 벽처럼 이어져 보이게 합니다.',soft:wn+' 벽보다 조금 짙고 따뜻한 색에, 보송보송한 질감의 원단을 고릅니다.',
+  return({wide:wn+' 벽과 비슷한 밝기로 맞춰, 창가가 벽처럼 이어져 보이게 합니다.',soft:wn+' 벽보다 조금 짙고 따뜻한 색에, 부드러운 질감의 원단을 고릅니다.',
     point:wn+' 벽, '+FLOORS[S.floor][0]+' 바닥, '+FURNS[S.furn][0]+' 가구 어느 것과도 겹치지 않는 색을 고릅니다.',calm:wn+' 벽보다 한 톤 어두운 색으로, 창가가 차분해 보이게 합니다.'})[w];
 }
 function msg(){return '안녕하세요. 리담 홈페이지에서 상담 신청해요.\nredam.kr/try?r='+code();}
