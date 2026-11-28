@@ -32,6 +32,10 @@ a{color:var(--rd-site-color-text)}a:hover{color:#000000}
 [data-on] .rm.rm-d2{transition-delay:.24s}
 .rm-bar{transition:transform .4s cubic-bezier(.22,.61,.36,1),opacity .4s ease}
 .rm-bar[data-wait]:not([data-show]){transform:translateY(100%);opacity:0;pointer-events:none}
+/* 맨 아래 밝은 띠 (11-28): 신청 막대가 숨어 있을 때 막대 자리가 밝게 비던 것 — 어두운 맺음 칸을 막대 자리까지 늘림 */
+.rm-end{margin-bottom:-72px;padding-bottom:72px}
+.rm-bar{z-index:6}
+:has(> .rm-bar){overflow-y:clip} /* 숨은 막대가 화면 밖으로 내려가며 쪽 길이를 늘리던 것도 자름 */
 @media (prefers-reduced-motion:reduce){.rm-bar{transition:none!important}}
 @media (prefers-reduced-motion:reduce){[data-on] .rm{opacity:1!important;transform:none!important;transition:none!important}}
 

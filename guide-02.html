@@ -87,9 +87,12 @@ article ol li::before{content:counter(n) '.';position:absolute;left:0;color:var(
 .cta-a{display:flex;align-items:center;margin-top:28px}
 .cta-a a{display:inline-flex;align-items:center;min-height:48px;font-size:var(--rd-site-type-lead);color:var(--rd-site-color-on-dark);text-decoration:underline;text-decoration-thickness:1px;text-underline-offset:0.42em}
 .cta-a a + a{margin-left:28px}
-.bar{transition:transform .4s cubic-bezier(.22,.61,.36,1),opacity .4s ease}
-.bar.off{transform:translateY(100%);opacity:0;pointer-events:none}
-@media (prefers-reduced-motion:reduce){.bar{transition:none}}
+/* 맨 아래 밝은 띠 (11-28): 줄이 숨을 때 줄 자리가 밝게 비고 쪽 길이까지 늘던 것 — 바깥 칸은 그대로 두고 안쪽 줄만 내려 자름 */
+.bar{overflow:hidden;z-index:6}
+.bar .rm-bar{transition:transform .4s cubic-bezier(.22,.61,.36,1),opacity .4s ease}
+.bar.off{pointer-events:none}
+.bar.off .rm-bar{transform:translateY(100%);opacity:0}
+@media (prefers-reduced-motion:reduce){.bar .rm-bar{transition:none}}
 .rm-ft svg path{fill:var(--rd-common-logo-ink-on-dark)}.rm-ft svg path+path{fill:var(--rd-common-point-on-dark)}
 .rm-ft a[href^="tel"]{color:var(--rd-site-color-on-dark);border-color:var(--rd-site-color-on-dark-line-soft)!important}
 
@@ -115,7 +118,7 @@ figure + p.b,.box + p.b{margin-top:40px}
 .list .t{font-size:var(--rd-site-type-h3);line-height:1.5}
 .more{margin-top:80px}
 .more .list .t{font-size:var(--rd-site-type-lead)}
-.end{margin-top:96px}
+.end{margin-top:96px;margin-bottom:-72px;padding-bottom:72px}
 .end-in{padding:72px 24px 0}
 .end-say{font-size:var(--rd-site-type-h3);line-height:1.6}
 .cta{padding:120px 24px 200px}
